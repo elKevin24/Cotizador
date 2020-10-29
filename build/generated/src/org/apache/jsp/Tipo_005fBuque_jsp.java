@@ -3,6 +3,9 @@ package org.apache.jsp;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
+import modelo.Usuario;
+import controlador.BeanTipoBuque;
+import java.util.LinkedList;
 
 public final class Tipo_005fBuque_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
@@ -44,6 +47,9 @@ public final class Tipo_005fBuque_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("\n");
       out.write("\n");
       out.write("\n");
+      out.write("\n");
+      out.write("\n");
+      out.write("\n");
       out.write("<!DOCTYPE html>\n");
       out.write("<html>\n");
       out.write("    <head>\n");
@@ -56,11 +62,12 @@ public final class Tipo_005fBuque_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("                <div class=\"col s12\">\n");
       out.write("\n");
       out.write("                    <div class=\"input-field col s3\">\n");
-      out.write("                        <input type=\"text\" size=\"20\" name=\"Id\" required pattern=\"[0-9]+\" >\n");
+      out.write("                        <input type=\"number\"  size=\"20\" name=\"Id\" required pattern=\"[0-9]+\" >\n");
       out.write("                        <label for=\"Id\">Id</label>\n");
       out.write("                    </div>\n");
+      out.write("                    \n");
       out.write("                    <div class=\"input-field col s3\">\n");
-      out.write("                        <input type=\"number\" size=\"20\" name=\"Nombre\" required>\n");
+      out.write("                        <input type=\"text\" size=\"20\" name=\"Nombre\">\n");
       out.write("                        <label for=\"Nombre\">Nombre</label>\n");
       out.write("                    </div>\n");
       out.write("\n");
@@ -73,6 +80,35 @@ public final class Tipo_005fBuque_jsp extends org.apache.jasper.runtime.HttpJspB
       out.write("\n");
       out.write("            </div>\n");
       out.write("        </form>\n");
+      out.write("        \n");
+      out.write("        \n");
+      out.write("        <div class=\"col s12\">\n");
+      out.write("\n");
+      out.write("                <table border=\"1\"   class=\"highlight responsive-table striped \" >\n");
+      out.write("                    <tr>\n");
+      out.write("\n");
+      out.write("                        <td>Id </td>\n");
+      out.write("                        <td>Nombre</td>\n");
+      out.write("                        \n");
+      out.write("\n");
+      out.write("\n");
+      out.write("                    </tr>\n");
+      out.write("                    ");
+                        LinkedList<BeanTipoBuque> lista = Usuario.consultarTipoBuque();
+
+                        for (int i = 0; i < lista.size(); i++) {
+
+                            out.println("<tr>");
+                            out.println("<td>" + lista.get(i).getCWTO_TIPO_OPERACION()+ "</td>");
+                            out.println("<td>" + lista.get(i).getCWTO_OPERACION()+ "</td>");
+                           
+
+                            out.println("</tr>");
+                        }
+                    
+      out.write("  \n");
+      out.write("            </div>\n");
+      out.write("        </div>\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

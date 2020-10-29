@@ -4,10 +4,15 @@
     Author     : kcordon
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
 <%@page import="modelo.Usuario"%>
+<%@page import="modelo.Barcos"%>
+<%@page import="modelo.Conexion"%>
 <%@page import="controlador.BeanUsuarios"%>
 <%@page import="controlador.BeanBarcos"%>
-<%@page import="modelo.Barcos"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -75,6 +80,38 @@
                             </select>
                             <label>Tipo Buque</label>
                         </div>
+                            
+                            <div class="input-field col s3">
+                            <select name="Tipo" required >
+
+
+
+
+                                <%
+                                    try {
+                                        Conexion c = new Conexion();
+
+                                        Connection con = c.getConexion();
+                                        Statement st;
+                                        st = con.createStatement();
+                                        ResultSet rs = st.executeQuery("SELECT CWTO_TIPO_OPERACION, CWTO_OPERACION FROM  COTIZADOR_WEB.cw_tipo_operacion Order by 1");
+                                        while (rs.next()) {
+                                %>
+                                <option value="<%=rs.getInt("CWTO_TIPO_OPERACION")%>"><%=rs.getString("CWTO_OPERACION")%></option>
+
+                                <%
+                                        }
+
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                        out.println("Error " + e.getMessage());
+                                    }
+
+
+                                %>
+                            </select>
+                            <label>Escoger Tipo de Proyecto</label>
+                        </div>
 
                         <div class="input-field col s3">
                             <input id="Cambio" type="text" class="validate" value="<%= user2.getCAMBIO()%>">
@@ -85,16 +122,7 @@
                             <input id="Nit" type="text" class="validate" value="<%=user.getNIT()%>">
                             <label for="Nit">Nit</label>
                         </div>
-
-                        
-                        <div class="input-field col s3">
-                            <input id="Tm_Exp" type="text" class="validate">
-                            <label for="Tm_Exp">Tm Exp</label>
-                        </div><div class="input-field col s3">
-                            <input id="Tm_Imp" type="text" class="validate">
-                            <label for="Tm_Imp">Tm Imp</label>
-                        </div>
-
+                       
                         <div class="input-field col s3">
                             <input id="Horas" type="text" class="validate">
                             <label for="Horas">Horas</label>
