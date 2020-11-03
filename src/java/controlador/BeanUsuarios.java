@@ -1,5 +1,8 @@
 package controlador;
 
+import java.math.BigDecimal;
+import java.sql.Date;
+
 public class BeanUsuarios {
 
     public String getUSERID() {
@@ -82,11 +85,11 @@ public class BeanUsuarios {
         this.CORREO = CORREO;
     }
 
-    public String getCAMBIO() {
+    public Double getCAMBIO() {
         return CAMBIO;
     }
 
-    public void setCAMBIO(String CAMBIO) {
+    public void setCAMBIO(Double CAMBIO) {
         this.CAMBIO = CAMBIO;
     }
 
@@ -97,6 +100,13 @@ public class BeanUsuarios {
     public void setFECHA_CAMBIO(String FECHA_CAMBIO) {
         this.FECHA_CAMBIO = FECHA_CAMBIO;
     }
+
+    
+
+    
+    
+
+    
     
     
     
@@ -133,7 +143,7 @@ public class BeanUsuarios {
     private String REPRESENTANTE;
     private String EMAIL_US;
     private String CORREO;
-    private String CAMBIO;
+    private Double CAMBIO;
     private String FECHA_CAMBIO;
     
     

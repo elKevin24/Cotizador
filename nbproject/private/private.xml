@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/vista/Servlet_Encabezado.java</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/modelo/Conexion.java</file>
             <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/controlador/BeanEncabezado.java</file>
+            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/controlador/BeanUsuarios.java</file>
+            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/web/BarcoCotizar.jsp</file>
             <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/modelo/Encabezado.java</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/web/Barco_Cotizar.jsp</file>
+            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/vista/ServletRegistro.java</file>
+            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/modelo/Usuario.java</file>
         </group>
     </open-files>
 </project-private>

@@ -16,10 +16,17 @@
     }
   </style>
   <title>Refrescar la URL</title> 
+  <%
+      
+  String LR = request.getParameter("LR");
+  
+  %>
 
-<META HTTP-EQUIV="REFRESH" CONTENT="2;URL=Tipo_Buque.jsp"> 
+  <META HTTP-EQUIV="REFRESH" CONTENT="2;URL=BarcoCotizar.jsp?LR=<%= LR %>"> 
 </head> 
 <body> 
+    
+    
 <center> <h1> Registrado</h1></center>
     <center> <img src="IMG/descarga.png" width="400" alt=""/> </center>
 Hora: 

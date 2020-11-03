@@ -14,7 +14,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import controlador.BeanEncabezado;
+import controlador.BeanUsuarios;
+import java.math.BigDecimal;
+import java.sql.Date;
 import modelo.Encabezado;
+import modelo.Usuario;
 /**
  *
  * @author nichodeveloper
@@ -57,24 +61,39 @@ public class ServletRegistro extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         
-        String Cotizacion = "1";
+        
+            
+            
+            
+            
+            
+        String CWBC_COTIZACION = request.getParameter("CWBC_COTIZACION");
         String LR = request.getParameter("LR");
-        
-         
-        
+        String CWBC_SENAL_DISTINTIVA = request.getParameter("CWBC_SENAL_DISTINTIVA");
+        String CWBC_ETA = request.getParameter("CWBC_ETA");
+        String CWBC_TIPO_CAMBIO_FECHA = request.getParameter("CWBC_TIPO_CAMBIO_FECHA");
+        String CWBC_USUARIO_SERVICIO = request.getParameter("CWBC_USUARIO_SERVICIO");
        
+        
+        BeanUsuarios cambio = new BeanUsuarios();
+            cambio = Usuario.ObtenerCambioDolar();
+        
+        int Cotizacion = Integer.parseInt(CWBC_COTIZACION);
+        Cotizacion = Cotizacion + 1;
+        CWBC_COTIZACION = String.valueOf(Cotizacion);
+         
         BeanEncabezado busuario;
-        busuario = new BeanEncabezado(Cotizacion, LR);
+        busuario = new BeanEncabezado(CWBC_COTIZACION, LR, CWBC_SENAL_DISTINTIVA, CWBC_ETA, cambio.getCAMBIO(), CWBC_TIPO_CAMBIO_FECHA.substring(0, 10), CWBC_USUARIO_SERVICIO);
         
         //String nombre, String num_convenio, String descripcion, 
            //BigDecimal monto_total, String direccion, String id_municipio, String fecha, String id_tipo_proyecto
         boolean sw = Encabezado.agregarEncabezado(busuario);
 
         PrintWriter out = response.getWriter();
-        out.println( Cotizacion  + LR );
+        out.println( CWBC_COTIZACION  + LR + CWBC_SENAL_DISTINTIVA + CWBC_ETA+  cambio.getCAMBIO() +  CWBC_TIPO_CAMBIO_FECHA.substring(0, 10)+CWBC_USUARIO_SERVICIO );
 
         if (sw) {
-            response.sendRedirect("Guardado.jsp");
+            response.sendRedirect("Guardado.jsp?LR="+LR+"");
 
         } else {
 

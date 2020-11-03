@@ -1,5 +1,8 @@
 package controlador;
 
+import java.math.BigDecimal;
+import java.sql.Date;
+
 public class BeanEncabezado {
 
     public String getCWBC_COTIZACION() {
@@ -42,12 +45,20 @@ public class BeanEncabezado {
         this.CWBC_ETA = CWBC_ETA;
     }
 
-    public String getCWBC_TIPO_CAMBIO() {
+    public Double getCWBC_TIPO_CAMBIO() {
         return CWBC_TIPO_CAMBIO;
     }
 
-    public void setCWBC_TIPO_CAMBIO(String CWBC_TIPO_CAMBIO) {
+    public void setCWBC_TIPO_CAMBIO(Double CWBC_TIPO_CAMBIO) {
         this.CWBC_TIPO_CAMBIO = CWBC_TIPO_CAMBIO;
+    }
+
+    public String getCWBC_TIPO_OPERACION() {
+        return CWBC_TIPO_OPERACION;
+    }
+
+    public void setCWBC_TIPO_OPERACION(String CWBC_TIPO_OPERACION) {
+        this.CWBC_TIPO_OPERACION = CWBC_TIPO_OPERACION;
     }
 
     public String getCWBC_TIPO_CAMBIO_FECHA() {
@@ -57,6 +68,11 @@ public class BeanEncabezado {
     public void setCWBC_TIPO_CAMBIO_FECHA(String CWBC_TIPO_CAMBIO_FECHA) {
         this.CWBC_TIPO_CAMBIO_FECHA = CWBC_TIPO_CAMBIO_FECHA;
     }
+
+    
+
+    
+    
 
     public String getCWBC_USUARIO_SERVICIO() {
         return CWBC_USUARIO_SERVICIO;
@@ -74,13 +90,9 @@ public class BeanEncabezado {
         this.CWBC_NIT = CWBC_NIT;
     }
 
-    public String getCWBC_TIPO_OPERACION() {
-        return CWBC_TIPO_OPERACION;
-    }
+    
 
-    public void setCWBC_TIPO_OPERACION(String CWBC_TIPO_OPERACION) {
-        this.CWBC_TIPO_OPERACION = CWBC_TIPO_OPERACION;
-    }
+    
 
     public String getCWBC_GRABADOR() {
         return CWBC_GRABADOR;
@@ -94,11 +106,16 @@ public class BeanEncabezado {
     
     
 
-    public BeanEncabezado(String CWBC_COTIZACION, String CWBC_LR) {
+    public BeanEncabezado(String CWBC_COTIZACION, String CWBC_LR, String CWBC_SENAL_DISTINTIVA, String CWBC_ETA, Double CWBC_TIPO_CAMBIO, String CWBC_TIPO_CAMBIO_FECHA, String CWBC_USUARIO_SERVICIO) {
         
         
         this.CWBC_COTIZACION = CWBC_COTIZACION;
         this.CWBC_LR = CWBC_LR;
+        this.CWBC_SENAL_DISTINTIVA = CWBC_SENAL_DISTINTIVA;
+        this.CWBC_ETA = CWBC_ETA;
+        this.CWBC_TIPO_CAMBIO = CWBC_TIPO_CAMBIO;
+        this.CWBC_TIPO_CAMBIO_FECHA = CWBC_TIPO_CAMBIO_FECHA;
+        this.CWBC_USUARIO_SERVICIO = CWBC_USUARIO_SERVICIO;
           
     }
 
@@ -107,7 +124,7 @@ public class BeanEncabezado {
     private String CWBC_SENAL_DISTINTIVA;
     private String CWBC_BUQUE_VIAJE;
     private String CWBC_ETA;
-    private String CWBC_TIPO_CAMBIO;
+    private Double CWBC_TIPO_CAMBIO;
     private String CWBC_TIPO_CAMBIO_FECHA;
     private String CWBC_USUARIO_SERVICIO;
     private String CWBC_NIT;
