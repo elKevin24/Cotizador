@@ -8,14 +8,13 @@ package vista;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.math.BigDecimal;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import controlador.BeanTipoBuque;
-import modelo.Usuario;
+import controlador.BeanEncabezado;
+import modelo.Encabezado;
 /**
  *
  * @author nichodeveloper
@@ -58,22 +57,21 @@ public class ServletRegistro extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         
-     
-        String Id = request.getParameter("Id");
-        String Nombre = request.getParameter("Nombre");
+        String Cotizacion = "1";
+        String LR = request.getParameter("LR");
         
          
         
        
-        BeanTipoBuque busuario;
-        busuario = new BeanTipoBuque(Id, Nombre);
+        BeanEncabezado busuario;
+        busuario = new BeanEncabezado(Cotizacion, LR);
         
         //String nombre, String num_convenio, String descripcion, 
            //BigDecimal monto_total, String direccion, String id_municipio, String fecha, String id_tipo_proyecto
-        boolean sw = Usuario.agregarUsuario(busuario);
+        boolean sw = Encabezado.agregarEncabezado(busuario);
 
         PrintWriter out = response.getWriter();
-        out.println( Id  + Nombre );
+        out.println( Cotizacion  + LR );
 
         if (sw) {
             response.sendRedirect("Guardado.jsp");

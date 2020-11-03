@@ -66,7 +66,7 @@ public static BeanUsuarios ObtenerCambioDolar()
         try (Connection con = c.getConexion()) {
             Statement st;
             st = con.createStatement();
-        try (ResultSet rs = st.executeQuery("Select  valor_quetzal\n" +
+        try (ResultSet rs = st.executeQuery("Select  fecha, valor_quetzal\n" +
 "from \n" +
 "FINANCIERO.asft_tipos_de_cambio\n" +
 "WHERE fecha = (select Max(fecha) from FINANCIERO.asft_tipos_de_cambio)")) {
@@ -74,6 +74,7 @@ public static BeanUsuarios ObtenerCambioDolar()
             {
                 
                 user.setCAMBIO(rs.getString("valor_quetzal"));
+                user.setFECHA_CAMBIO(rs.getString("fecha"));
                 
                                 
             }
@@ -151,6 +152,6 @@ public static boolean agregarUsuario(BeanTipoBuque Tipo)
     agregado=false;                                                                                          
   }                                                       
   return agregado;                                    
- }           
+ }     
 
 }

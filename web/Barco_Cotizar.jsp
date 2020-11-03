@@ -22,7 +22,6 @@
         <jsp:include page="menu.jsp" flush="true"></jsp:include>
         </head>
         <body>
-
         <%
             String LR = request.getParameter("LR");
             BeanBarcos des = new BeanBarcos();
@@ -34,71 +33,43 @@
 
             BeanUsuarios user2 = new BeanUsuarios();
             user2 = Usuario.ObtenerCambioDolar();
-
-
         %>
-
- 
-
         <div class="container">
-            
             <h3 class="aling center">Cotizacion en Linea "<%= des.getNOMBRE_DEL_BUQUE()%>" </h3>
-
             <div class="col s12">
-
-                <form action='Actualizar.jsp' method='post'>
+                <form action='ServletRegistro.do' method='post'>
                     <div class="row">
-
                         <h5 class="">Datos Buque</h5>
-
                         <div class="input-field col s3">
-
-                            <input type="date" name="fecha" id="fecha">
+                            <input type="date" name="FECHA" id="fecha" required>
                             <label for="fecha">Fecha ETA</label>
-
                         </div>
-
-
-                        <div class="input-field col s3">
-                            <input id="Trb" type="text"  value="<%= des.getLR()%>">
-                            <label for="Trb">Trb</label>
-                        </div>
-                        <div class="input-field col s3">
-                            <input id="Slora" type="text"  value="<%= des.getESLORA()%>">
-                            <label for="Slora">Slora</label>
-                        </div>
-
                         
-                        <div class="input-field col s3">
-                            <select>
-                                <option value="" disabled selected>Tipo Buque</option>
-                                <option value="1">BUQUE PORTACONTANEDOR</option>
-                                <option value="2">BUQUE MULTIPROPOSITOS</option>
-                                <option value="3">BUQUE MULTIPROPOSITOS FRIGORIFICOS</option>
-                                <option value="4">BUQUES GRANEL LIQUIDO</option>
-                                <option value="5">BUQUES GRANEL SOLIDO</option>
-                            </select>
-                            <label>Tipo Buque</label>
+                        
+                            <div class="input-field col s3">
+                            <input type="text" name="SENAL_DISTINTIVA" value="<%= des.getBANDERA()%>">
+                            <label for="SENAL_DISTINTIVA">SENAL DISTINTIVA</label>
                         </div>
                             
+                            
+                            
                             <div class="input-field col s3">
+                            <input type="text" name="BUQUE_VIAJE" >
+                            <label for="BUQUE_VIAJE">BUQUE VIAJE</label>
+                        </div>
+
+                        <div class="input-field col s3">
                             <select name="Tipo" required >
-
-
-
-
                                 <%
                                     try {
                                         Conexion c = new Conexion();
-
                                         Connection con = c.getConexion();
                                         Statement st;
                                         st = con.createStatement();
                                         ResultSet rs = st.executeQuery("SELECT CWTO_TIPO_OPERACION, CWTO_OPERACION FROM  COTIZADOR_WEB.cw_tipo_operacion Order by 1");
                                         while (rs.next()) {
                                 %>
-                                <option value="<%=rs.getInt("CWTO_TIPO_OPERACION")%>"><%=rs.getString("CWTO_OPERACION")%></option>
-
+                                <option value="<%=rs.getString("CWTO_TIPO_OPERACION")%>"><%=rs.getString("CWTO_OPERACION")%></option>
                                 <%
                                         }
 
@@ -107,56 +78,45 @@
                                         out.println("Error " + e.getMessage());
                                     }
 
-
                                 %>
                             </select>
                             <label>Escoger Tipo de Proyecto</label>
                         </div>
 
                         <div class="input-field col s3">
-                            <input id="Cambio" type="text" class="validate" value="<%= user2.getCAMBIO()%>">
+                            <input id="Cambio" type="text" name="Cambio" required value="<%= user2.getCAMBIO()%>">
                             <label for="Cambio">Cambio Dolar</label>
                         </div>
-
+                           
+                                           
+                        
                         <div class="input-field col s3">
-                            <input id="Nit" type="text" class="validate" value="<%=user.getNIT()%>">
+                            <input id="Nit" type="text"  name="Nit" required value="<%=user.getNIT()%>">
                             <label for="Nit">Nit</label>
                         </div>
-                       
+
                         <div class="input-field col s3">
-                            <input id="Horas" type="text" class="validate">
+                            <input name="Horas" type="text" required>
                             <label for="Horas">Horas</label>
                         </div>
-                        
-                            <div class="row col s12">
+                            
+                            <input name="LR" type="hidden" value="<%= LR%>">
+                            <input name="USUARIO_SERVICIO" type="hidden" value="<%= user.getUSUARIO_DE_SERVICIO() %>">
+                            <input name="GRABADOR" type="hidden" value="<%= user.getUSUARIO_INOW()%>">
+                            <input name="FECHA_CAMBIO" type="hidden" value="<%= user2.getFECHA_CAMBIO()%>">
+  
 
-                            <a class="waves-effect waves-light btn-large " href="Barco_Cotizar_Detalle.jsp">Detalle</a>
+                        <div class="row col s12">
 
+                            <input type='submit' value='Registrar' class='btn-large'>
 
                         </div>
-
-
-                     
-
-                        
-
-
-
-
 
                     </div>   
 
-
-
                 </form>
 
-
-
-
-
-
             </div>
-
 
         </div>
 

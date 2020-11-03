@@ -89,6 +89,15 @@ public class BeanUsuarios {
     public void setCAMBIO(String CAMBIO) {
         this.CAMBIO = CAMBIO;
     }
+
+    public String getFECHA_CAMBIO() {
+        return FECHA_CAMBIO;
+    }
+
+    public void setFECHA_CAMBIO(String FECHA_CAMBIO) {
+        this.FECHA_CAMBIO = FECHA_CAMBIO;
+    }
+    
     
     
 
@@ -125,6 +134,7 @@ public class BeanUsuarios {
     private String EMAIL_US;
     private String CORREO;
     private String CAMBIO;
+    private String FECHA_CAMBIO;
     
     
     public BeanUsuarios() {
