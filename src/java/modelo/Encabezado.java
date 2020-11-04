@@ -68,13 +68,17 @@ public class Encabezado {
             try (Connection con = c.getConexion()) {
                 Statement st;
                 st = con.createStatement();
-                try (ResultSet rs = st.executeQuery("SELECT CWBC_COTIZACION, CWBC_LR, CWBC_SENAL_DISTINTIVA,CWBC_ETA, CWBC_TIPO_CAMBIO FROM CW_BUQUE_COTIZA WHERE LR = " + id + " ")) {
+                try (ResultSet rs = st.executeQuery("SELECT CWBC_COTIZACION, cwbc_lr, cwbc_senal_distintiva, cwbc_eta, cwbc_tipo_cambio,cwto_operacion FROM\n" +
+"CW_BUQUE_COTIZA , CW_TIPO_OPERACION \n" +
+"where CWBC_TIPO_OPERACION = CWTO_TIPO_OPERACION\n" +
+"AND CWBC_COTIZACION = '"+id+"'")) {
                     while (rs.next()) {
-                        user.setCWBC_COTIZACION(rs.getString("COTIZACION"));
-                        user.setCWBC_LR(rs.getString("CWBC_LR"));
-                        user.setCWBC_SENAL_DISTINTIVA(rs.getString("CWBC_SENAL_DISTINTIVA"));
-                        user.setCWBC_ETA(rs.getString("CWBC_ETA"));
-                        user.setCWBC_TIPO_CAMBIO(rs.getDouble("CWBC_TIPO_CAMBIO"));
+                        user.setCWBC_COTIZACION(rs.getString("CWBC_COTIZACION"));
+                        user.setCWBC_LR(rs.getString("cwbc_lr"));
+                        user.setCWBC_SENAL_DISTINTIVA(rs.getString("cwbc_senal_distintiva"));
+                        user.setCWBC_ETA(rs.getString("cwbc_eta"));
+                        user.setCWBC_TIPO_CAMBIO(rs.getDouble("cwbc_tipo_cambio"));
+                        user.setCWBC_TIPO_OPERACION(rs.getString("cwto_operacion"));
                         
                     }
                 }

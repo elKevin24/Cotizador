@@ -1,3 +1,5 @@
+<%@page import="modelo.Encabezado"%>
+<%@page import="controlador.BeanEncabezado"%>
 <%@page import="modelo.Usuario"%>
 <%@page import="controlador.BeanUsuarios"%>
 <%@page import="modelo.Barcos"%>
@@ -25,27 +27,26 @@
         <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.js"></script>
         <%
             String Cotizacion = request.getParameter("Cotizacion");
-            %>
+            BeanEncabezado enc = new BeanEncabezado();
+            enc = Encabezado.CotizacionGeneral(Cotizacion);
+        %>
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-
-
         <jsp:include page="menu.jsp" flush="true"></jsp:include>
 
         </head>
         <body>
             <div class="row">
-            <div class="col s1 push-s1">
-                <a  href="index.jsp" class="btn-floating pulse" ><i class="material-icons">arrow_back</i></a>
-            </div>
+                <div class="col s1 push-s1">
+                    <a  href="index.jsp" class="btn-floating pulse" ><i class="material-icons">arrow_back</i></a>
                 </div>
+            </div>
 
             <div class="container">
 
-<h3> TIPO COTIZACION "<%= Cotizacion %>"</h3>
+                <h5> Cotizacion LR: <%= enc.getCWBC_LR() + "  ETA: " + enc.getCWBC_ETA() + "  SEÑAL DISTINTIVA: " + enc.getCWBC_SENAL_DISTINTIVA()%></h5>
 
-                
+
         </div>
 
 
