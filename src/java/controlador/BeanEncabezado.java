@@ -90,23 +90,22 @@ public class BeanEncabezado {
         this.CWBC_NIT = CWBC_NIT;
     }
 
-    
-
-    
-
-    public String getCWBC_GRABADOR() {
-        return CWBC_GRABADOR;
+    public String getGRABADOR() {
+        return GRABADOR;
     }
 
-    public void setCWBC_GRABADOR(String CWBC_GRABADOR) {
-        this.CWBC_GRABADOR = CWBC_GRABADOR;
+    public void setGRABADOR(String GRABADOR) {
+        this.GRABADOR = GRABADOR;
     }
 
     
+
+    
     
     
 
-    public BeanEncabezado(String CWBC_COTIZACION, String CWBC_LR, String CWBC_SENAL_DISTINTIVA, String CWBC_ETA, Double CWBC_TIPO_CAMBIO, String CWBC_TIPO_CAMBIO_FECHA, String CWBC_USUARIO_SERVICIO) {
+    public BeanEncabezado(String CWBC_COTIZACION, String CWBC_LR, String CWBC_SENAL_DISTINTIVA, String CWBC_ETA, Double CWBC_TIPO_CAMBIO, String CWBC_TIPO_CAMBIO_FECHA, String CWBC_USUARIO_SERVICIO,
+                          String CWBC_NIT, String CWBC_TIPO_OPERACION, String GRABADOR) {
         
         
         this.CWBC_COTIZACION = CWBC_COTIZACION;
@@ -116,6 +115,9 @@ public class BeanEncabezado {
         this.CWBC_TIPO_CAMBIO = CWBC_TIPO_CAMBIO;
         this.CWBC_TIPO_CAMBIO_FECHA = CWBC_TIPO_CAMBIO_FECHA;
         this.CWBC_USUARIO_SERVICIO = CWBC_USUARIO_SERVICIO;
+        this.CWBC_NIT = CWBC_NIT;
+        this.CWBC_TIPO_OPERACION = CWBC_TIPO_OPERACION;
+        this.GRABADOR = GRABADOR;
           
     }
 
@@ -129,7 +131,7 @@ public class BeanEncabezado {
     private String CWBC_USUARIO_SERVICIO;
     private String CWBC_NIT;
     private String CWBC_TIPO_OPERACION;
-    private String CWBC_GRABADOR;
+    private String GRABADOR;
    
     
     public BeanEncabezado() {

@@ -73,6 +73,9 @@ public class ServletRegistro extends HttpServlet {
         String CWBC_ETA = request.getParameter("CWBC_ETA");
         String CWBC_TIPO_CAMBIO_FECHA = request.getParameter("CWBC_TIPO_CAMBIO_FECHA");
         String CWBC_USUARIO_SERVICIO = request.getParameter("CWBC_USUARIO_SERVICIO");
+        String CWBC_NIT = request.getParameter("CWBC_NIT");
+        String CWBC_TIPO_OPERACION = request.getParameter("Tipo");
+        String GRABADOR = request.getParameter("GRABADOR");
        
         
         BeanUsuarios cambio = new BeanUsuarios();
@@ -83,14 +86,14 @@ public class ServletRegistro extends HttpServlet {
         CWBC_COTIZACION = String.valueOf(Cotizacion);
          
         BeanEncabezado busuario;
-        busuario = new BeanEncabezado(CWBC_COTIZACION, LR, CWBC_SENAL_DISTINTIVA, CWBC_ETA, cambio.getCAMBIO(), CWBC_TIPO_CAMBIO_FECHA.substring(0, 10), CWBC_USUARIO_SERVICIO);
+        busuario = new BeanEncabezado(CWBC_COTIZACION, LR, CWBC_SENAL_DISTINTIVA, CWBC_ETA, cambio.getCAMBIO(), CWBC_TIPO_CAMBIO_FECHA.substring(0, 10), CWBC_USUARIO_SERVICIO, CWBC_NIT, CWBC_TIPO_OPERACION, GRABADOR);
         
         //String nombre, String num_convenio, String descripcion, 
            //BigDecimal monto_total, String direccion, String id_municipio, String fecha, String id_tipo_proyecto
         boolean sw = Encabezado.agregarEncabezado(busuario);
 
         PrintWriter out = response.getWriter();
-        out.println( CWBC_COTIZACION  + LR + CWBC_SENAL_DISTINTIVA + CWBC_ETA+  cambio.getCAMBIO() +  CWBC_TIPO_CAMBIO_FECHA.substring(0, 10)+CWBC_USUARIO_SERVICIO );
+        out.println( CWBC_COTIZACION  + LR + CWBC_SENAL_DISTINTIVA + CWBC_ETA+  cambio.getCAMBIO() +  CWBC_TIPO_CAMBIO_FECHA.substring(0, 10)+CWBC_USUARIO_SERVICIO+ CWBC_NIT+ "tipo operacion: "+ CWBC_TIPO_OPERACION);
 
         if (sw) {
             response.sendRedirect("Guardado.jsp?LR="+LR+"");
