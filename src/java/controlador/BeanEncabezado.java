@@ -5,6 +5,10 @@ import java.sql.Date;
 
 public class BeanEncabezado {
 
+    public BeanEncabezado(String CWBC_COTIZACION, String Muellaje, String Muellaje0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public String getCWBC_COTIZACION() {
         return CWBC_COTIZACION;
     }

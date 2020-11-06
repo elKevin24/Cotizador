@@ -47,6 +47,354 @@
                 <h5> Cotizacion LR: <%= enc.getCWBC_LR() + "  ETA: " + enc.getCWBC_ETA() + "  SEÑAL DISTINTIVA: " + enc.getCWBC_SENAL_DISTINTIVA()%></h5>
 
 
+            <form action="ServleMultiFrigo.do" method="post" >
+                <div class="row">
+                    <div class="col s12">
+
+                        <div class="divider"></div>
+
+                        <div class="section" align="center">
+                            <p> Aplica Muellaje a Contenedores</p>
+                            <div class="input-field col s12">
+
+                                <!-- Switch -->
+                                <div class="switch" align="center">
+                                    <label>
+                                        No
+                                        <input type="checkbox" name="Muellaje" id="Muellaje">
+                                        <span class="lever"></span>
+                                        Si
+                                    </label>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="section">
+
+
+                </div>
+
+                <table class="responsive-table highlight striped">
+
+                    <thead>
+
+                        <tr>
+
+                            <th></th>
+
+                            <th colspan="2">Via Indirecta</th>
+
+                            <th colspan="2">Via Directa</th>
+
+                        </tr>
+
+                        <tr>
+
+                            <th scope="col">Descripcion</th>
+
+                            <th>Grua Puerto</th>
+
+                            <th>Grua Buque</th>
+
+                            <th>Grua Puerto</th>
+
+                            <th>Grua Buque</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+
+                            <th>Descarga Llenos</th>
+
+                            <td>
+
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+
+                            </td>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <th>Descaga Vacios</th>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <th>Carga Llenos</th>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <th>Carga Vacios</th>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+
+                        </tr>
+                        
+                        <tr>
+
+                            <th>Vehiculos</th>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>  
+                        </tr>
+                        <tr>
+
+                            <th>Reestibas</th>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>  
+                        </tr>
+                        <tr>
+
+                            <th>Tapa Escotillas</th>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>  
+                        </tr>
+                        <tr>
+
+                            <th>Depositos Temporales</th>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>  
+                        </tr>
+                        <tr>
+
+                            <th>Reembarques</th>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>  
+                        </tr>
+                        <tr>
+
+                            <th>Dep. Momentaneos</th>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>  
+                        </tr>
+                        <tr>
+
+                            <th>Descarga Merc. General</th>
+
+                            <td>
+                                <input  placeholder="Toneladas" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+
+                            <td>
+                                <input  placeholder="Toneladas" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+                            <td>
+                                <input  placeholder="Toneladas" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+                            <td>
+                                <input  placeholder="Toneladas" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <th>Carga Merc. General</th>
+
+                            <td>
+                                <input  placeholder="Toneladas" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+
+                            <td>
+                                <input  placeholder="Toneladas" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>  
+                            <td>
+                                <input  placeholder="Toneladas" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+                            <td>
+                                <input  placeholder="Toneladas" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+                        </tr>
+                        <tr>
+
+                            <th>Carga Fruta Fresca Paletizada</th>
+
+                            <td>
+                                <input  placeholder="Toneladas" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+
+                            <td>
+                                <input  placeholder="Toneladas" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+                            <td>
+                                <input  placeholder="Toneladas" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+                            <td>
+                                <input  placeholder="Toneladas" name="VDGPDL" type="text" class="validate">
+                                <label for="VDGPDL"></label>
+                            </td>
+                        </tr>
+                        
+                </table>
+                
+                
+
+                <div class="input-field col s1">
+                    <input type="text" name="CWSF_COTIZACION" value="<%= Cotizacion%>" >
+                    <label for="CWSF_COTIZACION">Cotizacion</label>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+                <div class="input-field col s3">
+                    <input type="submit" value="Registrar" class="btn-large light-blue accent-4" name="enviar">
+
+                </div>
+            </form>
+
+
         </div>
 
 

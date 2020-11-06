@@ -475,6 +475,18 @@ public class BeanMultiFrigo {
         this.GRABADOR = GRABADOR;
           
     }
+    
+    
+    public BeanMultiFrigo(String CWBC_COTIZACION, String CWSF_MUELLAJE_COF_IMPORT, String CWSF_MUELLAJE_COF_EXPORT
+       
+    ) {
+        
+        
+        this.CWBC_COTIZACION = CWBC_COTIZACION;
+        this.CWSF_MUELLAJE_COF_IMPORT = CWSF_MUELLAJE_COF_IMPORT;
+        this.CWSF_MUELLAJE_COF_EXPORT = CWSF_MUELLAJE_COF_EXPORT;
+          
+    }
 
     private String CWBC_COTIZACION;
     private String CWSF_MUELLAJE_COF_IMPORT;

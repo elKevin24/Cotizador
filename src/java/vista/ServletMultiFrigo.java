@@ -13,18 +13,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import controlador.BeanEncabezado;
-import controlador.BeanUsuarios;
-import java.math.BigDecimal;
-import java.sql.Date;
-import modelo.Encabezado;
-import modelo.Usuario;
+import controlador.BeanMultiFrigo;
+import modelo.Detalle_MF;
 /**
  *
  * @author nichodeveloper
  */
-@WebServlet(name = "ServletRegistro", urlPatterns = {"/ServletRegistro.do"})
-public class ServletRegistro extends HttpServlet {
+@WebServlet(name = "ServleMultiFrigo", urlPatterns = {"/ServleMultiFrigo.do"})
+public class ServletMultiFrigo extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -67,36 +63,33 @@ public class ServletRegistro extends HttpServlet {
             
             
             
-        String CWBC_COTIZACION = request.getParameter("CWBC_COTIZACION");
-        String LR = request.getParameter("LR");
-        String CWBC_SENAL_DISTINTIVA = request.getParameter("CWBC_SENAL_DISTINTIVA");
-        String CWBC_ETA = request.getParameter("CWBC_ETA");
-        String CWBC_TIPO_CAMBIO_FECHA = request.getParameter("CWBC_TIPO_CAMBIO_FECHA");
-        String CWBC_USUARIO_SERVICIO = request.getParameter("CWBC_USUARIO_SERVICIO");
-        String CWBC_NIT = request.getParameter("CWBC_NIT");
-        String CWBC_TIPO_OPERACION = request.getParameter("Tipo");
-        String GRABADOR = request.getParameter("GRABADOR");
+        String Muellaje = request.getParameter("Muellaje");
+        String CWBC_COTIZACION = request.getParameter("CWSF_COTIZACION");
+        String Muellaje1;
+        
+        if(Muellaje!=null){
+            Muellaje1 = "1";
+        }else{
+            Muellaje1 = "0";
+            
+        }
+        
+        
        
         
-        BeanUsuarios cambio = new BeanUsuarios();
-        cambio = Usuario.ObtenerCambioDolar();
-        
-        int Cotizacion = Integer.parseInt(CWBC_COTIZACION);
-        Cotizacion = Cotizacion + 1;
-        CWBC_COTIZACION = String.valueOf(Cotizacion);
          
-        BeanEncabezado busuario;
-        busuario = new BeanEncabezado(CWBC_COTIZACION, LR, CWBC_SENAL_DISTINTIVA, CWBC_ETA, cambio.getCAMBIO(), CWBC_TIPO_CAMBIO_FECHA.substring(0, 10), CWBC_USUARIO_SERVICIO, CWBC_NIT, CWBC_TIPO_OPERACION, GRABADOR);
+        BeanMultiFrigo busuario;
+        busuario = new BeanMultiFrigo(CWBC_COTIZACION, Muellaje1, Muellaje1);
         
         //String nombre, String num_convenio, String descripcion, 
            //BigDecimal monto_total, String direccion, String id_municipio, String fecha, String id_tipo_proyecto
-        boolean sw = Encabezado.agregarEncabezado(busuario);
+        boolean sw = Detalle_MF.agregarDetalleMF(busuario);
 
         PrintWriter out = response.getWriter();
-        out.println( CWBC_COTIZACION  + LR + CWBC_SENAL_DISTINTIVA + CWBC_ETA+  cambio.getCAMBIO() +  CWBC_TIPO_CAMBIO_FECHA.substring(0, 10)+CWBC_USUARIO_SERVICIO+ CWBC_NIT+ "tipo operacion: "+ CWBC_TIPO_OPERACION);
+        out.println( CWBC_COTIZACION  + Muellaje1 + Muellaje1);
 
         if (sw) {
-            response.sendRedirect("Guardado.jsp?LR="+LR+"");
+            response.sendRedirect("Guardado.jsp");
 
         } else {
 
