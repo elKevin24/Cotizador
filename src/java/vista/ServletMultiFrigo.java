@@ -5,7 +5,6 @@
  */
 package vista;
 
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -15,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import controlador.BeanMultiFrigo;
 import modelo.Detalle_MF;
+
 /**
  *
  * @author nichodeveloper
@@ -33,8 +33,6 @@ public class ServletMultiFrigo extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
 
     }
 
@@ -55,38 +53,101 @@ public class ServletMultiFrigo extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-        
-        
-            
-            
-            
-            
-            
+
         String Muellaje = request.getParameter("Muellaje");
-        String CWBC_COTIZACION = request.getParameter("CWSF_COTIZACION");
+
         String Muellaje1;
-        
-        if(Muellaje!=null){
+
+        if (Muellaje != null) {
             Muellaje1 = "1";
-        }else{
+        } else {
             Muellaje1 = "0";
-            
+
         }
+
+        String CWBC_COTIZACION = request.getParameter("CWSF_COTIZACION");
+        String CWSF_DESCARGA_LLENOS_GB_VI = request.getParameter("CWSF_DESCARGA_LLENOS_GB_VI");
+        String CWSF_DESCARGA_LLENOS_GB_VD = request.getParameter("CWSF_DESCARGA_LLENOS_GB_VD");
+        String CWSF_DESCARGA_LLENOS_GP_VI = request.getParameter("CWSF_DESCARGA_LLENOS_GP_VI");
+        String CWSF_DESCARGA_LLENOS_GP_VD = request.getParameter("CWSF_DESCARGA_LLENOS_GP_VD");
+        
+        String CWSF_DESCARGA_VACIOS_GB_VI = request.getParameter("CWSF_DESCARGA_VACIOS_GB_VI");
+        String CWSF_DESCARGA_VACIOS_GB_VD = request.getParameter("CWSF_DESCARGA_VACIOS_GB_VD");
+        String CWSF_DESCARGA_VACIOS_GP_VI = request.getParameter("CWSF_DESCARGA_VACIOS_GP_VI");
+        String CWSF_DESCARGA_VACIOS_GP_VD = request.getParameter("CWSF_DESCARGA_VACIOS_GP_VD");
+        
+        String CWSF_CARGA_LLENOS_GB_VI = request.getParameter("CWSF_CARGA_LLENOS_GB_VI");
+        String CWSF_CARGA_LLENOS_GB_VD = request.getParameter("CWSF_CARGA_LLENOS_GB_VD");
+        String CWSF_CARGA_LLENOS_GP_VI = request.getParameter("CWSF_CARGA_LLENOS_GP_VI");
+        String CWSF_CARGA_LLENOS_GP_VD = request.getParameter("CWSF_CARGA_LLENOS_GP_VD");
+        
+        String CWSF_CARGA_VACIOS_GB_VI = request.getParameter("CWSF_CARGA_VACIOS_GB_VI");
+        String CWSF_CARGA_VACIOS_GB_VD = request.getParameter("CWSF_CARGA_VACIOS_GB_VD");
+        String CWSF_CARGA_VACIOS_GP_VI = request.getParameter("CWSF_CARGA_VACIOS_GP_VI");
+        String CWSF_CARGA_VACIOS_GP_VD = request.getParameter("CWSF_CARGA_VACIOS_GP_VD");
+        
+        String CWSF_DESCARGA_VEHICULOS_GB = request.getParameter("CWSF_DESCARGA_VEHICULOS_GB");
+        String CWSF_DESCARGA_VEHICULOS_GP = request.getParameter("CWSF_DESCARGA_VEHICULOS_GP");
+        
+        String CWSF_REESTIBAS_GB = request.getParameter("CWSF_REESTIBAS_GB");
+        String CWSF_REESTIBAS_GP = request.getParameter("CWSF_REESTIBAS_GP");
+        
+        String CWSF_TAPA_ESCOTILLAS_GB = request.getParameter("CWSF_TAPA_ESCOTILLAS_GB");
+        String CWSF_TAPA_ESCOTILLAS_GP = request.getParameter("CWSF_TAPA_ESCOTILLAS_GP");
         
         
-       
+        String CWSF_DEPOSITO_TEMP_LLENO_GB = request.getParameter("CWSF_DEPOSITO_TEMP_LLENO_GB");
+        String CWSF_DEPOSITO_TEMP_LLENO_GP = request.getParameter("CWSF_DEPOSITO_TEMP_LLENO_GP");        
+        String CWSF_DEPOSITO_TEMP_VACIO_GB = request.getParameter("CWSF_DEPOSITO_TEMP_VACIO_GB");
+        String CWSF_DEPOSITO_TEMP_VACIO_GP = request.getParameter("CWSF_DEPOSITO_TEMP_VACIO_GP");
         
-         
+        String CWSF_REEMBARQUE_LLENO_GB = request.getParameter("CWSF_REEMBARQUE_LLENO_GB");
+        String CWSF_REEMBARQUE_LLENO_GP = request.getParameter("CWSF_REEMBARQUE_LLENO_GP");
+        String CWSF_REEMBARQUE_VACIO_GB = request.getParameter("CWSF_REEMBARQUE_VACIO_GB");
+        String CWSF_REEMBARQUE_VACIO_GP = request.getParameter("CWSF_REEMBARQUE_VACIO_GP");
+        
+        String CWSF_DEPOSITO_MOMENT_LLENO_GB = request.getParameter("CWSF_DEPOSITO_MOMENT_LLENO_GB");
+        String CWSF_DEPOSITO_MOMENT_LLENO_GP = request.getParameter("CWSF_DEPOSITO_MOMENT_LLENO_GP");
+        String CWSF_DEPOSITO_MOMENT_VACIO_GB = request.getParameter("CWSF_DEPOSITO_MOMENT_VACIO_GB");
+        String CWSF_DEPOSITO_MOMENT_VACIO_GP = request.getParameter("CWSF_DEPOSITO_MOMENT_VACIO_GP");
+        
+        String CWSF_DESCARGA_MERCA_GB_VD = request.getParameter("CWSF_DESCARGA_MERCA_GB_VD");
+        String CWSF_DESCARGA_MERCA_GB_VI = request.getParameter("CWSF_DESCARGA_MERCA_GB_VI");
+        String CWSF_DESCARGA_MERCA_GP_VD = request.getParameter("CWSF_DESCARGA_MERCA_GP_VD");
+        String CWSF_DESCARGA_MERCA_GP_VI = request.getParameter("CWSF_DESCARGA_MERCA_GP_VI");
+        
+        String CWSF_CARGA_MERCA_GB_VD = request.getParameter("CWSF_CARGA_MERCA_GB_VD");
+        String CWSF_CARGA_MERCA_GB_VI = request.getParameter("CWSF_CARGA_MERCA_GB_VI");
+        String CWSF_CARGA_MERCA_GP_VD = request.getParameter("CWSF_CARGA_MERCA_GP_VD");
+        String CWSF_CARGA_MERCA_GP_VI = request.getParameter("CWSF_CARGA_MERCA_GP_VI");
+        
+        String CWSF_CARGA_FRUTA_PALE_GB_VD = request.getParameter("CWSF_CARGA_FRUTA_PALE_GB_VD");
+        String CWSF_CARGA_FRUTA_PALE_GB_VI = request.getParameter("CWSF_CARGA_FRUTA_PALE_GB_VI");
+        String CWSF_CARGA_FRUTA_PALE_GP_VD = request.getParameter("CWSF_CARGA_FRUTA_PALE_GP_VD");
+        String CWSF_CARGA_FRUTA_PALE_GP_VI = request.getParameter("CWSF_CARGA_FRUTA_PALE_GP_VI");
+        String GRABADOR = request.getParameter("GRABADOR");
+        //String GRABADOR_FECHA = request.getParameter("GRABADOR_FECHA");
+        //String ACTUALIZADOR = request.getParameter("ACTUALIZADOR");
+        //String ACTUALIZADOR_FECHA = request.getParameter("ACTUALIZADOR_FECHA");
+        
+        
+
         BeanMultiFrigo busuario;
-        busuario = new BeanMultiFrigo(CWBC_COTIZACION, Muellaje1, Muellaje1);
-        
-        //String nombre, String num_convenio, String descripcion, 
-           //BigDecimal monto_total, String direccion, String id_municipio, String fecha, String id_tipo_proyecto
-        boolean sw = Detalle_MF.agregarDetalleMF(busuario);
+       // busuario = new BeanMultiFrigo(CWBC_COTIZACION, Muellaje1, Muellaje1);
+        busuario = new BeanMultiFrigo(CWBC_COTIZACION, Muellaje1, Muellaje1,  CWSF_DESCARGA_LLENOS_GB_VI,  CWSF_DESCARGA_LLENOS_GB_VD,  CWSF_DESCARGA_LLENOS_GP_VI,
+             CWSF_DESCARGA_LLENOS_GP_VD,  CWSF_DESCARGA_VACIOS_GB_VI,  CWSF_DESCARGA_VACIOS_GB_VD,  CWSF_DESCARGA_VACIOS_GP_VI,  CWSF_DESCARGA_VACIOS_GP_VD,
+             CWSF_CARGA_LLENOS_GB_VI,  CWSF_CARGA_LLENOS_GB_VD,  CWSF_CARGA_LLENOS_GP_VI,  CWSF_CARGA_LLENOS_GP_VD,  CWSF_CARGA_VACIOS_GB_VI,  CWSF_CARGA_VACIOS_GB_VD,  CWSF_CARGA_VACIOS_GP_VI,
+             CWSF_CARGA_VACIOS_GP_VD,  CWSF_DESCARGA_VEHICULOS_GB,  CWSF_DESCARGA_VEHICULOS_GP,  CWSF_REESTIBAS_GB,  CWSF_REESTIBAS_GP,  CWSF_TAPA_ESCOTILLAS_GB,  CWSF_TAPA_ESCOTILLAS_GP,
+             CWSF_DEPOSITO_TEMP_LLENO_GB,  CWSF_DEPOSITO_TEMP_LLENO_GP,  CWSF_DEPOSITO_TEMP_VACIO_GB,  CWSF_DEPOSITO_TEMP_VACIO_GP,  CWSF_REEMBARQUE_LLENO_GB,  CWSF_REEMBARQUE_LLENO_GP,  CWSF_REEMBARQUE_VACIO_GB,
+             CWSF_REEMBARQUE_VACIO_GP,  CWSF_DEPOSITO_MOMENT_LLENO_GB,  CWSF_DEPOSITO_MOMENT_LLENO_GP,  CWSF_DEPOSITO_MOMENT_VACIO_GB,  CWSF_DEPOSITO_MOMENT_VACIO_GP,
+             CWSF_DESCARGA_MERCA_GB_VD,  CWSF_DESCARGA_MERCA_GB_VI,  CWSF_DESCARGA_MERCA_GP_VD,  CWSF_DESCARGA_MERCA_GP_VI,  CWSF_CARGA_MERCA_GB_VD,  CWSF_CARGA_MERCA_GB_VI,
+             CWSF_CARGA_MERCA_GP_VD,  CWSF_CARGA_MERCA_GP_VI,  CWSF_CARGA_FRUTA_PALE_GB_VD,  CWSF_CARGA_FRUTA_PALE_GB_VI,  CWSF_CARGA_FRUTA_PALE_GP_VD,  CWSF_CARGA_FRUTA_PALE_GP_VI,
+             GRABADOR);
+
+           boolean sw = Detalle_MF.agregarDetalleMF(busuario);
 
         PrintWriter out = response.getWriter();
-        out.println( CWBC_COTIZACION  + Muellaje1 + Muellaje1);
+        out.println(CWBC_COTIZACION + Muellaje1 + Muellaje1 + CWSF_DESCARGA_LLENOS_GB_VI+ CWSF_DESCARGA_LLENOS_GB_VD+ CWSF_DESCARGA_LLENOS_GP_VI+ CWSF_DESCARGA_LLENOS_GP_VD);
 
         if (sw) {
             response.sendRedirect("Guardado.jsp");

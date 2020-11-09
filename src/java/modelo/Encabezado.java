@@ -68,7 +68,7 @@ public class Encabezado {
             try (Connection con = c.getConexion()) {
                 Statement st;
                 st = con.createStatement();
-                try (ResultSet rs = st.executeQuery("SELECT CWBC_COTIZACION, cwbc_lr, cwbc_senal_distintiva, cwbc_eta, cwbc_tipo_cambio,cwto_operacion FROM\n" +
+                try (ResultSet rs = st.executeQuery("SELECT CWBC_COTIZACION, cwbc_lr, cwbc_senal_distintiva, cwbc_eta, cwbc_tipo_cambio,cwto_operacion, cw_buque_cotiza.grabador FROM\n" +
 "CW_BUQUE_COTIZA , CW_TIPO_OPERACION \n" +
 "where CWBC_TIPO_OPERACION = CWTO_TIPO_OPERACION\n" +
 "AND CWBC_COTIZACION = '"+id+"'")) {
@@ -79,6 +79,7 @@ public class Encabezado {
                         user.setCWBC_ETA(rs.getString("cwbc_eta"));
                         user.setCWBC_TIPO_CAMBIO(rs.getDouble("cwbc_tipo_cambio"));
                         user.setCWBC_TIPO_OPERACION(rs.getString("cwto_operacion"));
+                        user.setGRABADOR(rs.getString("grabador"));
                         
                     }
                 }
