@@ -139,6 +139,7 @@
                     <tr>
 
                         
+                        <th>Cotizacion</th>
                         <th>ETA</th>
                         <th>Cambio Dolar</th>
                         <th>Fecha Cambio</th>
