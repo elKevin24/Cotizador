@@ -46,12 +46,6 @@
 
             <div class="container">
 
-
-
-                <div>
-                    <a class="waves-effect waves-light btn" href="BarcosFull.jsp">Todos</a>
-                </div>
-
                 <div class="col s12">
 
                     <table id="table_id" border="1"   class="highlight responsive-table striped " >

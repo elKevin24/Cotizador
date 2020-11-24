@@ -3,19 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/vista/ServletSolido.java</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/vista/ServletPorta.java</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/web/Detalle.jsp</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/controlador/BeanEncabezado.java</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/web/BUQUE_MULTIPROPOSITOS_FRIGORIFICOS.jsp</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/vista/ServletMulti.java</file>
+            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/web/Barcos.jsp</file>
+            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/modelo/BarcosNew.java</file>
+            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/web/BarcoCotizar.jsp</file>
             <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/modelo/Encabezado.java</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/controlador/BeanBarcos.java</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/controlador/BeanDetalle.java</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/web/GuardadoDetalle.jsp</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/vista/ServletMultiFrigo.java</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/vista/ServletLiquido.java</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/web/menu.jsp</file>
+            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/web/Eliminar.jsp</file>
         </group>
     </open-files>
 </project-private>

@@ -82,6 +82,31 @@ public class Encabezado {
 
     }
     
+    public static boolean CambiarEstado(String id) {
+        boolean actualizado = false;
+
+        try {
+            Conexion c = new Conexion();
+            Connection con = c.getConexion();
+            if (con != null) {
+                Statement st;
+                st = con.createStatement();
+                //UNA COMA ME HIZO DESVELARME HASTA LAS DOS DE LA MAÑANA
+                String sql = "update COTIZADOR_WEB.CW_BUQUE_COTIZA set CWBC_ESTADO = 4 where CWBC_COTIZACION =" + id + "";
+                //"update tbl_seccion set grado ='"+usuario.getGrado()+"', seccion='"+usuario.getSeccion()+"', Id_nivel='"+usuario.getId_nivel()+"' where Id_seccion="+usuario.getId_seccion()+"";
+
+                st.execute(sql);
+                actualizado = true;
+                st.close();
+            }
+
+        } catch (SQLException e) {
+            actualizado = false;
+        }
+
+        return actualizado;
+    }
+    
     
     
 

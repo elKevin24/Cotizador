@@ -70,10 +70,11 @@
                         <ul class="collapsible collapsible-accordion">
                             <li>
 
-                                <a class="collapsible-header">Proyectos<i class="material-icons">account_boxarrow_drop_down</i></a>
+                                <a class="collapsible-header">Cotizaciones<i class="material-icons">account_boxarrow_drop_down</i></a>
                                 <div class="collapsible-body">
                                     <ul>
-                                        <li><a href="Barcos.jsp">Ingreso</a></li>
+                                        <li><a href="Barcos.jsp">Barco Existente</a></li>
+                                        <li><a href="BarcosNuevo.jsp">Crear Barco</a></li>
                                         <li><a href="Consulta.jsp">Consulta</a></li>
 
                                     </ul>

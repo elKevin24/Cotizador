@@ -83,6 +83,7 @@
                                 out.println("<td>" + lista.get(i).getESLORA() + "</td>");
 
                                 out.println("<td>" + "<a class='waves-effect waves-light btn-small' onclick='return myFunction()' href=BarcoCotizar.jsp?LR=" + lista.get(i).getLR() + "&USE="+codigo+">" + "Cotizar" + "</a>" + "</td>");
+                                
                                 out.println("</tr>");
                             }
                         %>  

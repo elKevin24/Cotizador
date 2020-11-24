@@ -213,6 +213,7 @@
                                 out.println("<td>" + lista.get(i).getCWBC_TIPO_CAMBIO_FECHA() + "</td>");
                                 out.println("<td>" + lista.get(i).getCWBC_TIPO_OPERACION() + "</td>");
                                 out.println("<td>" + "<a class='waves-effect waves-light btn-small' onclick='return myFunction()'href=" + lista.get(i).getCWBC_TIPO_OPERACION() + ".jsp?Cotizacion=" + lista.get(i).getCWBC_COTIZACION() + "&Tipo=" + lista.get(i).getCWBC_TIPO_OPERACION() + ">" + "Cotizar" + "</a>" + "</td>");
+                                out.println("<td>" + "<a class='waves-effect waves-light btn-small' onclick='return validar()' href=Eliminar.jsp?id=" + lista.get(i).getCWBC_COTIZACION() + ">" + "<i class='material-icons'>delete_forever</i>" + "Eliminar" + "</a>" + "</td>");
 
                                 out.println("</tr>");
                             }
