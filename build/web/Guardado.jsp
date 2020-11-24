@@ -4,6 +4,8 @@
     Author     : busqu
 --%>
 
+<%@page import="modelo.Encabezado"%>
+<%@page import="controlador.BeanEncabezado"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html> 
@@ -18,16 +20,23 @@
   <title>Refrescar la URL</title> 
   <%
       
-  String LR = request.getParameter("LR");
+  String Cotizacion = request.getParameter("Cotizacion");
+  
+    BeanEncabezado enc = new BeanEncabezado();
+    enc = Encabezado.CotizacionGeneral(Cotizacion);
+    
+    
+    String tipo = enc.getCWBC_TIPO_OPERACION();
+    tipo = tipo.replace(' ', '_');
   
   %>
 
-  <META HTTP-EQUIV="REFRESH" CONTENT="2;URL=BarcoCotizar.jsp?LR=<%= LR %>"> 
+  <META HTTP-EQUIV="REFRESH" CONTENT="2;URL=<%= tipo %>.jsp?Cotizacion=<%= Cotizacion %>"> 
 </head> 
 <body> 
     
     
-<center> <h1> Registrado</h1></center>
+<center> <h1> Registrado  <%= tipo %></h1></center>
     <center> <img src="IMG/descarga.png" width="400" alt=""/> </center>
 Hora: 
 <script> 

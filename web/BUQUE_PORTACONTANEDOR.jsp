@@ -38,40 +38,67 @@
         <body>
             <div class="row">
                 <div class="col s1 push-s1">
-                    <a  href="index.jsp" class="btn-floating pulse" ><i class="material-icons">arrow_back</i></a>
+                    <a  href="Barcos.jsp" class="btn-floating pulse" ><i class="material-icons">arrow_back</i></a>
                 </div>
             </div>
 
             <div class="container">
 
-                <h5> Cotizacion LR: <%= enc.getCWBC_LR() + "  ETA: " + enc.getCWBC_ETA() + "  SEÑAL DISTINTIVA: " + enc.getCWBC_SENAL_DISTINTIVA()%></h5>
+                <h5> Cotizacion LR: <%= enc.getCWBC_LR() + "  ETA: " + enc.getCWBC_ETA() + "  SEÑAL DISTINTIVA: " + enc.getCWBC_SENAL_DISTINTIVA() + " COTIZACION: " + enc.getCWBC_COTIZACION()%></h5>
 
 
             <form action="ServlePorta.do" method="post" >
-                <div class="row">
-                    <div class="col s12">
 
-                        <div class="divider"></div>
-
-                        <div class="section" align="center">
-                            <p> Aplica Muellaje a Contenedores</p>
-                            <div class="input-field col s12">
-
-                                <!-- Switch -->
-                                <div class="switch" align="center">
-                                    <label>
-                                        No
-                                        <input type="checkbox" name="Muellaje" id="Muellaje">
-                                        <span class="lever"></span>
-                                        Si
-                                    </label>
-                                </div>
-                            </div>
+                <div class="col s12">
 
 
-                        </div>
-                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th><!-- Switch -->
+                                    <div class="switch" >
+                                        <p> Aplica Muellaje a Contenedores Import</p>
+                                        <label>
+                                            No
+                                            <input type="checkbox" name="Muellaje" id="Muellaje">
+                                            <span class="lever"></span>
+                                            Si
+                                        </label>
+
+
+                                    </div></th>
+                                <th>
+                                    <div class="switch">
+                                         <p> Aplica Muellaje a Contenedores Export</p>
+                                        <label>
+                                            No
+                                            <input disabled type="checkbox" name="MuellajeExport" checked="cheked" >
+                                            <span class="lever On"></span>
+                                            Si
+                                        </label>
+                                    </div>
+                                </th>
+
+                            </tr>
+                        </thead>
+
+                    </table>
+
+
+
+
+
+                    <!-- Switch -->
+
+
+
+
+
+
+
+
                 </div>
+
 
                 <div class="divider"></div>
 

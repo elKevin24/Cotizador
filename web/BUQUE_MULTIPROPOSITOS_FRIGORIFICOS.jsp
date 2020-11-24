@@ -38,7 +38,7 @@
         <body>
             <div class="row">
                 <div class="col s1 push-s1">
-                    <a  href="index.jsp" class="btn-floating pulse" ><i class="material-icons">arrow_back</i></a>
+                    <a  href="Barcos.jsp" class="btn-floating pulse" ><i class="material-icons">arrow_back</i></a>
                 </div>
             </div>
 
@@ -84,7 +84,7 @@
 
                     <thead>
 
-                        <tr>
+                        <tr class="light-blue darken-4">
 
                             <th></th>
 
@@ -94,9 +94,9 @@
 
                         </tr>
 
-                        <tr>
+                        <tr class="light-blue darken-3">
 
-                            <th scope="col">Descripcion</th>
+                            <th scope="col" >Descripcion</th>
 
                             <th>Grua Puerto</th>
 
@@ -217,6 +217,34 @@
                             </td>
 
                         </tr>
+                        
+                        <thead>
+
+                        <tr class="light-blue darken-4">
+
+                            <th></th>
+
+                            <th colspan="2">Via Indirecta</th>
+
+                           
+
+                        </tr>
+
+                        <tr class="light-blue darken-3">
+
+                            <th scope="col" >Descripcion</th>
+
+                            <th>Grua Puerto</th>
+
+                            <th>Grua Buque</th>
+
+                            <
+
+                        </tr>
+
+                    </thead>
+                        
+                        
 
                         <tr>
 
@@ -260,6 +288,34 @@
                                 <label for="CWSF_TAPA_ESCOTILLAS_GB"></label>
                             </td>  
                         </tr>
+                        
+                        <thead>
+
+                        <tr class="light-blue darken-4">
+
+                            <th></th>
+
+                            <th colspan="2">Via Indirecta</th>
+
+                            <th colspan="2">Via Directa</th>
+
+                        </tr>
+
+                        <tr class="light-blue darken-3">
+
+                            <th scope="col" >Descripcion</th>
+
+                            <th>Grua Puerto</th>
+
+                            <th>Grua Buque</th>
+
+                            <th>Grua Puerto</th>
+
+                            <th>Grua Buque</th>
+
+                        </tr>
+
+                    </thead>
                         <tr>
 
                             <th>Descarga Merc. General</th>
@@ -334,7 +390,7 @@
 
                         </tr>
 
-                        <tr>
+                        <tr class="light-blue darken-4">
 
                             <th></th>
 
@@ -343,7 +399,7 @@
                             <th colspan="2" align="center">Grua Buque</th>
 
                         </tr>
-                        <tr>
+                        <tr class="light-blue darken-3">
 
                             <th scope="col"></th>
 

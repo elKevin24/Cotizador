@@ -40,7 +40,7 @@
 
             <div class="col s12">
 
-                <a  href="index.jsp" class="btn-floating pulse" ><i class="material-icons">arrow_back</i></a>
+                <a  href="Barcos.jsp" class="btn-floating pulse" ><i class="material-icons">arrow_back</i></a>
 
             </div>
             
@@ -80,7 +80,7 @@
                             
                             
                             
-                            out.println("<td>" + "<a class='waves-effect waves-light btn-small' onclick='return myFunction()' href=Barco_Cotizar.jsp?LR=" + lista.get(i).getLR() + ">" + "Cotizar" + "</a>" + "</td>");
+                            out.println("<td>" + "<a class='waves-effect waves-light btn-small' onclick='return myFunction()' href=BarcoCotizar.jsp?LR=" + lista.get(i).getLR() + ">" + "Cotizar" + "</a>" + "</td>");
                               out.println("</tr>");
                         }
                     %>  

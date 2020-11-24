@@ -132,7 +132,7 @@ public class ServletPorta extends HttpServlet {
         out.println(CWBC_COTIZACION + Muellaje1 + Muellaje1 + CWSF_DESCARGA_LLENOS_GB_VI+ CWSF_DESCARGA_LLENOS_GB_VD+ CWSF_DESCARGA_LLENOS_GP_VI+ CWSF_DESCARGA_LLENOS_GP_VD);
 
         if (sw) {
-            response.sendRedirect("Guardado.jsp");
+            response.sendRedirect("Detalle.jsp?Cotizacion="+CWBC_COTIZACION+"");
 
         } else {
 

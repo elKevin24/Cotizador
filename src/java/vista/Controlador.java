@@ -36,7 +36,7 @@ public class Controlador extends HttpServlet {
                 
                 request.getSession().setAttribute("usuario", usuario);
                 request.getSession().setAttribute("clave", clave);
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                request.getRequestDispatcher("Barcos.jsp").forward(request, response);
                 
             }else{
                 request.getRequestDispatcher("Login.jsp").forward(request, response);

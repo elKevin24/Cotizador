@@ -38,7 +38,7 @@
         <body>
             <div class="row">
                 <div class="col s1 push-s1">
-                    <a  href="index.jsp" class="btn-floating pulse" ><i class="material-icons">arrow_back</i></a>
+                    <a  href="Barcos.jsp" class="btn-floating pulse" ><i class="material-icons">arrow_back</i></a>
                 </div>
             </div>
 

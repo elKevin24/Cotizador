@@ -5,7 +5,6 @@
  */
 package vista;
 
-import controlador.BeanLiquido;
 import controlador.BeanSolido;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,7 +13,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Detalle_L;
 import modelo.Detalle_S;
 
 /**
@@ -92,7 +90,7 @@ public class ServletSolido extends HttpServlet {
              GRABADOR);
 
         if (sw) {
-            response.sendRedirect("Guardado.jsp");
+            response.sendRedirect("Detalle.jsp?Cotizacion="+CWSL_COTIZACION+"");
 
         } else {
 

@@ -14,7 +14,7 @@
          var timeoutHandle = null;
          function startTimer(timeoutCount){
              if(timeoutCount == 0){
-                     window.location.href = 'index.jsp';
+                     window.location.href = 'Barcos.jsp';
          }else if (timeoutCount < 30){
              document.getElementByid('sessionTimer').innerHTML = 'You Have' + (timeoutCount * 1000) / 1000 + ' Seconds untl timeout';
          }

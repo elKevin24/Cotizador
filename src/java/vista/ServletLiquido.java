@@ -72,6 +72,7 @@ public class ServletLiquido extends HttpServlet {
         String CWSL_CARGA_ACEITE_GRASA_QUIMI = request.getParameter("CWSL_CARGA_ACEITE_GRASA_QUIMI");
         String CWSL_CARGA_COMBUSTIBLES_DERIV = request.getParameter("CWSL_CARGA_COMBUSTIBLES_DERIV");
         String CWSL_CARGA_GAS_PROPANO = request.getParameter("CWSL_CARGA_GAS_PROPANO");
+        String Tipo = request.getParameter("Tipo");
         
         
        
@@ -90,7 +91,7 @@ public class ServletLiquido extends HttpServlet {
              GRABADOR);
 
         if (sw) {
-            response.sendRedirect("Guardado.jsp");
+            response.sendRedirect("GuardadoDetalle.jsp?Cotizacion="+CWSL_COTIZACION+"&Tipo="+Tipo+"");
 
         } else {
 

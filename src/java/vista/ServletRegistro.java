@@ -15,8 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import controlador.BeanEncabezado;
 import controlador.BeanUsuarios;
-import java.math.BigDecimal;
-import java.sql.Date;
 import modelo.Encabezado;
 import modelo.Usuario;
 /**
@@ -60,13 +58,7 @@ public class ServletRegistro extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        
-        
-            
-            
-            
-            
-            
+     
         String CWBC_COTIZACION = request.getParameter("CWBC_COTIZACION");
         String LR = request.getParameter("LR");
         String CWBC_SENAL_DISTINTIVA = request.getParameter("CWBC_SENAL_DISTINTIVA");
@@ -76,27 +68,33 @@ public class ServletRegistro extends HttpServlet {
         String CWBC_NIT = request.getParameter("CWBC_NIT");
         String CWBC_TIPO_OPERACION = request.getParameter("Tipo");
         String GRABADOR = request.getParameter("GRABADOR");
-       
-        
+        String HORA_ETA = request.getParameter("HORA_ETA");
+        String CWBC_HORA = request.getParameter("CWBC_HORA");
+        CWBC_ETA = CWBC_ETA+ " "+HORA_ETA.substring(0,5)+":00";
+    
         BeanUsuarios cambio = new BeanUsuarios();
         cambio = Usuario.ObtenerCambioDolar();
         
-        int Cotizacion = Integer.parseInt(CWBC_COTIZACION);
-        Cotizacion = Cotizacion + 1;
-        CWBC_COTIZACION = String.valueOf(Cotizacion);
+        BeanEncabezado cotizacion = new BeanEncabezado();
+        cotizacion = Encabezado.ObtenerCotizacion1();
+        
+        
+        String cotizacion1 = cotizacion.getCWBC_COTIZACION();
+        
+        
          
         BeanEncabezado busuario;
-        busuario = new BeanEncabezado(CWBC_COTIZACION, LR, CWBC_SENAL_DISTINTIVA, CWBC_ETA, cambio.getCAMBIO(), CWBC_TIPO_CAMBIO_FECHA.substring(0, 10), CWBC_USUARIO_SERVICIO, CWBC_NIT, CWBC_TIPO_OPERACION, GRABADOR);
+        busuario = new BeanEncabezado(cotizacion1, LR, CWBC_SENAL_DISTINTIVA, CWBC_ETA, cambio.getCAMBIO(), CWBC_TIPO_CAMBIO_FECHA.substring(0, 10), CWBC_USUARIO_SERVICIO, CWBC_NIT, CWBC_TIPO_OPERACION, GRABADOR, CWBC_HORA);
         
         //String nombre, String num_convenio, String descripcion, 
            //BigDecimal monto_total, String direccion, String id_municipio, String fecha, String id_tipo_proyecto
         boolean sw = Encabezado.agregarEncabezado(busuario);
 
         PrintWriter out = response.getWriter();
-        out.println( CWBC_COTIZACION  + LR + CWBC_SENAL_DISTINTIVA + CWBC_ETA+  cambio.getCAMBIO() +  CWBC_TIPO_CAMBIO_FECHA.substring(0, 10)+CWBC_USUARIO_SERVICIO+ CWBC_NIT+ "tipo operacion: "+ CWBC_TIPO_OPERACION);
+        out.println( CWBC_COTIZACION  + LR + CWBC_SENAL_DISTINTIVA + "ETA "+CWBC_ETA+ " Cambio" + cambio.getCAMBIO() +  CWBC_TIPO_CAMBIO_FECHA.substring(0, 10)+CWBC_USUARIO_SERVICIO+ CWBC_NIT+ "tipo operacion: "+ CWBC_TIPO_OPERACION);
 
         if (sw) {
-            response.sendRedirect("Guardado.jsp?LR="+LR+"");
+            response.sendRedirect("Guardado.jsp?Cotizacion="+CWBC_COTIZACION+"");
 
         } else {
 

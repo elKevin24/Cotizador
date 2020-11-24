@@ -38,7 +38,7 @@
         <body>
             <div class="row">
                 <div class="col s1 push-s1">
-                    <a  href="index.jsp" class="btn-floating pulse" ><i class="material-icons">arrow_back</i></a>
+                    <a  href="Barcos.jsp" class="btn-floating pulse" ><i class="material-icons">arrow_back</i></a>
                 </div>
             </div>
 
@@ -57,9 +57,9 @@
 
                 </div>
 
-                <table class="responsive-table highlight striped">
+                <table class="responsive-table highlight striped " >
 
-                    <thead>
+                    <thead class="light-blue darken-4">
 
                         <tr>
 
@@ -73,7 +73,7 @@
 
                     </thead>
 
-                    <tbody>
+                    <tbody >
 
                         <tr>
 
@@ -81,13 +81,13 @@
 
                             <td>
 
-                                <input  placeholder="Toneladas" name="CWSL_DESC_ACEITE_GRASA_QUIMI" type="text" class="validate">
+                                <input  placeholder="Toneladas" name="CWSL_DESC_ACEITE_GRASA_QUIMI" type="number" class="validate">
                                 <label for="CWSL_DESC_ACEITE_GRASA_QUIMI"></label>
 
                             </td>
 
                             <td>
-                                <input  placeholder="Toneladas" name="CWSL_CARGA_ACEITE_GRASA_QUIMI" type="text" class="validate">
+                                <input  placeholder="Toneladas" name="CWSL_CARGA_ACEITE_GRASA_QUIMI" type="number" class="validate">
                                 <label for="CWSL_CARGA_ACEITE_GRASA_QUIMI"></label>
                             </td>
 
@@ -98,12 +98,12 @@
                             <th>Granel Solido en Pontones</th>
 
                             <td>
-                                <input  placeholder="Toneladas" name="CWSL_DESC_COMBUSTIBLES_DERIV" type="text" class="validate">
+                                <input  placeholder="Toneladas" name="CWSL_DESC_COMBUSTIBLES_DERIV" type="number" class="validate">
                                 <label for="CWSL_DESC_COMBUSTIBLES_DERIV"></label>
                             </td>
 
                             <td>
-                                <input  placeholder="Toneladas" name="CWSL_CARGA_COMBUSTIBLES_DERIV" type="text" class="validate">
+                                <input  placeholder="Toneladas" name="CWSL_CARGA_COMBUSTIBLES_DERIV" type="number" class="validate">
                                 <label for="CWSL_CARGA_COMBUSTIBLES_DERIV"></label>
                             </td>
                         </tr>

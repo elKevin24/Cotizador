@@ -36,7 +36,7 @@
 
                     <ul class="right hide-on-med-and-down"> 
 
-                        <li><a href="index.jsp">Salir</a></li>
+                        <li><a href="Login.jsp">Salir</a></li>
                     </ul>
                      
 
@@ -74,7 +74,7 @@
                                 <div class="collapsible-body">
                                     <ul>
                                         <li><a href="Barcos.jsp">Ingreso</a></li>
-                                        <li><a href="Barco.jsp">Consulta</a></li>
+                                        <li><a href="Consulta.jsp">Consulta</a></li>
 
                                     </ul>
                                 </div>

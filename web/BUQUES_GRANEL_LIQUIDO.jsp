@@ -27,6 +27,7 @@
         <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.js"></script>
         <%
             String Cotizacion = request.getParameter("Cotizacion");
+            String Tipo = request.getParameter("Tipo");
             BeanEncabezado enc = new BeanEncabezado();
             enc = Encabezado.CotizacionGeneral(Cotizacion);
         %>
@@ -38,7 +39,7 @@
         <body>
             <div class="row">
                 <div class="col s1 push-s1">
-                    <a  href="index.jsp" class="btn-floating pulse" ><i class="material-icons">arrow_back</i></a>
+                    <a  href="Barcos.jsp" class="btn-floating pulse" ><i class="material-icons">arrow_back</i></a>
                 </div>
             </div>
 
@@ -132,6 +133,7 @@
 
                 <input type="hidden" id="custId" name="CWSL_COTIZACION" value="<%= Cotizacion%>">
                 <input type="hidden" id="custId" name="GRABADOR" value="<%= enc.getGRABADOR()%>">
+                <input type="hidden" id="custId" name="Tipo" value="<%=Tipo%>">
 
 
                 <div class="input-field col s3">

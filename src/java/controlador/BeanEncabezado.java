@@ -1,8 +1,4 @@
 package controlador;
-
-import java.math.BigDecimal;
-import java.sql.Date;
-
 public class BeanEncabezado {
 
     public BeanEncabezado(String CWBC_COTIZACION, String Muellaje, String Muellaje0) {
@@ -71,12 +67,7 @@ public class BeanEncabezado {
 
     public void setCWBC_TIPO_CAMBIO_FECHA(String CWBC_TIPO_CAMBIO_FECHA) {
         this.CWBC_TIPO_CAMBIO_FECHA = CWBC_TIPO_CAMBIO_FECHA;
-    }
-
-    
-
-    
-    
+    } 
 
     public String getCWBC_USUARIO_SERVICIO() {
         return CWBC_USUARIO_SERVICIO;
@@ -102,6 +93,17 @@ public class BeanEncabezado {
         this.GRABADOR = GRABADOR;
     }
 
+    public String getCWBC_HORA() {
+        return CWBC_HORA;
+    }
+
+    public void setCWBC_HORA(String CWBC_HORA) {
+        this.CWBC_HORA = CWBC_HORA;
+    }
+    
+    
+    
+
     
 
     
@@ -109,7 +111,7 @@ public class BeanEncabezado {
     
 
     public BeanEncabezado(String CWBC_COTIZACION, String CWBC_LR, String CWBC_SENAL_DISTINTIVA, String CWBC_ETA, Double CWBC_TIPO_CAMBIO, String CWBC_TIPO_CAMBIO_FECHA, String CWBC_USUARIO_SERVICIO,
-                          String CWBC_NIT, String CWBC_TIPO_OPERACION, String GRABADOR) {
+                          String CWBC_NIT, String CWBC_TIPO_OPERACION, String GRABADOR, String CWBC_HORA) {
         
         
         this.CWBC_COTIZACION = CWBC_COTIZACION;
@@ -122,6 +124,7 @@ public class BeanEncabezado {
         this.CWBC_NIT = CWBC_NIT;
         this.CWBC_TIPO_OPERACION = CWBC_TIPO_OPERACION;
         this.GRABADOR = GRABADOR;
+        this.CWBC_HORA = CWBC_HORA;
           
     }
 
@@ -136,6 +139,7 @@ public class BeanEncabezado {
     private String CWBC_NIT;
     private String CWBC_TIPO_OPERACION;
     private String GRABADOR;
+    private String CWBC_HORA;
    
     
     public BeanEncabezado() {

@@ -19,7 +19,7 @@ public static LinkedList<BeanBarcos> consultarBarco(String entrada) throws SQLEx
      String sql;
      
     
-          sql =  "select LR, NOMBRE_DEL_BUQUE, senal_distintiva, TRB, ESLORA from PUERTO.eopt_barcos WHERE USUARIO_DE_SERVICIO = '"+entrada+"'";
+          sql =  "select LR, NOMBRE_DEL_BUQUE, senal_distintiva, TRB, ESLORA from PUERTO.eopt_barcos WHERE USUARIO_DE_SERVICIO = '"+entrada+"' and tipo_de_barco_por_estructura in (12, 13, 22,31, 32, 61,62, 63, 64, 71, 72, 73,74, 90)";
      
     try
       {
@@ -64,7 +64,7 @@ public static LinkedList<BeanBarcos> consultarBarco() throws SQLException
              Statement st;
              st = con.createStatement();
            
-                try (ResultSet rs = st.executeQuery("select LR, NOMBRE_DEL_BUQUE, senal_distintiva, TRB, ESLORA from PUERTO.eopt_barcos ")) {
+                try (ResultSet rs = st.executeQuery("select LR, NOMBRE_DEL_BUQUE, senal_distintiva, TRB, ESLORA from PUERTO.eopt_barcos where tipo_de_barco_por_estructura in (12, 13, 22,31, 32, 61,62, 63, 64, 71, 72, 73,74, 90)")) {
                     while (rs.next())
                     {
                         BeanBarcos user = new BeanBarcos();

@@ -64,6 +64,7 @@ public class BeanBarcos {
     private String TRB;
     private String ESLORA;
     
+    
     public BeanBarcos() {
     }
 
