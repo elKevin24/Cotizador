@@ -4,6 +4,8 @@
     Author     : kcordon
 --%>
 
+<%@page import="controlador.BeanConsulta"%>
+<%@page import="modelo.Consulta"%>
 <%@page import="modelo.Barcos"%>
 <%@page import="controlador.BeanBarcos"%>
 <%@page import="modelo.Usuario"%>
@@ -39,10 +41,10 @@
         </head>
         <body>
             <div class="row">
-            <div class="col s1 push-s1">
-                <a  href="Barcos.jsp" class="btn-floating pulse" ><i class="material-icons">arrow_back</i></a>
-            </div>
+                <div class="col s1 push-s1">
+                    <a  href="Barcos.jsp" class="btn-floating pulse" ><i class="material-icons">arrow_back</i></a>
                 </div>
+            </div>
 
             <div class="container">
 
@@ -52,12 +54,14 @@
                         <thead>
                             <tr>
 
+                                <th>COTIZACION</th>
                                 <th>LR</th>
-                                <th>Buque</th>
-                                <th>Bandera</th>
-                                <th>Trb</th>
-                                <th>Slora</th>
-                                <th>Cotizar</th>
+                                <th>SENAL DISTINTIVA</th>
+                                <th>ETA</th>
+                                <th>TIPO CAMBIO</th>
+                                <th>TIPO OPERACION</th>
+                                <th>HORA</th>
+                                
 
 
 
@@ -70,18 +74,23 @@
                             user = Usuario.ObtenerUsuario(usuario);
                             String codigo = user.getUSUARIO_DE_SERVICIO();
 
-                            LinkedList<BeanBarcos> lista = Barcos.consultarBarco(codigo);
+                            LinkedList<BeanConsulta> lista = Consulta.AprobadoComercial(codigo);
 
                             for (int i = 0; i < lista.size(); i++) {
 
                                 out.println("<tr>");
-                                out.println("<td>" + lista.get(i).getLR() + "</td>");
-                                out.println("<td>" + lista.get(i).getNOMBRE_DEL_BUQUE() + "</td>");
-                                out.println("<td>" + lista.get(i).getBANDERA() + "</td>");
-                                out.println("<td>" + lista.get(i).getTRB() + "</td>");
-                                out.println("<td>" + lista.get(i).getESLORA() + "</td>");
+                                out.println("<td>" + lista.get(i).getCWBC_COTIZACION() + "</td>");
+                                out.println("<td>" + lista.get(i).getCWBC_LR() + "</td>");
+                                out.println("<td>" + lista.get(i).getCWBC_SENAL_DISTINTIVA() + "</td>");
 
-                                out.println("<td>" + "<a class='waves-effect waves-light btn-small' onclick='return myFunction()' href=BarcoConsulta.jsp?LR=" + lista.get(i).getLR() + "&USE="+codigo+">" + "Consultar" + "</a>" + "</td>");
+                                out.println("<td>" + lista.get(i).getCWBC_ETA() + "</td>");
+                                out.println("<td>" + lista.get(i).getCWBC_TIPO_CAMBIO() + "</td>");
+                               
+                                out.println("<td>" + lista.get(i).getCWBC_TIPO_OPERACION() + "</td>");
+
+                                out.println("<td>" + lista.get(i).getCWBC_HORA() + "</td>");
+                                
+
                                 out.println("</tr>");
                             }
                         %>  
@@ -105,6 +114,15 @@
             $(document).ready(function () {
                 $('#table_id').DataTable();
             });
+
+function validar() {
+            if (confirm("Desea Borrar los datos?")) {
+                alert("Datos borrados exitosamente");
+            } else {
+                alert("No se borrara");
+                return false;
+            }
+        }
 
         </script>
     </body>

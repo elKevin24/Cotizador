@@ -1,10 +1,17 @@
-<%@page import="modelo.Usuario"%>
-<%@page import="controlador.BeanUsuarios"%>
+<%-- 
+    Document   : Consulta
+    Created on : 19/11/2020, 09:52:13 AM
+    Author     : kcordon
+--%>
+
+<%@page import="controlador.BeanConsulta"%>
+<%@page import="modelo.Consulta"%>
 <%@page import="modelo.Barcos"%>
 <%@page import="controlador.BeanBarcos"%>
-<%@page import="java.util.*"%>
-
-
+<%@page import="modelo.Usuario"%>
+<%@page import="java.util.LinkedList"%>
+<%@page import="controlador.BeanUsuarios"%>
+<%@page import="controlador.BeanUsuarios"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -41,24 +48,22 @@
 
             <div class="container">
 
-
-
-                <div>
-                    <a class="waves-effect waves-light btn" href="BarcosFull.jsp">Todos</a>
-                </div>
-
                 <div class="col s12">
 
                     <table id="table_id" border="1"   class="highlight responsive-table striped " >
                         <thead>
                             <tr>
 
+                                <th>COTIZACION</th>
                                 <th>LR</th>
-                                <th>Buque</th>
-                                <th>Bandera</th>
-                                <th>Trb</th>
-                                <th>Slora</th>
-                                <th>Cotizar</th>
+                                <th>SENAL DISTINTIVA</th>
+                                <th>ETA</th>
+                                <th>TIPO CAMBIO</th>
+                                <th>TIPO OPERACION</th>
+                                <th>HORA</th>
+                                <th>EDITAR</th>
+                                <th>ELIMINAR</th>
+                                <th>Enviar para Aprovacion</th>
 
 
 
@@ -71,18 +76,26 @@
                             user = Usuario.ObtenerUsuario(usuario);
                             String codigo = user.getUSUARIO_DE_SERVICIO();
 
-                            LinkedList<BeanBarcos> lista = Barcos.consultarBarco(codigo);
+                            LinkedList<BeanConsulta> lista = Consulta.Creados(codigo);
 
                             for (int i = 0; i < lista.size(); i++) {
 
                                 out.println("<tr>");
-                                out.println("<td>" + lista.get(i).getLR() + "</td>");
-                                out.println("<td>" + lista.get(i).getNOMBRE_DEL_BUQUE() + "</td>");
-                                out.println("<td>" + lista.get(i).getBANDERA() + "</td>");
-                                out.println("<td>" + lista.get(i).getTRB() + "</td>");
-                                out.println("<td>" + lista.get(i).getESLORA() + "</td>");
+                                out.println("<td>" + lista.get(i).getCWBC_COTIZACION() + "</td>");
+                                out.println("<td>" + lista.get(i).getCWBC_LR() + "</td>");
+                                out.println("<td>" + lista.get(i).getCWBC_SENAL_DISTINTIVA() + "</td>");
 
-                                out.println("<td>" + "<a class='waves-effect waves-light btn-small' onclick='return myFunction()' href=BarcoCotizar.jsp?LR=" + lista.get(i).getLR() + "&USE=" + codigo + ">" + "Cotizar" + "</a>" + "</td>");
+                                out.println("<td>" + lista.get(i).getCWBC_ETA() + "</td>");
+                                out.println("<td>" + lista.get(i).getCWBC_TIPO_CAMBIO() + "</td>");
+                               
+                                out.println("<td>" + lista.get(i).getCWBC_TIPO_OPERACION() + "</td>");
+
+                                out.println("<td>" + lista.get(i).getCWBC_HORA() + "</td>");
+                                out.println("<td>" + "<a class='waves-effect waves-light btn-small' onclick='return myFunction()'href=Editar.jsp?Cotizacion=" + lista.get(i).getCWBC_COTIZACION() + ">" + "Editar" + "</a>" + "</td>");
+                                
+                                out.println("<td>" + "<a class='waves-effect waves-light btn-small red accent-4' onclick='return validar()' href=Eliminar.jsp?id=" + lista.get(i).getCWBC_COTIZACION() + ">" + "<i class='material-icons'>delete_forever</i>" + "Eliminar" + "</a>" + "</td>");
+                                out.println("<td>" + "<a class='waves-effect waves-light btn-small light-blue darken-4' onclick='return myFunction()'href=CambiarEstado.jsp?id=" + lista.get(i).getCWBC_COTIZACION() + ">" + "Enviar" + "</a>" + "</td>");
+
 
                                 out.println("</tr>");
                             }
@@ -107,6 +120,15 @@
             $(document).ready(function () {
                 $('#table_id').DataTable();
             });
+
+function validar() {
+            if (confirm("Desea Borrar los datos?")) {
+                alert("Datos borrados exitosamente");
+            } else {
+                alert("No se borrara");
+                return false;
+            }
+        }
 
         </script>
     </body>

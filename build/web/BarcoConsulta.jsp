@@ -38,6 +38,15 @@
                 $(document).ready(function () {
                     $('.timepicker').timepicker();
                 });
+                
+                function validar() {
+                if (confirm("Desea Borrar los datos?")) {
+                    alert("Datos borrados exitosamente");
+                } else {
+                    alert("No se borrara");
+                    return false;
+                }
+            }
 
             </script>
         </head>

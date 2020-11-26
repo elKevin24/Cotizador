@@ -75,7 +75,21 @@
                                     <ul>
                                         <li><a href="Barcos.jsp">Barco Existente</a></li>
                                         <li><a href="BarcosNuevo.jsp">Crear Barco</a></li>
-                                        <li><a href="Consulta.jsp">Consulta</a></li>
+                                        
+
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+
+                                <a class="collapsible-header">Consultas<i class="material-icons">account_boxarrow_drop_down</i></a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        
+                                        <li><a href="ConsultaCreados.jsp">Creados</a></li>
+                                        <li><a href="ConsultaPendiente.jsp">Pendientes</a></li>
+                                        <li><a href="ConsultaAprobado.jsp">Aprobados</a></li>
+                                        <li><a href="ConsultaEliminados.jsp">Eliminados</a></li>
 
                                     </ul>
                                 </div>
