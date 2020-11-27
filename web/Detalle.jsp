@@ -4,10 +4,7 @@
     Author     : kcordon
 --%>
 
-<%@page import="modelo.Detalle_S"%>
-<%@page import="controlador.BeanSolido"%>
-<%@page import="modelo.Encabezado"%>
-<%@page import="controlador.BeanEncabezado"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

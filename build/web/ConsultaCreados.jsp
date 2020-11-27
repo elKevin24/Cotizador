@@ -91,7 +91,7 @@
                                 out.println("<td>" + lista.get(i).getCWBC_TIPO_OPERACION() + "</td>");
 
                                 out.println("<td>" + lista.get(i).getCWBC_HORA() + "</td>");
-                                out.println("<td>" + "<a class='waves-effect waves-light btn-small' onclick='return myFunction()'href=Editar.jsp?Cotizacion=" + lista.get(i).getCWBC_COTIZACION() + ">" + "Editar" + "</a>" + "</td>");
+                                out.println("<td>" + "<a class='waves-effect waves-light btn-small' onclick='return myFunction()'href=EditarEncabezado.jsp?Cotizacion=" + lista.get(i).getCWBC_COTIZACION() + ">" + "Editar" + "</a>" + "</td>");
                                 
                                 out.println("<td>" + "<a class='waves-effect waves-light btn-small red accent-4' onclick='return validar()' href=Eliminar.jsp?id=" + lista.get(i).getCWBC_COTIZACION() + ">" + "<i class='material-icons'>delete_forever</i>" + "Eliminar" + "</a>" + "</td>");
                                 out.println("<td>" + "<a class='waves-effect waves-light btn-small light-blue darken-4' onclick='return myFunction()'href=CambiarEstado.jsp?id=" + lista.get(i).getCWBC_COTIZACION() + ">" + "Enviar" + "</a>" + "</td>");

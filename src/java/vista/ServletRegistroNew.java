@@ -13,15 +13,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import controlador.BeanEncabezado;
-import controlador.BeanUsuarios;
-import modelo.Encabezado;
-import modelo.Usuario;
+
+import controlador.BeanBarcosNew;
+import modelo.BarcosNew;
+
 /**
  *
  * @author nichodeveloper
  */
-@WebServlet(name = "ServletRegistro", urlPatterns = {"/ServletRegistro.do"})
+@WebServlet(name = "ServletRegistroNew", urlPatterns = {"/ServletRegistroNew.do"})
 public class ServletRegistroNew extends HttpServlet {
 
     /**
@@ -59,42 +59,36 @@ public class ServletRegistroNew extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
      
-        String CWBC_COTIZACION = request.getParameter("CWBC_COTIZACION");
         String LR = request.getParameter("LR");
-        String CWBC_SENAL_DISTINTIVA = request.getParameter("CWBC_SENAL_DISTINTIVA");
-        String CWBC_ETA = request.getParameter("CWBC_ETA");
-        String CWBC_TIPO_CAMBIO_FECHA = request.getParameter("CWBC_TIPO_CAMBIO_FECHA");
-        String CWBC_USUARIO_SERVICIO = request.getParameter("CWBC_USUARIO_SERVICIO");
-        String CWBC_NIT = request.getParameter("CWBC_NIT");
-        String CWBC_TIPO_OPERACION = request.getParameter("Tipo");
-        String GRABADOR = request.getParameter("GRABADOR");
-        String HORA_ETA = request.getParameter("HORA_ETA");
-        String CWBC_HORA = request.getParameter("CWBC_HORA");
-        CWBC_ETA = CWBC_ETA+ " "+HORA_ETA.substring(0,5)+":00";
-    
-        BeanUsuarios cambio = new BeanUsuarios();
-        cambio = Usuario.ObtenerCambioDolar();
+        String SENAL_DISTINTIVA = request.getParameter("SENAL_DISTINTIVA");
+        String TIPO_DE_BARCO_POR_ESTRUCTURA = request.getParameter("TIPO_DE_BARCO_POR_ESTRUCTURA");
+        String USUARIO_DE_SERVICIO = request.getParameter("USUARIO_DE_SERVICIO");
+        String NOMBRE_DEL_BUQUE = request.getParameter("NOMBRE_DEL_BUQUE");
+        String BANDERA = request.getParameter("BANDERA");
+        String TRB = request.getParameter("TRB");
+        String TRN = request.getParameter("TRN");
+        String TPM = request.getParameter("TPM");
+        String CALADO = request.getParameter("CALADO");
+        String ESLORA = request.getParameter("ESLORA");
+        String MANGA = request.getParameter("MANGA");
+        String BITA_USUARIO_INSERTA = request.getParameter("BITA_USUARIO_INSERTA");
+        String BITA_FECHA_INSERTA = request.getParameter("CWBC_HORA");
         
-        BeanEncabezado cotizacion = new BeanEncabezado();
-        cotizacion = Encabezado.ObtenerCotizacion1();
-        
-        
-        String cotizacion1 = cotizacion.getCWBC_COTIZACION();
+  
         
         
          
-        BeanEncabezado busuario;
-        busuario = new BeanEncabezado(cotizacion1, LR, CWBC_SENAL_DISTINTIVA, CWBC_ETA, cambio.getCAMBIO(), CWBC_TIPO_CAMBIO_FECHA.substring(0, 10), CWBC_USUARIO_SERVICIO, CWBC_NIT, CWBC_TIPO_OPERACION, GRABADOR, CWBC_HORA);
+        BeanBarcosNew busuario;
+        busuario = new BeanBarcosNew(LR, SENAL_DISTINTIVA, TIPO_DE_BARCO_POR_ESTRUCTURA, USUARIO_DE_SERVICIO, NOMBRE_DEL_BUQUE, BANDERA, TRB, TRN, TPM, CALADO, ESLORA, MANGA, BITA_USUARIO_INSERTA);
         
         //String nombre, String num_convenio, String descripcion, 
            //BigDecimal monto_total, String direccion, String id_municipio, String fecha, String id_tipo_proyecto
-        boolean sw = Encabezado.agregarEncabezado(busuario);
+        boolean sw = BarcosNew.agregarBarco(busuario);
 
         PrintWriter out = response.getWriter();
-        out.println( CWBC_COTIZACION  + LR + CWBC_SENAL_DISTINTIVA + "ETA "+CWBC_ETA+ " Cambio" + cambio.getCAMBIO() +  CWBC_TIPO_CAMBIO_FECHA.substring(0, 10)+CWBC_USUARIO_SERVICIO+ CWBC_NIT+ "tipo operacion: "+ CWBC_TIPO_OPERACION);
-
+        out.println( LR  + SENAL_DISTINTIVA + "ETA "+TIPO_DE_BARCO_POR_ESTRUCTURA+ " Cambio" + USUARIO_DE_SERVICIO +  NOMBRE_DEL_BUQUE +BANDERA+ TRB+ "tipo operacion: "+ TRN);
         if (sw) {
-            response.sendRedirect("Guardado.jsp?Cotizacion="+CWBC_COTIZACION+"");
+            response.sendRedirect("BarcosNuevo.jsp");
 
         } else {
 

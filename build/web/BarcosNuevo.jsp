@@ -4,14 +4,189 @@
     Author     : kcordon
 --%>
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="modelo.Conexion"%>
+<%@page import="modelo.Usuario"%>
+<%@page import="java.util.LinkedList"%>
+<%@page import="controlador.BeanEncabezado"%>
+<%@page import="controlador.BeanBarcos"%>
+<%@page import="controlador.BeanUsuarios"%>
+<%@page import="modelo.Barcos"%>
+<%@page import="modelo.Encabezado"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
+
+        <jsp:include page="menu.jsp" flush="true"></jsp:include>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+            <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+            <script type="text/javascript" src="js/materialize.min.js"></script>
+            <script type="text/javascript" src="js/materialize.js"></script>
+            <script>
+
+
+                $(document).ready(function () {
+                    $('select').formSelect();
+                });
+
+
+                $(document).ready(function () {
+                    $('.timepicker').timepicker();
+                });
+
+            </script>
+        </head>
+        <body>
+        <%
+            String usuario = String.valueOf(session.getAttribute("usuario"));
+            BeanUsuarios user = new BeanUsuarios();
+            user = Usuario.ObtenerUsuario(usuario);
+
+
+        %>
+
+        <h3 style="text-align:center;"> Usuario: <%= user.getNOMBRE()%>  </h3>
+
+        <div class="divider"></div>
+
+        <div class="section">
+
+            <h3 align='center'> Ingresar datos para nuevo Barco </h3>
+
+        </div>
+        
+         <div class="divider"></div>
+        <div class="col s12 container">
+
+
+            <form action="ServletRegistroNew.do" method="post" >
+                <div class="row">
+
+
+                    <div class="input-field col s3">
+                        <input type="number" size="20" name="LR" value="" >
+                        <label for="LR">LR</label>
+                    </div>
+
+                    <div class="input-field col s3">
+                        <input type="text" size="20" name="SENAL_DISTINTIVA" value="" >
+                        <label for="SENAL_DISTINTIVA">SENAL DISTINTIVA</label>
+                    </div>
+
+                    
+                    <div class="input-field col s3">
+                        <input type="text" size="20" name="NOMBRE_DEL_BUQUE" value="" >
+                        <label for="NOMBRE_DEL_BUQUE">NOMBRE DEL BUQUE</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input type="text" size="20" name="BANDERA">
+                        <label for="BANDERA">BANDERA</label>
+                    </div>
+
+                    <div class="input-field col s3">
+                        <input type="number" size="20" name="TRB">
+                        <label for="TRB">TRB</label>
+                    </div>
+
+                    <div class="input-field col s3">
+                        <input type="number" size="20" name="TRN">
+                        <label for="TRN">TRN</label>
+                    </div>
+
+                    <div class="input-field col s3">
+                        <input type="number" size="20" name="TPM">
+                        <label for="TPM">TPM</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input type="number" size="20" name="CALADO">
+                        <label for="CALADO">CALADO</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input type="number" size="20" name="ESLORA">
+                        <label for="ESLORA">ESLORA</label>
+                    </div>
+                    <div class="input-field col s3">
+                        <input type="number" size="20" name="MANGA">
+                        <label for="MANGA">MANGA</label>
+                    </div>
+
+
+
+                    <div class="input-field col s3">
+                        <select name="TIPO_DE_BARCO_POR_ESTRUCTURA" required >
+                            <%
+                                try {
+                                    Conexion c = new Conexion();
+                                    Connection con = c.getConexion();
+                                    Statement st;
+                                    st = con.createStatement();
+                                    ResultSet rs = st.executeQuery("select * from\n"
+                                            + "PUERTO.eopt_tipos_barc_estru\n"
+                                            + "where tipo_de_barco_por_estructura in (12, 13, 21, 22, 31, 32, 51, 52, 61,62, 63, 64, 71, 72, 73,74, 90)");
+                                    while (rs.next()) {
+                            %>
+                            <option value="<%=rs.getInt("TIPO_DE_BARCO_POR_ESTRUCTURA")%>"><%=rs.getString("DESCRIPCION")%></option>
+                            <%
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                    out.println("Error " + e.getMessage());
+                                }
+                            %>
+                        </select>
+                        <label>TIPO DE BARCO POR ESTRUCTURA</label>
+                    </div>
+                        
+                        
+                         <div class="input-field col s3">
+                        <select name="BANDERA" required >
+                            <%
+                                try {
+                                    Conexion c = new Conexion();
+                                    Connection con = c.getConexion();
+                                    Statement st;
+                                    st = con.createStatement();
+                                    ResultSet rs = st.executeQuery("select * from PUERTO.EOPT_PAISES");
+                                    while (rs.next()) {
+                            %>
+                            <option value="<%=rs.getString("PAIS")%>"><%=rs.getString("NOMBRE")%></option>
+                            <%
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                    out.println("Error " + e.getMessage());
+                                }
+                            %>
+                        </select>
+                        <label>BANDERA</label>
+                    </div>
+
+
+
+
+
+                    <!-- campos que no se ven en pantalla hidden -->
+
+                    <input type="hidden"  name="USUARIO_DE_SERVICIO" value="<%= user.getUSUARIO_DE_SERVICIO()%>">
+                    <input type="hidden"  name="BITA_USUARIO_INSERTA" value="<%= usuario%>">
+
+
+
+                </div>
+                <div class="input-field col s3">
+                    <input type="submit" value="Registrar" class="btn-large light-blue accent-4" name="enviar">
+
+                </div>
+
+
+        </div>
+    </form>
+</div>
+
+
+</body>
 </html>

@@ -15,15 +15,10 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-    
-     <!--Import Google Icon Font-->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     
         <title>Modificacion de datos</title>
     </head>
@@ -31,52 +26,171 @@
         
         
         <%
-               String id = request.getParameter("id");
+               String Cotizacion = request.getParameter("Cotizacion");
                
-               BeanConsulta user = new BeanConsulta();
-               user = Consulta.Creados(id);
+               BeanConsulta enc = new BeanConsulta();
+               enc = Consulta.ConsultaCreado(Cotizacion);
                 
-                 out.println("<h3>Modificación de alumno</h3>");
-                 out.println("<img src='logo.png' width='100'/>");
-                 out.println("<div class='row'>");            
-                 out.println("<form action='Actualizar.jsp' method='post'>");
-                 out.println("<div class='row'>");
-                 out.println("<div class='input-field col s6'>");
-                 out.println("<input type='text' size='20' name='Nombre' value="+user.getNombre()+">");
-                 out.println("<input type='hidden' name='Id_alumno' value="+user.getId_alumno()+"");
-                 out.println("<label for='Nombre'>Nombre</label>");
-                 out.println("</div>");
-                 out.println("<div class='input-field col s6'>");
-                 out.println("<input type='text' size='20' name='Snombre' value="+user.getSnombre()+">");
-                 out.println("<label for='Snombre'>Segundo nombre</label>");
-                 out.println("</div>");
-                 out.println("</div>");
-                 out.println("<div class='input-field col s6'>");
-                 out.println("<input type='text' size='20' name='Apellido' value="+user.getApellido()+">");
-                 out.println("<label for='Apellido'>Apellido</label>");
-                 out.println("</div>");
-                 out.println("<div class='input-field col s6'>");
-                 out.println("<input type='text' size='20' name='Sapellido' value="+user.getSapellido()+">");
-                 out.println("<label for='Sapellido'>Segundo apellido</label>");
-                 out.println("</div>");              
-                 out.println("<div class='input-field col s3'>");
-                 out.println("<input type='text' size='20' name='Id_seccion' value="+user.getId_seccion()+">");
-                 out.println("<label for='Id_seccion'>Id_seccion</label>");
-                 out.println("</div>");
-                                 
+         %>
+         
+         <div class="container">
 
-                 out.println("<div class='row'>");
-                 out.println("<input type='submit' value='Actualizar' class='btn-large'>");                 
-                 out.println("<a href='Alumnos.jsp' value='Regresar' class='btn-large'>Regresar</a>");                 
-                 out.println("'</div>'");                 
-                 out.println("</form>");
-                 out.println("</div>");
+                <table id="1" class="table table-bordered">
+                    <thead class="text-center">
+                        <tr >
+                            <th WIDTH="25" 
+                                HEIGHT="25">
+                                <img src="https://hh.santotomasport.com.gt/global/santotomasport.com.gt/EMPORNAC_logo.png">
+                            </th>
+                            <th colspan="3.5" class="text-center">
+                                EMPRESA PORTUARIA NACIONAL "SANTO TOMAS DE CASTILLA" </br>
+                                IZABAL, GUATEMALA </br>
+                                COTIZACION DE SERVICIOS PORTUARIOS </br>
+
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+
+                <table id="2" class="table table-bordered">
+                    <thead class="text-center">
+                        <tr >
+                            <th >
+                                Cotizacion: <%= Cotizacion%>
+
+                        </th>
+                        <th  >
+                            Fecha:
+                            <script>
+
+                                var f = new Date();
+                                document.write(f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear());
+                            </script>
+
+
+                        </th>
+                        
+                    </tr>
+                    <tr>
+
+            </table>
+
+            <table id="3" class="table table-bordered">
+                <th colspan="4" class="text-center">
+                    Datos de Buque  
+
+                </th>
+                </tr>
+                <tr>
+                    <th  >
+                        Buque: <%= enc.getNOMBRE_DEL_BUQUE()%>
+                    </th>
+
+                    <th  >
+                        LR: <%= enc.getCWBC_LR()%>
+                    </th>
+                    <th  >
+                        Señal Distintica: <%= enc.getCWBC_SENAL_DISTINTIVA()%>
+                    </th>
+                    <th  >
+                        Tipo Operacion: <%= enc.getCWBC_TIPO_OPERACION()%>
+                    </th>
+                </tr>
+                </thead>
+            </table>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-center" colspan="4"> 
+                            Datos 
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th class="text-center" colspan="2" >
+                            Dolar 
+                        </th>
+
+                        <th class="text-center"  colspan="2">
+                            Usuario 
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <th class="text-center" >
+                            Precio:  <%= enc.getCWBC_TIPO_CAMBIO()%>
+                        </th>
+
+                        <th class="text-center" >
+                            Fecha Tipo Cambio: <%= enc.getCWBC_TIPO_CAMBIO_FECHA()%>
+                        </th>
+
+                        <th class="text-center" >
+                            Grabador:  <%= enc.getGRABADOR()%>
+                        </th>
+
+                        <th class="text-center" >
+                            Usuario Servicio: <%= enc.getCWBC_USUARIO_SERVICIO()%>
+                        </th>
+                    </tr>                               
+
+                </thead> 
                 
 
 
+            </table>
+                        
+                        <table class="responsive-table highlight striped " >
 
+                    <thead class="light-blue darken-4">
 
-        %>
+                        <tr>
+
+                            <th></th>
+
+                            <th colspan="1">IMPORT</th>
+
+                            <th colspan="2">EXPORT</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody >
+
+                        <tr>
+
+                            <th>Granel Solido</th>
+
+                            <td>
+
+                                Toneladas:
+
+                            </td>
+
+                            <td>
+                                Toneladas: 
+                                
+                            </td>
+
+                        </tr>
+
+                        <tr>
+
+                            <th>Granel Solido en Pontones</th>
+
+                            <td>
+                                Toneladas: 
+                            </td>
+
+                            <td>
+                                 Toneladas: 
+                            </td>
+                        </tr>
+
+                        
+                        
+                </table>
             
         
         
