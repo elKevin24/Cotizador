@@ -1,6 +1,5 @@
 package modelo;
 
-import controlador.BeanBarcos;
 import controlador.BeanUsuarios;
 import controlador.BeanTipoBuque;
 import java.sql.Connection;

@@ -120,7 +120,9 @@
                                     Connection con = c.getConexion();
                                     Statement st;
                                     st = con.createStatement();
-                                    ResultSet rs = st.executeQuery("select tiop.cwto_tipo_operacion, tiop.cwto_operacion\n"
+                                    ResultSet rs = st.executeQuery("SELECT DISTINCT cwto_tipo_operacion, cwto_operacion\n"
+                                            + "FROM(\n"
+                                            + "select tiop.cwto_tipo_operacion cwto_tipo_operacion, tiop.cwto_operacion cwto_operacion\n"
                                             + "from PUERTO.eopt_barcos buq,\n"
                                             + "cotizador_web.cw_tipo_operacion tiop,\n"
                                             + "cotizador_web.cw_tipo_operacion_x_estru tioe\n"
@@ -128,7 +130,16 @@
                                             + "and (buq.tipo_de_barco_por_estructura = tioe.tipo_de_barco_por_estructura)\n"
                                             + "and buq.LR = '" + LR + "'\n"
                                             + "and BUQ.SENAL_DISTINTIVA = '" + ship.getBANDERA() + "'\n"
-                                            + "ORDER BY tioe.cwto_predeterminado");
+                                            + "UNION\n"
+                                            + "select B.cwto_tipo_operacion cwto_tipo_operacion, B.cwto_operacion cwto_operacion\n"
+                                            + "from CW_EOPT_BARCOS A,\n"
+                                            + "cotizador_web.cw_tipo_operacion B,\n"
+                                            + "cotizador_web.cw_tipo_operacion_x_estru C\n"
+                                            + "where  (B.cwto_tipo_operacion = C.cwto_tipo_operacion)\n"
+                                            + "and (A.tipo_de_barco_por_estructura = C.tipo_de_barco_por_estructura)\n"
+                                            + "and A.LR = '" + LR + "'\n"
+                                            + "and A.SENAL_DISTINTIVA = '" + ship.getBANDERA() + "'\n"
+                                            + ")");
                                     while (rs.next()) {
                             %>
                             <option value="<%=rs.getInt("CWTO_TIPO_OPERACION")%>"><%=rs.getString("CWTO_OPERACION")%></option>

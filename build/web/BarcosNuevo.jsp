@@ -4,6 +4,8 @@
     Author     : kcordon
 --%>
 
+<%@page import="controlador.BeanBarcosNew"%>
+<%@page import="modelo.BarcosNew"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
@@ -26,6 +28,12 @@
             <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
             <script type="text/javascript" src="js/materialize.min.js"></script>
             <script type="text/javascript" src="js/materialize.js"></script>
+            
+            
+             <!-- Compiled and minified JavaScript -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.css"/>
+        <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.js"></script>
             <script>
 
 
@@ -82,10 +90,7 @@
                         <input type="text" size="20" name="NOMBRE_DEL_BUQUE" value="" >
                         <label for="NOMBRE_DEL_BUQUE">NOMBRE DEL BUQUE</label>
                     </div>
-                    <div class="input-field col s3">
-                        <input type="text" size="20" name="BANDERA">
-                        <label for="BANDERA">BANDERA</label>
-                    </div>
+                    
 
                     <div class="input-field col s3">
                         <input type="number" size="20" name="TRB">
@@ -172,7 +177,7 @@
                     <!-- campos que no se ven en pantalla hidden -->
 
                     <input type="hidden"  name="USUARIO_DE_SERVICIO" value="<%= user.getUSUARIO_DE_SERVICIO()%>">
-                    <input type="hidden"  name="BITA_USUARIO_INSERTA" value="<%= usuario%>">
+                    <input type="hidden"  name="BITA_USUARIO_INSERTA" value="<%= user.getUSUARIO_INOW() %>">
 
 
 
@@ -186,6 +191,68 @@
         </div>
     </form>
 </div>
+
+
+<div class="container">
+    <div class="divider"></div>
+
+        <div class="section">
+
+            <h3 align='center'> Barcos Creados por Usuario </h3>
+
+        </div>
+            <div class="col s12">
+
+                <table id="table_id" border="1"   class="highlight responsive-table striped " >
+                    <thead>
+                        <tr>
+
+
+                            <th>LR</th>
+                            
+                            <th>SENAL DISTINTIVA</th>
+                            <th>TIPO DE BARCO POR ESTRUCTURA</th>
+                            <th>NOMBRE DEL BUQUE</th>
+                            <th>BANDERA</th>
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%
+
+                            LinkedList<BeanBarcosNew> lista = BarcosNew.Barcos();
+
+                            for (int i = 0; i < lista.size(); i++) {
+
+                                out.println("<tr>");
+
+                                out.println("<td>" + lista.get(i).getLR() + "</td>");
+                                out.println("<td>" + lista.get(i).getSENAL_DISTINTIVA() + "</td>");
+                                out.println("<td>" + lista.get(i).getTIPO_DE_BARCO_POR_ESTRUCTURA() + "</td>");
+                                out.println("<td>" + lista.get(i).getNOMBRE_DEL_BUQUE() + "</td>");
+                                out.println("<td>" + lista.get(i).getBANDERA() + "</td>");
+                                
+                                out.println("</tr>");
+                            }
+                        %>  
+                    </tbody>
+                </table>
+
+            </div>
+                    
+                    
+                    
+        </div><!-- div cointainer-->
+        
+        <script type="text/javascript">
+
+            $(document).ready(function () {
+                $('#table_id').DataTable();
+            });
+
+        </script>
+        
 
 
 </body>

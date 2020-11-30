@@ -15,7 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controlador.BeanBarcosNew;
+import controlador.BeanBarcosNuevo;
 import modelo.BarcosNew;
+import modelo.BarcosNuevo;
 
 /**
  *
@@ -78,15 +80,15 @@ public class ServletRegistroNew extends HttpServlet {
         
         
          
-        BeanBarcosNew busuario;
-        busuario = new BeanBarcosNew(LR, SENAL_DISTINTIVA, TIPO_DE_BARCO_POR_ESTRUCTURA, USUARIO_DE_SERVICIO, NOMBRE_DEL_BUQUE, BANDERA, TRB, TRN, TPM, CALADO, ESLORA, MANGA, BITA_USUARIO_INSERTA);
+        BeanBarcosNuevo busuario;
+        busuario = new BeanBarcosNuevo(LR, SENAL_DISTINTIVA, TIPO_DE_BARCO_POR_ESTRUCTURA, USUARIO_DE_SERVICIO, NOMBRE_DEL_BUQUE, BANDERA, TRB, TRN, TPM, CALADO, ESLORA, MANGA, BITA_USUARIO_INSERTA);
         
         //String nombre, String num_convenio, String descripcion, 
            //BigDecimal monto_total, String direccion, String id_municipio, String fecha, String id_tipo_proyecto
-        boolean sw = BarcosNew.agregarBarco(busuario);
+        boolean sw = BarcosNuevo.agregarBarco(busuario);
 
         PrintWriter out = response.getWriter();
-        out.println( LR  + SENAL_DISTINTIVA + "ETA "+TIPO_DE_BARCO_POR_ESTRUCTURA+ " Cambio" + USUARIO_DE_SERVICIO +  NOMBRE_DEL_BUQUE +BANDERA+ TRB+ "tipo operacion: "+ TRN);
+        out.println( "BITA_USUARIO_INSERTA: " + BITA_USUARIO_INSERTA +" SENAL_DISTINTIVA: " + SENAL_DISTINTIVA + " TIPO_DE_BARCO_POR_ESTRUCTURA: "+TIPO_DE_BARCO_POR_ESTRUCTURA+ " USUARIO_DE_SERVICIO: " + USUARIO_DE_SERVICIO +  " BANDERA: " + BANDERA);
         if (sw) {
             response.sendRedirect("BarcosNuevo.jsp");
 
