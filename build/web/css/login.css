@@ -3,22 +3,23 @@ body,
 			margin: 0;
 			padding: 0;
 			height: 100%;			
-                        background: #FFFFFF !important;
+                        background: url("https://santotomasport.com.gt/wp-content/uploads/2017/09/WhatsApp-Image-2017-09-20-at-2.34.14-PM.jpeg");
+                        background-size: cover;
 		}
 		.user_card {
-			height: 400px;
-			width: 350px;
+			height: 350px;
+			width: 300px;
 			margin-top: auto;
 			margin-bottom: auto;
-			background: #00689b;
+			background: rgba(0, 87, 155 , 0.9);
 			position: relative;
 			display: flex;
 			justify-content: center;
 			flex-direction: column;
 			padding: 10px;
-			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+			-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
 			border-radius: 5px;
 
 		}
@@ -28,7 +29,7 @@ body,
 			width: 170px;
 			top: -75px;
 			border-radius: 50%;
-			background: #FFFFFF;
+			
 			padding: 10px;
 			text-align: center;
 		}
@@ -36,7 +37,7 @@ body,
 			height: 150px;
 			width: 150px;
 			border-radius: 50%;
-			border: 2px solid white;
+			
 		}
 		.form_container {
 			margin-top: 100px;
