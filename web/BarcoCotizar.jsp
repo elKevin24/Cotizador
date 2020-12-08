@@ -83,13 +83,13 @@
                 <div class="col s12">
 
                     <div class="input-field col s3">
-                        <input type="text" size="20" name="LR" value="<%=ship.getLR()%>" >
+                        <input disabled  type="text" size="20" name="LR" value="<%=ship.getLR()%>" >
                         <label for="LR">LR</label>
                     </div>
 
                     <div class="input-field col s3">
-                        <input type="text" size="20" name="CWBC_SENAL_DISTINTIVA" value="<%=ship.getBANDERA()%>" >
-                        <label for="CWBC_SENAL_DISTINTIVA">SENAL DISTINTIVA</label>
+                        <input disabled  type="text" size="20" name="CWBC_SENAL_DISTINTIVA1" value="<%=ship.getBANDERA()%>" >
+                        <label for="CWBC_SENAL_DISTINTIVA1">SENAL DISTINTIVA</label>
                     </div>
 
                     <!--
@@ -98,17 +98,17 @@
                                             <label for="CWBC_TIPO_CAMBIO_FECHA">FECHA TIPO DE CAMBIO DOLAR</label>
                                         </div>-->
                     <div class="input-field col s3">
-                        <input type="text" size="20" name="CWBC_USUARIO_SERVICIO" value="<%= codigo%>" >
-                        <label for="CWBC_USUARIO_SERVICIO">Usuario Servicio</label>
+                        <input disabled type="text" size="20" name="CWBC_USUARIO_SERVICIO" value="<%= codigo%>" >
+                        <label for="CWBC_USUARIO_SERVICIO1">Usuario Servicio</label>
                     </div>
                     <div class="input-field col s3">
-                        <input type="text" size="20" name="CWBC_NIT" value="<%= user.getNIT()%>" >
-                        <label for="CWBC_NIT">NIT</label>
+                        <input disabled  type="text" size="20" name="CWBC_NIT1" value="<%= user.getNIT()%>" >
+                        <label for="CWBC_NIT1">NIT</label>
                     </div>
 
                     <div class="input-field col s3">
-                        <input type="text" size="20" name="GRABADOR" value="<%= usuario%>" >
-                        <label for="GRABADOR">GRABADOR</label>
+                        <input disabled type="text" size="20" name="GRABADOR1" value="<%= usuario%>" >
+                        <label for="GRABADOR1">GRABADOR</label>
                     </div>
 
 
@@ -181,6 +181,13 @@
 
                     <input type="hidden"  name="CWBC_COTIZACION" value="<%= enc.getCWBC_COTIZACION()%>">
                     <input type="hidden" size="20" name="CWBC_TIPO_CAMBIO_FECHA" value="<%=cambio.getFECHA_CAMBIO().substring(0, 10)%>" >
+                    <input type="hidden" size="20" name="LR" value="<%=ship.getLR()%>" >
+                    <input type="hidden" size="20" name="CWBC_SENAL_DISTINTIVA" value="<%=ship.getBANDERA()%>" >
+                    <input type="hidden" size="20" name="CWBC_USUARIO_SERVICIO" value="<%= codigo%>" >
+                    <input type="hidden" size="20" name="CWBC_NIT" value="<%= user.getNIT()%>" >
+                    <input type="hidden" size="20" name="GRABADOR" value="<%= usuario%>" >
+
+
 
 
                     <div class="input-field col s3">
