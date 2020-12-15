@@ -5,6 +5,17 @@
 --%>
 
 
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="modelo.Conexion"%>
+<%@page import="modelo.DetalleCotizacion"%>
+<%@page import="controlador.BeanDetalleCotizacion"%>
+<%@page import="java.util.LinkedList"%>
+<%@page import="modelo.Detalle_S"%>
+<%@page import="controlador.BeanSolido"%>
+<%@page import="modelo.Encabezado"%>
+<%@page import="controlador.BeanEncabezado"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,10 +33,18 @@
             BeanEncabezado enc = new BeanEncabezado();
             enc = Encabezado.Cotizacion(Cotizacion);
             String eta = enc.getCWBC_ETA();
-            eta = eta.substring(0, 10);
+            
 
-            BeanSolido sol = new BeanSolido();
-            sol = Detalle_S.ObtenerDetalle(Cotizacion);
+            try {
+                Conexion c = new Conexion();
+                                    Connection con = c.getConexion();
+                                    Statement st;
+                                    st = con.createStatement();
+                                    ResultSet rs = st.executeQuery("SELECT COTIZADOR_WEB.F_CW_TARIFA_X_COTIZACION("+Cotizacion+",'"+enc.getGRABADOR()+"', TO_DATE('"+enc.getCWBC_TIPO_CAMBIO_FECHA().substring(0, 10)+"','YYYY-MM-DD') , "+enc.getCWBC_HORA()+", "+enc.getCWBC_CODIGO_USUARIO() +") from dual");
+                
+            }catch(Exception e){
+                
+            }
 
 
         %>
@@ -104,7 +123,7 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th class="text-center" colspan="4"> 
+                        <th class="text-center" colspan="5"> 
                             Datos 
                         </th>
                     </tr>
@@ -114,7 +133,7 @@
                             Dolar 
                         </th>
 
-                        <th class="text-center"  colspan="2">
+                        <th class="text-center"  colspan="3">
                             Usuario 
                         </th>
                     </tr>
@@ -125,7 +144,7 @@
                         </th>
 
                         <th class="text-center" >
-                            Fecha Tipo Cambio: <%= enc.getCWBC_TIPO_CAMBIO_FECHA()%>
+                            Fecha Tipo Cambio: <%= enc.getCWBC_TIPO_CAMBIO_FECHA().substring(0, 10)%>
                         </th>
 
                         <th class="text-center" >
@@ -133,7 +152,12 @@
                         </th>
 
                         <th class="text-center" >
-                            Usuario Servicio: <%= enc.getCWBC_USUARIO_SERVICIO().substring(0, 10)%>
+                            Usuario Servicio: <%= enc.getCWBC_USUARIO_SERVICIO()%>
+                        </th>
+                        
+                        <th class="text-center" >
+                           Codigo Usuario: <%= enc.getCWBC_CODIGO_USUARIO()%>
+                           dias = <%= enc.getCWBC_HORA()%>
                         </th>
                     </tr>                               
 
@@ -143,57 +167,47 @@
 
             </table>
                         
-                        <table class="responsive-table highlight striped " >
+                        <div class="container">
+            <div class="col s12">
 
-                    <thead class="light-blue darken-4">
-
+                <table id="table_id" border="1"   class="highlight responsive-table striped " >
+                    <thead>
                         <tr>
 
-                            <th></th>
 
-                            <th colspan="1">IMPORT</th>
+                            <th>CODIGO</th>
+                            <th>CANTIDAD</th>
+                            <th>VALOR</th>
+                            <th>SUB_TOTAL</th>
 
-                            <th colspan="2">EXPORT</th>
 
                         </tr>
-
                     </thead>
+                    <tbody>
+                        <%
 
-                    <tbody >
+                            LinkedList<BeanDetalleCotizacion> lista = DetalleCotizacion.ObtenerDatos2(Cotizacion);
 
-                        <tr>
+                            for (int i = 0; i < lista.size(); i++) {
 
-                            <th>Granel Solido</th>
+                                out.println("<tr>");
 
-                            <td>
-
-                                Toneladas: <%= sol.getCWSL_DESC_ACEITE_GRASA_QUIMI() %>
-
-                            </td>
-
-                            <td>
-                                Toneladas: <%= sol.getCWSL_CARGA_ACEITE_GRASA_QUIMI()%>
+                                out.println("<td>" + lista.get(i).getWDC_TDS_CODIGO()+ "</td>");
+                                out.println("<td>" + lista.get(i).getCWDC_CANTIDAD() + "</td>");
+                                out.println("<td>" + lista.get(i).getCWDC_VALOR()+ "</td>");
+                                out.println("<td>" + lista.get(i).getCWDC_SUB_TOTAL()+ "</td>");
                                 
-                            </td>
-
-                        </tr>
-
-                        <tr>
-
-                            <th>Granel Solido en Pontones</th>
-
-                            <td>
-                                Toneladas: <%= sol.getCWSL_DESC_COMBUSTIBLES_DERIV()%>
-                            </td>
-
-                            <td>
-                                 Toneladas: <%= sol.getCWSL_CARGA_COMBUSTIBLES_DERIV()%>
-                            </td>
-                        </tr>
-
-                        
-                        
+                                
+                                out.println("</tr>");
+                            }
+                        %>  
+                    </tbody>
                 </table>
+
+            </div>
+        </div>
+                        
+                       
 
 
 

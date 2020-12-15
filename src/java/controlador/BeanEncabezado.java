@@ -100,6 +100,32 @@ public class BeanEncabezado {
     public void setCWBC_HORA(String CWBC_HORA) {
         this.CWBC_HORA = CWBC_HORA;
     }
+
+
+    public String getSLORA() {
+        return SLORA;
+    }
+
+    public void setSLORA(String SLORA) {
+        this.SLORA = SLORA;
+    }
+
+    public String getTRB() {
+        return TRB;
+    }
+
+    public void setTRB(String TRB) {
+        this.TRB = TRB;
+    }
+
+    public String getCWBC_CODIGO_USUARIO() {
+        return CWBC_CODIGO_USUARIO;
+    }
+
+    public void setCWBC_CODIGO_USUARIO(String CWBC_CODIGO_USUARIO) {
+        this.CWBC_CODIGO_USUARIO = CWBC_CODIGO_USUARIO;
+    }
+    
     
     
     
@@ -110,8 +136,8 @@ public class BeanEncabezado {
     
     
 
-    public BeanEncabezado(String CWBC_COTIZACION, String CWBC_LR, String CWBC_SENAL_DISTINTIVA, String CWBC_ETA, Double CWBC_TIPO_CAMBIO, String CWBC_TIPO_CAMBIO_FECHA, String CWBC_USUARIO_SERVICIO,
-                          String CWBC_NIT, String CWBC_TIPO_OPERACION, String GRABADOR, String CWBC_HORA) {
+    public BeanEncabezado(String CWBC_COTIZACION, String CWBC_LR, String CWBC_SENAL_DISTINTIVA, String CWBC_ETA, Double CWBC_TIPO_CAMBIO, String CWBC_TIPO_CAMBIO_FECHA, String CWBC_USUARIO_SERVICIO, 
+                          String CWBC_NIT, String CWBC_TIPO_OPERACION, String GRABADOR, String CWBC_HORA, String TRB, String SLORA) {
         
         
         this.CWBC_COTIZACION = CWBC_COTIZACION;
@@ -121,10 +147,13 @@ public class BeanEncabezado {
         this.CWBC_TIPO_CAMBIO = CWBC_TIPO_CAMBIO;
         this.CWBC_TIPO_CAMBIO_FECHA = CWBC_TIPO_CAMBIO_FECHA;
         this.CWBC_USUARIO_SERVICIO = CWBC_USUARIO_SERVICIO;
+       
         this.CWBC_NIT = CWBC_NIT;
         this.CWBC_TIPO_OPERACION = CWBC_TIPO_OPERACION;
         this.GRABADOR = GRABADOR;
         this.CWBC_HORA = CWBC_HORA;
+        this.TRB = TRB;
+        this.SLORA = SLORA;
           
     }
 
@@ -136,10 +165,13 @@ public class BeanEncabezado {
     private Double CWBC_TIPO_CAMBIO;
     private String CWBC_TIPO_CAMBIO_FECHA;
     private String CWBC_USUARIO_SERVICIO;
+    private String CWBC_CODIGO_USUARIO;
     private String CWBC_NIT;
     private String CWBC_TIPO_OPERACION;
     private String GRABADOR;
     private String CWBC_HORA;
+    private String TRB;
+    private String SLORA;
    
     
     public BeanEncabezado() {

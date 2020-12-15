@@ -76,7 +76,7 @@
 
         %>
 
-        <h3 style="text-align:center;"> Barco: <%=ship.getNOMBRE_DEL_BUQUE()%> , Numero Cotizacion:  <%= enc.getCWBC_COTIZACION()%> </h3>
+        <h3 style="text-align:center;"> Barco: <%=ship.getNOMBRE_DEL_BUQUE()%> , Numero Cotizacion:  <%= enc.getCWBC_COTIZACION()%>, TBR: <%=ship.getTRB()%>, ESLORA: <%=ship.getESLORA()%>  </h3>
 
         <form action="ServletRegistro.do" method="post" >
             <div class="row">
@@ -186,6 +186,10 @@
                     <input type="hidden" size="20" name="CWBC_USUARIO_SERVICIO" value="<%= codigo%>" >
                     <input type="hidden" size="20" name="CWBC_NIT" value="<%= user.getNIT()%>" >
                     <input type="hidden" size="20" name="GRABADOR" value="<%= usuario%>" >
+                    <input type="hidden" size="20" name="TBR" value="<%=ship.getTRB()%>" >
+                    <input type="hidden" size="20" name="SLORA" value="<%=ship.getESLORA()%>" >
+                    
+                   
 
 
 

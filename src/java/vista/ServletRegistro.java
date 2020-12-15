@@ -70,6 +70,9 @@ public class ServletRegistro extends HttpServlet {
         String GRABADOR = request.getParameter("GRABADOR");
         String HORA_ETA = request.getParameter("HORA_ETA");
         String CWBC_HORA = request.getParameter("CWBC_HORA");
+        String TBR = request.getParameter("TBR");
+        String SLORA = request.getParameter("SLORA");
+        
         CWBC_ETA = CWBC_ETA+ " "+HORA_ETA.substring(0,5)+":00";
     
         BeanUsuarios cambio = new BeanUsuarios();
@@ -84,7 +87,7 @@ public class ServletRegistro extends HttpServlet {
         
          
         BeanEncabezado busuario;
-        busuario = new BeanEncabezado(cotizacion1, LR, CWBC_SENAL_DISTINTIVA, CWBC_ETA, cambio.getCAMBIO(), CWBC_TIPO_CAMBIO_FECHA.substring(0, 10), CWBC_USUARIO_SERVICIO, CWBC_NIT, CWBC_TIPO_OPERACION, GRABADOR, CWBC_HORA);
+        busuario = new BeanEncabezado(cotizacion1, LR, CWBC_SENAL_DISTINTIVA, CWBC_ETA, cambio.getCAMBIO(), CWBC_TIPO_CAMBIO_FECHA.substring(0, 10), CWBC_USUARIO_SERVICIO, CWBC_NIT, CWBC_TIPO_OPERACION, GRABADOR, CWBC_HORA, TBR, SLORA);
         
         //String nombre, String num_convenio, String descripcion, 
            //BigDecimal monto_total, String direccion, String id_municipio, String fecha, String id_tipo_proyecto

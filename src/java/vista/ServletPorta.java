@@ -5,7 +5,6 @@
  */
 package vista;
 
-import controlador.BeanMulti;
 import controlador.BeanPorta;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -14,7 +13,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Detalle_M;
 import modelo.Detalle_P;
 
 /**
