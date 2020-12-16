@@ -2,8 +2,6 @@ package controlador;
 
 public class BeanMulti {
 
-    
-
     public String getCWBC_COTIZACION() {
         return CWBC_COTIZACION;
     }
@@ -364,38 +362,6 @@ public class BeanMulti {
         this.CWSF_CARGA_MERCA_GP_VI = CWSF_CARGA_MERCA_GP_VI;
     }
 
-//    public String getCWSF_CARGA_FRUTA_PALE_GB_VD() {
-//        return CWSF_CARGA_FRUTA_PALE_GB_VD;
-//    }
-//
-//    public void setCWSF_CARGA_FRUTA_PALE_GB_VD(String CWSF_CARGA_FRUTA_PALE_GB_VD) {
-//        this.CWSF_CARGA_FRUTA_PALE_GB_VD = CWSF_CARGA_FRUTA_PALE_GB_VD;
-//    }
-//
-//    public String getCWSF_CARGA_FRUTA_PALE_GB_VI() {
-//        return CWSF_CARGA_FRUTA_PALE_GB_VI;
-//    }
-//
-//    public void setCWSF_CARGA_FRUTA_PALE_GB_VI(String CWSF_CARGA_FRUTA_PALE_GB_VI) {
-//        this.CWSF_CARGA_FRUTA_PALE_GB_VI = CWSF_CARGA_FRUTA_PALE_GB_VI;
-//    }
-//
-//    public String getCWSF_CARGA_FRUTA_PALE_GP_VD() {
-//        return CWSF_CARGA_FRUTA_PALE_GP_VD;
-//    }
-//
-//    public void setCWSF_CARGA_FRUTA_PALE_GP_VD(String CWSF_CARGA_FRUTA_PALE_GP_VD) {
-//        this.CWSF_CARGA_FRUTA_PALE_GP_VD = CWSF_CARGA_FRUTA_PALE_GP_VD;
-//    }
-//
-//    public String getCWSF_CARGA_FRUTA_PALE_GP_VI() {
-//        return CWSF_CARGA_FRUTA_PALE_GP_VI;
-//    }
-//
-//    public void setCWSF_CARGA_FRUTA_PALE_GP_VI(String CWSF_CARGA_FRUTA_PALE_GP_VI) {
-//        this.CWSF_CARGA_FRUTA_PALE_GP_VI = CWSF_CARGA_FRUTA_PALE_GP_VI;
-//    }
-
     public String getGRABADOR() {
         return GRABADOR;
     }
@@ -404,6 +370,64 @@ public class BeanMulti {
         this.GRABADOR = GRABADOR;
     }
 
+    public String getGRABADOR_FECHA() {
+        return GRABADOR_FECHA;
+    }
+
+    public void setGRABADOR_FECHA(String GRABADOR_FECHA) {
+        this.GRABADOR_FECHA = GRABADOR_FECHA;
+    }
+
+    public String getCWSM_REEMBARQUE_LLENO_RF_GP() {
+        return CWSM_REEMBARQUE_LLENO_RF_GP;
+    }
+
+    public void setCWSM_REEMBARQUE_LLENO_RF_GP(String CWSM_REEMBARQUE_LLENO_RF_GP) {
+        this.CWSM_REEMBARQUE_LLENO_RF_GP = CWSM_REEMBARQUE_LLENO_RF_GP;
+    }
+
+    public String getCWSM_REEMBARQUE_LLENO_RF_GB() {
+        return CWSM_REEMBARQUE_LLENO_RF_GB;
+    }
+
+    public void setCWSM_REEMBARQUE_LLENO_RF_GB(String CWSM_REEMBARQUE_LLENO_RF_GB) {
+        this.CWSM_REEMBARQUE_LLENO_RF_GB = CWSM_REEMBARQUE_LLENO_RF_GB;
+    }
+
+    public String getCWSM_DESCARGA_MERCA_GP_VD_HR() {
+        return CWSM_DESCARGA_MERCA_GP_VD_HR;
+    }
+
+    public void setCWSM_DESCARGA_MERCA_GP_VD_HR(String CWSM_DESCARGA_MERCA_GP_VD_HR) {
+        this.CWSM_DESCARGA_MERCA_GP_VD_HR = CWSM_DESCARGA_MERCA_GP_VD_HR;
+    }
+
+    public String getCWSM_DESCARGA_MERCA_GP_VI_HR() {
+        return CWSM_DESCARGA_MERCA_GP_VI_HR;
+    }
+
+    public void setCWSM_DESCARGA_MERCA_GP_VI_HR(String CWSM_DESCARGA_MERCA_GP_VI_HR) {
+        this.CWSM_DESCARGA_MERCA_GP_VI_HR = CWSM_DESCARGA_MERCA_GP_VI_HR;
+    }
+
+    public String getCWSM_CARGA_MERCA_GP_VD_HR() {
+        return CWSM_CARGA_MERCA_GP_VD_HR;
+    }
+
+    public void setCWSM_CARGA_MERCA_GP_VD_HR(String CWSM_CARGA_MERCA_GP_VD_HR) {
+        this.CWSM_CARGA_MERCA_GP_VD_HR = CWSM_CARGA_MERCA_GP_VD_HR;
+    }
+
+    public String getCWSM_CARGA_MERCA_GP_VI_HR() {
+        return CWSM_CARGA_MERCA_GP_VI_HR;
+    }
+
+    public void setCWSM_CARGA_MERCA_GP_VI_HR(String CWSM_CARGA_MERCA_GP_VI_HR) {
+        this.CWSM_CARGA_MERCA_GP_VI_HR = CWSM_CARGA_MERCA_GP_VI_HR;
+    }
+    
+    
+
     public BeanMulti(String CWBC_COTIZACION, String CWSF_MUELLAJE_COF_IMPORT, String CWSF_MUELLAJE_COF_EXPORT, String CWSF_DESCARGA_LLENOS_GB_VI, String CWSF_DESCARGA_LLENOS_GB_VD, String CWSF_DESCARGA_LLENOS_GP_VI,
             String CWSF_DESCARGA_LLENOS_GP_VD, String CWSF_DESCARGA_VACIOS_GB_VI, String CWSF_DESCARGA_VACIOS_GB_VD, String CWSF_DESCARGA_VACIOS_GP_VI, String CWSF_DESCARGA_VACIOS_GP_VD,
             String CWSF_CARGA_LLENOS_GB_VI, String CWSF_CARGA_LLENOS_GB_VD, String CWSF_CARGA_LLENOS_GP_VI, String CWSF_CARGA_LLENOS_GP_VD, String CWSF_CARGA_VACIOS_GB_VI, String CWSF_CARGA_VACIOS_GB_VD, String CWSF_CARGA_VACIOS_GP_VI,
@@ -411,8 +435,16 @@ public class BeanMulti {
             String CWSF_DEPOSITO_TEMP_LLENO_GB, String CWSF_DEPOSITO_TEMP_LLENO_GP, String CWSF_DEPOSITO_TEMP_VACIO_GB, String CWSF_DEPOSITO_TEMP_VACIO_GP, String CWSF_REEMBARQUE_LLENO_GB, String CWSF_REEMBARQUE_LLENO_GP, String CWSF_REEMBARQUE_VACIO_GB,
             String CWSF_REEMBARQUE_VACIO_GP, String CWSF_DEPOSITO_MOMENT_LLENO_GB, String CWSF_DEPOSITO_MOMENT_LLENO_GP, String CWSF_DEPOSITO_MOMENT_VACIO_GB, String CWSF_DEPOSITO_MOMENT_VACIO_GP,
             String CWSF_DESCARGA_MERCA_GB_VD, String CWSF_DESCARGA_MERCA_GB_VI, String CWSF_DESCARGA_MERCA_GP_VD, String CWSF_DESCARGA_MERCA_GP_VI, String CWSF_CARGA_MERCA_GB_VD, String CWSF_CARGA_MERCA_GB_VI,
-            String CWSF_CARGA_MERCA_GP_VD, String CWSF_CARGA_MERCA_GP_VI, 
-            String GRABADOR
+            String CWSF_CARGA_MERCA_GP_VD, String CWSF_CARGA_MERCA_GP_VI,
+            String GRABADOR,
+            String GRABADOR_FECHA,
+            String ACTUALIZADOR_FECHA,
+            String CWSM_REEMBARQUE_LLENO_RF_GP,
+            String CWSM_REEMBARQUE_LLENO_RF_GB,
+            String CWSM_DESCARGA_MERCA_GP_VD_HR,
+            String CWSM_DESCARGA_MERCA_GP_VI_HR,
+            String CWSM_CARGA_MERCA_GP_VD_HR,
+            String CWSM_CARGA_MERCA_GP_VI_HR
     ) {
 
         this.CWBC_COTIZACION = CWBC_COTIZACION;
@@ -460,15 +492,17 @@ public class BeanMulti {
         this.CWSF_CARGA_MERCA_GB_VI = CWSF_CARGA_MERCA_GB_VI;
         this.CWSF_CARGA_MERCA_GP_VD = CWSF_CARGA_MERCA_GP_VD;
         this.CWSF_CARGA_MERCA_GP_VI = CWSF_CARGA_MERCA_GP_VI;
-//        this.CWSF_CARGA_FRUTA_PALE_GB_VD = CWSF_CARGA_FRUTA_PALE_GB_VD;
-//        this.CWSF_CARGA_FRUTA_PALE_GB_VI = CWSF_CARGA_FRUTA_PALE_GB_VI;
-//        this.CWSF_CARGA_FRUTA_PALE_GP_VD = CWSF_CARGA_FRUTA_PALE_GP_VD;
-//        this.CWSF_CARGA_FRUTA_PALE_GP_VI = CWSF_CARGA_FRUTA_PALE_GP_VI;
+
         this.GRABADOR = GRABADOR;
+        this.GRABADOR_FECHA = GRABADOR_FECHA;
+        this.CWSM_REEMBARQUE_LLENO_RF_GP = CWSM_REEMBARQUE_LLENO_RF_GP;
+        this.CWSM_REEMBARQUE_LLENO_RF_GB = CWSM_REEMBARQUE_LLENO_RF_GB;
+        this.CWSM_DESCARGA_MERCA_GP_VD_HR = CWSM_DESCARGA_MERCA_GP_VD_HR;
+        this.CWSM_DESCARGA_MERCA_GP_VI_HR = CWSM_DESCARGA_MERCA_GP_VI_HR;
+        this.CWSM_CARGA_MERCA_GP_VD_HR = CWSM_CARGA_MERCA_GP_VD_HR;
+        this.CWSM_CARGA_MERCA_GP_VI_HR = CWSM_CARGA_MERCA_GP_VI_HR;
 
     }
-    
-  
 
     private String CWBC_COTIZACION;
     private String CWSF_MUELLAJE_COF_IMPORT;
@@ -515,11 +549,15 @@ public class BeanMulti {
     private String CWSF_CARGA_MERCA_GB_VI;
     private String CWSF_CARGA_MERCA_GP_VD;
     private String CWSF_CARGA_MERCA_GP_VI;
-//    private String CWSF_CARGA_FRUTA_PALE_GB_VD;
-//    private String CWSF_CARGA_FRUTA_PALE_GB_VI;
-//    private String CWSF_CARGA_FRUTA_PALE_GP_VD;
-//    private String CWSF_CARGA_FRUTA_PALE_GP_VI;
+
     private String GRABADOR;
+    private String GRABADOR_FECHA;
+    private String CWSM_REEMBARQUE_LLENO_RF_GP;
+    private String CWSM_REEMBARQUE_LLENO_RF_GB;
+    private String CWSM_DESCARGA_MERCA_GP_VD_HR;
+    private String CWSM_DESCARGA_MERCA_GP_VI_HR;
+    private String CWSM_CARGA_MERCA_GP_VD_HR;
+    private String CWSM_CARGA_MERCA_GP_VI_HR;
 
     public BeanMulti() {
     }

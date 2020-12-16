@@ -62,7 +62,13 @@ public class Detalle_M {
 "CWSM_CARGA_MERCA_GB_VI," +
 "CWSM_CARGA_MERCA_GP_VD," +
 "CWSM_CARGA_MERCA_GP_VI," +
-"GRABADOR) VALUES "
+"GRABADOR, GRABADOR_FECHA," +
+"CWSM_REEMBARQUE_LLENO_RF_GP," +
+"CWSM_REEMBARQUE_LLENO_RF_GB," +
+"CWSM_DESCARGA_MERCA_GP_VD_HR," +
+"CWSM_DESCARGA_MERCA_GP_VI_HR," +
+"CWSM_CARGA_MERCA_GP_VD_HR," +
+"CWSM_CARGA_MERCA_GP_VI_HR) VALUES "
                         + "('" + En.getCWBC_COTIZACION() + "','"+En.getCWSF_MUELLAJE_COF_IMPORT()+"','"+En.getCWSF_MUELLAJE_COF_EXPORT()+"','"+En.getCWSF_DESCARGA_LLENOS_GB_VI()+"','"+En.getCWSF_DESCARGA_LLENOS_GB_VD()+"','"+En.getCWSF_DESCARGA_LLENOS_GP_VI()+"','"+En.getCWSF_DESCARGA_LLENOS_GP_VD()+"','"+En.getCWSF_DESCARGA_VACIOS_GB_VI()+"','"+En.getCWSF_DESCARGA_VACIOS_GB_VD()+"','"+En.getCWSF_DESCARGA_VACIOS_GP_VI()+"','"+En.getCWSF_DESCARGA_VACIOS_GP_VD()+"' ,'"+En.getCWSF_CARGA_LLENOS_GB_VI()+"', '"+En.getCWSF_CARGA_LLENOS_GB_VD()+"' ,'"+En.getCWSF_CARGA_LLENOS_GP_VI()+"' ,'"+En.getCWSF_CARGA_LLENOS_GP_VD()+"',"
                         + "'"+ En.getCWSF_CARGA_VACIOS_GB_VI()+"','"+En.getCWSF_CARGA_VACIOS_GB_VD()+"','"+En.getCWSF_CARGA_VACIOS_GP_VI()+"','"+En.getCWSF_CARGA_VACIOS_GP_VD()+"','"+En.getCWSF_DESCARGA_VEHICULOS_GB()+"','"+En.getCWSF_DESCARGA_VEHICULOS_GP()+"','"+En.getCWSF_REESTIBAS_GB()+"','"+En.getCWSF_REESTIBAS_GP()+"',"
                         + "'"+ En.getCWSF_TAPA_ESCOTILLAS_GB()+"','"+ En.getCWSF_TAPA_ESCOTILLAS_GP()+"','"+ En.getCWSF_DEPOSITO_TEMP_LLENO_GB()+"','"+ En.getCWSF_DEPOSITO_TEMP_LLENO_GP()+"','"+ En.getCWSF_DEPOSITO_TEMP_VACIO_GB()+"','"+ En.getCWSF_DEPOSITO_TEMP_VACIO_GP()+"',"
@@ -70,7 +76,7 @@ public class Detalle_M {
                         + "'"+ En.getCWSF_DEPOSITO_MOMENT_LLENO_GB()+"','"+ En.getCWSF_DEPOSITO_MOMENT_LLENO_GP()+"','"+ En.getCWSF_DEPOSITO_MOMENT_VACIO_GB()+"','"+ En.getCWSF_DEPOSITO_MOMENT_VACIO_GP()+"',"
                         + "'"+ En.getCWSF_DESCARGA_MERCA_GB_VD()+"','"+ En.getCWSF_DESCARGA_MERCA_GB_VI()+"','"+ En.getCWSF_DESCARGA_MERCA_GP_VD()+"','"+ En.getCWSF_DESCARGA_MERCA_GP_VI()+"',"
                         + "'"+ En.getCWSF_CARGA_MERCA_GB_VD()+"','"+ En.getCWSF_CARGA_MERCA_GB_VI()+"','"+ En.getCWSF_CARGA_MERCA_GP_VD()+"','"+ En.getCWSF_CARGA_MERCA_GP_VI()+"',"
-                        + "'"+En.getGRABADOR()+"')";
+                        + "'"+En.getGRABADOR()+"', '"+En.getGRABADOR_FECHA()+"' )";
                 
                 st.execute(sql);
 

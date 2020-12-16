@@ -3,16 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/web/BUQUES_GRANEL_LIQUIDO.jsp</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/web/Barcos.jsp</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/modelo/BarcosNew.java</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/vista/ServletRegistroNew.java</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/web/WEB-INF/web.xml</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/web/Login.jsp</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/web/BarcoCotizar.jsp</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/modelo/Barcos.java</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/modelo/Encabezado.java</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/web/css/login.css</file>
+            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/vista/ServletPorta.java</file>
+            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/controlador/BeanPorta.java</file>
+            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/web/BUQUE_PORTACONTANEDOR.jsp</file>
+            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/modelo/Detalle_P.java</file>
         </group>
     </open-files>
 </project-private>

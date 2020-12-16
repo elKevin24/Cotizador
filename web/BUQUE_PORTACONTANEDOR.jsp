@@ -69,7 +69,7 @@
                                     </div></th>
                                 <th>
                                     <div class="switch">
-                                         <p> Aplica Muellaje a Contenedores Export</p>
+                                        <p> Aplica Muellaje a Contenedores Export</p>
                                         <label>
                                             No
                                             <input disabled type="checkbox" name="MuellajeExport" checked="cheked" >
@@ -89,13 +89,6 @@
 
 
                     <!-- Switch -->
-
-
-
-
-
-
-
 
                 </div>
 
@@ -341,6 +334,33 @@
                             <label for="CWSF_DEPOSITO_TEMP_VACIO_GB"></label>
                         </td> 
                     </tr>
+                    <thead>
+
+                        <tr>
+                        </tr>
+
+                        <tr>
+
+                            <th></th>
+
+                            <th colspan="3" align="center">Grua Puerto </th>
+
+                            <th colspan="3" align="center">Grua Buque</th>
+
+                        </tr>
+                        <tr>
+
+                            <th scope="col"></th>
+                            <th>Llenos Secos</th>
+                            <th>Llenos Refrigerado</th>
+                            <th>Vacios</th>
+                            <th>Llenos Secos</th>
+                            <th>Llenos Refrigerado</th>
+                            <th>Vacios</th>
+
+                        </tr>
+
+                    </thead>
                     <tr>
 
                         <th>Reembarques</th>
@@ -351,6 +371,11 @@
                         </td>
 
                         <td>
+                            <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_LLENO_RF_GP" type="text" class="validate">
+                            <label for="CWSF_REEMBARQUE_LLENO_RF_GP"></label>
+                        </td>
+
+                        <td>
                             <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_VACIO_GP" type="text" class="validate">
                             <label for="CWSF_REEMBARQUE_VACIO_GP"></label>
                         </td> 
@@ -358,35 +383,52 @@
                             <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_LLENO_GB" type="text" class="validate">
                             <label for="CWSF_REEMBARQUE_LLENO_GB"></label>
                         </td>
+                        <td>
+                            <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_LLENO_RF_GB" type="text" class="validate">
+                            <label for="CWSF_REEMBARQUE_LLENO_RF_GB"></label>
+                        </td>
 
                         <td>
                             <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_VACIO_GB" type="text" class="validate">
                             <label for="CWSF_REEMBARQUE_VACIO_GB"></label>
                         </td>  
                     </tr>
-                    <tr>
 
-                        <th>Depositos Momentaneos</th>
+                    <thead>
 
-                        <td>
-                            <input  placeholder="Movimientos" name="CWSF_DEPOSITO_MOMENT_LLENO_GP" type="text" class="validate">
-                            <label for="CWSF_DEPOSITO_MOMENT_LLENO_GP"></label>
-                        </td>
+                        <tr>
+                        </tr>
 
-                        <td>
-                            <input  placeholder="Movimientos" name="CWSF_DEPOSITO_MOMENT_VACIO_GP" type="text" class="validate">
-                            <label for="CWSF_DEPOSITO_MOMENT_VACIO_GP"></label>
-                        </td> 
-                        <td>
-                            <input  placeholder="Movimientos" name="CWSF_DEPOSITO_MOMENT_LLENO_GB" type="text" class="validate">
-                            <label for="CWSF_DEPOSITO_MOMENT_LLENO_GB"></label>
-                        </td>
+                        <tr>
 
-                        <td>
-                            <input  placeholder="Movimientos" name="CWSF_DEPOSITO_MOMENT_VACIO_GB" type="text" class="validate">
-                            <label for="CWSF_DEPOSITO_MOMENT_VACIO_GB"></label>
-                        </td> 
-                    </tr>
+                            <th></th>
+
+                            <th colspan="1" align="center">Grua Puerto </th>
+
+                            <th colspan="1" align="center">Grua Buque</th>
+
+                        </tr>
+
+                    </thead>
+
+                     
+                    <tr >
+
+                            <th>Depositos Momentaneos</th>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="CWSF_DEPOSITO_MOMENT_GP" type="text" class="validate">
+                                <label for="CWSF_DEPOSITO_MOMENT_GP"></label>
+                            </td>
+
+                            <td>
+                                <input  placeholder="Movimientos" name="CWSF_DEPOSITO_MOMENT_GB" type="text" class="validate">
+                                <label for="CWSF_DEPOSITO_MOMENT_GB"></label>
+                            </td> 
+
+                        </tr>
+
+                    
 
 
                 </table>

@@ -3,7 +3,8 @@ package controlador;
 public class BeanPorta {
 
     
-
+    
+    
     public String getCWBC_COTIZACION() {
         return CWBC_COTIZACION;
     }
@@ -268,134 +269,6 @@ public class BeanPorta {
         this.CWSF_REEMBARQUE_VACIO_GP = CWSF_REEMBARQUE_VACIO_GP;
     }
 
-    public String getCWSF_DEPOSITO_MOMENT_LLENO_GB() {
-        return CWSF_DEPOSITO_MOMENT_LLENO_GB;
-    }
-
-    public void setCWSF_DEPOSITO_MOMENT_LLENO_GB(String CWSF_DEPOSITO_MOMENT_LLENO_GB) {
-        this.CWSF_DEPOSITO_MOMENT_LLENO_GB = CWSF_DEPOSITO_MOMENT_LLENO_GB;
-    }
-
-    public String getCWSF_DEPOSITO_MOMENT_LLENO_GP() {
-        return CWSF_DEPOSITO_MOMENT_LLENO_GP;
-    }
-
-    public void setCWSF_DEPOSITO_MOMENT_LLENO_GP(String CWSF_DEPOSITO_MOMENT_LLENO_GP) {
-        this.CWSF_DEPOSITO_MOMENT_LLENO_GP = CWSF_DEPOSITO_MOMENT_LLENO_GP;
-    }
-
-    public String getCWSF_DEPOSITO_MOMENT_VACIO_GB() {
-        return CWSF_DEPOSITO_MOMENT_VACIO_GB;
-    }
-
-    public void setCWSF_DEPOSITO_MOMENT_VACIO_GB(String CWSF_DEPOSITO_MOMENT_VACIO_GB) {
-        this.CWSF_DEPOSITO_MOMENT_VACIO_GB = CWSF_DEPOSITO_MOMENT_VACIO_GB;
-    }
-
-    public String getCWSF_DEPOSITO_MOMENT_VACIO_GP() {
-        return CWSF_DEPOSITO_MOMENT_VACIO_GP;
-    }
-
-    public void setCWSF_DEPOSITO_MOMENT_VACIO_GP(String CWSF_DEPOSITO_MOMENT_VACIO_GP) {
-        this.CWSF_DEPOSITO_MOMENT_VACIO_GP = CWSF_DEPOSITO_MOMENT_VACIO_GP;
-    }
-
-//    public String getCWSF_DESCARGA_MERCA_GB_VD() {
-//        return CWSF_DESCARGA_MERCA_GB_VD;
-//    }
-//
-//    public void setCWSF_DESCARGA_MERCA_GB_VD(String CWSF_DESCARGA_MERCA_GB_VD) {
-//        this.CWSF_DESCARGA_MERCA_GB_VD = CWSF_DESCARGA_MERCA_GB_VD;
-//    }
-//
-//    public String getCWSF_DESCARGA_MERCA_GB_VI() {
-//        return CWSF_DESCARGA_MERCA_GB_VI;
-//    }
-//
-//    public void setCWSF_DESCARGA_MERCA_GB_VI(String CWSF_DESCARGA_MERCA_GB_VI) {
-//        this.CWSF_DESCARGA_MERCA_GB_VI = CWSF_DESCARGA_MERCA_GB_VI;
-//    }
-//
-//    public String getCWSF_DESCARGA_MERCA_GP_VD() {
-//        return CWSF_DESCARGA_MERCA_GP_VD;
-//    }
-//
-//    public void setCWSF_DESCARGA_MERCA_GP_VD(String CWSF_DESCARGA_MERCA_GP_VD) {
-//        this.CWSF_DESCARGA_MERCA_GP_VD = CWSF_DESCARGA_MERCA_GP_VD;
-//    }
-//
-//    public String getCWSF_DESCARGA_MERCA_GP_VI() {
-//        return CWSF_DESCARGA_MERCA_GP_VI;
-//    }
-//
-//    public void setCWSF_DESCARGA_MERCA_GP_VI(String CWSF_DESCARGA_MERCA_GP_VI) {
-//        this.CWSF_DESCARGA_MERCA_GP_VI = CWSF_DESCARGA_MERCA_GP_VI;
-//    }
-//
-//    public String getCWSF_CARGA_MERCA_GB_VD() {
-//        return CWSF_CARGA_MERCA_GB_VD;
-//    }
-//
-//    public void setCWSF_CARGA_MERCA_GB_VD(String CWSF_CARGA_MERCA_GB_VD) {
-//        this.CWSF_CARGA_MERCA_GB_VD = CWSF_CARGA_MERCA_GB_VD;
-//    }
-//
-//    public String getCWSF_CARGA_MERCA_GB_VI() {
-//        return CWSF_CARGA_MERCA_GB_VI;
-//    }
-//
-//    public void setCWSF_CARGA_MERCA_GB_VI(String CWSF_CARGA_MERCA_GB_VI) {
-//        this.CWSF_CARGA_MERCA_GB_VI = CWSF_CARGA_MERCA_GB_VI;
-//    }
-//
-//    public String getCWSF_CARGA_MERCA_GP_VD() {
-//        return CWSF_CARGA_MERCA_GP_VD;
-//    }
-//
-//    public void setCWSF_CARGA_MERCA_GP_VD(String CWSF_CARGA_MERCA_GP_VD) {
-//        this.CWSF_CARGA_MERCA_GP_VD = CWSF_CARGA_MERCA_GP_VD;
-//    }
-//
-//    public String getCWSF_CARGA_MERCA_GP_VI() {
-//        return CWSF_CARGA_MERCA_GP_VI;
-//    }
-//
-//    public void setCWSF_CARGA_MERCA_GP_VI(String CWSF_CARGA_MERCA_GP_VI) {
-//        this.CWSF_CARGA_MERCA_GP_VI = CWSF_CARGA_MERCA_GP_VI;
-//    }
-
-//    public String getCWSF_CARGA_FRUTA_PALE_GB_VD() {
-//        return CWSF_CARGA_FRUTA_PALE_GB_VD;
-//    }
-//
-//    public void setCWSF_CARGA_FRUTA_PALE_GB_VD(String CWSF_CARGA_FRUTA_PALE_GB_VD) {
-//        this.CWSF_CARGA_FRUTA_PALE_GB_VD = CWSF_CARGA_FRUTA_PALE_GB_VD;
-//    }
-//
-//    public String getCWSF_CARGA_FRUTA_PALE_GB_VI() {
-//        return CWSF_CARGA_FRUTA_PALE_GB_VI;
-//    }
-//
-//    public void setCWSF_CARGA_FRUTA_PALE_GB_VI(String CWSF_CARGA_FRUTA_PALE_GB_VI) {
-//        this.CWSF_CARGA_FRUTA_PALE_GB_VI = CWSF_CARGA_FRUTA_PALE_GB_VI;
-//    }
-//
-//    public String getCWSF_CARGA_FRUTA_PALE_GP_VD() {
-//        return CWSF_CARGA_FRUTA_PALE_GP_VD;
-//    }
-//
-//    public void setCWSF_CARGA_FRUTA_PALE_GP_VD(String CWSF_CARGA_FRUTA_PALE_GP_VD) {
-//        this.CWSF_CARGA_FRUTA_PALE_GP_VD = CWSF_CARGA_FRUTA_PALE_GP_VD;
-//    }
-//
-//    public String getCWSF_CARGA_FRUTA_PALE_GP_VI() {
-//        return CWSF_CARGA_FRUTA_PALE_GP_VI;
-//    }
-//
-//    public void setCWSF_CARGA_FRUTA_PALE_GP_VI(String CWSF_CARGA_FRUTA_PALE_GP_VI) {
-//        this.CWSF_CARGA_FRUTA_PALE_GP_VI = CWSF_CARGA_FRUTA_PALE_GP_VI;
-//    }
-
     public String getGRABADOR() {
         return GRABADOR;
     }
@@ -404,14 +277,81 @@ public class BeanPorta {
         this.GRABADOR = GRABADOR;
     }
 
-    public BeanPorta(String CWBC_COTIZACION, String CWSF_MUELLAJE_COF_IMPORT, String CWSF_MUELLAJE_COF_EXPORT, String CWSF_DESCARGA_LLENOS_GB_VI, String CWSF_DESCARGA_LLENOS_GB_VD, String CWSF_DESCARGA_LLENOS_GP_VI,
-            String CWSF_DESCARGA_LLENOS_GP_VD, String CWSF_DESCARGA_VACIOS_GB_VI, String CWSF_DESCARGA_VACIOS_GB_VD, String CWSF_DESCARGA_VACIOS_GP_VI, String CWSF_DESCARGA_VACIOS_GP_VD,
-            String CWSF_CARGA_LLENOS_GB_VI, String CWSF_CARGA_LLENOS_GB_VD, String CWSF_CARGA_LLENOS_GP_VI, String CWSF_CARGA_LLENOS_GP_VD, String CWSF_CARGA_VACIOS_GB_VI, String CWSF_CARGA_VACIOS_GB_VD, String CWSF_CARGA_VACIOS_GP_VI,
-            String CWSF_CARGA_VACIOS_GP_VD, String CWSF_DESCARGA_VEHICULOS_GB, String CWSF_DESCARGA_VEHICULOS_GP, String CWSF_REESTIBAS_GB, String CWSF_REESTIBAS_GP, String CWSF_TAPA_ESCOTILLAS_GB, String CWSF_TAPA_ESCOTILLAS_GP,
-            String CWSF_DEPOSITO_TEMP_LLENO_GB, String CWSF_DEPOSITO_TEMP_LLENO_GP, String CWSF_DEPOSITO_TEMP_VACIO_GB, String CWSF_DEPOSITO_TEMP_VACIO_GP, String CWSF_REEMBARQUE_LLENO_GB, String CWSF_REEMBARQUE_LLENO_GP, String CWSF_REEMBARQUE_VACIO_GB,
-            String CWSF_REEMBARQUE_VACIO_GP, String CWSF_DEPOSITO_MOMENT_LLENO_GB, String CWSF_DEPOSITO_MOMENT_LLENO_GP, String CWSF_DEPOSITO_MOMENT_VACIO_GB, String CWSF_DEPOSITO_MOMENT_VACIO_GP,
-            
-            String GRABADOR
+    public String getCWSF_DEPOSITO_MOMENT_GP() {
+        return CWSF_DEPOSITO_MOMENT_GP;
+    }
+
+    public void setCWSF_DEPOSITO_MOMENT_GP(String CWSF_DEPOSITO_MOMENT_GP) {
+        this.CWSF_DEPOSITO_MOMENT_GP = CWSF_DEPOSITO_MOMENT_GP;
+    }
+
+    public String getCWSF_DEPOSITO_MOMENT_GB() {
+        return CWSF_DEPOSITO_MOMENT_GB;
+    }
+
+    public void setCWSF_DEPOSITO_MOMENT_GB(String CWSF_DEPOSITO_MOMENT_GB) {
+        this.CWSF_DEPOSITO_MOMENT_GB = CWSF_DEPOSITO_MOMENT_GB;
+    }
+
+    public String getGRABADOR_FECHA() {
+        return GRABADOR_FECHA;
+    }
+
+    public void setGRABADOR_FECHA(String GRABADOR_FECHA) {
+        this.GRABADOR_FECHA = GRABADOR_FECHA;
+    }
+
+    public String getACTUALIZADOR() {
+        return ACTUALIZADOR;
+    }
+
+    public void setACTUALIZADOR(String ACTUALIZADOR) {
+        this.ACTUALIZADOR = ACTUALIZADOR;
+    }
+
+    public String getACTUALIZADOR_FECHA() {
+        return ACTUALIZADOR_FECHA;
+    }
+
+    public void setACTUALIZADOR_FECHA(String ACTUALIZADOR_FECHA) {
+        this.ACTUALIZADOR_FECHA = ACTUALIZADOR_FECHA;
+    }
+
+    public String getCWSF_REEMBARQUE_LLENO_RF_GP() {
+        return CWSF_REEMBARQUE_LLENO_RF_GP;
+    }
+
+    public void setCWSF_REEMBARQUE_LLENO_RF_GP(String CWSF_REEMBARQUE_LLENO_RF_GP) {
+        this.CWSF_REEMBARQUE_LLENO_RF_GP = CWSF_REEMBARQUE_LLENO_RF_GP;
+    }
+
+    public String getCWSF_REEMBARQUE_LLENO_RF_GB() {
+        return CWSF_REEMBARQUE_LLENO_RF_GB;
+    }
+
+    public void setCWSF_REEMBARQUE_LLENO_RF_GB(String CWSF_REEMBARQUE_LLENO_RF_GB) {
+        this.CWSF_REEMBARQUE_LLENO_RF_GB = CWSF_REEMBARQUE_LLENO_RF_GB;
+    }
+    
+    
+    
+
+    public BeanPorta(String CWBC_COTIZACION, 
+            String CWSF_MUELLAJE_COF_IMPORT, String CWSF_MUELLAJE_COF_EXPORT, 
+            String CWSF_DESCARGA_LLENOS_GB_VI, String CWSF_DESCARGA_LLENOS_GB_VD, String CWSF_DESCARGA_LLENOS_GP_VI, String CWSF_DESCARGA_LLENOS_GP_VD, 
+            String CWSF_DESCARGA_VACIOS_GB_VI, String CWSF_DESCARGA_VACIOS_GB_VD, String CWSF_DESCARGA_VACIOS_GP_VI, String CWSF_DESCARGA_VACIOS_GP_VD,
+            String CWSF_CARGA_LLENOS_GB_VI, String CWSF_CARGA_LLENOS_GB_VD, String CWSF_CARGA_LLENOS_GP_VI, String CWSF_CARGA_LLENOS_GP_VD, 
+            String CWSF_CARGA_VACIOS_GB_VI, String CWSF_CARGA_VACIOS_GB_VD, String CWSF_CARGA_VACIOS_GP_VI,String CWSF_CARGA_VACIOS_GP_VD, 
+            String CWSF_DESCARGA_VEHICULOS_GB, String CWSF_DESCARGA_VEHICULOS_GP, 
+            String CWSF_REESTIBAS_GB, String CWSF_REESTIBAS_GP, 
+            String CWSF_TAPA_ESCOTILLAS_GB, String CWSF_TAPA_ESCOTILLAS_GP,
+            String CWSF_DEPOSITO_TEMP_LLENO_GB, String CWSF_DEPOSITO_TEMP_LLENO_GP, String CWSF_DEPOSITO_TEMP_VACIO_GB, String CWSF_DEPOSITO_TEMP_VACIO_GP, 
+            String CWSF_REEMBARQUE_LLENO_GB, String CWSF_REEMBARQUE_LLENO_RF_GB, String CWSF_REEMBARQUE_LLENO_GP,  String CWSF_REEMBARQUE_LLENO_RF_GP,
+            String CWSF_REEMBARQUE_VACIO_GB,
+            String CWSF_REEMBARQUE_VACIO_GP,
+            String CWSF_DEPOSITO_MOMENT_GP, String CWSF_DEPOSITO_MOMENT_GB,
+            String GRABADOR, String GRABADOR_FECHA
+             
     ) {
 
         this.CWBC_COTIZACION = CWBC_COTIZACION;
@@ -447,15 +387,14 @@ public class BeanPorta {
         this.CWSF_REEMBARQUE_LLENO_GP = CWSF_REEMBARQUE_LLENO_GP;
         this.CWSF_REEMBARQUE_VACIO_GB = CWSF_REEMBARQUE_VACIO_GB;
         this.CWSF_REEMBARQUE_VACIO_GP = CWSF_REEMBARQUE_VACIO_GP;
-        this.CWSF_DEPOSITO_MOMENT_LLENO_GB = CWSF_DEPOSITO_MOMENT_LLENO_GB;
-        this.CWSF_DEPOSITO_MOMENT_LLENO_GP = CWSF_DEPOSITO_MOMENT_LLENO_GP;
-        this.CWSF_DEPOSITO_MOMENT_VACIO_GB = CWSF_DEPOSITO_MOMENT_VACIO_GB;
-        this.CWSF_DEPOSITO_MOMENT_VACIO_GP = CWSF_DEPOSITO_MOMENT_VACIO_GP;
+        this.CWSF_DEPOSITO_MOMENT_GP = CWSF_DEPOSITO_MOMENT_GP;
+        this.CWSF_DEPOSITO_MOMENT_GB = CWSF_DEPOSITO_MOMENT_GB;
         this.GRABADOR = GRABADOR;
+        this.GRABADOR_FECHA = GRABADOR_FECHA;
+        this.CWSF_REEMBARQUE_LLENO_RF_GP = CWSF_REEMBARQUE_LLENO_RF_GP;
+        this.CWSF_REEMBARQUE_LLENO_RF_GB = CWSF_REEMBARQUE_LLENO_RF_GB;
 
     }
-    
-  
 
     private String CWBC_COTIZACION;
     private String CWSF_MUELLAJE_COF_IMPORT;
@@ -490,11 +429,14 @@ public class BeanPorta {
     private String CWSF_REEMBARQUE_LLENO_GP;
     private String CWSF_REEMBARQUE_VACIO_GB;
     private String CWSF_REEMBARQUE_VACIO_GP;
-    private String CWSF_DEPOSITO_MOMENT_LLENO_GB;
-    private String CWSF_DEPOSITO_MOMENT_LLENO_GP;
-    private String CWSF_DEPOSITO_MOMENT_VACIO_GB;
-    private String CWSF_DEPOSITO_MOMENT_VACIO_GP;
+    private String CWSF_DEPOSITO_MOMENT_GP;
+    private String CWSF_DEPOSITO_MOMENT_GB;
     private String GRABADOR;
+    private String GRABADOR_FECHA;
+    private String ACTUALIZADOR;
+    private String ACTUALIZADOR_FECHA;
+    private String CWSF_REEMBARQUE_LLENO_RF_GP;
+    private String CWSF_REEMBARQUE_LLENO_RF_GB;
 
     public BeanPorta() {
     }
