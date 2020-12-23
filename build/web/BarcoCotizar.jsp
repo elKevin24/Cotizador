@@ -75,8 +75,19 @@
 
 
         %>
+        <h3 class="center"> Datos del Buque </h3>
 
-        <h3 style="text-align:center;"> Barco: <%=ship.getNOMBRE_DEL_BUQUE()%> , Numero Cotizacion:  <%= enc.getCWBC_COTIZACION()%>, TBR: <%=ship.getTRB()%>, ESLORA: <%=ship.getESLORA()%>  </h3>
+            
+        <div class="card-panel">
+            <span class="blue-text text-darken-2">
+
+                <h4 class="center"> Buque: <%=ship.getNOMBRE_DEL_BUQUE()%>, 
+                    Numero Cotizacion <%= enc.getCWBC_COTIZACION()%>,
+                    TRB: <%=ship.getTRB()%>,
+                    Eslora: <%=ship.getESLORA()%>
+                </h4></span>
+        </div>
+
 
         <form action="ServletRegistro.do" method="post" >
             <div class="row">
@@ -188,8 +199,8 @@
                     <input type="hidden" size="20" name="GRABADOR" value="<%= usuario%>" >
                     <input type="hidden" size="20" name="TBR" value="<%=ship.getTRB()%>" >
                     <input type="hidden" size="20" name="SLORA" value="<%=ship.getESLORA()%>" >
-                    
-                   
+
+
 
 
 

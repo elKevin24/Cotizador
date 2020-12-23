@@ -73,7 +73,12 @@ public class ServletRegistro extends HttpServlet {
         String TBR = request.getParameter("TBR");
         String SLORA = request.getParameter("SLORA");
         
+        if (HORA_ETA.isEmpty() || HORA_ETA == null){
+            HORA_ETA = "00:00";
+        }
+        
         CWBC_ETA = CWBC_ETA+ " "+HORA_ETA.substring(0,5)+":00";
+        
     
         BeanUsuarios cambio = new BeanUsuarios();
         cambio = Usuario.ObtenerCambioDolar();
@@ -83,6 +88,8 @@ public class ServletRegistro extends HttpServlet {
         
         
         String cotizacion1 = cotizacion.getCWBC_COTIZACION();
+        
+        
         
         
          

@@ -90,9 +90,54 @@ public class BeanDetalleCotizacion {
         this.ACTUALIZADOR_FECHA = ACTUALIZADOR_FECHA;
     }
 
-    
+    public String getDESCRIPCION() {
+        return DESCRIPCION;
+    }
 
-    
+    public void setDESCRIPCION(String DESCRIPCION) {
+        this.DESCRIPCION = DESCRIPCION;
+    }
+
+    public String getDESCUENTO() {
+        return DESCUENTO;
+    }
+
+    public void setDESCUENTO(String DESCUENTO) {
+        this.DESCUENTO = DESCUENTO;
+    }
+
+    public String getVALOR_QUETZAL() {
+        return VALOR_QUETZAL;
+    }
+
+    public void setVALOR_QUETZAL(String VALOR_QUETZAL) {
+        this.VALOR_QUETZAL = VALOR_QUETZAL;
+    }
+
+    public String getFACTOR_AJUSTE() {
+        return FACTOR_AJUSTE;
+    }
+
+    public void setFACTOR_AJUSTE(String FACTOR_AJUSTE) {
+        this.FACTOR_AJUSTE = FACTOR_AJUSTE;
+    }
+
+    public String getREFERENCIA_UNIDAD_MEDIDA() {
+        return REFERENCIA_UNIDAD_MEDIDA;
+    }
+
+    public void setREFERENCIA_UNIDAD_MEDIDA(String REFERENCIA_UNIDAD_MEDIDA) {
+        this.REFERENCIA_UNIDAD_MEDIDA = REFERENCIA_UNIDAD_MEDIDA;
+    }
+
+    public String getDESCRIPCION_UNIDAD_MEDIDA() {
+        return DESCRIPCION_UNIDAD_MEDIDA;
+    }
+
+    public void setDESCRIPCION_UNIDAD_MEDIDA(String DESCRIPCION_UNIDAD_MEDIDA) {
+        this.DESCRIPCION_UNIDAD_MEDIDA = DESCRIPCION_UNIDAD_MEDIDA;
+    }
+
 
     private String CWBC_COTIZACION;
     private String CWDC_CORRELATIVO;
@@ -105,6 +150,12 @@ public class BeanDetalleCotizacion {
     private String GRABADOR_FECHA;
     private String ACTUALIZADOR;
     private String ACTUALIZADOR_FECHA;
+    private String DESCUENTO;
+    private String DESCRIPCION;
+    private String VALOR_QUETZAL;
+    private String FACTOR_AJUSTE;
+    private String REFERENCIA_UNIDAD_MEDIDA;
+    private String DESCRIPCION_UNIDAD_MEDIDA;
 
     public BeanDetalleCotizacion() {
     }

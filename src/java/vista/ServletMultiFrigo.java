@@ -54,14 +54,15 @@ public class ServletMultiFrigo extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        String MuellajeExport = "S";
         String Muellaje = request.getParameter("Muellaje");
 
         String Muellaje1;
 
         if (Muellaje != null) {
-            Muellaje1 = "1";
+            Muellaje1 = "S";
         } else {
-            Muellaje1 = "0";
+            Muellaje1 = "N";
 
         }
 
@@ -70,79 +71,109 @@ public class ServletMultiFrigo extends HttpServlet {
         String CWSF_DESCARGA_LLENOS_GB_VD = request.getParameter("CWSF_DESCARGA_LLENOS_GB_VD");
         String CWSF_DESCARGA_LLENOS_GP_VI = request.getParameter("CWSF_DESCARGA_LLENOS_GP_VI");
         String CWSF_DESCARGA_LLENOS_GP_VD = request.getParameter("CWSF_DESCARGA_LLENOS_GP_VD");
-        
+
         String CWSF_DESCARGA_VACIOS_GB_VI = request.getParameter("CWSF_DESCARGA_VACIOS_GB_VI");
         String CWSF_DESCARGA_VACIOS_GB_VD = request.getParameter("CWSF_DESCARGA_VACIOS_GB_VD");
         String CWSF_DESCARGA_VACIOS_GP_VI = request.getParameter("CWSF_DESCARGA_VACIOS_GP_VI");
         String CWSF_DESCARGA_VACIOS_GP_VD = request.getParameter("CWSF_DESCARGA_VACIOS_GP_VD");
-        
+
         String CWSF_CARGA_LLENOS_GB_VI = request.getParameter("CWSF_CARGA_LLENOS_GB_VI");
         String CWSF_CARGA_LLENOS_GB_VD = request.getParameter("CWSF_CARGA_LLENOS_GB_VD");
         String CWSF_CARGA_LLENOS_GP_VI = request.getParameter("CWSF_CARGA_LLENOS_GP_VI");
         String CWSF_CARGA_LLENOS_GP_VD = request.getParameter("CWSF_CARGA_LLENOS_GP_VD");
-        
+
         String CWSF_CARGA_VACIOS_GB_VI = request.getParameter("CWSF_CARGA_VACIOS_GB_VI");
         String CWSF_CARGA_VACIOS_GB_VD = request.getParameter("CWSF_CARGA_VACIOS_GB_VD");
         String CWSF_CARGA_VACIOS_GP_VI = request.getParameter("CWSF_CARGA_VACIOS_GP_VI");
         String CWSF_CARGA_VACIOS_GP_VD = request.getParameter("CWSF_CARGA_VACIOS_GP_VD");
-        
+
         String CWSF_DESCARGA_VEHICULOS_GB = request.getParameter("CWSF_DESCARGA_VEHICULOS_GB");
         String CWSF_DESCARGA_VEHICULOS_GP = request.getParameter("CWSF_DESCARGA_VEHICULOS_GP");
-        
+
         String CWSF_REESTIBAS_GB = request.getParameter("CWSF_REESTIBAS_GB");
         String CWSF_REESTIBAS_GP = request.getParameter("CWSF_REESTIBAS_GP");
-        
+
         String CWSF_TAPA_ESCOTILLAS_GB = request.getParameter("CWSF_TAPA_ESCOTILLAS_GB");
         String CWSF_TAPA_ESCOTILLAS_GP = request.getParameter("CWSF_TAPA_ESCOTILLAS_GP");
-        
-        
+
         String CWSF_DEPOSITO_TEMP_LLENO_GB = request.getParameter("CWSF_DEPOSITO_TEMP_LLENO_GB");
-        String CWSF_DEPOSITO_TEMP_LLENO_GP = request.getParameter("CWSF_DEPOSITO_TEMP_LLENO_GP");        
+        String CWSF_DEPOSITO_TEMP_LLENO_GP = request.getParameter("CWSF_DEPOSITO_TEMP_LLENO_GP");
         String CWSF_DEPOSITO_TEMP_VACIO_GB = request.getParameter("CWSF_DEPOSITO_TEMP_VACIO_GB");
         String CWSF_DEPOSITO_TEMP_VACIO_GP = request.getParameter("CWSF_DEPOSITO_TEMP_VACIO_GP");
-        
+
         String CWSF_REEMBARQUE_LLENO_GB = request.getParameter("CWSF_REEMBARQUE_LLENO_GB");
         String CWSF_REEMBARQUE_LLENO_GP = request.getParameter("CWSF_REEMBARQUE_LLENO_GP");
         String CWSF_REEMBARQUE_VACIO_GB = request.getParameter("CWSF_REEMBARQUE_VACIO_GB");
         String CWSF_REEMBARQUE_VACIO_GP = request.getParameter("CWSF_REEMBARQUE_VACIO_GP");
-        
-        String CWSF_DEPOSITO_MOMENT_LLENO_GB = request.getParameter("CWSF_DEPOSITO_MOMENT_LLENO_GB");
-        String CWSF_DEPOSITO_MOMENT_LLENO_GP = request.getParameter("CWSF_DEPOSITO_MOMENT_LLENO_GP");
-        String CWSF_DEPOSITO_MOMENT_VACIO_GB = request.getParameter("CWSF_DEPOSITO_MOMENT_VACIO_GB");
-        String CWSF_DEPOSITO_MOMENT_VACIO_GP = request.getParameter("CWSF_DEPOSITO_MOMENT_VACIO_GP");
-        
+
+        String CWSF_DEPOSITO_MOMENT_GP = request.getParameter("CWSF_DEPOSITO_MOMENT_GP");
+        String CWSF_DEPOSITO_MOMENT_GB = request.getParameter("CWSF_DEPOSITO_MOMENT_GB");
+
         String CWSF_DESCARGA_MERCA_GB_VD = request.getParameter("CWSF_DESCARGA_MERCA_GB_VD");
         String CWSF_DESCARGA_MERCA_GB_VI = request.getParameter("CWSF_DESCARGA_MERCA_GB_VI");
         String CWSF_DESCARGA_MERCA_GP_VD = request.getParameter("CWSF_DESCARGA_MERCA_GP_VD");
         String CWSF_DESCARGA_MERCA_GP_VI = request.getParameter("CWSF_DESCARGA_MERCA_GP_VI");
-        
+
         String CWSF_CARGA_MERCA_GB_VD = request.getParameter("CWSF_CARGA_MERCA_GB_VD");
         String CWSF_CARGA_MERCA_GB_VI = request.getParameter("CWSF_CARGA_MERCA_GB_VI");
         String CWSF_CARGA_MERCA_GP_VD = request.getParameter("CWSF_CARGA_MERCA_GP_VD");
         String CWSF_CARGA_MERCA_GP_VI = request.getParameter("CWSF_CARGA_MERCA_GP_VI");
+
+        String GRABADOR = request.getParameter("GRABADOR");
+
+        String CWSF_REEMBARQUE_LLENO_RF_GP = request.getParameter("CWSF_REEMBARQUE_LLENO_RF_GP");
+        String CWSF_REEMBARQUE_LLENO_RF_GB = request.getParameter("CWSF_REEMBARQUE_LLENO_RF_GB");
+
+        String CWSF_DESCARGA_MERCA_GP_VI_HR = request.getParameter("DGPHVI");
+        String CWSF_DESCARGA_MERCA_GP_VD_HR = request.getParameter("DGPHVD");
+        String CWSF_CARGA_MERCA_GP_VI_HR = request.getParameter("CGPHVI");
+        String CWSF_CARGA_MERCA_GP_VD_HR = request.getParameter("CGPHVD");
         
-        String CWSF_CARGA_FRUTA_PALE_GB_VD = request.getParameter("CWSF_CARGA_FRUTA_PALE_GB_VD");
+        String CWSF_CARGA_FRUTA_PALE_GP_VI = request.getParameter("CWSF_CARGA_FRUTA_PALE_GP_VI");
         String CWSF_CARGA_FRUTA_PALE_GB_VI = request.getParameter("CWSF_CARGA_FRUTA_PALE_GB_VI");
         String CWSF_CARGA_FRUTA_PALE_GP_VD = request.getParameter("CWSF_CARGA_FRUTA_PALE_GP_VD");
-        String CWSF_CARGA_FRUTA_PALE_GP_VI = request.getParameter("CWSF_CARGA_FRUTA_PALE_GP_VI");
-        String GRABADOR = request.getParameter("GRABADOR");
-        //String GRABADOR_FECHA = request.getParameter("GRABADOR_FECHA");
-        //String ACTUALIZADOR = request.getParameter("ACTUALIZADOR");
-        //String ACTUALIZADOR_FECHA = request.getParameter("ACTUALIZADOR_FECHA");
+        String CWSF_CARGA_FRUTA_PALE_GB_VD = request.getParameter("CWSF_CARGA_FRUTA_PALE_GB_VD");
+       
+        String CWSF_DESCARGA_FRUTA_PALE_GP_VI = request.getParameter("CWSF_DESCARGA_FRUTA_PALE_GP_VI");
+        String CWSF_DESCARGA_FRUTA_PALE_GB_VI = request.getParameter("CWSF_DESCARGA_FRUTA_PALE_GB_VI");
+        String CWSF_DESCARGA_FRUTA_PALE_GP_VD = request.getParameter("CWSF_DESCARGA_FRUTA_PALE_GP_VD");
+        String CWSF_DESCARGA_FRUTA_PALE_GB_VD = request.getParameter("CWSF_DESCARGA_FRUTA_PALE_GB_VD");
+        
+        String CWSF_CARGA_FRUTA_PALE_GP_VI_HR = request.getParameter("CFGPHVI");
+        String CWSF_CARGA_FRUTA_PALE_GP_VD_HR = request.getParameter("CFGPHVD");
+        String CWSF_DESCA_FRUTA_PALE_GP_VI_HR = request.getParameter("DFGPHVI");
+        String CWSF_DESCA_FRUTA_PALE_GP_VD_HR = request.getParameter("DFGPHVD");
+        
+        
+        
         
         
 
         BeanMultiFrigo busuario;
        // busuario = new BeanMultiFrigo(CWBC_COTIZACION, Muellaje1, Muellaje1);
-        busuario = new BeanMultiFrigo(CWBC_COTIZACION, Muellaje1, Muellaje1,  CWSF_DESCARGA_LLENOS_GB_VI,  CWSF_DESCARGA_LLENOS_GB_VD,  CWSF_DESCARGA_LLENOS_GP_VI,
+        busuario = new BeanMultiFrigo(CWBC_COTIZACION, Muellaje1, MuellajeExport,  CWSF_DESCARGA_LLENOS_GB_VI,  CWSF_DESCARGA_LLENOS_GB_VD,  CWSF_DESCARGA_LLENOS_GP_VI,
              CWSF_DESCARGA_LLENOS_GP_VD,  CWSF_DESCARGA_VACIOS_GB_VI,  CWSF_DESCARGA_VACIOS_GB_VD,  CWSF_DESCARGA_VACIOS_GP_VI,  CWSF_DESCARGA_VACIOS_GP_VD,
              CWSF_CARGA_LLENOS_GB_VI,  CWSF_CARGA_LLENOS_GB_VD,  CWSF_CARGA_LLENOS_GP_VI,  CWSF_CARGA_LLENOS_GP_VD,  CWSF_CARGA_VACIOS_GB_VI,  CWSF_CARGA_VACIOS_GB_VD,  CWSF_CARGA_VACIOS_GP_VI,
              CWSF_CARGA_VACIOS_GP_VD,  CWSF_DESCARGA_VEHICULOS_GB,  CWSF_DESCARGA_VEHICULOS_GP,  CWSF_REESTIBAS_GB,  CWSF_REESTIBAS_GP,  CWSF_TAPA_ESCOTILLAS_GB,  CWSF_TAPA_ESCOTILLAS_GP,
              CWSF_DEPOSITO_TEMP_LLENO_GB,  CWSF_DEPOSITO_TEMP_LLENO_GP,  CWSF_DEPOSITO_TEMP_VACIO_GB,  CWSF_DEPOSITO_TEMP_VACIO_GP,  CWSF_REEMBARQUE_LLENO_GB,  CWSF_REEMBARQUE_LLENO_GP,  CWSF_REEMBARQUE_VACIO_GB,
-             CWSF_REEMBARQUE_VACIO_GP,  CWSF_DEPOSITO_MOMENT_LLENO_GB,  CWSF_DEPOSITO_MOMENT_LLENO_GP,  CWSF_DEPOSITO_MOMENT_VACIO_GB,  CWSF_DEPOSITO_MOMENT_VACIO_GP,
+             CWSF_REEMBARQUE_VACIO_GP,  CWSF_DEPOSITO_MOMENT_GB,  CWSF_DEPOSITO_MOMENT_GP,  
              CWSF_DESCARGA_MERCA_GB_VD,  CWSF_DESCARGA_MERCA_GB_VI,  CWSF_DESCARGA_MERCA_GP_VD,  CWSF_DESCARGA_MERCA_GP_VI,  CWSF_CARGA_MERCA_GB_VD,  CWSF_CARGA_MERCA_GB_VI,
              CWSF_CARGA_MERCA_GP_VD,  CWSF_CARGA_MERCA_GP_VI,  CWSF_CARGA_FRUTA_PALE_GB_VD,  CWSF_CARGA_FRUTA_PALE_GB_VI,  CWSF_CARGA_FRUTA_PALE_GP_VD,  CWSF_CARGA_FRUTA_PALE_GP_VI,
-             GRABADOR);
+             GRABADOR,
+            CWSF_REEMBARQUE_LLENO_RF_GP,
+            CWSF_REEMBARQUE_LLENO_RF_GB,
+            CWSF_DESCARGA_MERCA_GP_VD_HR,
+            CWSF_DESCARGA_MERCA_GP_VI_HR,
+            CWSF_CARGA_MERCA_GP_VD_HR,
+            CWSF_CARGA_MERCA_GP_VI_HR,
+            CWSF_CARGA_FRUTA_PALE_GP_VI_HR,
+            CWSF_CARGA_FRUTA_PALE_GP_VD_HR,
+            CWSF_DESCA_FRUTA_PALE_GP_VI_HR,
+            CWSF_DESCA_FRUTA_PALE_GP_VD_HR,
+            CWSF_DESCARGA_FRUTA_PALE_GB_VD,
+            CWSF_DESCARGA_FRUTA_PALE_GB_VI,
+            CWSF_DESCARGA_FRUTA_PALE_GP_VD,
+            CWSF_DESCARGA_FRUTA_PALE_GP_VI);
 
            boolean sw = Detalle_MF.agregarDetalleMF(busuario);
 

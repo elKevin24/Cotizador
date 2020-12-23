@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="555" pageHeight="802" columnWidth="535" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="de0f7bc7-26d6-4fb3-9ed9-fe0af3b6a991">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT * FROM 
+CW_BUQUE_COTIZA]]>
+	</queryString>
+	<field name="CWBC_COTIZACION" class="java.math.BigDecimal"/>
+	<field name="CWBC_LR" class="java.lang.String"/>
+	<field name="CWBC_SENAL_DISTINTIVA" class="java.lang.String"/>
+	<field name="CWBC_BUQUE_VIAJE" class="java.lang.String"/>
+	<field name="CWBC_ETA" class="java.sql.Timestamp"/>
+	<field name="CWBC_TIPO_CAMBIO" class="java.math.BigDecimal"/>
+	<field name="CWBC_TIPO_CAMBIO_FECHA" class="java.sql.Timestamp"/>
+	<field name="CWBC_USUARIO_SERVICIO" class="java.math.BigDecimal"/>
+	<field name="CWBC_NIT" class="java.lang.String"/>
+	<field name="CWBC_TIPO_OPERACION" class="java.math.BigDecimal"/>
+	<field name="GRABADOR" class="java.lang.String"/>
+	<field name="GRABADOR_FECHA" class="java.sql.Timestamp"/>
+	<field name="ACTUALIZADOR" class="java.lang.String"/>
+	<field name="ACTUALIZADOR_FECHA" class="java.sql.Timestamp"/>
+	<field name="CWBC_ESTADO" class="java.lang.String"/>
+	<field name="CWBC_HORA" class="java.math.BigDecimal"/>
+	<field name="CWBC_TRB" class="java.math.BigDecimal"/>
+	<field name="CWBC_ESLORA" class="java.math.BigDecimal"/>
+	<group name="CWBC_COTIZACION">
+		<groupExpression><![CDATA[$F{CWBC_COTIZACION}]]></groupExpression>
+		<groupHeader>
+			<band height="33">
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="100" height="32" forecolor="#666666" backcolor="#E6E6E6" uuid="46bb96e2-69a8-4219-8a78-28f606518eae"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[CWBC_COTIZACION]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="100" y="0" width="455" height="32" forecolor="#006699" backcolor="#E6E6E6" uuid="08cc6185-c710-4708-ac97-e7e126f12347"/>
+					<textElement>
+						<font size="24" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CWBC_COTIZACION}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="-20" y="32" width="595" height="1" forecolor="#666666" uuid="3c5ad669-4a12-4a92-970e-2e758371099a"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="80acef7d-46e2-4be2-a099-35039b2901e5"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="019a2c25-34e2-43f8-a955-7c5e2a0bf72f"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[TITLE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="e2bed46d-e7fc-45b0-8b71-fd2e5ce74aac"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Add a description here]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="2b9e4cda-c02a-4480-9221-8cde5865af8a"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="0fb82692-b252-4ddc-ad61-740042ae230a"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CWBC_LR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="32" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="d8e7b9b8-cb0b-4d62-b6e7-a510d20a19cb"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CWBC_SENAL_DISTINTIVA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="64" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="0713cb16-87fc-494b-bc32-0eebc8aa8706"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CWBC_BUQUE_VIAJE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="96" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="66f29a3a-7763-4dbc-b65c-2937a0f7e896"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CWBC_ETA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="128" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="0b8a3f73-ade8-46bf-9f82-17fe024b602a"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CWBC_TIPO_CAMBIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="160" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="10bffbe8-bfa4-44e7-b367-0aa879b86466"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CWBC_TIPO_CAMBIO_FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="192" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="b2874643-7ed4-4336-936c-4b36da607412"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CWBC_USUARIO_SERVICIO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="224" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="e71e0465-5d91-4008-a6ef-63b1eb871e89"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CWBC_NIT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="256" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="9c892d37-183e-4927-9ea1-faa4d574d635"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CWBC_TIPO_OPERACION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="288" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="b6e0f735-f31d-4960-ab0e-2e40f46aee49"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GRABADOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="320" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="2e585a69-a03d-4213-ac56-41deb3218e24"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[GRABADOR_FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="352" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="2c59315e-0373-43d2-b7bc-5a93699ab789"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ACTUALIZADOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="384" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="116669de-fdfa-4cb9-a1ef-34d814da142d"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ACTUALIZADOR_FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="416" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="1f796dff-57fc-4bb7-a764-8f3c859d37de"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CWBC_ESTADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="448" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="c07c2cae-3c11-496b-b78b-15979d991370"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CWBC_HORA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="480" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="d5a9c5d7-72d0-470c-ad2d-ec14a520101b"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CWBC_TRB]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="512" y="0" width="32" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="b553e4b9-ba88-4e48-954f-b1cd8cba194a"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CWBC_ESLORA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="f3d8a8b9-fb50-4af9-9989-0b3d0fe3a9c1"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="32" height="20" uuid="1f837df5-7ec3-4ad8-929a-1f18a0da42f4"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CWBC_LR}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="32" y="0" width="32" height="20" uuid="57433823-4583-455a-af25-bb0263deec04"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CWBC_SENAL_DISTINTIVA}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="64" y="0" width="32" height="20" uuid="98003b98-ee0e-497d-8ff9-f5786d8c74ca"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CWBC_BUQUE_VIAJE}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="96" y="0" width="32" height="20" uuid="67fd7e05-10bf-4f52-83ff-40f5facd996b"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CWBC_ETA}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="128" y="0" width="32" height="20" uuid="3afba261-9ae0-450b-a850-d4bc8c3ce67b"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CWBC_TIPO_CAMBIO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="160" y="0" width="32" height="20" uuid="2880be7d-d603-41e9-a4db-30babaa458ba"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CWBC_TIPO_CAMBIO_FECHA}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="192" y="0" width="32" height="20" uuid="b75813a5-22ae-47f7-84dc-693932f2d035"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CWBC_USUARIO_SERVICIO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="224" y="0" width="32" height="20" uuid="703aa31d-a14d-42e4-bdb7-cf98a4a0ccd9"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CWBC_NIT}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="256" y="0" width="32" height="20" uuid="106d13cf-6565-43d8-9460-4e80b982ed8d"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CWBC_TIPO_OPERACION}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="288" y="0" width="32" height="20" uuid="e15ecdad-942f-478c-9952-7cb8e4030f1c"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{GRABADOR}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="320" y="0" width="32" height="20" uuid="b0061582-b18e-4a69-ab43-14b3255ed60f"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{GRABADOR_FECHA}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="352" y="0" width="32" height="20" uuid="4fc74a06-cce3-461e-8f9c-e59ab2cf50db"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ACTUALIZADOR}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="384" y="0" width="32" height="20" uuid="b6d8aacc-a13f-4cb2-baf9-43894d3b7fed"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ACTUALIZADOR_FECHA}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="416" y="0" width="32" height="20" uuid="2871e55c-250f-48a3-a9fa-134dc17c450a"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CWBC_ESTADO}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="448" y="0" width="32" height="20" uuid="ea508155-c030-4a02-a018-97ff6a6d425b"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CWBC_HORA}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="480" y="0" width="32" height="20" uuid="f9c054ee-b45f-47f5-9fae-0eeece69a7f1"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CWBC_TRB}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="512" y="0" width="32" height="20" uuid="b8af0dba-a452-4def-8c68-4e589c7f7ec9"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CWBC_ESLORA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="18ad2188-7335-431e-848b-273f8be0c168"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="f4645b43-9df5-43e1-ae9e-8a89a63fd6ef"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="fd308c60-221c-4fac-aacf-978dd61731e4"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

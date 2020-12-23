@@ -268,12 +268,12 @@
                         <th >Vehiculos</th>
 
                         <td >
-                            <input  placeholder="Movimientos" name="CWSF_DESCARGA_VEHICULOS_GP" type="number" class="validate">
+                            <input  placeholder="Unidades" name="CWSF_DESCARGA_VEHICULOS_GP" type="number" class="validate">
                             <label for="CWSF_DESCARGA_VEHICULOS_GP"></label>
                         </td>
 
                         <td >
-                            <input  placeholder="Movimientos" name="CWSF_DESCARGA_VEHICULOS_GB" type="number" class="validate">
+                            <input  placeholder="Unidades" name="CWSF_DESCARGA_VEHICULOS_GB" type="number" class="validate">
                             <label for="CWSF_DESCARGA_VEHICULOS_GB"></label>
                         </td>  
                     </tr>
@@ -508,7 +508,7 @@
                                     </td>
 
                                     <td>
-                                        <input  placeholder="Movimientos" name="CGPHVI" type="number" class="validate">
+                                        <input  placeholder="Horas" name="CGPHVI" type="number" class="validate">
                                         <label for="CGPHVI"></label>
                                     </td>
 
@@ -521,7 +521,7 @@
                                         <label for="CWSF_CARGA_MERCA_GP_VD"></label>
                                     </td>
                                     <td>
-                                        <input  placeholder="Movimientos" name="CGPHVD" type="number" class="validate">
+                                        <input  placeholder="Horas" name="CGPHVD" type="number" class="validate">
                                         <label for="CGPHVD"></label>
                                     </td>
 
