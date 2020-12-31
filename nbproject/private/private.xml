@@ -4,18 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/web/Detalle.jsp</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/web/Conexion1.jsp</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/controlador/BeanEncabezado.java</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/web/Login.jsp</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/modelo/Encabezado.java</file>
             <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/modelo/Conexion.java</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/modelo/NewClass.java</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/modelo/Datosconexion.java</file>
+            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/web/Cotizacion.jsp</file>
+            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/web/Conexion1.jsp</file>
             <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/web/BarcoCotizar.jsp</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/web/PDF.jsp</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/modelo/BarcosNuevo.java</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/vista/ServletRegistro.java</file>
-            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/src/java/modelo/DetalleCotizacion.java</file>
+            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/web/css/newcss.css</file>
+            <file>file:/C:/Users/Kcordon/Documents/NetBeansProjects/Cotizador/web/Report/Detalle.jrxml</file>
         </group>
     </open-files>
 </project-private>

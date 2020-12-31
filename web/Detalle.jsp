@@ -25,7 +25,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
+        <link href="css/newcss.css" rel="stylesheet" type="text/css"/>
 
         <%
             String Cotizacion = request.getParameter("Cotizacion");
@@ -50,6 +50,13 @@
 
         </head>
         <body>
+            <form name="form1" action="Cotizacion.jsp" target="_black">
+                <input type="hidden" name="txtparametro" value="<%= Cotizacion%>"/>
+            <button type="submit"><img src="img/descarga.png" alt=""/></button>
+            
+        </form>
+            
+           
             <div class="container">
 
                 <table id="1" class="table table-bordered">
@@ -176,7 +183,7 @@
                             <th>CANTIDAD</th>                           
                             <th>CODIGO TARIFA</th>                            
                             <th>VALOR</th>
-                            <th>SUB_TOTAL</th>
+                            <th>SUB TOTAL</th>
                             <th>DESCUENTO</th>
                             <th>DESCRIPCION</th>
                             <th>VALOR QUETZAL</th>

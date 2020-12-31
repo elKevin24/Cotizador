@@ -16,10 +16,7 @@ public class Barcos {
 public static LinkedList<BeanBarcos> consultarBarco(String entrada) throws SQLException
 {
      LinkedList<BeanBarcos> usuarios = new LinkedList<>();
-     String sql;
-     
-    
-          sql =  "SELECT DISTINCT LR, NOMBRE_DEL_BUQUE, SENAL_DISTINTIVA, TRB, ESLORA\n" +
+     String sql  =  "SELECT DISTINCT LR, NOMBRE_DEL_BUQUE, SENAL_DISTINTIVA, TRB, ESLORA\n" +
 "FROM(\n" +
 "SELECT A.LR, A.NOMBRE_DEL_BUQUE NOMBRE_DEL_BUQUE, A.SENAL_DISTINTIVA, A.TRB, A.ESLORA\n" +
 "FROM PUERTO.EOPT_BARCOS A\n" +
