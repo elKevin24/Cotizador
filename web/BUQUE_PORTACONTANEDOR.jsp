@@ -27,7 +27,7 @@
         <%
             String Cotizacion = request.getParameter("Cotizacion");
             BeanEncabezado enc = new BeanEncabezado();
-            enc = Encabezado.CotizacionGeneral(Cotizacion);
+            enc = Encabezado.Cotizacion(Cotizacion);
         %>
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -42,7 +42,7 @@
 
             <div class="container">
 
-                <h5> Cotizacion LR: <%= enc.getCWBC_LR() + "  ETA: " + enc.getCWBC_ETA() + "  SEÑAL DISTINTIVA: " + enc.getCWBC_SENAL_DISTINTIVA() + " COTIZACION: " + enc.getCWBC_COTIZACION()%></h5>
+                <h5 class="text-center"> <%="Cotizacion: "+ enc.getCWBC_COTIZACION()+ ", Nombre Buque:"+enc.getCWBC_BUQUE_VIAJE() +", LR: " + enc.getCWBC_LR() + ",  ETA: " + enc.getCWBC_ETA() + ",  SEÑAL DISTINTIVA: " + enc.getCWBC_SENAL_DISTINTIVA() %></h5>
 
 
             <form action="ServlePorta.do" method="post" >
@@ -136,23 +136,23 @@
 
                              <td colspan="2">
 
-                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_LLENOS_GP_VI" type="text" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_LLENOS_GP_VI" type="number" class="validate">
                                 <label for="CWSF_DESCARGA_LLENOS_GB_VI"></label>
 
                             </td>
 
                              <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_LLENOS_GB_VI" type="text" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_LLENOS_GB_VI" type="number" class="validate">
                                 <label for="CWSF_DESCARGA_LLENOS_GP_VI"></label>
                             </td>
 
                              <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_LLENOS_GP_VD" type="text" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_LLENOS_GP_VD" type="number" class="validate">
                                 <label for="CWSF_DESCARGA_LLENOS_GB_VD"></label>
                             </td>
 
                              <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_LLENOS_GB_VD" type="text" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_LLENOS_GB_VD" type="number" class="validate">
                                 <label for="CWSF_DESCARGA_LLENOS_GP_VD"></label>
                             </td>
 
@@ -163,22 +163,22 @@
                             <th>Descaga Vacios</th>
 
                              <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_VACIOS_GP_VI" type="text" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_VACIOS_GP_VI" type="number" class="validate">
                                 <label for="VDGPDL"></label>
                             </td>
 
                              <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_VACIOS_GB_VI" type="text" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_VACIOS_GB_VI" type="number" class="validate">
                                 <label for="VDGPDL"></label>
                             </td>
 
                              <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_VACIOS_GP_VD" type="text" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_VACIOS_GP_VD" type="number" class="validate">
                                 <label for="VDGPDL"></label>
                             </td>
 
                              <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_VACIOS_GB_VD" type="text" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_VACIOS_GB_VD" type="number" class="validate">
                                 <label for="VDGPDL"></label>
                             </td>
 
@@ -189,22 +189,22 @@
                             <th>Carga Llenos</th>
 
                              <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_CARGA_LLENOS_GP_VI" type="text" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_CARGA_LLENOS_GP_VI" type="number" class="validate">
                                 <label for="CWSF_CARGA_LLENOS_GP_VI"></label>
                             </td>
 
                              <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_CARGA_LLENOS_GB_VI" type="text" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_CARGA_LLENOS_GB_VI" type="number" class="validate">
                                 <label for="CWSF_CARGA_LLENOS_GB_VI"></label>
                             </td>
 
                              <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_CARGA_LLENOS_GP_VD" type="text" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_CARGA_LLENOS_GP_VD" type="number" class="validate">
                                 <label for="CWSF_CARGA_LLENOS_GP_VD"></label>
                             </td>
 
                              <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_CARGA_LLENOS_GB_VD" type="text" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_CARGA_LLENOS_GB_VD" type="number" class="validate">
                                 <label for="CWSF_CARGA_LLENOS_GB_VD"></label>
                             </td>
 
@@ -215,22 +215,22 @@
                             <th>Carga Vacios</th>
 
                              <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_CARGA_VACIOS_GP_VI" type="text" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_CARGA_VACIOS_GP_VI" type="number" class="validate">
                                 <label for="CWSF_CARGA_VACIOS_GP_VI"></label>
                             </td>
 
                              <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_CARGA_VACIOS_GB_VI" type="text" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_CARGA_VACIOS_GB_VI" type="number" class="validate">
                                 <label for="CWSF_CARGA_VACIOS_GB_VI"></label>
                             </td>
 
                              <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_CARGA_VACIOS_GP_VD" type="text" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_CARGA_VACIOS_GP_VD" type="number" class="validate">
                                 <label for="CWSF_CARGA_VACIOS_GP_VD"></label>
                             </td>
 
                              <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_CARGA_VACIOS_GB_VD" type="text" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_CARGA_VACIOS_GB_VD" type="number" class="validate">
                                 <label for="CWSF_CARGA_VACIOS_GB_VD"></label>
                             </td>
 
@@ -241,12 +241,12 @@
                             <th>Vehiculos</th>
 
                              <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_VEHICULOS_GP" type="text" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_VEHICULOS_GP" type="number" class="validate">
                                 <label for="CWSF_DESCARGA_VEHICULOS_GP"></label>
                             </td>
 
                              <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_VEHICULOS_GB" type="text" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_VEHICULOS_GB" type="number" class="validate">
                                 <label for="CWSF_DESCARGA_VEHICULOS_GB"></label>
                             </td>  
                         </tr>
@@ -255,12 +255,12 @@
                             <th>Reestibas</th>
 
                              <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_REESTIBAS_GP" type="text" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_REESTIBAS_GP" type="number" class="validate">
                                 <label for="CWSF_REESTIBAS_GP"></label>
                             </td>
 
                              <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_REESTIBAS_GB" type="text" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_REESTIBAS_GB" type="number" class="validate">
                                 <label for="CWSF_REESTIBAS_GB"></label>
                             </td>  
                         </tr>
@@ -269,12 +269,12 @@
                             <th>Tapa Escotillas</th>
 
                              <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_TAPA_ESCOTILLAS_GP" type="text" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_TAPA_ESCOTILLAS_GP" type="number" class="validate">
                                 <label for="CWSF_TAPA_ESCOTILLAS_GP"></label>
                             </td>
 
                              <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_TAPA_ESCOTILLAS_GB" type="text" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_TAPA_ESCOTILLAS_GB" type="number" class="validate">
                                 <label for="CWSF_TAPA_ESCOTILLAS_GB"></label>
                             </td>  
                         </tr>
@@ -314,21 +314,21 @@
                         <th>Depositos Temporales</th>
 
                         <td>
-                            <input  placeholder="Movimientos" name="CWSF_DEPOSITO_TEMP_LLENO_GP" type="text" class="validate">
+                            <input  placeholder="Movimientos" name="CWSF_DEPOSITO_TEMP_LLENO_GP" type="number" class="validate">
                             <label for="CWSF_DEPOSITO_TEMP_LLENO_GP"></label>
                         </td>
 
                         <td>
-                            <input  placeholder="Movimientos" name="CWSF_DEPOSITO_TEMP_VACIO_GP" type="text" class="validate">
+                            <input  placeholder="Movimientos" name="CWSF_DEPOSITO_TEMP_VACIO_GP" type="number" class="validate">
                             <label for="CWSF_DEPOSITO_TEMP_VACIO_GP"></label>
                         </td> 
                         <td>
-                            <input  placeholder="Movimientos" name="CWSF_DEPOSITO_TEMP_LLENO_GB" type="text" class="validate">
+                            <input  placeholder="Movimientos" name="CWSF_DEPOSITO_TEMP_LLENO_GB" type="number" class="validate">
                             <label for="CWSF_DEPOSITO_TEMP_LLENO_GB"></label>
                         </td>
 
                         <td>
-                            <input  placeholder="Movimientos" name="CWSF_DEPOSITO_TEMP_VACIO_GB" type="text" class="validate">
+                            <input  placeholder="Movimientos" name="CWSF_DEPOSITO_TEMP_VACIO_GB" type="number" class="validate">
                             <label for="CWSF_DEPOSITO_TEMP_VACIO_GB"></label>
                         </td> 
                     </tr>
@@ -365,30 +365,30 @@
                         <th>Reembarques</th>
 
                         <td>
-                            <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_LLENO_GP" type="text" class="validate">
+                            <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_LLENO_GP" type="number" class="validate">
                             <label for="CWSF_REEMBARQUE_LLENO_GP"></label>
                         </td>
 
                         <td>
-                            <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_LLENO_RF_GP" type="text" class="validate">
+                            <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_LLENO_RF_GP" type="number" class="validate">
                             <label for="CWSF_REEMBARQUE_LLENO_RF_GP"></label>
                         </td>
 
                         <td>
-                            <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_VACIO_GP" type="text" class="validate">
+                            <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_VACIO_GP" type="number" class="validate">
                             <label for="CWSF_REEMBARQUE_VACIO_GP"></label>
                         </td> 
                         <td>
-                            <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_LLENO_GB" type="text" class="validate">
+                            <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_LLENO_GB" type="number" class="validate">
                             <label for="CWSF_REEMBARQUE_LLENO_GB"></label>
                         </td>
                         <td>
-                            <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_LLENO_RF_GB" type="text" class="validate">
+                            <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_LLENO_RF_GB" type="number" class="validate">
                             <label for="CWSF_REEMBARQUE_LLENO_RF_GB"></label>
                         </td>
 
                         <td>
-                            <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_VACIO_GB" type="text" class="validate">
+                            <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_VACIO_GB" type="number" class="validate">
                             <label for="CWSF_REEMBARQUE_VACIO_GB"></label>
                         </td>  
                     </tr>
@@ -418,12 +418,12 @@
                         <th>Depositos Momentaneos</th>
 
                         <td>
-                            <input  placeholder="Movimientos" name="CWSF_DEPOSITO_MOMENT_GP" type="text" class="validate">
+                            <input  placeholder="Movimientos" name="CWSF_DEPOSITO_MOMENT_GP" type="number" class="validate">
                             <label for="CWSF_DEPOSITO_MOMENT_GP"></label>
                         </td>
 
                         <td>
-                            <input  placeholder="Movimientos" name="CWSF_DEPOSITO_MOMENT_GB" type="text" class="validate">
+                            <input  placeholder="Movimientos" name="CWSF_DEPOSITO_MOMENT_GB" type="number" class="validate">
                             <label for="CWSF_DEPOSITO_MOMENT_GB"></label>
                         </td> 
 

@@ -77,7 +77,7 @@ public class ServletRegistro extends HttpServlet {
             HORA_ETA = "00:00";
         }
         
-        CWBC_ETA = CWBC_ETA+ " "+HORA_ETA.substring(0,5)+":00";
+        CWBC_ETA = CWBC_ETA+" "+HORA_ETA.substring(0,5)+":00";
         
     
         BeanUsuarios cambio = new BeanUsuarios();
@@ -98,17 +98,17 @@ public class ServletRegistro extends HttpServlet {
         
         //String nombre, String num_convenio, String descripcion, 
            //BigDecimal monto_total, String direccion, String id_municipio, String fecha, String id_tipo_proyecto
-        boolean sw = Encabezado.agregarEncabezado(busuario);
+        String sw = Encabezado.agregarEncabezado(busuario);
 
         PrintWriter out = response.getWriter();
-        out.println( CWBC_COTIZACION  + LR + CWBC_SENAL_DISTINTIVA + "ETA "+CWBC_ETA+ " Cambio" + cambio.getCAMBIO() +  CWBC_TIPO_CAMBIO_FECHA.substring(0, 10)+CWBC_USUARIO_SERVICIO+ CWBC_NIT+ "tipo operacion: "+ CWBC_TIPO_OPERACION);
+        out.println("COTIZACION: "+CWBC_COTIZACION  + " LR: "+LR + " SEÑAL DISTINTIVA: "+CWBC_SENAL_DISTINTIVA + " ETA: "+CWBC_ETA+ " Cambio: " + cambio.getCAMBIO() + " Fecha Tipo de Cambio: "+ CWBC_TIPO_CAMBIO_FECHA + " Usuario: "+CWBC_USUARIO_SERVICIO+ CWBC_NIT+ "tipo operacion: "+ CWBC_TIPO_OPERACION);
 
-        if (sw) {
+        if (sw.equalsIgnoreCase("bien")) {
             response.sendRedirect("Guardado.jsp?Cotizacion="+CWBC_COTIZACION+"");
 
         } else {
 
-            out.println("Si estas viendo este mensaje es por que algo salio mal, no se pudo completar tu solicitud.");
+            out.println(sw);
         }
 
     }

@@ -91,7 +91,7 @@
 
         <form action="ServletRegistro.do" method="post" >
             <div class="row">
-                <div class="col s12">
+                <div class="container">
 
                     <div class="input-field col s3">
                         <input disabled  type="text" size="20" name="LR" value="<%=ship.getLR()%>" >
@@ -165,7 +165,7 @@
                         <label>TIPO</label>
                     </div>
 
-                    <div class="input-field col s3">
+                    <div class="input-field col s2">
                         <input type="number" size="20" name="CWBC_HORA" >
                         <label for="CWBC_HORA">HORAS ESTADIA</label>
                     </div>
@@ -179,7 +179,7 @@
 
                     </div>
 
-                    <div class="input-field col s1">   
+                    <div class="input-field col s2">   
 
                         <input type="text" class="timepicker" name="HORA_ETA">
                         <label for="HORA_ETA">Hora ETA</label>
@@ -205,7 +205,7 @@
 
 
 
-                    <div class="input-field col s3">
+                    <div class="input-field col s offset-s9">
                         <input type="submit" value="Nueva Cotizacion" class="btn-large light-blue accent-4" name="enviar">
 
                     </div>
@@ -214,47 +214,7 @@
 
             </div>
         </form>
-        <div class="container">
-            <div class="col s12">
-
-                <table id="table_id" border="1"   class="highlight responsive-table striped " >
-                    <thead>
-                        <tr>
-
-
-                            <th>Cotizacion</th>
-                            <th>ETA</th>
-                            <th>Cambio Dolar</th>
-                            <th>Fecha Cambio</th>
-                            <th>Operacion</th>
-
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <%
-
-                            LinkedList<BeanEncabezado> lista = Encabezado.CotizacionesBarco(LR);
-
-                            for (int i = 0; i < lista.size(); i++) {
-
-                                out.println("<tr>");
-
-                                out.println("<td>" + lista.get(i).getCWBC_COTIZACION() + "</td>");
-                                out.println("<td>" + lista.get(i).getCWBC_ETA() + "</td>");
-                                out.println("<td>" + lista.get(i).getCWBC_TIPO_CAMBIO() + "</td>");
-                                out.println("<td>" + lista.get(i).getCWBC_TIPO_CAMBIO_FECHA() + "</td>");
-                                out.println("<td>" + lista.get(i).getCWBC_TIPO_OPERACION() + "</td>");
-                                out.println("<td>" + "<a class='waves-effect waves-light btn-small' onclick='return myFunction()'href=" + lista.get(i).getCWBC_TIPO_OPERACION() + ".jsp?Cotizacion=" + lista.get(i).getCWBC_COTIZACION() + "&Tipo=" + lista.get(i).getCWBC_TIPO_OPERACION() + ">" + "Cotizar" + "</a>" + "</td>");
-                                out.println("<td>" + "<a class='waves-effect waves-light btn-small' onclick='return validar()' href=Eliminar.jsp?id=" + lista.get(i).getCWBC_COTIZACION() + ">" + "<i class='material-icons'>delete_forever</i>" + "Eliminar" + "</a>" + "</td>");
-
-                                out.println("</tr>");
-                            }
-                        %>  
-                    </tbody>
-                </table>
-
-            </div>
+        
         </div><!-- div cointainer-->
 
 

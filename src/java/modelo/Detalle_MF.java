@@ -8,8 +8,8 @@ import java.sql.Statement;
 
 public class Detalle_MF {
 
-    public static boolean agregarDetalleMF(BeanMultiFrigo En) {
-        boolean agregado = false;
+    public static String agregarDetalleMF(BeanMultiFrigo En) {
+        String agregado = null;
         try {
             Conexion c = new Conexion();
             Connection con = c.getConexion();
@@ -67,12 +67,12 @@ public class Detalle_MF {
                 
                 st.execute(sql);
 
-                agregado = true;
+                agregado = "bien";
                 st.close();
             }
 
         } catch (SQLException e) {
-            agregado = false;
+            agregado = "mal: "+e;
         }
         return agregado;
     }

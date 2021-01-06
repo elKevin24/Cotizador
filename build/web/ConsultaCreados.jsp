@@ -61,6 +61,7 @@
                                 <th>TIPO CAMBIO</th>
                                 <th>TIPO OPERACION</th>
                                 <th>HORA</th>
+                                <th>VER</th>
                                 <th>EDITAR</th>
                                 <th>ELIMINAR</th>
                                 <th>Enviar para Aprovacion</th>
@@ -84,18 +85,19 @@
                                 out.println("<td>" + lista.get(i).getCWBC_COTIZACION() + "</td>");
                                 out.println("<td>" + lista.get(i).getCWBC_LR() + "</td>");
                                 out.println("<td>" + lista.get(i).getCWBC_SENAL_DISTINTIVA() + "</td>");
-
                                 out.println("<td>" + lista.get(i).getCWBC_ETA() + "</td>");
                                 out.println("<td>" + lista.get(i).getCWBC_TIPO_CAMBIO() + "</td>");
-                               
                                 out.println("<td>" + lista.get(i).getCWBC_TIPO_OPERACION() + "</td>");
-
                                 out.println("<td>" + lista.get(i).getCWBC_HORA() + "</td>");
-                                out.println("<td>" + "<a class='waves-effect waves-light btn-small' onclick='return myFunction()'href=EditarEncabezado.jsp?Cotizacion=" + lista.get(i).getCWBC_COTIZACION() + ">" + "Editar" + "</a>" + "</td>");
                                 
+                                String tipo = lista.get(i).getCWBC_TIPO_OPERACION();
+    tipo = tipo.replace(' ', '_');
+
+                                out.println("<td>" + "<a class='waves-effect waves-light btn-small ' onclick='return myFunction()'href=Detalle.jsp?Cotizacion=" + lista.get(i).getCWBC_COTIZACION() + ">" + "Ver" + "</a>" + "</td>");
+                                out.println("<td>" + "<a class='waves-effect waves-light btn-small orange darken-4' onclick='return myFunction()'href=EDITAR_"+ tipo + ".jsp?Cotizacion=" + lista.get(i).getCWBC_COTIZACION() + ">" + "Editar" + "</a>" + "</td>");
+
                                 out.println("<td>" + "<a class='waves-effect waves-light btn-small red accent-4' onclick='return validar()' href=Eliminar.jsp?id=" + lista.get(i).getCWBC_COTIZACION() + ">" + "<i class='material-icons'>delete_forever</i>" + "Eliminar" + "</a>" + "</td>");
                                 out.println("<td>" + "<a class='waves-effect waves-light btn-small light-blue darken-4' onclick='return myFunction()'href=CambiarEstado.jsp?id=" + lista.get(i).getCWBC_COTIZACION() + ">" + "Enviar" + "</a>" + "</td>");
-
 
                                 out.println("</tr>");
                             }
@@ -121,14 +123,14 @@
                 $('#table_id').DataTable();
             });
 
-function validar() {
-            if (confirm("Desea Borrar los datos?")) {
-                alert("Datos borrados exitosamente");
-            } else {
-                alert("No se borrara");
-                return false;
+            function validar() {
+                if (confirm("Desea Borrar los datos?")) {
+                    alert("Datos borrados exitosamente");
+                } else {
+                    alert("No se borrara");
+                    return false;
+                }
             }
-        }
 
         </script>
     </body>

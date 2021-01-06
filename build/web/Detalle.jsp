@@ -20,6 +20,40 @@
 <!DOCTYPE html>
 <html>
     <head>
+        
+        <script>
+
+            function exportTableToExcel(tableID, filename = '') {
+                var downloadLink;
+                var dataType = 'application/vnd.ms-excel';
+                var tableSelect = document.getElementById(tableID);
+                var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+
+                // Specify file name
+                filename = filename ? filename + '.xls' : 'excel_data.xls';
+
+                // Create download link element
+                downloadLink = document.createElement("a");
+
+                document.body.appendChild(downloadLink);
+
+                if (navigator.msSaveOrOpenBlob) {
+                    var blob = new Blob(['ufeff', tableHTML], {
+                        type: dataType
+                    });
+                    navigator.msSaveOrOpenBlob(blob, filename);
+                } else {
+                    // Create a link to the file
+                    downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+
+                    // Setting the file name
+                    downloadLink.download = filename;
+
+                    //triggering the function
+                    downloadLink.click();
+            }
+            }
+        </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -33,57 +67,50 @@
             enc = Encabezado.Cotizacion(Cotizacion);
             String eta = enc.getCWBC_ETA();
 
-            try {
-                Conexion c = new Conexion();
-                Connection con = c.getConexion();
-                Statement st;
-                st = con.createStatement();
-                ResultSet rs = st.executeQuery("SELECT COTIZADOR_WEB.F_CW_TARIFA_X_COTIZACION(" + Cotizacion + ",'" + enc.getGRABADOR() + "', TO_DATE('" + enc.getCWBC_TIPO_CAMBIO_FECHA().substring(0, 10) + "','YYYY-MM-DD') , " + enc.getCWBC_HORA() + ", " + enc.getCWBC_CODIGO_USUARIO() + ") from dual");
-
-            } catch (Exception e) {
-
-            }
-
 
         %>
         <jsp:include page="menu.jsp" flush="true"></jsp:include>
 
         </head>
         <body>
-            <form name="form1" action="Cotizacion.jsp" target="_black">
-                <input type="hidden" name="txtparametro" value="<%= Cotizacion%>"/>
-            <button type="submit"><img src="img/descarga.png" alt=""/></button>
-            
-        </form>
-            
-           
-            <div class="container">
 
-                <table id="1" class="table table-bordered">
-                    <thead class="text-center">
-                        <tr >
-                            <th WIDTH="25" 
-                                HEIGHT="25">
-                                <img src="https://hh.santotomasport.com.gt/global/santotomasport.com.gt/EMPORNAC_logo.png">
-                            </th>
-                            <th colspan="3.5" class="text-center">
-                                EMPRESA PORTUARIA NACIONAL "SANTO TOMAS DE CASTILLA" </br>
-                                IZABAL, GUATEMALA </br>
-                                COTIZACION DE SERVICIOS PORTUARIOS </br>
+            <h4>Descargar Archivos</h4>
+            <div class="trans">
 
-                            </th>
-                        </tr>
-                    </thead>
-                </table>
 
-                <table id="2" class="table table-bordered">
-                    <thead class="text-center">
-                        <tr >
-                            <th >
-                                Cotizacion: <%= Cotizacion%>
+                <form name="form1" action="Cotizacion.jsp" target="_black">
+                    <input type="hidden" name="txtparametro" value="<%= Cotizacion%>"/>
+
+                <input type="image" name="botondeenvio" src="img/descarga.png" alt="Enviar formulario" width="100px" height="100px">
+            </form>
+
+            <input type="image" onclick="exportTableToExcel('1', 'empornac')" src="img/kisspng-microsoft-excel.jpg" width="100px" height="100px">
+        </div>
+
+        <div class="container">
+
+            <table id="1" class="table table-bordered">
+                <thead class="text-center">
+                    <tr >
+                        <th>
+                            <img src="https://hh.santotomasport.com.gt/global/santotomasport.com.gt/EMPORNAC_logo.png">
+                        </th>
+                        <th colspan="8" class="text-center">
+                            EMPRESA PORTUARIA NACIONAL "SANTO TOMAS DE CASTILLA" </br>
+                            IZABAL, GUATEMALA </br>
+                            COTIZACION DE SERVICIOS PORTUARIOS </br>
 
                         </th>
-                        <th  >
+                    </tr>
+                </thead>
+
+                <thead class="text-center" >
+                    <tr >
+                        <th colspan="3" >
+                            Cotizacion: <%= Cotizacion%>
+
+                        </th>
+                        <th colspan="2" >
                             Fecha:
                             <script>
 
@@ -93,42 +120,39 @@
 
 
                         </th>
-                        <th >
+                        <th colspan="3" >
                             Fecha ETA:
                             <%= eta%>
                         </th>
                     </tr>
                     <tr>
 
-            </table>
 
-            <table id="3" class="table table-bordered">
-                <th colspan="4" class="text-center">
-                    Datos de Buque  
+                        <th colspan="8" class="text-center">
+                            Datos de Buque  
 
-                </th>
-                </tr>
-                <tr>
-                    <th  >
-                        Buque: <%= enc.getCWBC_BUQUE_VIAJE()%>
-                    </th>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th  colspan="2">
+                            Buque: <%= enc.getCWBC_BUQUE_VIAJE()%>
+                        </th>
 
-                    <th  >
-                        LR: <%= enc.getCWBC_LR()%>
-                    </th>
-                    <th  >
-                        Señal Distintica: <%= enc.getCWBC_SENAL_DISTINTIVA()%>
-                    </th>
-                    <th  >
-                        Tipo Operacion: <%= enc.getCWBC_TIPO_OPERACION()%>
-                    </th>
-                </tr>
+                        <th  colspan="2">
+                            LR: <%= enc.getCWBC_LR()%>
+                        </th>
+                        <th  colspan="2">
+                            Señal Distintica: <%= enc.getCWBC_SENAL_DISTINTIVA()%>
+                        </th>
+                        <th  colspan="2">
+                            Tipo Operacion: <%= enc.getCWBC_TIPO_OPERACION()%>
+                        </th>
+                    </tr>
                 </thead>
-            </table>
-            <table class="table table-bordered">
+
                 <thead>
                     <tr>
-                        <th class="text-center" colspan="5"> 
+                        <th class="text-center" colspan="8"> 
                             Datos 
                         </th>
                     </tr>
@@ -138,145 +162,107 @@
                             Dolar 
                         </th>
 
-                        <th class="text-center"  colspan="3">
+                        <th class="text-center"  colspan="6">
                             Usuario 
                         </th>
                     </tr>
 
                     <tr>
-                        <th class="text-center" >
+                        <th class="text-center"  >
                             Precio:  <%= enc.getCWBC_TIPO_CAMBIO()%>
                         </th>
-
-                        <th class="text-center" >
+                        <th class="text-center"   >
                             Fecha Tipo Cambio: <%= enc.getCWBC_TIPO_CAMBIO_FECHA().substring(0, 10)%>
                         </th>
-
-                        <th class="text-center" >
+                        <th class="text-center" colspan="2" >
                             Grabador:  <%= enc.getGRABADOR()%>
                         </th>
-
-                        <th class="text-center" >
+                        <th class="text-center" colspan="2" >
                             Usuario Servicio: <%= enc.getCWBC_USUARIO_SERVICIO()%>
                         </th>
-
-                        <th class="text-center" >
+                        <th class="text-center" colspan="2">
                             Codigo Usuario: <%= enc.getCWBC_CODIGO_USUARIO()%>
-                            dias = <%= enc.getCWBC_HORA()%>
                         </th>
                     </tr>                               
-
                 </thead> 
+                <thead>
+                    <tr>
+                        <th>CORRELATIVO</th>
+                        <th>CANTIDAD</th>
+                        <th>UNIDAD MEDIDA</th>
+                        <th>CODIGO TARIFA</th>  
+                        <th>DESCRIPCION</th>
+                        <th>VALOR</th>
+                        <th>DESCUENTO</th>
+                        <th>SUB TOTAL</th>
+                        
+                        
+                       
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <%
 
+                        LinkedList<BeanDetalleCotizacion> lista = DetalleCotizacion.ObtenerDatos2(Cotizacion);
 
+                        for (int i = 0; i < lista.size(); i++) {
 
-            </table>
+                            out.println("<tr>");
 
+                            out.println("<td>" + lista.get(i).getCWDC_CORRELATIVO() + "</td>");
+                            out.println("<td>" + lista.get(i).getCWDC_CANTIDAD() + "</td>");
+                            out.println("<td>" + lista.get(i).getDESCRIPCION_UNIDAD_MEDIDA() + "</td>");
+                            out.println("<td>" + lista.get(i).getWDC_TDS_CODIGO() + "</td>");
+                            out.println("<td>" + lista.get(i).getDESCRIPCION() + "</td>");
+                            out.println("<td>" + lista.get(i).getCWDC_VALOR() + "</td>");
+                            
+                            out.println("<td>" + lista.get(i).getDESCUENTO() + "</td>");
+                            out.println("<td class='subtotal'>" + lista.get(i).getCWDC_SUB_TOTAL() + "</td>");
+                            
+                            
+                            
+                            
 
-            <div class="col s12">
+                            out.println("</tr>");
 
-                <table id="ejemplo" border="1"   class="highlight responsive-table striped " >
-                    <thead class="encabezado">
-                        <tr>
+                        }
+                        double sum = 0;
+                        for (int i = 0; i < lista.size(); i++) {
+                            sum = sum + Double.valueOf(lista.get(i).getCWDC_SUB_TOTAL());
+                        }
 
-                            <th>CORRELATIVO</th>
-                            <th>CANTIDAD</th>                           
-                            <th>CODIGO TARIFA</th>                            
-                            <th>VALOR</th>
-                            <th>SUB TOTAL</th>
-                            <th>DESCUENTO</th>
-                            <th>DESCRIPCION</th>
-                            <th>VALOR QUETZAL</th>
-                            <th>FACTOR AJUSTE</th>
-                            <th>UNIDAD MEDIDA</th>
-
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <%
-
-                            LinkedList<BeanDetalleCotizacion> lista = DetalleCotizacion.ObtenerDatos2(Cotizacion);
-
-                            for (int i = 0; i < lista.size(); i++) {
-
-                                out.println("<tr>");
-
-                                out.println("<td>" + lista.get(i).getCWDC_CORRELATIVO() + "</td>");
-                                out.println("<td>" + lista.get(i).getCWDC_CANTIDAD() + "</td>");
-                                out.println("<td>" + lista.get(i).getWDC_TDS_CODIGO() + "</td>");
-                                out.println("<td>" + lista.get(i).getCWDC_VALOR() + "</td>");
-                                out.println("<td class='subtotal'>" + lista.get(i).getCWDC_SUB_TOTAL() + "</td>");
-                                out.println("<td>" + lista.get(i).getDESCUENTO() + "</td>");
-                                out.println("<td>" + lista.get(i).getDESCRIPCION() + "</td>");
-                                out.println("<td>" + lista.get(i).getVALOR_QUETZAL() + "</td>");
-                                out.println("<td>" + lista.get(i).getFACTOR_AJUSTE() + "</td>");
-                                out.println("<td>" + lista.get(i).getDESCRIPCION_UNIDAD_MEDIDA() + "</td>");
-
-                                out.println("</tr>");
-
-                            }
-                        %>  
-                    </tbody>
-                   <tfoot>
-        <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th>Total</th>
-        </tr>
-    </tfoot>
-</table>              
-            </div>
+                        out.println("<tr>");
+                        out.println("<td colspan='7'> Total: </td>");
+                        out.println("<td> Q" + sum + "</td>");
+                        out.println("</tr>");
+                    %>  
+                </tbody>
+            </table>              
         </div>
-
-
-
-
-
-
     </div>
-    
-    
 
 
 
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-    <script src="javascript">
+
+</div>
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script src="javascript">
                                 var dd = hoy.getDate();
                                 var mm = hoy.getMonth() + 1;
                                 var yyyy = hoy.getFullYear();
-    </script>
-
-    <script>
-        $(document).ready(function ()
-        {
-            //Defino los totales de mis 2 columnas en 0
-            
-            var total_col5 = 0;
-            //Recorro todos los tr ubicados en el tbody
-            $('#ejemplo tbody').find('tr').each(function (i, el) {
-
-                //Voy incrementando las variables segun la fila ( .eq(0) representa la fila 1 )     
-                    total_col5 += parseFloat($(this).find('td').eq(4).text());
-
-            });
-            //Muestro el resultado en el th correspondiente a la columna
-              $('#ejemplo tfoot tr th').eq(9).text("Total " + total_col5);
-
-        });
-    </script>
-
+</script>
 
 </body>
 </html>

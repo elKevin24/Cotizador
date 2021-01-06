@@ -332,6 +332,22 @@ public class BeanPorta {
     public void setCWSF_REEMBARQUE_LLENO_RF_GB(String CWSF_REEMBARQUE_LLENO_RF_GB) {
         this.CWSF_REEMBARQUE_LLENO_RF_GB = CWSF_REEMBARQUE_LLENO_RF_GB;
     }
+
+    public String getCWBC_HORA() {
+        return CWBC_HORA;
+    }
+
+    public void setCWBC_HORA(String CWBC_HORA) {
+        this.CWBC_HORA = CWBC_HORA;
+    }
+
+    public String getCWBC_ETA() {
+        return CWBC_ETA;
+    }
+
+    public void setCWBC_ETA(String CWBC_ETA) {
+        this.CWBC_ETA = CWBC_ETA;
+    }
     
     
     
@@ -397,6 +413,8 @@ public class BeanPorta {
     }
 
     private String CWBC_COTIZACION;
+    private String CWBC_HORA;
+    private String CWBC_ETA;
     private String CWSF_MUELLAJE_COF_IMPORT;
     private String CWSF_MUELLAJE_COF_EXPORT;
     private String CWSF_DESCARGA_LLENOS_GB_VI;

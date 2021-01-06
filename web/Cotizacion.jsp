@@ -9,6 +9,15 @@
 <%@ page import="java.util.*" %> 
 <%@ page import="java.io.*" %> 
 <%@ page import="java.sql.*" %> 
+
+<head>
+        <link rel="icon" type="image/jpeg" href="https://hh.santotomasport.com.gt/global/santotomasport.com.gt/EMPORNAC_logo.png" />
+        <title>Cotizador Empornac</title>
+
+        
+        
+      
+    </head>
 <% /*Parametros para realizar la conexión*/
     Connection conexion;
     Class.forName("oracle.jdbc.driver.OracleDriver").newInstance();

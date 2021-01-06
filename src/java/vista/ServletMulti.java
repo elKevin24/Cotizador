@@ -5,15 +5,25 @@
  */
 package vista;
 
+import controlador.BeanEncabezado;
 import controlador.BeanMulti;
 import java.io.IOException;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import java.io.PrintWriter;
+import java.sql.Connection;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Conexion;
 import modelo.Detalle_M;
+import modelo.Encabezado;
 
 /**
  *
@@ -147,6 +157,22 @@ public class ServletMulti extends HttpServlet {
         out.println(CWBC_COTIZACION + Muellaje1 + MuellajeExport + CWSF_DESCARGA_LLENOS_GB_VI + CWSF_DESCARGA_LLENOS_GB_VD + CWSF_DESCARGA_LLENOS_GP_VI + CWSF_DESCARGA_LLENOS_GP_VD);
 
         if (sw) {
+            
+            
+            BeanEncabezado enc = new BeanEncabezado();
+            enc = Encabezado.Cotizacion(CWBC_COTIZACION);
+
+            try {
+                Conexion c = new Conexion();
+                Connection con = c.getConexion();
+                Statement st;
+                st = con.createStatement();
+                ResultSet rs = st.executeQuery("SELECT COTIZADOR_WEB.F_CW_TARIFA_X_COTIZACION(" + CWBC_COTIZACION + ",'" + enc.getGRABADOR() + "', TO_DATE('" + enc.getCWBC_TIPO_CAMBIO_FECHA().substring(0, 10) + "','YYYY-MM-DD') , " + enc.getCWBC_HORA() + ", " + enc.getCWBC_CODIGO_USUARIO() + ") from dual");
+
+            } catch (SQLException e) {
+
+            }
+            
             response.sendRedirect("Detalle.jsp?Cotizacion=" + CWBC_COTIZACION + "");
 
         } else {

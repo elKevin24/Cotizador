@@ -79,6 +79,9 @@ ORDER BY det.cwdc_correlativo]]>
 	<variable name="CWDC_SUB_TOTAL_2" class="java.math.BigDecimal" calculation="Sum">
 		<variableExpression><![CDATA[$F{CWDC_SUB_TOTAL}]]></variableExpression>
 	</variable>
+	<variable name="CWDC_SUB_TOTAL_3" class="java.math.BigDecimal" calculation="Sum">
+		<variableExpression><![CDATA[$F{CWDC_SUB_TOTAL}]]></variableExpression>
+	</variable>
 	<group name="CWBC_COTIZACION">
 		<groupExpression><![CDATA[$F{CWBC_COTIZACION}]]></groupExpression>
 	</group>
@@ -430,16 +433,15 @@ COTIZACION DE SERVICIOS PORTUARIOS]]></text>
 	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch">
-			<textField pattern="¤ #,##0.00">
-				<reportElement x="455" y="22" width="100" height="20" uuid="2846054f-5925-4c10-8a07-8b5b9abb1a7a"/>
-				<textElement textAlignment="Right"/>
-				<textFieldExpression><![CDATA[$V{CWDC_SUB_TOTAL_2}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="455" y="2" width="100" height="20" uuid="0858612a-e76d-4f67-9725-806cfe2b1f71"/>
 				<textElement textAlignment="Right"/>
 				<text><![CDATA[TOTAL]]></text>
 			</staticText>
+			<textField>
+				<reportElement x="456" y="22" width="100" height="20" uuid="7ea9182b-88a9-4467-a270-11eede030691"/>
+				<textFieldExpression><![CDATA[$V{CWDC_SUB_TOTAL_3}]]></textFieldExpression>
+			</textField>
 		</band>
 	</summary>
 </jasperReport>

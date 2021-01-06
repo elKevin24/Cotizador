@@ -5,6 +5,7 @@
  */
 package vista;
 
+import controlador.BeanEncabezado;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,8 +13,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import modelo.Conexion;
 import controlador.BeanMultiFrigo;
+import java.sql.Connection;
 import modelo.Detalle_MF;
+import modelo.Encabezado;
 
 /**
  *
@@ -175,17 +183,32 @@ public class ServletMultiFrigo extends HttpServlet {
             CWSF_DESCARGA_FRUTA_PALE_GP_VD,
             CWSF_DESCARGA_FRUTA_PALE_GP_VI);
 
-           boolean sw = Detalle_MF.agregarDetalleMF(busuario);
+           String sw = Detalle_MF.agregarDetalleMF(busuario);
 
         PrintWriter out = response.getWriter();
         out.println(CWBC_COTIZACION + Muellaje1 + Muellaje1 + CWSF_DESCARGA_LLENOS_GB_VI+ CWSF_DESCARGA_LLENOS_GB_VD+ CWSF_DESCARGA_LLENOS_GP_VI+ CWSF_DESCARGA_LLENOS_GP_VD);
 
-        if (sw) {
-             response.sendRedirect("Detalle.jsp?Cotizacion="+CWBC_COTIZACION+"");
+        if (sw.equalsIgnoreCase("bien")) {
+            
+             BeanEncabezado enc = new BeanEncabezado();
+            enc = Encabezado.Cotizacion(CWBC_COTIZACION);
+
+            try {
+                Conexion c = new Conexion();
+                Connection con = c.getConexion();
+                Statement st;
+                st = con.createStatement();
+                ResultSet rs = st.executeQuery("SELECT COTIZADOR_WEB.F_CW_TARIFA_X_COTIZACION(" + CWBC_COTIZACION + ",'" + enc.getGRABADOR() + "', TO_DATE('" + enc.getCWBC_TIPO_CAMBIO_FECHA().substring(0, 10) + "','YYYY-MM-DD') , " + enc.getCWBC_HORA() + ", " + enc.getCWBC_CODIGO_USUARIO() + ") from dual");
+
+            } catch (SQLException e) {
+
+            }
+            
+            response.sendRedirect("Guardado.jsp?Cotizacion="+CWBC_COTIZACION+"");
 
         } else {
 
-            out.println("Si estas viendo este mensaje es por que algo salio mal, no se pudo completar tu solicitud.");
+            out.println(sw);
         }
 
     }

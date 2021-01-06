@@ -10,8 +10,8 @@ import java.util.LinkedList;
 
 public class Encabezado {
 
-    public static boolean agregarEncabezado(BeanEncabezado En) {
-        boolean agregado = false;
+    public static String agregarEncabezado(BeanEncabezado En) {
+        String agregado = null;
         try {
             Conexion c = new Conexion();
             Connection con = c.getConexion();
@@ -22,17 +22,17 @@ public class Encabezado {
                 String sql = "INSERT INTO COTIZADOR_WEB.CW_BUQUE_COTIZA (CWBC_COTIZACION, CWBC_LR, CWBC_SENAL_DISTINTIVA, CWBC_ETA, CWBC_TIPO_CAMBIO, CWBC_TIPO_CAMBIO_FECHA, CWBC_USUARIO_SERVICIO, CWBC_NIT, CWBC_TIPO_OPERACION, GRABADOR, CWBC_ESTADO, CWBC_HORA, CWBC_TRB, CWBC_ESLORA) VALUES "
                         + "('" + En.getCWBC_COTIZACION() + "','" + En.getCWBC_LR() + "','" + En.getCWBC_SENAL_DISTINTIVA() + "',TO_DATE('" + En.getCWBC_ETA() + "', 'YYYY-MM-DD HH24:MI:SS')," + En.getCWBC_TIPO_CAMBIO() + " ,TO_DATE('" + En.getCWBC_TIPO_CAMBIO_FECHA() + "','YYYY-MM-DD' ),'" + En.getCWBC_USUARIO_SERVICIO() + "' ,'" + En.getCWBC_NIT() + "','" + En.getCWBC_TIPO_OPERACION() + "','" + En.getGRABADOR() + "'," + 1 + ", '" + En.getCWBC_HORA() + "', '" + En.getTRB() + "', '" + En.getSLORA() + "')";
 
-//    "INSERT INTO COTIZADOR_WEB.CW_BUQUE_COTIZA (CWBC_COTIZACION, CWBC_LR, CWBC_SENAL_DISTINTIVA, CWBC_BUQUE_VIAJE, CWBC_ETA, CWBC_TIPO_CAMBIO, CWBC_TIPO_CAMBIO_FECHA, CWBC_USUARIO_SERVICIO, CWBC_NIT, CWBC_TIPO_OPERACION, GRABADOR) \n" +
-//"                                        VALUES ('"+En.getCWBC_COTIZACION()+"','"+En.getCWBC_LR()+"','"+En.getCWBC_BUQUE_VIAJE()+"','"+En.getCWBC_ETA()+"','"+En.getCWBC_TIPO_CAMBIO()+"','"+En.getCWBC_TIPO_CAMBIO_FECHA()+"','"+En.getCWBC_USUARIO_SERVICIO()+"','"+En.getCWBC_NIT()+"','"+En.getCWBC_TIPO_OPERACION()+"','"+En.getCWBC_GRABADOR()+"')";
-                System.out.println(sql);
+//"INSERT INTO COTIZADOR_WEB.CW_BUQUE_COTIZA (CWBC_COTIZACION, CWBC_LR, CWBC_SENAL_DISTINTIVA, CWBC_ETA, CWBC_TIPO_CAMBIO, CWBC_TIPO_CAMBIO_FECHA, CWBC_USUARIO_SERVICIO, CWBC_NIT, CWBC_TIPO_OPERACION, GRABADOR, CWBC_ESTADO, CWBC_HORA, CWBC_TRB, CWBC_ESLORA) VALUES "
+ //                       + "('" + En.getCWBC_COTIZACION() + "','" + En.getCWBC_LR() + "','" + En.getCWBC_SENAL_DISTINTIVA() + "',TO_DATE('" + En.getCWBC_ETA() + "', 'YYYY-MM-DD HH24:MI:SS')," + En.getCWBC_TIPO_CAMBIO() + " ,TO_DATE('" + En.getCWBC_TIPO_CAMBIO_FECHA() + "','YYYY-MM-DD' ),'" + En.getCWBC_USUARIO_SERVICIO() + "' ,'" + En.getCWBC_NIT() + "','" + En.getCWBC_TIPO_OPERACION() + "','" + En.getGRABADOR() + "'," + 1 + ", '" + En.getCWBC_HORA() + "', '" + En.getTRB() + "', '" + En.getSLORA() + "')";
+               System.out.println(sql);
                 st.execute(sql);
 
-                agregado = true;
+                agregado = "bien";
                 st.close();
             }
 
         } catch (SQLException e) {
-            agregado = false;
+            agregado = "mal"+e;
         }
         return agregado;
     }
