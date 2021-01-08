@@ -204,7 +204,7 @@ public class ServletMultiFrigo extends HttpServlet {
 
             }
             
-            response.sendRedirect("Guardado.jsp?Cotizacion="+CWBC_COTIZACION+"");
+            response.sendRedirect("GuardadoDetalle.jsp?Cotizacion="+CWBC_COTIZACION+"");
 
         } else {
 

@@ -89,12 +89,12 @@
                                 out.println("<td>" + lista.get(i).getCWBC_TIPO_CAMBIO() + "</td>");
                                 out.println("<td>" + lista.get(i).getCWBC_TIPO_OPERACION() + "</td>");
                                 out.println("<td>" + lista.get(i).getCWBC_HORA() + "</td>");
-                                
+
                                 String tipo = lista.get(i).getCWBC_TIPO_OPERACION();
-    tipo = tipo.replace(' ', '_');
+                                tipo = tipo.replace(' ', '_');
 
                                 out.println("<td>" + "<a class='waves-effect waves-light btn-small ' onclick='return myFunction()'href=Detalle.jsp?Cotizacion=" + lista.get(i).getCWBC_COTIZACION() + ">" + "Ver" + "</a>" + "</td>");
-                                out.println("<td>" + "<a class='waves-effect waves-light btn-small orange darken-4' onclick='return myFunction()'href=EDITAR_"+ tipo + ".jsp?Cotizacion=" + lista.get(i).getCWBC_COTIZACION() + ">" + "Editar" + "</a>" + "</td>");
+                                out.println("<td>" + "<a class='waves-effect waves-light btn-small orange darken-4' onclick='return myFunction()'href=EDITAR_" + tipo + ".jsp?Cotizacion=" + lista.get(i).getCWBC_COTIZACION() + ">" + "Editar" + "</a>" + "</td>");
 
                                 out.println("<td>" + "<a class='waves-effect waves-light btn-small red accent-4' onclick='return validar()' href=Eliminar.jsp?id=" + lista.get(i).getCWBC_COTIZACION() + ">" + "<i class='material-icons'>delete_forever</i>" + "Eliminar" + "</a>" + "</td>");
                                 out.println("<td>" + "<a class='waves-effect waves-light btn-small light-blue darken-4' onclick='return myFunction()'href=CambiarEstado.jsp?id=" + lista.get(i).getCWBC_COTIZACION() + ">" + "Enviar" + "</a>" + "</td>");

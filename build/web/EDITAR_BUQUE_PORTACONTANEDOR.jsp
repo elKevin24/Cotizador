@@ -26,7 +26,10 @@
             enc = Encabezado.Cotizacion(Cotizacion);
             BeanPorta porta = new BeanPorta();
             porta = Detalle_P.Obtenerxedit(Cotizacion);
+            String eta = porta.getCWBC_ETA();
             
+            eta = eta.substring(0,16);
+            eta = eta.replace(' ', 'T');
         %>
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -76,10 +79,9 @@
                             <input placeholder="" type="number" id="CWBC_HORA" name="CWBC_HORA" class="validate" value="<%= porta.getCWBC_HORA()%>">
                             <label for="CWBC_HORA">HORAS ESTADIA</label>
                         </div>
-                       
-                        <label for="CWBC_ETA">FECHA Y HORA ETA</label>
+                        <label for="CWBC_ETA">FECHA Y HORA ETA </label>
                         <div class="input-field col s2">
-                            <input placeholder="" type="datetime-local" id="CWBC_ETA" name="CWBC_ETA" class="validate" value="">
+                            <input placeholder="" type="datetime-local" id="CWBC_ETA" name="CWBC_ETA" class="validate" value="<%= eta %>">
                         </div>
                     </div>
                 </div>
@@ -322,7 +324,7 @@
                             <input type="hidden" id="custId" name="CWSF_COTIZACION" value="<%= Cotizacion%>">
                             <input type="hidden" id="custId" name="GRABADOR" value="<%= enc.getGRABADOR()%>">
                             <div class="input-field col s3">
-                                <input type="submit" value="Registrar" class="btn-large light-blue accent-4" name="enviar">
+                                <input type="submit" value="Actualizar" class="btn-large light-blue accent-4" name="enviar">
                             </div>
                             </form>
                             </div>

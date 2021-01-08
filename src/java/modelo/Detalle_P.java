@@ -278,7 +278,7 @@ public class Detalle_P {
                 Statement st;
                 st = con.createStatement();
 //                UNA COMA ME HIZO DESVELARME HASTA LAS DOS DE LA MAÑANA
-                String sql = "update COTIZADOR_WEB.CW_BUQUE_COTIZA set CWBC_ETA =  to_date('" + buque.getCWBC_ETA()+ "','yyyy-mm-dd hh24:mi'), CWBC_HORA='" + buque.getCWBC_HORA()+ "'"
+                String sql = "update COTIZADOR_WEB.CW_BUQUE_COTIZA set CWBC_ETA = TO_DATE('" + buque.getCWBC_ETA() + "', 'YYYY-MM-DD HH24:MI:SS'), CWBC_HORA='" + buque.getCWBC_HORA()+ "'"
                         + "where CWBC_COTIZACION = '"+ buque.getCWBC_COTIZACION() +"'";
 
                 st.execute(sql);
@@ -288,6 +288,34 @@ public class Detalle_P {
 
         } catch (SQLException e) {
             actualizado = "mal"+e+ buque.getCWBC_ETA();
+        }
+
+        return actualizado;
+    }
+    
+    
+    public static boolean EliminarDetalle(String id) {
+        boolean actualizado = false;
+
+        try {
+            Conexion c = new Conexion();
+            Connection con = c.getConexion();
+            if (con != null) {
+                Statement st;
+                st = con.createStatement();
+                //UNA COMA ME HIZO DESVELARME HASTA LAS DOS DE LA MAÑANA
+                String sql = "DELETE FROM cw_detalle_cotizacion\n" +
+"WHERE\n" +
+"    cwbc_cotizacion =" + id + "";
+                //"update tbl_seccion set grado ='"+usuario.getGrado()+"', seccion='"+usuario.getSeccion()+"', Id_nivel='"+usuario.getId_nivel()+"' where Id_seccion="+usuario.getId_seccion()+"";
+
+                st.execute(sql);
+                actualizado = true;
+                st.close();
+            }
+
+        } catch (SQLException e) {
+            actualizado = false;
         }
 
         return actualizado;

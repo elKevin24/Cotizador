@@ -18,12 +18,14 @@
 
             String res = null;
             String detalle = null;
+            boolean Eliminar ;
 
             String CWSF_COTIZACION = request.getParameter("CWSF_COTIZACION");
             String CWBC_HORA = request.getParameter("CWBC_HORA");
             String CWBC_ETA = request.getParameter("CWBC_ETA");
 
             CWBC_ETA = CWBC_ETA.replace('T', ' ');
+            CWBC_ETA = CWBC_ETA+":00";
             String CWSF_DESCARGA_LLENOS_GP_VI = request.getParameter("CWSF_DESCARGA_LLENOS_GP_VI");
             String CWSF_DESCARGA_LLENOS_GB_VI = request.getParameter("CWSF_DESCARGA_LLENOS_GB_VI");
             String CWSF_DESCARGA_LLENOS_GP_VD = request.getParameter("CWSF_DESCARGA_LLENOS_GP_VD");
@@ -112,9 +114,11 @@
             
 
             res = Detalle_P.ActualizarPortacontenedor(user);
+            detalle = Detalle_P.ActualizarPortacontenedorDetalle(user);
+            Eliminar = Detalle_P.EliminarDetalle(CWSF_COTIZACION);
             if (res.equalsIgnoreCase("bien")) {
                 out.println("<script> alert('Registro  Actualizado')</script>");
-                response.sendRedirect("Detalle.jsp?Cotizacion=" + CWSF_COTIZACION + "");
+                response.sendRedirect("GuardadoDetalle.jsp?Cotizacion=" + CWSF_COTIZACION + "");
 
             } else {
                 out.println(res);

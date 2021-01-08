@@ -105,8 +105,7 @@ public class Consulta {
                 + "AND A.CWBC_SENAL_DISTINTIVA = B.SENAL_DISTINTIVA\n"
                 + "AND CWBC_USUARIO_SERVICIO = " + entrada + "\n"
                 + "and a.cwbc_tipo_operacion = C.CWTO_TIPO_OPERACION\n"
-                + "AND A.CWBC_ESTADO = 1\n"
-                + "and tipo_de_barco_por_estructura in (12, 13, 21, 22, 31, 32, 51, 52, 61,62, 63, 64, 71, 72, 73,74, 90)";
+                + "AND A.CWBC_ESTADO = 1";
 
         try {
             Conexion c = new Conexion();
