@@ -184,6 +184,9 @@ public class Detalle_P {
                 user.setCWSF_REEMBARQUE_LLENO_RF_GP(rs.getString("cwsp_reembarque_lleno_rf_gp"));
                 user.setCWSF_REEMBARQUE_LLENO_RF_GB(rs.getString("cwsp_reembarque_lleno_rf_gb"));
                 
+                user.setCWSF_DEPOSITO_MOMENT_GB(rs.getString("cwsp_DEPOSITO_MOMENT_GB"));
+                user.setCWSF_DEPOSITO_MOMENT_GP(rs.getString("cwsp_DEPOSITO_MOMENT_GP"));
+                
                 
                 
                 
@@ -198,6 +201,97 @@ public class Detalle_P {
     return user;
     
 }
+    
+    
+    public static String ActualizarPortacontenedor(BeanPorta buque) {
+        String actualizado = null;
+
+        try {
+            Conexion c = new Conexion();
+            Connection con = c.getConexion();
+            if (con != null) {
+
+                Statement st;
+                st = con.createStatement();
+//                UNA COMA ME HIZO DESVELARME HASTA LAS DOS DE LA MAÑANA
+    //            String sql = "update COTIZADOR_WEB.CW_BUQUE_COTIZA set CWBC_ETA =  to_date('" + buque.getCWBC_ETA()+ "','yyyy-mm-dd hh24:mi'), CWBC_HORA='" + buque.getCWBC_HORA()+ "'"
+      //                  + "where CWBC_COTIZACION = '"+ buque.getCWBC_COTIZACION() +"'";
+      
+      String sql = " update COTIZADOR_WEB.cw_srv_portacontenedores SET "
+              + "CWSP_DESCARGA_LLENOS_GB_VI = '"+ buque.getCWSF_DESCARGA_LLENOS_GB_VI() +"',\n" +
+"CWSP_DESCARGA_LLENOS_GB_VD = '"+ buque.getCWSF_DESCARGA_LLENOS_GB_VD() +"',\n" +
+"CWSP_DESCARGA_LLENOS_GP_VI = '"+ buque.getCWSF_DESCARGA_LLENOS_GP_VI() +"',\n" +
+"CWSP_DESCARGA_LLENOS_GP_VD = '"+ buque.getCWSF_DESCARGA_LLENOS_GP_VD() +"',\n" +
+"CWSP_DESCARGA_VACIOS_GB_VI = '"+ buque.getCWSF_DESCARGA_VACIOS_GB_VI() +"',\n" +
+"CWSP_DESCARGA_VACIOS_GB_VD = '"+ buque.getCWSF_DESCARGA_VACIOS_GB_VD() +"',\n" +
+"CWSP_DESCARGA_VACIOS_GP_VI = '"+ buque.getCWSF_DESCARGA_VACIOS_GP_VI() +"',\n" +
+"CWSP_DESCARGA_VACIOS_GP_VD = '"+ buque.getCWSF_DESCARGA_VACIOS_GP_VD() +"',\n" +
+"CWSP_CARGA_LLENOS_GB_VI = '"+ buque.getCWSF_CARGA_LLENOS_GB_VI() +"',\n" +
+"CWSP_CARGA_LLENOS_GB_VD = '"+ buque.getCWSF_CARGA_LLENOS_GB_VD() +"',\n" +
+"CWSP_CARGA_LLENOS_GP_VI = '"+ buque.getCWSF_CARGA_LLENOS_GP_VI() +"',\n" +
+"CWSP_CARGA_LLENOS_GP_VD = '"+ buque.getCWSF_CARGA_LLENOS_GP_VD() +"',\n" +
+"CWSP_CARGA_VACIOS_GB_VI = '"+ buque.getCWSF_CARGA_VACIOS_GB_VI() +"',\n" +
+"CWSP_CARGA_VACIOS_GB_VD = '"+ buque.getCWSF_CARGA_VACIOS_GB_VD() +"',\n" +
+"CWSP_CARGA_VACIOS_GP_VI = '"+ buque.getCWSF_CARGA_VACIOS_GP_VI() +"',\n" +
+"CWSP_CARGA_VACIOS_GP_VD = '"+ buque.getCWSF_CARGA_VACIOS_GP_VD() +"',\n" +
+"CWSP_DESCARGA_VEHICULOS_GB = '"+ buque.getCWSF_DESCARGA_VEHICULOS_GB() +"',\n" +
+"CWSP_DESCARGA_VEHICULOS_GP = '"+ buque.getCWSF_DESCARGA_VEHICULOS_GP() +"',\n" +
+"CWSP_REESTIBAS_GB = '"+ buque.getCWSF_REESTIBAS_GB() +"',\n" +
+"CWSP_REESTIBAS_GP = '"+ buque.getCWSF_REESTIBAS_GP() +"',\n" +
+"CWSP_TAPA_ESCOTILLAS_GB = '"+ buque.getCWSF_TAPA_ESCOTILLAS_GB() +"',\n" +
+"CWSP_TAPA_ESCOTILLAS_GP = '"+ buque.getCWSF_TAPA_ESCOTILLAS_GP() +"',\n" +
+"CWSP_DEPOSITO_TEMP_LLENO_GB = '"+ buque.getCWSF_DEPOSITO_TEMP_LLENO_GB() +"',\n" +
+"CWSP_DEPOSITO_TEMP_LLENO_GP = '"+ buque.getCWSF_DEPOSITO_TEMP_LLENO_GP() +"',\n" +
+"CWSP_DEPOSITO_TEMP_VACIO_GB = '"+ buque.getCWSF_DEPOSITO_TEMP_VACIO_GB() +"',\n" +
+"CWSP_DEPOSITO_TEMP_VACIO_GP = '"+ buque.getCWSF_DEPOSITO_TEMP_VACIO_GP() +"',\n" +
+"CWSP_REEMBARQUE_LLENO_GB = '"+ buque.getCWSF_REEMBARQUE_LLENO_GB() +"',\n" +
+"CWSP_REEMBARQUE_LLENO_GP = '"+ buque.getCWSF_REEMBARQUE_LLENO_GP() +"',\n" +
+"CWSP_REEMBARQUE_VACIO_GB = '"+ buque.getCWSF_REEMBARQUE_VACIO_GB() +"',\n" +
+"CWSP_REEMBARQUE_VACIO_GP = '"+ buque.getCWSF_REEMBARQUE_VACIO_GP() +"',\n" +
+"CWSP_DEPOSITO_MOMENT_GB = '"+ buque.getCWSF_DEPOSITO_MOMENT_GB() +"',\n" +
+"CWSP_DEPOSITO_MOMENT_GP = '"+ buque.getCWSF_DEPOSITO_MOMENT_GP() +"',\n" +
+"CWSP_REEMBARQUE_LLENO_RF_GP = '"+ buque.getCWSF_REEMBARQUE_LLENO_RF_GP() +"',\n" +
+"CWSP_REEMBARQUE_LLENO_RF_GB = '"+ buque.getCWSF_REEMBARQUE_LLENO_RF_GB() +"'"
+              + "where CWSP_COTIZACION = '"+buque.getCWBC_COTIZACION()+"'";
+
+                st.execute(sql);
+                actualizado = "bien";
+                st.close();
+            }
+
+        } catch (SQLException e) {
+            actualizado = "mal"+e+ buque.getCWBC_ETA();
+        }
+
+        return actualizado;
+    }
+    
+    
+    public static String ActualizarPortacontenedorDetalle(BeanPorta buque) {
+        String actualizado = null;
+
+        try {
+            Conexion c = new Conexion();
+            Connection con = c.getConexion();
+            if (con != null) {
+
+                Statement st;
+                st = con.createStatement();
+//                UNA COMA ME HIZO DESVELARME HASTA LAS DOS DE LA MAÑANA
+                String sql = "update COTIZADOR_WEB.CW_BUQUE_COTIZA set CWBC_ETA =  to_date('" + buque.getCWBC_ETA()+ "','yyyy-mm-dd hh24:mi'), CWBC_HORA='" + buque.getCWBC_HORA()+ "'"
+                        + "where CWBC_COTIZACION = '"+ buque.getCWBC_COTIZACION() +"'";
+
+                st.execute(sql);
+                actualizado = "bien";
+                st.close();
+            }
+
+        } catch (SQLException e) {
+            actualizado = "mal"+e+ buque.getCWBC_ETA();
+        }
+
+        return actualizado;
+    }
 
 }
 
