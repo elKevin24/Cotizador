@@ -19,7 +19,14 @@
             String res = null;
             String detalle = null;
             boolean Eliminar ;
+            
+            String MuellajeImport = request.getParameter("Muellaje");
+            if (MuellajeImport != null) {
+            MuellajeImport = "S";
+        } else {
+            MuellajeImport = "N";
 
+        }
             String CWSF_COTIZACION = request.getParameter("CWSF_COTIZACION");
             String CWBC_HORA = request.getParameter("CWBC_HORA");
             String CWBC_ETA = request.getParameter("CWBC_ETA");
@@ -74,6 +81,7 @@
             user.setCWBC_COTIZACION(CWSF_COTIZACION);
             user.setCWBC_HORA(CWBC_HORA);
             user.setCWBC_ETA(CWBC_ETA);
+            user.setCWSF_MUELLAJE_COF_IMPORT(MuellajeImport);
             user.setCWSF_DESCARGA_LLENOS_GP_VI(CWSF_DESCARGA_LLENOS_GP_VI);
             user.setCWSF_DESCARGA_LLENOS_GB_VI(CWSF_DESCARGA_LLENOS_GB_VI);
             user.setCWSF_DESCARGA_LLENOS_GP_VD(CWSF_DESCARGA_LLENOS_GP_VD);

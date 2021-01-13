@@ -27,19 +27,19 @@
         %>
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-       
 
-        </head>
-        <body>
-            <div class="row">
-                <div class="col s1 push-s1">
-                    <a  href="Barcos.jsp" class="btn-floating pulse" ><i class="material-icons">arrow_back</i></a>
-                </div>
+
+    </head>
+    <body>
+        <div class="row">
+            <div class="col s1 push-s1">
+                <a  href="Barcos.jsp" class="btn-floating pulse" ><i class="material-icons">arrow_back</i></a>
             </div>
+        </div>
 
-            <div class="container">
+        <div class="container">
 
-                <h5> Cotizacion LR: <%= enc.getCWBC_LR() + "  ETA: " + enc.getCWBC_ETA() + "  SEÑAL DISTINTIVA: " + enc.getCWBC_SENAL_DISTINTIVA()%></h5>
+            <h5> Cotizacion LR: <%= enc.getCWBC_LR() + "  ETA: " + enc.getCWBC_ETA() + "  SEÑAL DISTINTIVA: " + enc.getCWBC_SENAL_DISTINTIVA()%></h5>
 
 
             <form action="ServleMultiFrigo.do" method="post" >

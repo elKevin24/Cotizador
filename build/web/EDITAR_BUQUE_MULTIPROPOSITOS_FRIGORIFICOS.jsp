@@ -1,3 +1,5 @@
+<%@page import="modelo.Detalle_MF"%>
+<%@page import="controlador.BeanMultiFrigo"%>
 <%@page import="modelo.Encabezado"%>
 <%@page import="controlador.BeanEncabezado"%>
 <%@page import="modelo.Usuario"%>
@@ -24,25 +26,36 @@
             String Cotizacion = request.getParameter("Cotizacion");
             BeanEncabezado enc = new BeanEncabezado();
             enc = Encabezado.CotizacionGeneral(Cotizacion);
+
+            BeanMultiFrigo multi = new BeanMultiFrigo();
+            multi = Detalle_MF.Obtenerxedit(Cotizacion);
+            String eta = multi.getCWBC_ETA();
+
+            eta = eta.substring(0, 16);
+            eta = eta.replace(' ', 'T');
+
+            String muellaje = multi.getCWSF_MUELLAJE_COF_IMPORT();
+
+
         %>
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-       
 
-        </head>
-        <body>
-            <div class="row">
-                <div class="col s1 push-s1">
-                    <a  href="Barcos.jsp" class="btn-floating pulse" ><i class="material-icons">arrow_back</i></a>
-                </div>
+
+    </head>
+    <body>
+        <div class="row">
+            <div class="col s1 push-s1">
+                <a  href="Barcos.jsp" class="btn-floating pulse" ><i class="material-icons">arrow_back</i></a>
             </div>
+        </div>
 
-            <div class="container">
+        <div class="container">
 
-                <h5> Cotizacion LR: <%= enc.getCWBC_LR() + "  ETA: " + enc.getCWBC_ETA() + "  SEÑAL DISTINTIVA: " + enc.getCWBC_SENAL_DISTINTIVA()%></h5>
+            <h5 class="text-center"> <%="Cotizacion: " + enc.getCWBC_COTIZACION() + ", Nombre Buque:" + enc.getCWBC_BUQUE_VIAJE() + ", LR: " + enc.getCWBC_LR() + ",  ETA: " + enc.getCWBC_ETA() + ",  SEÑAL DISTINTIVA: " + enc.getCWBC_SENAL_DISTINTIVA()%></h5>
 
 
-            <form action="ServleMultiFrigo.do" method="post" >
+            <form action="ACTUALIZAR_BUQUE_MULTIPROPOSITOS_FRIGORIFICOS.jsp" method="post" >
                 <div >
 
 
@@ -79,6 +92,23 @@
                     </table>
 
 
+                </div>
+
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="row">
+                        <div class="input-field col s2">
+                            <input placeholder="" type="number" id="CWBC_HORA" name="CWBC_HORA" class="validate" value="<%= multi.getCWBC_HORA()%>">
+                            <label for="CWBC_HORA">HORAS ESTADIA</label>
+                        </div>
+                        <label for="CWBC_ETA">FECHA Y HORA ETA </label>
+                        <div class="input-field col s2">
+                            <input placeholder="" type="datetime-local" id="CWBC_ETA" name="CWBC_ETA" class="validate" value="<%= eta%>">
+                        </div>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="section">
                 </div>
 
 
@@ -120,89 +150,82 @@
 
                             <td colspan="2">
 
-                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_LLENOS_GP_VI" type="number" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_LLENOS_GP_VI" type="number" class="validate" value="<%= multi.getCWSF_DESCARGA_LLENOS_GP_VI()%>">
                                 <label for="CWSF_DESCARGA_LLENOS_GB_VI"></label>
 
                             </td>
 
                             <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_LLENOS_GB_VI" type="number" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_LLENOS_GB_VI" type="number" class="validate" value="<%= multi.getCWSF_DESCARGA_LLENOS_GB_VI()%>">
                                 <label for="CWSF_DESCARGA_LLENOS_GP_VI"></label>
                             </td>
 
                             <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_LLENOS_GP_VD" type="number" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_LLENOS_GP_VD" type="number" class="validate" value="<%= multi.getCWSF_DESCARGA_LLENOS_GP_VD()%>">
                                 <label for="CWSF_DESCARGA_LLENOS_GB_VD"></label>
                             </td>
 
                             <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_LLENOS_GB_VD" type="number" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_LLENOS_GB_VD" type="number" class="validate" value="<%= multi.getCWSF_DESCARGA_LLENOS_GB_VD()%>">
                                 <label for="CWSF_DESCARGA_LLENOS_GP_VD"></label>
                             </td>
 
                         </tr>
 
                         <tr>
-
                             <th>Descaga Vacios</th>
-
                             <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_VACIOS_GP_VI" type="number" class="validate">
-                                <label for="VDGPDL"></label>
+                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_VACIOS_GP_VI" type="number" class="validate" value="<%= multi.getCWSF_DESCARGA_VACIOS_GP_VI()%>">
+                                <label for="CWSF_DESCARGA_VACIOS_GP_VI"></label>
                             </td>
-
                             <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_VACIOS_GB_VI" type="number" class="validate">
-                                <label for="VDGPDL"></label>
+                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_VACIOS_GB_VI" type="number" class="validate" value="<%= multi.getCWSF_DESCARGA_VACIOS_GB_VI()%>">
+                                <label for="CWSF_DESCARGA_VACIOS_GB_VI"></label>
                             </td>
-
                             <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_VACIOS_GP_VD" type="number" class="validate">
-                                <label for="VDGPDL"></label>
+                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_VACIOS_GP_VD" type="number" class="validate" value="<%= multi.getCWSF_DESCARGA_VACIOS_GP_VD()%>">
+                                <label for="CWSF_DESCARGA_VACIOS_GP_VD"></label>
                             </td>
-
                             <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_VACIOS_GB_VD" type="number" class="validate">
-                                <label for="VDGPDL"></label>
+                                <input  placeholder="Movimientos" name="CWSF_DESCARGA_VACIOS_GB_VD" type="number" class="validate" value="<%= multi.getCWSF_DESCARGA_VACIOS_GB_VD()%>">
+                                <label for="CWSF_DESCARGA_VACIOS_GB_VD"></label>
                             </td>
-
                         </tr>
-
                         <tr>
                             <th>Carga Llenos</th>
                             <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_CARGA_LLENOS_GP_VI" type="number" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_CARGA_LLENOS_GP_VI" type="number" class="validate" value="<%= multi.getCWSF_CARGA_LLENOS_GP_VI()%>">
                                 <label for="CWSF_CARGA_LLENOS_GP_VI"></label>
                             </td>
                             <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_CARGA_LLENOS_GB_VI" type="number" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_CARGA_LLENOS_GB_VI" type="number" class="validate" value="<%= multi.getCWSF_CARGA_LLENOS_GB_VI()%>">
                                 <label for="CWSF_CARGA_LLENOS_GB_VI"></label>
                             </td>
                             <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_CARGA_LLENOS_GP_VD" type="number" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_CARGA_LLENOS_GP_VD" type="number" class="validate" value="<%= multi.getCWSF_CARGA_LLENOS_GP_VD()%>">
                                 <label for="CWSF_CARGA_LLENOS_GP_VD"></label>
                             </td>
                             <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_CARGA_LLENOS_GB_VD" type="number" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_CARGA_LLENOS_GB_VD" type="number" class="validate"value="<%= multi.getCWSF_CARGA_LLENOS_GB_VD()%>">
                                 <label for="CWSF_CARGA_LLENOS_GB_VD"></label>
                             </td>
                         </tr>
                         <tr>
                             <th>Carga Vacios</th>
                             <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_CARGA_VACIOS_GP_VI" type="number" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_CARGA_VACIOS_GP_VI" type="number" class="validate" value="<%= multi.getCWSF_CARGA_VACIOS_GP_VI()%>">
                                 <label for="CWSF_CARGA_VACIOS_GP_VI"></label>
                             </td>
                             <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_CARGA_VACIOS_GB_VI" type="number" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_CARGA_VACIOS_GB_VI" type="number" class="validate" value="<%= multi.getCWSF_CARGA_VACIOS_GB_VI()%>">
                                 <label for="CWSF_CARGA_VACIOS_GB_VI"></label>
                             </td>
                             <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_CARGA_VACIOS_GP_VD" type="number" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_CARGA_VACIOS_GP_VD" type="number" class="validate" value="<%= multi.getCWSF_CARGA_VACIOS_GP_VD()%>">
                                 <label for="CWSF_CARGA_VACIOS_GP_VD"></label>
                             </td>
                             <td colspan="2">
-                                <input  placeholder="Movimientos" name="CWSF_CARGA_VACIOS_GB_VD" type="number" class="validate">
+                                <input  placeholder="Movimientos" name="CWSF_CARGA_VACIOS_GB_VD" type="number" class="validate" value="<%= multi.getCWSF_CARGA_VACIOS_GB_VD()%>">
                                 <label for="CWSF_CARGA_VACIOS_GB_VD"></label>
                             </td>
                         </tr>
@@ -221,50 +244,48 @@
                     <tr>
                         <th>Depositos Momentaneos</th>
                         <td>
-                            <input  placeholder="Movimientos" name="CWSF_DEPOSITO_MOMENT_GP" type="number" class="validate">
+                            <input  placeholder="Movimientos" name="CWSF_DEPOSITO_MOMENT_GP" type="number" class="validate" value="<%= multi.getCWSF_DEPOSITO_MOMENT_GP()%>">
                             <label for="CWSF_DEPOSITO_MOMENT_GP"></label>
                         </td>
                         <td>
-                            <input  placeholder="Movimientos" name="CWSF_DEPOSITO_MOMENT_GB" type="number" class="validate">
+                            <input  placeholder="Movimientos" name="CWSF_DEPOSITO_MOMENT_GB" type="number" class="validate" value="<%= multi.getCWSF_DEPOSITO_MOMENT_GB()%>">
                             <label for="CWSF_DEPOSITO_MOMENT_GB"></label>
-                        </td> 
+                        </td>
                     </tr>
                     <tr>
                         <th>Vehiculos</th>
-                        <td>
-                            <input  placeholder="Unidades" name="CWSF_DESCARGA_VEHICULOS_GP" type="number" class="validate">
+                        <td >
+                            <input  placeholder="Movimientos" name="CWSF_DESCARGA_VEHICULOS_GP" type="number" class="validate" value="<%= multi.getCWSF_DESCARGA_VEHICULOS_GP()%>">
                             <label for="CWSF_DESCARGA_VEHICULOS_GP"></label>
                         </td>
-                        <td>
-                            <input  placeholder="Unidades" name="CWSF_DESCARGA_VEHICULOS_GB" type="number" class="validate">
+                        <td >
+                            <input  placeholder="Movimientos" name="CWSF_DESCARGA_VEHICULOS_GB" type="number" class="validate" value="<%= multi.getCWSF_DESCARGA_VEHICULOS_GB()%>">
                             <label for="CWSF_DESCARGA_VEHICULOS_GB"></label>
-                        </td>  
+                        </td>    
                     </tr>
                     <tr>
                         <th>Reestibas</th>
 
                         <td >
-                            <input  placeholder="Movimientos" name="CWSF_REESTIBAS_GP" type="number" class="validate">
+                            <input  placeholder="Movimientos" name="CWSF_REESTIBAS_GP" type="number" class="validate" value="<%= multi.getCWSF_REESTIBAS_GP()%>">
                             <label for="CWSF_REESTIBAS_GP"></label>
                         </td>
-
                         <td >
-                            <input  placeholder="Movimientos" name="CWSF_REESTIBAS_GB" type="number" class="validate">
+                            <input  placeholder="Movimientos" name="CWSF_REESTIBAS_GB" type="number" class="validate" value="<%= multi.getCWSF_REESTIBAS_GB()%>" >
                             <label for="CWSF_REESTIBAS_GB"></label>
-                        </td>  
+                        </td>
                     </tr>
                     <tr>
                         <th>Tapa Escotillas</th>
 
                         <td>
-                            <input  placeholder="Movimientos" name="CWSF_TAPA_ESCOTILLAS_GP" type="number" class="validate">
+                            <input  placeholder="Movimientos" name="CWSF_TAPA_ESCOTILLAS_GP" type="number" class="validate" value="<%= multi.getCWSF_TAPA_ESCOTILLAS_GP()%>">
                             <label for="CWSF_TAPA_ESCOTILLAS_GP"></label>
                         </td>
-
                         <td>
-                            <input  placeholder="Movimientos" name="CWSF_TAPA_ESCOTILLAS_GB" type="number" class="validate">
+                            <input  placeholder="Movimientos" name="CWSF_TAPA_ESCOTILLAS_GB" type="number" class="validate" value="<%= multi.getCWSF_TAPA_ESCOTILLAS_GB()%>">
                             <label for="CWSF_TAPA_ESCOTILLAS_GB"></label>
-                        </td>  
+                        </td> 
                     </tr>
 
                     <table id="1" class="table table-bordered table-sm ">
@@ -303,23 +324,21 @@
                             <th>Depositos Temporales</th>
 
                             <td>
-                                <input  placeholder="Movimientos" name="CWSF_DEPOSITO_TEMP_LLENO_GP" type="number" class="validate">
-                                <label for="CWSF_DEPOSITO_TEMP_LLENO_GP"></label>
-                            </td>
-
-                            <td>
-                                <input  placeholder="Movimientos" name="CWSF_DEPOSITO_TEMP_VACIO_GP" type="number" class="validate">
-                                <label for="CWSF_DEPOSITO_TEMP_VACIO_GP"></label>
-                            </td> 
-                            <td>
-                                <input  placeholder="Movimientos" name="CWSF_DEPOSITO_TEMP_LLENO_GB" type="number" class="validate">
-                                <label for="CWSF_DEPOSITO_TEMP_LLENO_GB"></label>
-                            </td>
-
-                            <td>
-                                <input  placeholder="Movimientos" name="CWSF_DEPOSITO_TEMP_VACIO_GB" type="number" class="validate">
-                                <label for="CWSF_DEPOSITO_TEMP_VACIO_GB"></label>
-                            </td> 
+                            <input  placeholder="Movimientos" name="CWSF_DEPOSITO_TEMP_LLENO_GP" type="number" class="validate" value="<%= multi.getCWSF_DEPOSITO_TEMP_LLENO_GP()%>">
+                            <label for="CWSF_DEPOSITO_TEMP_LLENO_GP"></label>
+                        </td>
+                        <td>
+                            <input  placeholder="Movimientos" name="CWSF_DEPOSITO_TEMP_VACIO_GP" type="number" class="validate" value="<%= multi.getCWSF_DEPOSITO_TEMP_VACIO_GP()%>" >
+                            <label for="CWSF_DEPOSITO_TEMP_VACIO_GP"></label>
+                        </td> 
+                        <td>
+                            <input  placeholder="Movimientos" name="CWSF_DEPOSITO_TEMP_LLENO_GB" type="number" class="validate" value="<%= multi.getCWSF_DEPOSITO_TEMP_LLENO_GB()%>">
+                            <label for="CWSF_DEPOSITO_TEMP_LLENO_GB"></label>
+                        </td>
+                        <td>
+                            <input  placeholder="Movimientos" name="CWSF_DEPOSITO_TEMP_VACIO_GB" type="number" class="validate" value="<%= multi.getCWSF_DEPOSITO_TEMP_VACIO_GB()%>">
+                            <label for="CWSF_DEPOSITO_TEMP_VACIO_GB"></label>
+                        </td>  
                         </tr>
                         <table id="1" class="table table-bordered table-sm ">
                             <thead class="light-blue">
@@ -354,32 +373,29 @@
                                 <th>Reembarques</th>
 
                                 <td>
-                                    <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_LLENO_GP" type="number" class="validate">
-                                    <label for="CWSF_REEMBARQUE_LLENO_GP"></label>
-                                </td>
-
-                                <td>
-                                    <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_LLENO_RF_GP" type="number" class="validate">
-                                    <label for="CWSF_REEMBARQUE_LLENO_RF_GP"></label>
-                                </td>
-
-                                <td>
-                                    <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_VACIO_GP" type="number" class="validate">
-                                    <label for="CWSF_REEMBARQUE_VACIO_GP"></label>
-                                </td> 
-                                <td>
-                                    <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_LLENO_GB" type="number" class="validate">
-                                    <label for="CWSF_REEMBARQUE_LLENO_GB"></label>
-                                </td>
-                                <td>
-                                    <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_LLENO_RF_GB" type="number" class="validate">
-                                    <label for="CWSF_REEMBARQUE_LLENO_RF_GB"></label>
-                                </td>
-
-                                <td>
-                                    <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_VACIO_GB" type="number" class="validate">
-                                    <label for="CWSF_REEMBARQUE_VACIO_GB"></label>
-                                </td>  
+                                <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_LLENO_GP" type="number" class="validate" value="<%= multi.getCWSF_REEMBARQUE_LLENO_GP()%>">
+                                <label for="CWSF_REEMBARQUE_LLENO_GP"></label>
+                            </td>
+                            <td>
+                                <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_LLENO_RF_GP" type="number" class="validate" value="<%= multi.getCWSF_REEMBARQUE_LLENO_RF_GP()%>">
+                                <label for="CWSF_REEMBARQUE_LLENO_RF_GP"></label>
+                            </td>
+                            <td>
+                                <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_VACIO_GP" type="number" class="validate" value="<%= multi.getCWSF_REEMBARQUE_VACIO_GP()%>">
+                                <label for="CWSF_REEMBARQUE_VACIO_GP"></label>
+                            </td> 
+                            <td>
+                                <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_LLENO_GB" type="number" class="validate" value="<%= multi.getCWSF_REEMBARQUE_LLENO_GB()%>">
+                                <label for="CWSF_REEMBARQUE_LLENO_GB"></label>
+                            </td>
+                            <td>
+                                <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_LLENO_RF_GB" type="number" class="validate" value="<%= multi.getCWSF_REEMBARQUE_LLENO_RF_GB()%>">
+                                <label for="CWSF_REEMBARQUE_LLENO_RF_GB"></label>
+                            </td>
+                            <td>
+                                <input  placeholder="Movimientos" name="CWSF_REEMBARQUE_VACIO_GB" type="number" class="validate" value="<%= multi.getCWSF_REEMBARQUE_VACIO_GB()%>">
+                                <label for="CWSF_REEMBARQUE_VACIO_GB"></label>
+                            </td>   
                             </tr>
                             <table id="1" class="table table-bordered table-sm ">
 
@@ -430,30 +446,30 @@
                                     <th>Descarga Merc. General</th>
 
                                     <td>
-                                        <input  placeholder="Movimientos" name="CWSF_DESCARGA_MERCA_GP_VI" type="number" class="validate">
+                                        <input  placeholder="Movimientos" name="CWSF_DESCARGA_MERCA_GP_VI" type="number" class="validate" value="<%= multi.getCWSF_DESCARGA_MERCA_GB_VI()%>">
                                         <label for="CWSF_DESCARGA_MERCA_GP_VI"></label>
                                     </td>
 
                                     <td>
-                                        <input  placeholder="Horas" name="DGPHVI" type="number" class="validate">
-                                        <label for="DGPH"></label>
+                                        <input  placeholder="Horas" name="DGPHVI" type="number" class="validate" value="<%= multi.getCWSF_DESCARGA_MERCA_GP_VI_HR()%>" >
+                                        <label for="DGPHVI"></label>
                                     </td>
 
                                     <td>
-                                        <input  placeholder="Movimientos" name="CWSF_DESCARGA_MERCA_GB_VI" type="number" class="validate">
+                                        <input  placeholder="Movimientos" name="CWSF_DESCARGA_MERCA_GB_VI" type="number" class="validate" value="<%= multi.getCWSF_DESCARGA_MERCA_GB_VI()%>">
                                         <label for="CWSF_DESCARGA_MERCA_GB_VI"></label>
                                     </td> 
                                     <td>
-                                        <input  placeholder="Movimientos" name="CWSF_DESCARGA_MERCA_GP_VD" type="number" class="validate">
+                                        <input  placeholder="Movimientos" name="CWSF_DESCARGA_MERCA_GP_VD" type="number" class="validate" value="<%= multi.getCWSF_DESCARGA_MERCA_GP_VD()%>">
                                         <label for="CWSF_DESCARGA_MERCA_GP_VD"></label>
                                     </td>
                                     <td>
-                                        <input  placeholder="Horas" name="DGPHVD" type="number" class="validate">
+                                        <input  placeholder="Horas" name="DGPHVD" type="number" class="validate" value="<%= multi.getCWSF_DESCARGA_MERCA_GP_VD_HR()%>">
                                         <label for="DGPHVD"></label>
                                     </td>
 
                                     <td>
-                                        <input  placeholder="Movimientos" name="CWSF_DESCARGA_MERCA_GB_VD" type="number" class="validate">
+                                        <input  placeholder="Movimientos" name="CWSF_DESCARGA_MERCA_GB_VD" type="number" class="validate" value="<%= multi.getCWSF_DESCARGA_MERCA_GB_VD()%>">
                                         <label for="CWSF_DESCARGA_MERCA_GB_VD"></label>
                                     </td>  
                                 </tr>
@@ -462,85 +478,85 @@
                                     <th>Carga Merc. General</th>
 
                                     <td>
-                                        <input  placeholder="Movimientos" name="CWSF_CARGA_MERCA_GP_VI" type="number" class="validate">
+                                        <input  placeholder="Movimientos" name="CWSF_CARGA_MERCA_GP_VI" type="number" class="validate" value="<%= multi.getCWSF_CARGA_MERCA_GP_VI()%>">
                                         <label for="CWSF_CARGA_MERCA_GP_VI"></label>
                                     </td>
 
                                     <td>
-                                        <input  placeholder="Horas" name="CGPHVI" type="number" class="validate">
+                                        <input  placeholder="Horas" name="CGPHVI" type="number" class="validate" value="<%= multi.getCWSF_CARGA_MERCA_GP_VI_HR()%>">
                                         <label for="CGPHVI"></label>
                                     </td>
 
                                     <td>
-                                        <input  placeholder="Movimientos" name="CWSF_CARGA_MERCA_GB_VI" type="number" class="validate">
+                                        <input  placeholder="Movimientos" name="CWSF_CARGA_MERCA_GB_VI" type="number" class="validate" value="<%= multi.getCWSF_CARGA_MERCA_GB_VI()%>">
                                         <label for="CWSF_CARGA_MERCA_GB_VI"></label>
                                     </td> 
                                     <td>
-                                        <input  placeholder="Movimientos" name="CWSF_CARGA_MERCA_GP_VD" type="number" class="validate">
+                                        <input  placeholder="Movimientos" name="CWSF_CARGA_MERCA_GP_VD" type="number" class="validate" value="<%= multi.getCWSF_CARGA_MERCA_GP_VD()%>">
                                         <label for="CWSF_CARGA_MERCA_GP_VD"></label>
                                     </td>
                                     <td>
-                                        <input  placeholder="Horas" name="CGPHVD" type="number" class="validate">
+                                        <input  placeholder="Horas" name="CGPHVD" type="number" class="validate" value="<%= multi.getCWSF_CARGA_MERCA_GP_VD_HR()%>">
                                         <label for="CGPHVD"></label>
                                     </td>
 
                                     <td>
-                                        <input  placeholder="Movimientos" name="CWSF_CARGA_MERCA_GB_VD" type="number" class="validate">
+                                        <input  placeholder="Movimientos" name="CWSF_CARGA_MERCA_GB_VD" type="number" class="validate" value="<%= multi.getCWSF_CARGA_MERCA_GB_VD()%>">
                                         <label for="CWSF_CARGA_MERCA_GB_VD"></label>
                                     </td>   
                                 </tr>
                                 <tr>
                                     <th>Carga Fruta Fresca Paletizada</th>
                                     <td>
-                                        <input  placeholder="Movimientos" name="CWSF_CARGA_FRUTA_PALE_GP_VI" type="number" class="validate">
+                                        <input  placeholder="Movimientos" name="CWSF_CARGA_FRUTA_PALE_GP_VI" type="number" class="validate" value="<%= multi.getCWSF_CARGA_FRUTA_PALE_GP_VI()%>">
                                         <label for="CWSF_CARGA_FRUTA_PALE_GP_VI"></label>
                                     </td>
                                     <td>
-                                        <input  placeholder="Horas" name="CFGPHVI" type="number" class="validate">
+                                        <input  placeholder="Horas" name="CFGPHVI" type="number" class="validate" value="<%= multi.getCWSF_CARGA_FRUTA_PALE_GP_VI_HR()%>">
                                         <label for="CFGPHVI"></label>
                                     </td>
                                     <td>
-                                        <input  placeholder="Movimientos" name="CWSF_CARGA_FRUTA_PALE_GB_VI" type="number" class="validate">
+                                        <input  placeholder="Movimientos" name="CWSF_CARGA_FRUTA_PALE_GB_VI" type="number" class="validate" value="<%= multi.getCWSF_CARGA_FRUTA_PALE_GB_VI()%>">
                                         <label for="CWSF_CARGA_FRUTA_PALE_GB_VI"></label>
                                     </td>
                                     <td>
-                                        <input  placeholder="Movimientos" name="CWSF_CARGA_FRUTA_PALE_GP_VD" type="number" class="validate">
+                                        <input  placeholder="Movimientos" name="CWSF_CARGA_FRUTA_PALE_GP_VD" type="number" class="validate" value="<%= multi.getCWSF_CARGA_FRUTA_PALE_GP_VD()%>">
                                         <label for="CWSF_CARGA_FRUTA_PALE_GP_VD"></label>
                                     </td>
                                     <td>
-                                        <input  placeholder="Horas" name="CFGPHVD" type="number" class="validate">
+                                        <input  placeholder="Horas" name="CFGPHVD" type="number" class="validate" value="<%= multi.getCWSF_CARGA_FRUTA_PALE_GP_VD_HR()%>">
                                         <label for="CFGPHVD"></label>
                                     </td>
                                     <td>
-                                        <input  placeholder="Movimientos" name="CWSF_CARGA_FRUTA_PALE_GB_VD" type="number" class="validate">
+                                        <input  placeholder="Movimientos" name="CWSF_CARGA_FRUTA_PALE_GB_VD" type="number" class="validate" value="<%= multi.getCWSF_CARGA_FRUTA_PALE_GB_VD()%>">
                                         <label for="CWSF_CARGA_FRUTA_PALE_GB_VD"></label>
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>Descarga Fruta Fresca Paletizada</th>
                                     <td>
-                                        <input  placeholder="Movimientos" name="CWSF_DESCARGA_FRUTA_PALE_GP_VI" type="number" class="validate">
+                                        <input  placeholder="Movimientos" name="CWSF_DESCARGA_FRUTA_PALE_GP_VI" type="number" class="validate" value="<%= multi.getCWSF_DESCARGA_FRUTA_PALE_GP_VI()%>">
                                         <label for="CWSF_DESCARGA_FRUTA_PALE_GP_VI"></label>
                                     </td>
                                     <td>
-                                        <input  placeholder="Horas" name="DFGPHVI" type="number" class="validate">
+                                        <input  placeholder="Horas" name="DFGPHVI" type="number" class="validate" value="<%= multi.getCWSF_DESCA_FRUTA_PALE_GP_VI_HR()%>">
                                         <label for="DFGPHVI"></label>
                                     </td>
                                     <td>
-                                        <input  placeholder="Movimientos" name="CWSF_DESCARGA_FRUTA_PALE_GB_VI" type="number" class="validate">
+                                        <input  placeholder="Movimientos" name="CWSF_DESCARGA_FRUTA_PALE_GB_VI" type="number" class="validate" value="<%= multi.getCWSF_DESCARGA_FRUTA_PALE_GB_VI()%>">
                                         <label for="CWSF_DESCARGA_FRUTA_PALE_GB_VI"></label>
                                     </td>
 
                                     <td>
-                                        <input  placeholder="Movimientos" name="CWSF_DESCARGA_FRUTA_PALE_GP_VD" type="number" class="validate">
+                                        <input  placeholder="Movimientos" name="CWSF_DESCARGA_FRUTA_PALE_GP_VD" type="number" class="validate" value="<%= multi.getCWSF_DESCARGA_FRUTA_PALE_GP_VD()%>">
                                         <label for="CWSF_DESCARGA_FRUTA_PALE_GP_VD"></label>
                                     </td>
                                     <td>
-                                        <input  placeholder="Horas" name="DFGPHVD" type="number" class="validate">
+                                        <input  placeholder="Horas" name="DFGPHVD" type="number" class="validate" value="<%= multi.getCWSF_DESCA_FRUTA_PALE_GP_VD_HR()%>">
                                         <label for="DFGPHVD"></label>
                                     </td>
                                     <td>
-                                        <input  placeholder="Movimientos" name="CWSF_DESCARGA_FRUTA_PALE_GB_VD" type="number" class="validate">
+                                        <input  placeholder="Movimientos" name="CWSF_DESCARGA_FRUTA_PALE_GB_VD" type="number" class="validate" value="<%= multi.getCWSF_DESCARGA_FRUTA_PALE_GB_VD()%>">
                                         <label for="CWSF_DESCARGA_FRUTA_PALE_GB_VD"></label>
                                     </td>
                                 </tr>
@@ -566,9 +582,12 @@
 
                             <script type="text/javascript">
 
-                                $(document).ready(function () {
-                                    $('#table_id').DataTable();
-                                });
+                                var muellaje = "<%= muellaje%>";
+                                if (muellaje === "S") {
+                                    $('#Muellaje').prop('checked', true);
+                                } else {
+                                    $('#Muellaje').prop('checked', false);
+                                }
 
                             </script>
                             </body>

@@ -497,6 +497,25 @@ public class BeanMultiFrigo {
     public void setCWSF_DESCARGA_FRUTA_PALE_GP_VI(String CWSF_DESCARGA_FRUTA_PALE_GP_VI) {
         this.CWSF_DESCARGA_FRUTA_PALE_GP_VI = CWSF_DESCARGA_FRUTA_PALE_GP_VI;
     }
+
+    public String getCWBC_HORA() {
+        return CWBC_HORA;
+    }
+
+    public void setCWBC_HORA(String CWBC_HORA) {
+        this.CWBC_HORA = CWBC_HORA;
+    }
+
+    public String getCWBC_ETA() {
+        return CWBC_ETA;
+    }
+
+    public void setCWBC_ETA(String CWBC_ETA) {
+        this.CWBC_ETA = CWBC_ETA;
+    }
+    
+    
+    
     
     
     
@@ -527,7 +546,7 @@ public class BeanMultiFrigo {
             String CWSF_DESCARGA_FRUTA_PALE_GP_VI
     ) {
 
-        this.CWBC_COTIZACION = CWBC_COTIZACION;
+        this.CWBC_COTIZACION = CWBC_COTIZACION;      
         this.CWSF_MUELLAJE_COF_IMPORT = CWSF_MUELLAJE_COF_IMPORT;
         this.CWSF_MUELLAJE_COF_EXPORT = CWSF_MUELLAJE_COF_EXPORT;
         this.CWSF_DESCARGA_LLENOS_GB_VI = CWSF_DESCARGA_LLENOS_GB_VI;
@@ -593,6 +612,8 @@ public class BeanMultiFrigo {
     }
 
     private String CWBC_COTIZACION;
+    private String CWBC_HORA;
+    private String CWBC_ETA;
     private String CWSF_MUELLAJE_COF_IMPORT;
     private String CWSF_MUELLAJE_COF_EXPORT;
     private String CWSF_DESCARGA_LLENOS_GB_VI;
@@ -640,7 +661,6 @@ public class BeanMultiFrigo {
     private String CWSF_CARGA_FRUTA_PALE_GP_VD;
     private String CWSF_CARGA_FRUTA_PALE_GP_VI;
     private String GRABADOR;
-
     private String CWSF_REEMBARQUE_LLENO_RF_GP;
     private String CWSF_REEMBARQUE_LLENO_RF_GB;
     private String CWSF_DESCARGA_MERCA_GP_VD_HR;

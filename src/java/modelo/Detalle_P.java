@@ -141,7 +141,7 @@ public class Detalle_P {
                 user.setCWBC_COTIZACION(rs.getString("cwbc_cotizacion"));
                 user.setCWBC_HORA(rs.getString("CWBC_HORA"));
                 user.setCWBC_ETA(rs.getString("cwbc_eta"));
-                user.setCWSF_MUELLAJE_COF_IMPORT("cwsp_muellaje_cof_import");
+                user.setCWSF_MUELLAJE_COF_IMPORT(rs.getString("CWSP_MUELLAJE_COF_IMPORT"));
                 user.setCWSF_DESCARGA_LLENOS_GB_VI(rs.getString("cwsp_descarga_llenos_gb_vi"));
                 user.setCWSF_DESCARGA_LLENOS_GB_VD(rs.getString("cwsp_descarga_llenos_gb_vd"));
                 user.setCWSF_DESCARGA_LLENOS_GP_VI(rs.getString("cwsp_descarga_llenos_gp_vi"));
@@ -219,6 +219,7 @@ public class Detalle_P {
       
       String sql = " update COTIZADOR_WEB.cw_srv_portacontenedores SET "
               + "CWSP_DESCARGA_LLENOS_GB_VI = '"+ buque.getCWSF_DESCARGA_LLENOS_GB_VI() +"',\n" +
+"CWSP_MUELLAJE_COF_IMPORT = '"+ buque.getCWSF_MUELLAJE_COF_IMPORT() +"',\n" +
 "CWSP_DESCARGA_LLENOS_GB_VD = '"+ buque.getCWSF_DESCARGA_LLENOS_GB_VD() +"',\n" +
 "CWSP_DESCARGA_LLENOS_GP_VI = '"+ buque.getCWSF_DESCARGA_LLENOS_GP_VI() +"',\n" +
 "CWSP_DESCARGA_LLENOS_GP_VD = '"+ buque.getCWSF_DESCARGA_LLENOS_GP_VD() +"',\n" +
@@ -287,7 +288,7 @@ public class Detalle_P {
             }
 
         } catch (SQLException e) {
-            actualizado = "mal"+e+ buque.getCWBC_ETA();
+            actualizado = "mal"+e;
         }
 
         return actualizado;

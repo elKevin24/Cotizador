@@ -4,8 +4,8 @@
     Author     : kcordon
 --%>
 
-<%@page import="modelo.Detalle_P"%>
-<%@page import="controlador.BeanPorta"%>
+<%@page import="modelo.Detalle_MF"%>
+<%@page import="controlador.BeanMultiFrigo"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,14 +18,21 @@
 
             String res = null;
             String detalle = null;
-            boolean Eliminar ;
+            boolean Eliminar;
 
+            String MuellajeImport = request.getParameter("Muellaje");
+            if (MuellajeImport != null) {
+                MuellajeImport = "S";
+            } else {
+                MuellajeImport = "N";
+
+            }
             String CWSF_COTIZACION = request.getParameter("CWSF_COTIZACION");
             String CWBC_HORA = request.getParameter("CWBC_HORA");
             String CWBC_ETA = request.getParameter("CWBC_ETA");
 
             CWBC_ETA = CWBC_ETA.replace('T', ' ');
-            CWBC_ETA = CWBC_ETA+":00";
+            CWBC_ETA = CWBC_ETA + ":00";
             String CWSF_DESCARGA_LLENOS_GP_VI = request.getParameter("CWSF_DESCARGA_LLENOS_GP_VI");
             String CWSF_DESCARGA_LLENOS_GB_VI = request.getParameter("CWSF_DESCARGA_LLENOS_GB_VI");
             String CWSF_DESCARGA_LLENOS_GP_VD = request.getParameter("CWSF_DESCARGA_LLENOS_GP_VD");
@@ -69,20 +76,51 @@
 
             String CWSF_DEPOSITO_MOMENT_GP = request.getParameter("CWSF_DEPOSITO_MOMENT_GP");
             String CWSF_DEPOSITO_MOMENT_GB = request.getParameter("CWSF_DEPOSITO_MOMENT_GB");
+            
 
-            BeanPorta user = new BeanPorta();
+            String CWSF_DESCARGA_MERCA_GB_VD = request.getParameter("CWSF_DESCARGA_MERCA_GB_VD");
+            String CWSF_DESCARGA_MERCA_GB_VI = request.getParameter("CWSF_DESCARGA_MERCA_GB_VI");
+            String CWSF_DESCARGA_MERCA_GP_VD = request.getParameter("CWSF_DESCARGA_MERCA_GP_VD");
+            String CWSF_DESCARGA_MERCA_GP_VI = request.getParameter("CWSF_DESCARGA_MERCA_GP_VI");
+            String CWSF_CARGA_MERCA_GB_VD = request.getParameter("CWSF_CARGA_MERCA_GB_VD");
+            String CWSF_CARGA_MERCA_GB_VI = request.getParameter("CWSF_CARGA_MERCA_GB_VI");
+            String CWSF_CARGA_MERCA_GP_VD = request.getParameter("CWSF_CARGA_MERCA_GP_VD");
+            String CWSF_CARGA_MERCA_GP_VI = request.getParameter("CWSF_CARGA_MERCA_GP_VI");
+            
+            String CWSF_CARGA_FRUTA_PALE_GB_VD = request.getParameter("CWSF_CARGA_FRUTA_PALE_GB_VD");
+            String CWSF_CARGA_FRUTA_PALE_GB_VI = request.getParameter("CWSF_CARGA_FRUTA_PALE_GB_VI");
+            String CWSF_CARGA_FRUTA_PALE_GP_VD = request.getParameter("CWSF_CARGA_FRUTA_PALE_GP_VD");
+            String CWSF_CARGA_FRUTA_PALE_GP_VI = request.getParameter("CWSF_CARGA_FRUTA_PALE_GP_VI");
+
+            String CWSF_DESCARGA_MERCA_GP_VD_HR = request.getParameter("DGPHVD");
+            String CWSF_DESCARGA_MERCA_GP_VI_HR = request.getParameter("DGPHVI");
+            String CWSF_CARGA_MERCA_GP_VD_HR = request.getParameter("CGPHVD");
+            String CWSF_CARGA_MERCA_GP_VI_HR = request.getParameter("CGPHVI");
+            
+            String CWSF_CARGA_FRUTA_PALE_GP_VI_HR = request.getParameter("CFGPHVI");
+            String CWSF_CARGA_FRUTA_PALE_GP_VD_HR = request.getParameter("CFGPHVD");
+            String CWSF_DESCA_FRUTA_PALE_GP_VI_HR = request.getParameter("DFGPHVI");
+            String CWSF_DESCA_FRUTA_PALE_GP_VD_HR = request.getParameter("DFGPHVD");
+            
+            String CWSF_DESCARGA_FRUTA_PALE_GB_VD = request.getParameter("CWSF_DESCARGA_FRUTA_PALE_GB_VD");
+            String CWSF_DESCARGA_FRUTA_PALE_GB_VI = request.getParameter("CWSF_DESCARGA_FRUTA_PALE_GB_VI");
+            String CWSF_DESCARGA_FRUTA_PALE_GP_VD = request.getParameter("CWSF_DESCARGA_FRUTA_PALE_GP_VD");
+            String CWSF_DESCARGA_FRUTA_PALE_GP_VI = request.getParameter("CWSF_DESCARGA_FRUTA_PALE_GP_VI");
+                        
+            BeanMultiFrigo user = new BeanMultiFrigo();
             user.setCWBC_COTIZACION(CWSF_COTIZACION);
             user.setCWBC_HORA(CWBC_HORA);
             user.setCWBC_ETA(CWBC_ETA);
+            user.setCWSF_MUELLAJE_COF_IMPORT(MuellajeImport);
             user.setCWSF_DESCARGA_LLENOS_GP_VI(CWSF_DESCARGA_LLENOS_GP_VI);
             user.setCWSF_DESCARGA_LLENOS_GB_VI(CWSF_DESCARGA_LLENOS_GB_VI);
             user.setCWSF_DESCARGA_LLENOS_GP_VD(CWSF_DESCARGA_LLENOS_GP_VD);
             user.setCWSF_DESCARGA_LLENOS_GB_VD(CWSF_DESCARGA_LLENOS_GB_VD);
             user.setCWSF_DESCARGA_VACIOS_GP_VI(CWSF_DESCARGA_VACIOS_GP_VI);
             user.setCWSF_DESCARGA_VACIOS_GB_VI(CWSF_DESCARGA_VACIOS_GB_VI);
-            user.setCWSF_DESCARGA_VACIOS_GP_VD(CWSF_DESCARGA_VACIOS_GP_VD);       
+            user.setCWSF_DESCARGA_VACIOS_GP_VD(CWSF_DESCARGA_VACIOS_GP_VD);
             user.setCWSF_DESCARGA_VACIOS_GB_VD(CWSF_DESCARGA_VACIOS_GB_VD);
-            
+
             user.setCWSF_CARGA_LLENOS_GP_VI(CWSF_CARGA_LLENOS_GP_VI);
             user.setCWSF_CARGA_LLENOS_GB_VI(CWSF_CARGA_LLENOS_GB_VI);
             user.setCWSF_CARGA_LLENOS_GP_VD(CWSF_CARGA_LLENOS_GP_VD);
@@ -91,7 +129,7 @@
             user.setCWSF_CARGA_VACIOS_GB_VI(CWSF_CARGA_VACIOS_GB_VI);
             user.setCWSF_CARGA_VACIOS_GP_VD(CWSF_CARGA_VACIOS_GP_VD);
             user.setCWSF_CARGA_VACIOS_GB_VD(CWSF_CARGA_VACIOS_GB_VD);
-            
+
             user.setCWSF_DESCARGA_VEHICULOS_GP(CWSF_DESCARGA_VEHICULOS_GP);
             user.setCWSF_DESCARGA_VEHICULOS_GB(CWSF_DESCARGA_VEHICULOS_GB);
             user.setCWSF_REESTIBAS_GP(CWSF_REESTIBAS_GP);
@@ -102,22 +140,58 @@
             user.setCWSF_DEPOSITO_TEMP_VACIO_GP(CWSF_DEPOSITO_TEMP_VACIO_GP);
             user.setCWSF_DEPOSITO_TEMP_LLENO_GB(CWSF_DEPOSITO_TEMP_LLENO_GB);
             user.setCWSF_DEPOSITO_TEMP_VACIO_GB(CWSF_DEPOSITO_TEMP_VACIO_GB);
-            
+
             user.setCWSF_REEMBARQUE_LLENO_GP(CWSF_REEMBARQUE_LLENO_GP);
             user.setCWSF_REEMBARQUE_LLENO_RF_GP(CWSF_REEMBARQUE_LLENO_RF_GP);
             user.setCWSF_REEMBARQUE_VACIO_GP(CWSF_REEMBARQUE_VACIO_GP);
             user.setCWSF_REEMBARQUE_LLENO_GB(CWSF_REEMBARQUE_LLENO_GB);
             user.setCWSF_REEMBARQUE_LLENO_RF_GB(CWSF_REEMBARQUE_LLENO_RF_GB);
             user.setCWSF_REEMBARQUE_VACIO_GB(CWSF_REEMBARQUE_VACIO_GB);
+            
             user.setCWSF_DEPOSITO_MOMENT_GP(CWSF_DEPOSITO_MOMENT_GP);
             user.setCWSF_DEPOSITO_MOMENT_GB(CWSF_DEPOSITO_MOMENT_GB);
             
+            user.setCWSF_DESCARGA_MERCA_GB_VD(CWSF_DESCARGA_MERCA_GB_VD);
+            user.setCWSF_DESCARGA_MERCA_GB_VI(CWSF_DESCARGA_MERCA_GB_VI);
+            user.setCWSF_DESCARGA_MERCA_GP_VD(CWSF_DESCARGA_MERCA_GP_VD);
+            user.setCWSF_DESCARGA_MERCA_GP_VI(CWSF_DESCARGA_MERCA_GP_VI);
+            
+            user.setCWSF_CARGA_MERCA_GB_VD(CWSF_CARGA_MERCA_GB_VD);
+            user.setCWSF_CARGA_MERCA_GB_VI(CWSF_CARGA_MERCA_GB_VI);            
+            user.setCWSF_CARGA_MERCA_GP_VD(CWSF_CARGA_MERCA_GP_VD);
+            user.setCWSF_CARGA_MERCA_GP_VI(CWSF_CARGA_MERCA_GP_VI);
+            
+            user.setCWSF_CARGA_FRUTA_PALE_GB_VD(CWSF_CARGA_FRUTA_PALE_GB_VD);
+            user.setCWSF_CARGA_FRUTA_PALE_GB_VI(CWSF_CARGA_FRUTA_PALE_GB_VI);
+            user.setCWSF_CARGA_FRUTA_PALE_GP_VD(CWSF_CARGA_FRUTA_PALE_GP_VD);
+            user.setCWSF_CARGA_FRUTA_PALE_GP_VI(CWSF_CARGA_FRUTA_PALE_GP_VI);
+            
+            user.setCWSF_DESCARGA_MERCA_GP_VD_HR(CWSF_DESCARGA_MERCA_GP_VD_HR);
+            user.setCWSF_DESCARGA_MERCA_GP_VI_HR(CWSF_DESCARGA_MERCA_GP_VI_HR);
+            user.setCWSF_CARGA_MERCA_GP_VD_HR(CWSF_CARGA_MERCA_GP_VD_HR);
+            user.setCWSF_CARGA_MERCA_GP_VI_HR(CWSF_CARGA_MERCA_GP_VI_HR);
+            
+            user.setCWSF_CARGA_FRUTA_PALE_GP_VI_HR(CWSF_CARGA_FRUTA_PALE_GP_VI_HR);
+            user.setCWSF_CARGA_FRUTA_PALE_GP_VD_HR(CWSF_CARGA_FRUTA_PALE_GP_VD_HR);
+            user.setCWSF_DESCA_FRUTA_PALE_GP_VI_HR(CWSF_DESCA_FRUTA_PALE_GP_VI_HR);
+            user.setCWSF_DESCA_FRUTA_PALE_GP_VD_HR(CWSF_DESCA_FRUTA_PALE_GP_VD_HR);
+            
+            user.setCWSF_DESCARGA_FRUTA_PALE_GB_VD(CWSF_DESCARGA_FRUTA_PALE_GB_VD);
+            user.setCWSF_DESCARGA_FRUTA_PALE_GB_VI(CWSF_DESCARGA_FRUTA_PALE_GB_VI);
+            user.setCWSF_DESCARGA_FRUTA_PALE_GP_VD(CWSF_DESCARGA_FRUTA_PALE_GP_VD);
+            user.setCWSF_DESCARGA_FRUTA_PALE_GP_VI(CWSF_DESCARGA_FRUTA_PALE_GP_VI);
+            
+            
+            
+           
 
-            res = Detalle_P.ActualizarPortacontenedor(user);
-            detalle = Detalle_P.ActualizarPortacontenedorDetalle(user);
-            Eliminar = Detalle_P.EliminarDetalle(CWSF_COTIZACION);
-            if (res.equalsIgnoreCase("bien")) {
-                out.println("<script> alert('Registro  Actualizado')</script>");
+            
+            detalle = Detalle_MF.ActualizarDetalle(user);
+            res = Detalle_MF.Actualizar(user);            
+            Eliminar = Detalle_MF.EliminarDetalle(CWSF_COTIZACION);
+            if (detalle.equalsIgnoreCase("bien")) {
+                
+                
                 response.sendRedirect("GuardadoDetalle.jsp?Cotizacion=" + CWSF_COTIZACION + "");
 
             } else {
