@@ -411,6 +411,24 @@ public class BeanMulti {
     public void setCWSM_CARGA_MERCA_GP_VI_HR(String CWSM_CARGA_MERCA_GP_VI_HR) {
         this.CWSM_CARGA_MERCA_GP_VI_HR = CWSM_CARGA_MERCA_GP_VI_HR;
     }
+
+    public String getCWBC_HORA() {
+        return CWBC_HORA;
+    }
+
+    public void setCWBC_HORA(String CWBC_HORA) {
+        this.CWBC_HORA = CWBC_HORA;
+    }
+
+    public String getCWBC_ETA() {
+        return CWBC_ETA;
+    }
+
+    public void setCWBC_ETA(String CWBC_ETA) {
+        this.CWBC_ETA = CWBC_ETA;
+    }
+    
+    
     
     
 
@@ -494,6 +512,8 @@ public class BeanMulti {
     }
 
     private String CWBC_COTIZACION;
+    private String CWBC_HORA;
+    private String CWBC_ETA;
     private String CWSF_MUELLAJE_COF_IMPORT;
     private String CWSF_MUELLAJE_COF_EXPORT;
     private String CWSF_DESCARGA_LLENOS_GB_VI;
@@ -527,8 +547,7 @@ public class BeanMulti {
     private String CWSF_REEMBARQUE_VACIO_GB;
     private String CWSF_REEMBARQUE_VACIO_GP;
     private String CWSF_DEPOSITO_MOMENT_GP;
-    private String CWSF_DEPOSITO_MOMENT_GB;
-   
+    private String CWSF_DEPOSITO_MOMENT_GB;   
     private String CWSF_DESCARGA_MERCA_GB_VD;
     private String CWSF_DESCARGA_MERCA_GB_VI;
     private String CWSF_DESCARGA_MERCA_GP_VD;
@@ -537,7 +556,6 @@ public class BeanMulti {
     private String CWSF_CARGA_MERCA_GB_VI;
     private String CWSF_CARGA_MERCA_GP_VD;
     private String CWSF_CARGA_MERCA_GP_VI;
-
     private String GRABADOR;
     private String GRABADOR_FECHA;
     private String CWSM_REEMBARQUE_LLENO_RF_GP;
