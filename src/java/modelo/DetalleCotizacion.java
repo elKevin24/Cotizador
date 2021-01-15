@@ -83,8 +83,8 @@ public class DetalleCotizacion {
 "    A.valor_quetzal,\n" +
 "    A.factor_ajuste,\n" +
 "  \n" +
-"    b.referencia,\n" +
-"    b.descripcion\n" +
+"    b.referencia ,\n" +
+"    b.descripcion unidad\n" +
 "    \n" +
 "FROM\n" +
 "    financiero.asft_tarifas_de_servicios A, financiero.asft_unidades_de_medida B, cotizador_web.cw_detalle_cotizacion C\n" +
@@ -104,7 +104,7 @@ public class DetalleCotizacion {
                         user.setVALOR_QUETZAL(rs.getString("valor_quetzal"));
                         user.setFACTOR_AJUSTE(rs.getString("factor_ajuste"));
                         user.setREFERENCIA_UNIDAD_MEDIDA(rs.getString("referencia"));
-                        user.setDESCRIPCION_UNIDAD_MEDIDA(rs.getString("descripcion"));
+                        user.setDESCRIPCION_UNIDAD_MEDIDA(rs.getString("unidad"));
                         
                        
 

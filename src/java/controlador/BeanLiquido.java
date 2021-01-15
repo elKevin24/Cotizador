@@ -58,8 +58,6 @@ public class BeanLiquido {
         this.CWSL_CARGA_GAS_PROPANO = CWSL_CARGA_GAS_PROPANO;
     }
 
-    
-    
     public String getGRABADOR() {
         return GRABADOR;
     }
@@ -68,15 +66,32 @@ public class BeanLiquido {
         this.GRABADOR = GRABADOR;
     }
 
-    public BeanLiquido(String CWSL_COTIZACION, 
-            String CWSL_DESC_ACEITE_GRASA_QUIMI, 
-            String CWSL_DESC_COMBUSTIBLES_DERIV, 
-            String CWSL_DESC_GAS_PROPANO, 
+    public String getCWBC_HORA() {
+        return CWBC_HORA;
+    }
+
+    public void setCWBC_HORA(String CWBC_HORA) {
+        this.CWBC_HORA = CWBC_HORA;
+    }
+
+    public String getCWBC_ETA() {
+        return CWBC_ETA;
+    }
+
+    public void setCWBC_ETA(String CWBC_ETA) {
+        this.CWBC_ETA = CWBC_ETA;
+    }
+    
+    
+
+    public BeanLiquido(String CWSL_COTIZACION,
+            String CWSL_DESC_ACEITE_GRASA_QUIMI,
+            String CWSL_DESC_COMBUSTIBLES_DERIV,
+            String CWSL_DESC_GAS_PROPANO,
             String CWSL_CARGA_ACEITE_GRASA_QUIMI,
             String CWSL_CARGA_COMBUSTIBLES_DERIV,
             String CWSL_CARGA_GAS_PROPANO,
             String GRABADOR
-            
     ) {
 
         this.CWSL_COTIZACION = CWSL_COTIZACION;
@@ -89,17 +104,17 @@ public class BeanLiquido {
         this.GRABADOR = GRABADOR;
 
     }
-    
-  
 
     private String CWSL_COTIZACION;
+    private String CWBC_HORA;
+    private String CWBC_ETA;
     private String CWSL_DESC_ACEITE_GRASA_QUIMI;
     private String CWSL_DESC_COMBUSTIBLES_DERIV;
     private String CWSL_DESC_GAS_PROPANO;
     private String CWSL_CARGA_ACEITE_GRASA_QUIMI;
     private String CWSL_CARGA_COMBUSTIBLES_DERIV;
     private String CWSL_CARGA_GAS_PROPANO;
-    
+
     private String GRABADOR;
 
     public BeanLiquido() {

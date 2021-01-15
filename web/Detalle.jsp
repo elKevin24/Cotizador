@@ -5,6 +5,9 @@
 --%>
 
 
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="java.math.RoundingMode"%>
+<%@page import="java.math.BigDecimal"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
@@ -20,7 +23,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
+
         <script>
 
             function exportTableToExcel(tableID, filename = '') {
@@ -88,25 +91,24 @@
         </div>
 
         <div class="container">
-
+<div class="table-responsive-lg">
             <table id="1" class="table table-bordered">
                 <thead class="text-center">
                     <tr >
                         <th>
                             <img src="https://hh.santotomasport.com.gt/global/santotomasport.com.gt/EMPORNAC_logo.png">
                         </th>
-                        <th colspan="8" class="text-center">
+                        <th colspan="8" class="font-weight-bold" valign="top">
                             EMPRESA PORTUARIA NACIONAL "SANTO TOMAS DE CASTILLA" </br>
                             IZABAL, GUATEMALA </br>
                             COTIZACION DE SERVICIOS PORTUARIOS </br>
-
                         </th>
                     </tr>
                 </thead>
 
                 <thead class="text-center" >
                     <tr >
-                        <th colspan="3" >
+                        <th colspan="2" >
                             Cotizacion: <%= Cotizacion%>
 
                         </th>
@@ -123,6 +125,10 @@
                         <th colspan="3" >
                             Fecha ETA:
                             <%= eta%>
+                        </th>
+                        <th colspan="1" >
+                            Horas Estadia:
+                            <%= enc.getCWBC_HORA() %>
                         </th>
                     </tr>
                     <tr>
@@ -195,34 +201,34 @@
                         <th>VALOR</th>
                         <th>DESCUENTO</th>
                         <th>SUB TOTAL</th>
-                        
-                        
-                       
-                        
+
+
+
+
                     </tr>
                 </thead>
                 <tbody>
                     <%
 
                         LinkedList<BeanDetalleCotizacion> lista = DetalleCotizacion.ObtenerDatos2(Cotizacion);
-
+                        DecimalFormat formato = new DecimalFormat("¤ #,###.00");
                         for (int i = 0; i < lista.size(); i++) {
-
+                            Double val1 = Double.valueOf(lista.get(i).getCWDC_SUB_TOTAL());
+                            String val3 = formato.format(val1);
+                            
+                            Double val4 = Double.valueOf(lista.get(i).getCWDC_VALOR());
+                            String val5 = formato.format(val4);
                             out.println("<tr>");
 
                             out.println("<td>" + lista.get(i).getCWDC_CORRELATIVO() + "</td>");
                             out.println("<td>" + lista.get(i).getCWDC_CANTIDAD() + "</td>");
-                            out.println("<td>" + lista.get(i).getDESCRIPCION_UNIDAD_MEDIDA() + "</td>");
+                            out.println("<td>" + lista.get(i).getREFERENCIA_UNIDAD_MEDIDA() + "</td>");
                             out.println("<td>" + lista.get(i).getWDC_TDS_CODIGO() + "</td>");
                             out.println("<td>" + lista.get(i).getDESCRIPCION() + "</td>");
-                            out.println("<td>" + lista.get(i).getCWDC_VALOR() + "</td>");
-                            
+                            out.println("<td class='text-right'>" + val5 + "</td>");
+
                             out.println("<td>" + lista.get(i).getDESCUENTO() + "</td>");
-                            out.println("<td class='subtotal'>" + lista.get(i).getCWDC_SUB_TOTAL() + "</td>");
-                            
-                            
-                            
-                            
+                            out.println("<td class='text-right'>" + val3 + "</td>");
 
                             out.println("</tr>");
 
@@ -232,9 +238,14 @@
                             sum = sum + Double.valueOf(lista.get(i).getCWDC_SUB_TOTAL());
                         }
 
+                        BigDecimal bd = new BigDecimal(sum).setScale(2, RoundingMode.HALF_UP);
+                        double val2 = bd.doubleValue();
+
+                        String valor = formato.format(val2);
+
                         out.println("<tr>");
                         out.println("<td colspan='7'> Total: </td>");
-                        out.println("<td> Q" + sum + "</td>");
+                        out.println("<td>" + valor + "</td>");
                         out.println("</tr>");
                     %>  
                 </tbody>

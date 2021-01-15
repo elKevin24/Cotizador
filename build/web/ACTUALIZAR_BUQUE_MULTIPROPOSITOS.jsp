@@ -156,7 +156,7 @@
 
             detalle = Detalle_M.ActualizarDetalle(user);
             res = Detalle_M.Actualizar(user);
-            //Eliminar = Detalle_M.EliminarDetalle(CWSF_COTIZACION);
+            Eliminar = Detalle_M.EliminarDetalle(CWSF_COTIZACION);
             if (res.equalsIgnoreCase("bien")) {
 
                 response.sendRedirect("GuardadoDetalle.jsp?Cotizacion=" + CWSF_COTIZACION + "");

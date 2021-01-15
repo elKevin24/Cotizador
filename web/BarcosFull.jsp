@@ -57,7 +57,7 @@
                                 <th>Trb</th>
                                 <th>Slora</th>
                                 <th>Cotizar</th>
-                                <th>Editar</th> 
+                                
 
 
 

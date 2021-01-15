@@ -49,7 +49,7 @@
         </div>
     </div>
     <div class="container">
-        <h5 class="text-center"> <%="Cotizacion: " + enc.getCWBC_COTIZACION() + muellaje + ", Nombre Buque:" + enc.getCWBC_BUQUE_VIAJE() + ", LR: " + enc.getCWBC_LR() + ",  ETA: " + enc.getCWBC_ETA() + ",  SEÑAL DISTINTIVA: " + enc.getCWBC_SENAL_DISTINTIVA()%></h5>
+        <h5 class="text-center"> <%="Cotizacion: " + enc.getCWBC_COTIZACION()+ ", Nombre Buque:" + enc.getCWBC_BUQUE_VIAJE() + ", LR: " + enc.getCWBC_LR() + ",  ETA: " + enc.getCWBC_ETA() + ",  SEÑAL DISTINTIVA: " + enc.getCWBC_SENAL_DISTINTIVA()%></h5>
         <form action="ACTUALIZAR_BUQUE_PORTACONTENEDOR.jsp" method="post" id="miform" >
             <div class="col s12">
                 <table id="1" class="table table-bordered table-sm table-primary">
