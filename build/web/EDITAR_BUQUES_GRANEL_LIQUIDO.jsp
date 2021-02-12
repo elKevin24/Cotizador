@@ -161,7 +161,7 @@
 
 
                 <div class="input-field col s3">
-                    <input type="submit" value="Registrar" class="btn-large light-blue accent-4" name="enviar">
+                    <input type="submit" value="Actualizar" class="btn-large light-blue accent-4" name="enviar">
 
                 </div>
             </form>

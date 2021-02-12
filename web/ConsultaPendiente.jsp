@@ -61,9 +61,8 @@
                                 <th>ETA</th>
                                 <th>TIPO CAMBIO</th>
                                 <th>TIPO OPERACION</th>
-                                <th>HORA</th>
-                                
-                                <th>ELIMINAR</th>
+                                <th>HORA</th>                                 
+                                <th>VER</th>
 
 
 
@@ -92,8 +91,8 @@
                                 out.println("<td>" + lista.get(i).getCWBC_TIPO_OPERACION() + "</td>");
 
                                 out.println("<td>" + lista.get(i).getCWBC_HORA() + "</td>");
-                                out.println("<td>" + "<a class='waves-effect waves-light btn-small' onclick='return validar()' href=Eliminar.jsp?id=" + lista.get(i).getCWBC_COTIZACION() + ">" + "<i class='material-icons'>delete_forever</i>" + "Eliminar" + "</a>" + "</td>");
-
+                                out.println("<td>" + "<a class='waves-effect waves-light btn-small ' onclick='return myFunction()'href=Detalle.jsp?Cotizacion=" + lista.get(i).getCWBC_COTIZACION() + ">" + "Ver" + "</a>" + "</td>");
+                                
 
                                 out.println("</tr>");
                             }

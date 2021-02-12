@@ -22,4 +22,10 @@ table th {
 }
 .r {
   text-align: right;
+}h2{
+    text-align:center;}
+.size{
+  width: 120px;
+}.size2{
+  width: 100px;
 }

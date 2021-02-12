@@ -91,166 +91,173 @@
         </div>
 
         <div class="container">
-<div class="table-responsive-lg">
-            <table id="1" class="table table-bordered">
-                <thead class="text-center">
-                    <tr >
-                        <th>
-                            <img src="https://hh.santotomasport.com.gt/global/santotomasport.com.gt/EMPORNAC_logo.png">
-                        </th>
-                        <th colspan="8" class="font-weight-bold" valign="top">
-                            EMPRESA PORTUARIA NACIONAL "SANTO TOMAS DE CASTILLA" </br>
-                            IZABAL, GUATEMALA </br>
-                            COTIZACION DE SERVICIOS PORTUARIOS </br>
-                        </th>
-                    </tr>
-                </thead>
+            <div class="table-responsive-lg">
+                <table id="1" class="table table-bordered table-striped " class="text-center">
+                    <thead class="text-center">
+                        <tr>
+                            <th>
+                                <p><img src="https://hh.santotomasport.com.gt/global/santotomasport.com.gt/EMPORNAC_logo.png"></p>
+                            </th>
+                            <th colspan="7">
+                                <p>EMPRESA PORTUARIA NACIONAL "SANTO TOMAS DE CASTILLA"</p> 
+                                <p>IZABAL, GUATEMALA </p> 
+                                <p>COTIZACION DE SERVICIOS PORTUARIOS</p> 
+                            </th>
+                        </tr>
+                    </thead>
 
-                <thead class="text-center" >
-                    <tr >
-                        <th colspan="2" >
-                            Cotizacion: <%= Cotizacion%>
+                    <thead>
+                        <tr>
+                            <th colspan="2">
+                                Cotizacion: <%= Cotizacion%>
 
-                        </th>
-                        <th colspan="2" >
-                            Fecha:
-                            <script>
+                            </th>
+                            <th colspan="2">
+                                Fecha:
+                                <script>
 
-                                var f = new Date();
-                                document.write(f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear());
-                            </script>
-
-
-                        </th>
-                        <th colspan="3" >
-                            Fecha ETA:
-                            <%= eta%>
-                        </th>
-                        <th colspan="1" >
-                            Horas Estadia:
-                            <%= enc.getCWBC_HORA() %>
-                        </th>
-                    </tr>
-                    <tr>
+                                    var f = new Date();
+                                    document.write(f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear());
+                                </script>
 
 
-                        <th colspan="8" class="text-center">
-                            Datos de Buque  
-
-                        </th>
-                    </tr>
-                    <tr>
-                        <th  colspan="2">
-                            Buque: <%= enc.getCWBC_BUQUE_VIAJE()%>
-                        </th>
-
-                        <th  colspan="2">
-                            LR: <%= enc.getCWBC_LR()%>
-                        </th>
-                        <th  colspan="2">
-                            Señal Distintica: <%= enc.getCWBC_SENAL_DISTINTIVA()%>
-                        </th>
-                        <th  colspan="2">
-                            Tipo Operacion: <%= enc.getCWBC_TIPO_OPERACION()%>
-                        </th>
-                    </tr>
-                </thead>
-
-                <thead>
-                    <tr>
-                        <th class="text-center" colspan="8"> 
-                            Datos 
-                        </th>
-                    </tr>
-
-                    <tr>
-                        <th class="text-center" colspan="2" >
-                            Dolar 
-                        </th>
-
-                        <th class="text-center"  colspan="6">
-                            Usuario 
-                        </th>
-                    </tr>
-
-                    <tr>
-                        <th class="text-center"  >
-                            Precio:  <%= enc.getCWBC_TIPO_CAMBIO()%>
-                        </th>
-                        <th class="text-center"   >
-                            Fecha Tipo Cambio: <%= enc.getCWBC_TIPO_CAMBIO_FECHA().substring(0, 10)%>
-                        </th>
-                        <th class="text-center" colspan="2" >
-                            Grabador:  <%= enc.getGRABADOR()%>
-                        </th>
-                        <th class="text-center" colspan="2" >
-                            Usuario Servicio: <%= enc.getCWBC_USUARIO_SERVICIO()%>
-                        </th>
-                        <th class="text-center" colspan="2">
-                            Codigo Usuario: <%= enc.getCWBC_CODIGO_USUARIO()%>
-                        </th>
-                    </tr>                               
-                </thead> 
-                <thead>
-                    <tr>
-                        <th>CORRELATIVO</th>
-                        <th>CANTIDAD</th>
-                        <th>UNIDAD MEDIDA</th>
-                        <th>CODIGO TARIFA</th>  
-                        <th>DESCRIPCION</th>
-                        <th>VALOR</th>
-                        <th>DESCUENTO</th>
-                        <th>SUB TOTAL</th>
+                            </th>
+                            <th colspan="2">
+                                Fecha ETA:
+                                <%= eta%>
+                            </th>
+                            <th colspan="2">
+                                Horas Estadia:
+                                <%= enc.getCWBC_HORA()%>
+                            </th>
+                        </tr>
+                        <tr class="text-center">
 
 
+                            <th colspan="8">
+                                Datos de Buque  
+
+                            </th>
+                        </tr>
+                        <tr>
+                            <th colspan="2">
+                                Buque: <%= enc.getCWBC_BUQUE_VIAJE()%>
+                            </th>
+
+                            <th colspan="2">
+                                LR: <%= enc.getCWBC_LR()%>
+                            </th>
+                            <th colspan="2">
+                                Señal Distintica: <%= enc.getCWBC_SENAL_DISTINTIVA()%>
+                            </th>
+                            <th colspan="2">
+                                Tipo Operacion: <%= enc.getCWBC_TIPO_OPERACION()%>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <thead>
+                        <tr class="text-center">
+                            <th colspan="8"> 
+                                Datos 
+                            </th>
+                        </tr>
+
+                        <tr class="text-center">
+                            <th colspan="2">
+                                Dolar 
+                            </th>
+
+                            <th colspan="6"> 
+                                Usuario 
+                            </th>
+                        </tr>
+
+                        <tr class="text-center">
+                            <th>
+                                Precio:  <%= enc.getCWBC_TIPO_CAMBIO()%>
+                            </th>
+                            <th>
+                                Fecha Tipo Cambio: <%= enc.getCWBC_TIPO_CAMBIO_FECHA().substring(0, 10)%>
+                            </th>
+                            <th colspan="2">
+                                Grabador:  <%= enc.getGRABADOR()%>
+                            </th>
+                            <th colspan="2">
+                                Usuario Servicio: <%= enc.getCWBC_USUARIO_SERVICIO()%>
+                            </th>
+                            <th colspan="2">
+                                Codigo Usuario: <%= enc.getCWBC_CODIGO_USUARIO()%>
+                            </th>
+                        </tr>                               
+                    </thead> 
+                    <thead>
+                        <tr>
+                            <th scope="col">CORRELATIVO</th>
+                            <th scope="col">CANTIDAD</th>
+                            <th scope="col">UNIDAD MEDIDA</th>
+                            <th scope="col">CODIGO TARIFA</th>  
+                            <th scope="col">DESCRIPCION</th>
+                            <th scope="col">VALOR</th>
+                            <th scope="col">DESCUENTO</th>
+                            <th scope="col">SUB TOTAL</th>
 
 
-                    </tr>
-                </thead>
-                <tbody>
-                    <%
 
-                        LinkedList<BeanDetalleCotizacion> lista = DetalleCotizacion.ObtenerDatos2(Cotizacion);
-                        DecimalFormat formato = new DecimalFormat("¤ #,###.00");
-                        for (int i = 0; i < lista.size(); i++) {
-                            Double val1 = Double.valueOf(lista.get(i).getCWDC_SUB_TOTAL());
-                            String val3 = formato.format(val1);
-                            
-                            Double val4 = Double.valueOf(lista.get(i).getCWDC_VALOR());
-                            String val5 = formato.format(val4);
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%
+
+                            LinkedList<BeanDetalleCotizacion> lista = DetalleCotizacion.ObtenerDatos2(Cotizacion);
+                            DecimalFormat formato = new DecimalFormat("¤#,###.00");
+                            for (int i = 0; i < lista.size(); i++) {
+                                Double val1 = Double.valueOf(lista.get(i).getCWDC_SUB_TOTAL());
+                                String val3 = formato.format(val1);
+
+                                Double val4 = Double.valueOf(lista.get(i).getCWDC_VALOR());
+                                String val5 = formato.format(val4);
+                                out.println("<tr>");
+
+                                out.println("<td>" + lista.get(i).getCWDC_CORRELATIVO() + "</td>");
+                                out.println("<td>" + lista.get(i).getCWDC_CANTIDAD() + "</td>");
+                                out.println("<td><div class='size'>" + lista.get(i).getREFERENCIA_UNIDAD_MEDIDA() + "</div></td>");
+                                out.println("<td>" + lista.get(i).getWDC_TDS_CODIGO() + "</td>");
+                                out.println("<td>" + lista.get(i).getDESCRIPCION() + "</td>");
+                                out.println("<td class='text-right'> <div class='size'>" + val5 + "</div></td>");
+
+                                out.println("<td>" + lista.get(i).getDESCUENTO() + "</td>");
+                                out.println("<td class='text-right'><div class='size'>" + val3 + "</div></td>");
+
+                                out.println("</tr>");
+
+                            }
+                            double sum = 0;
+                            for (int i = 0; i < lista.size(); i++) {
+                                sum = sum + Double.valueOf(lista.get(i).getCWDC_SUB_TOTAL());
+                            }
+
+                            BigDecimal bd = new BigDecimal(sum).setScale(2, RoundingMode.HALF_UP);
+                            double val2 = bd.doubleValue();
+
+                            String valor = formato.format(val2);
+
                             out.println("<tr>");
-
-                            out.println("<td>" + lista.get(i).getCWDC_CORRELATIVO() + "</td>");
-                            out.println("<td>" + lista.get(i).getCWDC_CANTIDAD() + "</td>");
-                            out.println("<td>" + lista.get(i).getREFERENCIA_UNIDAD_MEDIDA() + "</td>");
-                            out.println("<td>" + lista.get(i).getWDC_TDS_CODIGO() + "</td>");
-                            out.println("<td>" + lista.get(i).getDESCRIPCION() + "</td>");
-                            out.println("<td class='text-right'>" + val5 + "</td>");
-
-                            out.println("<td>" + lista.get(i).getDESCUENTO() + "</td>");
-                            out.println("<td class='text-right'>" + val3 + "</td>");
-
+                            out.println("<td colspan='7'> Total: </td>");
+                            out.println("<td>" + valor + "</td>");
                             out.println("</tr>");
-
-                        }
-                        double sum = 0;
-                        for (int i = 0; i < lista.size(); i++) {
-                            sum = sum + Double.valueOf(lista.get(i).getCWDC_SUB_TOTAL());
-                        }
-
-                        BigDecimal bd = new BigDecimal(sum).setScale(2, RoundingMode.HALF_UP);
-                        double val2 = bd.doubleValue();
-
-                        String valor = formato.format(val2);
-
-                        out.println("<tr>");
-                        out.println("<td colspan='7'> Total: </td>");
-                        out.println("<td>" + valor + "</td>");
-                        out.println("</tr>");
-                    %>  
-                </tbody>
-            </table>              
+                        %>  
+                    </tbody>
+                </table>              
+            </div>
         </div>
+
+
+
+
+
+
     </div>
 
 
@@ -258,22 +265,15 @@
 
 
 
-</div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-
-
-
-
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-<script src="javascript">
-                                var dd = hoy.getDate();
-                                var mm = hoy.getMonth() + 1;
-                                var yyyy = hoy.getFullYear();
-</script>
+    <script src="javascript">
+                                    var dd = hoy.getDate();
+                                    var mm = hoy.getMonth() + 1;
+                                    var yyyy = hoy.getFullYear();
+    </script>
 
 </body>
 </html>

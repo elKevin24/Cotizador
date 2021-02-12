@@ -22,8 +22,6 @@
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
         <!--Import Google Icon Font-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        
-      
     </head>
 
     <body>
@@ -34,22 +32,33 @@
 
                      <a href="#!" class="brand-logo"></a>
 
-                    <ul class="right hide-on-med-and-down"> 
 
-                        <li><a href="Login.jsp">Salir</a></li>
-                    </ul>
-                     
+
 
                     <%
                         String usuario = String.valueOf(session.getAttribute("usuario"));
                         BeanUsuarios user = new BeanUsuarios();
                         user = Usuario.ObtenerUsuario(usuario);
 
-                       
+                        String prueba = usuario;
+                        if (prueba != null) {
+                            prueba = "Salir";
+                        } else {
+                            %>
+                            <script> 
+
+window.location.replace('Login.jsp'); 
+
+</script>
+                            <%
+                        }
 
                     %>
-                    
-                   
+                    <ul class="right hide-on-med-and-down"> 
+
+                        <li><a href="Login.jsp"><%= prueba%></a></li>
+                    </ul>
+
 
 
                     <ul id="slide-out" class="sidenav">
@@ -75,7 +84,7 @@
                                     <ul>
                                         <li><a href="Barcos.jsp">Crear Nueva Cotizacion</a></li>
                                         <li><a href="BarcosNuevo.jsp">Crear Barco</a></li>
-                                        
+
 
                                     </ul>
                                 </div>
@@ -85,7 +94,7 @@
                                 <a class="collapsible-header">Consultas<i class="material-icons">account_boxarrow_drop_down</i></a>
                                 <div class="collapsible-body">
                                     <ul>
-                                        
+
                                         <li><a href="ConsultaCreados.jsp">Creados</a></li>
                                         <li><a href="ConsultaPendiente.jsp">Pendientes</a></li>
                                         <li><a href="ConsultaAprobado.jsp">Aprobados</a></li>
@@ -95,8 +104,8 @@
                                 </div>
                             </li>
                             <li><a href="Login.jsp">Salir</a></li>
-                            
-                            
+
+
                         </ul>
 
                     </ul>
@@ -106,9 +115,11 @@
             </div>
         </nav>
 
+
+
     </body>
 
-    <script>
+    <script language="javascript">
 
         document.addEventListener('DOMContentLoaded', function () {
             var elems = document.querySelectorAll('.sidenav');
@@ -122,6 +133,13 @@
                 hoverEnabled: false
             });
         });
+
+        function myFunction() {
+
+            alert(<%= prueba%>);
+        }
+
+
 
     </script>
 </html>

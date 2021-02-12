@@ -14,9 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import controlador.BeanBarcosNew;
 import controlador.BeanBarcosNuevo;
-import modelo.BarcosNew;
 import modelo.BarcosNuevo;
 
 /**

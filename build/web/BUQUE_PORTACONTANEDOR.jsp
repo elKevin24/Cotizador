@@ -41,6 +41,8 @@
             </div>
 
             <div class="container">
+                <h2> Ingresar Detalle de Cotizacion</h2>
+                <div class="divider"></div>
 
                 <h5 class="text-center"> <%="Cotizacion: "+ enc.getCWBC_COTIZACION()+ ", Nombre Buque:"+enc.getCWBC_BUQUE_VIAJE() +", LR: " + enc.getCWBC_LR() + ",  ETA: " + enc.getCWBC_ETA() + ",  SEÑAL DISTINTIVA: " + enc.getCWBC_SENAL_DISTINTIVA() %></h5>
 

@@ -45,10 +45,13 @@
 
     <div class="row">
         <div class="col s1 push-s1">
+            
             <a  href="Barcos.jsp" class="btn-floating pulse" ><i class="material-icons">arrow_back</i></a>
         </div>
     </div>
     <div class="container">
+        
+        
         <h5 class="text-center"> <%="Cotizacion: " + enc.getCWBC_COTIZACION()+ ", Nombre Buque:" + enc.getCWBC_BUQUE_VIAJE() + ", LR: " + enc.getCWBC_LR() + ",  ETA: " + enc.getCWBC_ETA() + ",  SEÑAL DISTINTIVA: " + enc.getCWBC_SENAL_DISTINTIVA()%></h5>
         <form action="ACTUALIZAR_BUQUE_PORTACONTENEDOR.jsp" method="post" id="miform" >
             <div class="col s12">

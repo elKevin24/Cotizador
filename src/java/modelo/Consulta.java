@@ -15,30 +15,31 @@ public class Consulta {
         LinkedList<BeanConsulta> usuarios = new LinkedList<>();
         String sql;
 
-        sql = "select \n"
-                + "A.CWBC_COTIZACION,\n"
-                + "A.CWBC_LR,\n"
-                + "A.CWBC_SENAL_DISTINTIVA,\n"
-                + "A.CWBC_BUQUE_VIAJE,\n"
-                + "B.NOMBRE_DEL_BUQUE,\n"
-                + "B.BANDERA,\n"
-                + "A.CWBC_ETA,\n"
-                + "A.CWBC_TIPO_CAMBIO,\n"
-                + "A.CWBC_TIPO_CAMBIO_FECHA,\n"
-                + "A.CWBC_USUARIO_SERVICIO,\n"
-                + "A.CWBC_NIT,\n"
-                + "A.CWBC_TIPO_OPERACION,\n"
-                + "A.GRABADOR,\n"
-                + "A.GRABADOR_FECHA,\n"
-                + "A.ACTUALIZADOR,\n"
-                + "A.ACTUALIZADOR_FECHA,\n"
-                + "A.CWBC_ESTADO,\n"
-                + "A.CWBC_HORA \n"
-                + "from CW_BUQUE_COTIZA A, PUERTO.eopt_barcos B\n"
-                + "WHERE A.CWBC_LR = B.LR \n"
-                + "AND CWBC_USUARIO_SERVICIO = " + entrada + "\n"
+        sql = "SELECT DISTINCT CWBC_COTIZACION, CWBC_LR, CWBC_SENAL_DISTINTIVA,CWBC_BUQUE_VIAJE,NOMBRE_DEL_BUQUE,BANDERA,CWBC_ETA,CWBC_TIPO_CAMBIO,                \n"
+                + "CWBC_TIPO_CAMBIO_FECHA, CWBC_USUARIO_SERVICIO,CWBC_NIT,CWTO_OPERACION,GRABADOR, GRABADOR_FECHA, ACTUALIZADOR,\n"
+                + "ACTUALIZADOR_FECHA, CWBC_ESTADO, CWBC_HORA \n"
+                + "FROM(\n"
+                + "select\n"
+                + "A.CWBC_COTIZACION, A.CWBC_LR, A.CWBC_SENAL_DISTINTIVA,A.CWBC_BUQUE_VIAJE,B.NOMBRE_DEL_BUQUE,B.BANDERA,A.CWBC_ETA,A.CWBC_TIPO_CAMBIO,                \n"
+                + "A.CWBC_TIPO_CAMBIO_FECHA, A.CWBC_USUARIO_SERVICIO,A.CWBC_NIT,C.CWTO_OPERACION,A.GRABADOR, A.GRABADOR_FECHA,A.ACTUALIZADOR,\n"
+                + "A.ACTUALIZADOR_FECHA,A.CWBC_ESTADO, A.CWBC_HORA \n"
+                + "from CW_BUQUE_COTIZA A, CW_TIPO_OPERACION C, PUERTO.eopt_barcos B\n"
+                + "WHERE A.CWBC_LR = B.LR\n"
+                + "AND A.CWBC_SENAL_DISTINTIVA = B.SENAL_DISTINTIVA               \n"
+                + "and a.cwbc_tipo_operacion = C.CWTO_TIPO_OPERACION\n"
                 + "AND A.CWBC_ESTADO = 4\n"
-                + "and tipo_de_barco_por_estructura in (12, 13, 21, 22, 31, 32, 51, 52, 61,62, 63, 64, 71, 72, 73,74, 90)";
+                + "\n"
+                + "UNION \n"
+                + "select\n"
+                + "A.CWBC_COTIZACION, A.CWBC_LR, A.CWBC_SENAL_DISTINTIVA,A.CWBC_BUQUE_VIAJE,B.NOMBRE_DEL_BUQUE,B.BANDERA,A.CWBC_ETA,A.CWBC_TIPO_CAMBIO,                \n"
+                + "A.CWBC_TIPO_CAMBIO_FECHA, A.CWBC_USUARIO_SERVICIO,A.CWBC_NIT,C.CWTO_OPERACION,A.GRABADOR, A.GRABADOR_FECHA,A.ACTUALIZADOR,\n"
+                + "A.ACTUALIZADOR_FECHA,A.CWBC_ESTADO, A.CWBC_HORA \n"
+                + "from CW_BUQUE_COTIZA A, CW_TIPO_OPERACION C, cw_eopt_barcos B\n"
+                + "WHERE A.CWBC_LR = B.LR\n"
+                + "AND A.CWBC_SENAL_DISTINTIVA = B.SENAL_DISTINTIVA               \n"
+                + "AND CWBC_USUARIO_SERVICIO = " + entrada + "  \n"
+                + "and a.cwbc_tipo_operacion = C.CWTO_TIPO_OPERACION\n"
+                + "AND A.CWBC_ESTADO = 4)";
 
         try {
             Conexion c = new Conexion();
@@ -81,31 +82,31 @@ public class Consulta {
 
     public static LinkedList<BeanConsulta> Creados(String entrada) throws SQLException {
         LinkedList<BeanConsulta> usuarios = new LinkedList<>();
-        String sql = "SELECT DISTINCT CWBC_COTIZACION, CWBC_LR, CWBC_SENAL_DISTINTIVA,CWBC_BUQUE_VIAJE,NOMBRE_DEL_BUQUE,BANDERA,CWBC_ETA,CWBC_TIPO_CAMBIO,                \n" +
-"CWBC_TIPO_CAMBIO_FECHA, CWBC_USUARIO_SERVICIO,CWBC_NIT,CWTO_OPERACION,GRABADOR, GRABADOR_FECHA, ACTUALIZADOR,\n" +
-"ACTUALIZADOR_FECHA, CWBC_ESTADO, CWBC_HORA \n" +
-"FROM(\n" +
-"select\n" +
-"A.CWBC_COTIZACION, A.CWBC_LR, A.CWBC_SENAL_DISTINTIVA,A.CWBC_BUQUE_VIAJE,B.NOMBRE_DEL_BUQUE,B.BANDERA,A.CWBC_ETA,A.CWBC_TIPO_CAMBIO,                \n" +
-"A.CWBC_TIPO_CAMBIO_FECHA, A.CWBC_USUARIO_SERVICIO,A.CWBC_NIT,C.CWTO_OPERACION,A.GRABADOR, A.GRABADOR_FECHA,A.ACTUALIZADOR,\n" +
-"A.ACTUALIZADOR_FECHA,A.CWBC_ESTADO, A.CWBC_HORA \n" +
-"from CW_BUQUE_COTIZA A, CW_TIPO_OPERACION C, PUERTO.eopt_barcos B\n" +
-"WHERE A.CWBC_LR = B.LR\n" +
-"AND A.CWBC_SENAL_DISTINTIVA = B.SENAL_DISTINTIVA               \n" +
-"and a.cwbc_tipo_operacion = C.CWTO_TIPO_OPERACION\n" +
-"AND A.CWBC_ESTADO = 1\n" +
-"\n" +
-"UNION \n" +
-"select\n" +
-"A.CWBC_COTIZACION, A.CWBC_LR, A.CWBC_SENAL_DISTINTIVA,A.CWBC_BUQUE_VIAJE,B.NOMBRE_DEL_BUQUE,B.BANDERA,A.CWBC_ETA,A.CWBC_TIPO_CAMBIO,                \n" +
-"A.CWBC_TIPO_CAMBIO_FECHA, A.CWBC_USUARIO_SERVICIO,A.CWBC_NIT,C.CWTO_OPERACION,A.GRABADOR, A.GRABADOR_FECHA,A.ACTUALIZADOR,\n" +
-"A.ACTUALIZADOR_FECHA,A.CWBC_ESTADO, A.CWBC_HORA \n" +
-"from CW_BUQUE_COTIZA A, CW_TIPO_OPERACION C, cw_eopt_barcos B\n" +
-"WHERE A.CWBC_LR = B.LR\n" +
-"AND A.CWBC_SENAL_DISTINTIVA = B.SENAL_DISTINTIVA               \n" +
-"AND CWBC_USUARIO_SERVICIO = " + entrada + "  \n" +
-"and a.cwbc_tipo_operacion = C.CWTO_TIPO_OPERACION\n" +
-"AND A.CWBC_ESTADO = 1)";
+        String sql = "SELECT DISTINCT CWBC_COTIZACION, CWBC_LR, CWBC_SENAL_DISTINTIVA,CWBC_BUQUE_VIAJE,NOMBRE_DEL_BUQUE,BANDERA,CWBC_ETA,CWBC_TIPO_CAMBIO,                \n"
+                + "CWBC_TIPO_CAMBIO_FECHA, CWBC_USUARIO_SERVICIO,CWBC_NIT,CWTO_OPERACION,GRABADOR, GRABADOR_FECHA, ACTUALIZADOR,\n"
+                + "ACTUALIZADOR_FECHA, CWBC_ESTADO, CWBC_HORA \n"
+                + "FROM(\n"
+                + "select\n"
+                + "A.CWBC_COTIZACION, A.CWBC_LR, A.CWBC_SENAL_DISTINTIVA,A.CWBC_BUQUE_VIAJE,B.NOMBRE_DEL_BUQUE,B.BANDERA,A.CWBC_ETA,A.CWBC_TIPO_CAMBIO,                \n"
+                + "A.CWBC_TIPO_CAMBIO_FECHA, A.CWBC_USUARIO_SERVICIO,A.CWBC_NIT,C.CWTO_OPERACION,A.GRABADOR, A.GRABADOR_FECHA,A.ACTUALIZADOR,\n"
+                + "A.ACTUALIZADOR_FECHA,A.CWBC_ESTADO, A.CWBC_HORA \n"
+                + "from CW_BUQUE_COTIZA A, CW_TIPO_OPERACION C, PUERTO.eopt_barcos B\n"
+                + "WHERE A.CWBC_LR = B.LR\n"
+                + "AND A.CWBC_SENAL_DISTINTIVA = B.SENAL_DISTINTIVA               \n"
+                + "and a.cwbc_tipo_operacion = C.CWTO_TIPO_OPERACION\n"
+                + "AND A.CWBC_ESTADO = 1\n"
+                + "\n"
+                + "UNION \n"
+                + "select\n"
+                + "A.CWBC_COTIZACION, A.CWBC_LR, A.CWBC_SENAL_DISTINTIVA,A.CWBC_BUQUE_VIAJE,B.NOMBRE_DEL_BUQUE,B.BANDERA,A.CWBC_ETA,A.CWBC_TIPO_CAMBIO,                \n"
+                + "A.CWBC_TIPO_CAMBIO_FECHA, A.CWBC_USUARIO_SERVICIO,A.CWBC_NIT,C.CWTO_OPERACION,A.GRABADOR, A.GRABADOR_FECHA,A.ACTUALIZADOR,\n"
+                + "A.ACTUALIZADOR_FECHA,A.CWBC_ESTADO, A.CWBC_HORA \n"
+                + "from CW_BUQUE_COTIZA A, CW_TIPO_OPERACION C, cw_eopt_barcos B\n"
+                + "WHERE A.CWBC_LR = B.LR\n"
+                + "AND A.CWBC_SENAL_DISTINTIVA = B.SENAL_DISTINTIVA               \n"
+                + "AND CWBC_USUARIO_SERVICIO = " + entrada + "  \n"
+                + "and a.cwbc_tipo_operacion = C.CWTO_TIPO_OPERACION\n"
+                + "AND A.CWBC_ESTADO = 1)";
 
         try {
             Conexion c = new Conexion();
@@ -211,32 +212,31 @@ public class Consulta {
 
     public static LinkedList<BeanConsulta> Pendientes(String entrada) throws SQLException {
         LinkedList<BeanConsulta> usuarios = new LinkedList<>();
-        String sql;
-
-        sql = "select \n"
-                + "A.CWBC_COTIZACION,\n"
-                + "A.CWBC_LR,\n"
-                + "A.CWBC_SENAL_DISTINTIVA,\n"
-                + "A.CWBC_BUQUE_VIAJE,\n"
-                + "B.NOMBRE_DEL_BUQUE,\n"
-                + "B.BANDERA,\n"
-                + "A.CWBC_ETA,\n"
-                + "A.CWBC_TIPO_CAMBIO,\n"
-                + "A.CWBC_TIPO_CAMBIO_FECHA,\n"
-                + "A.CWBC_USUARIO_SERVICIO,\n"
-                + "A.CWBC_NIT,\n"
-                + "A.CWBC_TIPO_OPERACION,\n"
-                + "A.GRABADOR,\n"
-                + "A.GRABADOR_FECHA,\n"
-                + "A.ACTUALIZADOR,\n"
-                + "A.ACTUALIZADOR_FECHA,\n"
-                + "A.CWBC_ESTADO,\n"
-                + "A.CWBC_HORA \n"
-                + "from CW_BUQUE_COTIZA A, PUERTO.eopt_barcos B\n"
-                + "WHERE A.CWBC_LR = B.LR \n"
-                + "AND CWBC_USUARIO_SERVICIO = " + entrada + "\n"
+        String sql = "SELECT DISTINCT CWBC_COTIZACION, CWBC_LR, CWBC_SENAL_DISTINTIVA,CWBC_BUQUE_VIAJE,NOMBRE_DEL_BUQUE,BANDERA,CWBC_ETA,CWBC_TIPO_CAMBIO,                \n"
+                + "CWBC_TIPO_CAMBIO_FECHA, CWBC_USUARIO_SERVICIO,CWBC_NIT,CWTO_OPERACION,GRABADOR, GRABADOR_FECHA, ACTUALIZADOR,\n"
+                + "ACTUALIZADOR_FECHA, CWBC_ESTADO, CWBC_HORA \n"
+                + "FROM(\n"
+                + "select\n"
+                + "A.CWBC_COTIZACION, A.CWBC_LR, A.CWBC_SENAL_DISTINTIVA,A.CWBC_BUQUE_VIAJE,B.NOMBRE_DEL_BUQUE,B.BANDERA,A.CWBC_ETA,A.CWBC_TIPO_CAMBIO,                \n"
+                + "A.CWBC_TIPO_CAMBIO_FECHA, A.CWBC_USUARIO_SERVICIO,A.CWBC_NIT,C.CWTO_OPERACION,A.GRABADOR, A.GRABADOR_FECHA,A.ACTUALIZADOR,\n"
+                + "A.ACTUALIZADOR_FECHA,A.CWBC_ESTADO, A.CWBC_HORA \n"
+                + "from CW_BUQUE_COTIZA A, CW_TIPO_OPERACION C, PUERTO.eopt_barcos B\n"
+                + "WHERE A.CWBC_LR = B.LR\n"
+                + "AND A.CWBC_SENAL_DISTINTIVA = B.SENAL_DISTINTIVA               \n"
+                + "and a.cwbc_tipo_operacion = C.CWTO_TIPO_OPERACION\n"
                 + "AND A.CWBC_ESTADO = 2\n"
-                + "and tipo_de_barco_por_estructura in (12, 13, 21, 22, 31, 32, 51, 52, 61,62, 63, 64, 71, 72, 73,74, 90)";
+                + "\n"
+                + "UNION \n"
+                + "select\n"
+                + "A.CWBC_COTIZACION, A.CWBC_LR, A.CWBC_SENAL_DISTINTIVA,A.CWBC_BUQUE_VIAJE,B.NOMBRE_DEL_BUQUE,B.BANDERA,A.CWBC_ETA,A.CWBC_TIPO_CAMBIO,                \n"
+                + "A.CWBC_TIPO_CAMBIO_FECHA, A.CWBC_USUARIO_SERVICIO,A.CWBC_NIT,C.CWTO_OPERACION,A.GRABADOR, A.GRABADOR_FECHA,A.ACTUALIZADOR,\n"
+                + "A.ACTUALIZADOR_FECHA,A.CWBC_ESTADO, A.CWBC_HORA \n"
+                + "from CW_BUQUE_COTIZA A, CW_TIPO_OPERACION C, cw_eopt_barcos B\n"
+                + "WHERE A.CWBC_LR = B.LR\n"
+                + "AND A.CWBC_SENAL_DISTINTIVA = B.SENAL_DISTINTIVA               \n"
+                + "AND CWBC_USUARIO_SERVICIO = " + entrada + "  \n"
+                + "and a.cwbc_tipo_operacion = C.CWTO_TIPO_OPERACION\n"
+                + "AND A.CWBC_ESTADO = 2)";
 
         try {
             Conexion c = new Conexion();
@@ -258,7 +258,7 @@ public class Consulta {
                         user.setCWBC_TIPO_CAMBIO_FECHA(rs.getString("CWBC_TIPO_CAMBIO_FECHA"));
                         user.setCWBC_USUARIO_SERVICIO(rs.getString("CWBC_USUARIO_SERVICIO"));
                         user.setCWBC_NIT(rs.getString("CWBC_NIT"));
-                        user.setCWBC_TIPO_OPERACION(rs.getString("CWBC_TIPO_OPERACION"));
+                        user.setCWBC_TIPO_OPERACION(rs.getString("CWTO_OPERACION"));
                         user.setGRABADOR(rs.getString("GRABADOR"));
                         user.setGRABADOR_FECHA(rs.getString("GRABADOR_FECHA"));
                         user.setACTUALIZADOR(rs.getString("ACTUALIZADOR"));
@@ -281,30 +281,31 @@ public class Consulta {
         LinkedList<BeanConsulta> usuarios = new LinkedList<>();
         String sql;
 
-        sql = "select \n"
-                + "A.CWBC_COTIZACION,\n"
-                + "A.CWBC_LR,\n"
-                + "A.CWBC_SENAL_DISTINTIVA,\n"
-                + "A.CWBC_BUQUE_VIAJE,\n"
-                + "B.NOMBRE_DEL_BUQUE,\n"
-                + "B.BANDERA,\n"
-                + "A.CWBC_ETA,\n"
-                + "A.CWBC_TIPO_CAMBIO,\n"
-                + "A.CWBC_TIPO_CAMBIO_FECHA,\n"
-                + "A.CWBC_USUARIO_SERVICIO,\n"
-                + "A.CWBC_NIT,\n"
-                + "A.CWBC_TIPO_OPERACION,\n"
-                + "A.GRABADOR,\n"
-                + "A.GRABADOR_FECHA,\n"
-                + "A.ACTUALIZADOR,\n"
-                + "A.ACTUALIZADOR_FECHA,\n"
-                + "A.CWBC_ESTADO,\n"
-                + "A.CWBC_HORA \n"
-                + "from CW_BUQUE_COTIZA A, PUERTO.eopt_barcos B\n"
-                + "WHERE A.CWBC_LR = B.LR \n"
-                + "AND CWBC_USUARIO_SERVICIO = " + entrada + "\n"
+        sql = "SELECT DISTINCT CWBC_COTIZACION, CWBC_LR, CWBC_SENAL_DISTINTIVA,CWBC_BUQUE_VIAJE,NOMBRE_DEL_BUQUE,BANDERA,CWBC_ETA,CWBC_TIPO_CAMBIO,                \n"
+                + "CWBC_TIPO_CAMBIO_FECHA, CWBC_USUARIO_SERVICIO,CWBC_NIT,CWTO_OPERACION,GRABADOR, GRABADOR_FECHA, ACTUALIZADOR,\n"
+                + "ACTUALIZADOR_FECHA, CWBC_ESTADO, CWBC_HORA \n"
+                + "FROM(\n"
+                + "select\n"
+                + "A.CWBC_COTIZACION, A.CWBC_LR, A.CWBC_SENAL_DISTINTIVA,A.CWBC_BUQUE_VIAJE,B.NOMBRE_DEL_BUQUE,B.BANDERA,A.CWBC_ETA,A.CWBC_TIPO_CAMBIO,                \n"
+                + "A.CWBC_TIPO_CAMBIO_FECHA, A.CWBC_USUARIO_SERVICIO,A.CWBC_NIT,C.CWTO_OPERACION,A.GRABADOR, A.GRABADOR_FECHA,A.ACTUALIZADOR,\n"
+                + "A.ACTUALIZADOR_FECHA,A.CWBC_ESTADO, A.CWBC_HORA \n"
+                + "from CW_BUQUE_COTIZA A, CW_TIPO_OPERACION C, PUERTO.eopt_barcos B\n"
+                + "WHERE A.CWBC_LR = B.LR\n"
+                + "AND A.CWBC_SENAL_DISTINTIVA = B.SENAL_DISTINTIVA               \n"
+                + "and a.cwbc_tipo_operacion = C.CWTO_TIPO_OPERACION\n"
                 + "AND A.CWBC_ESTADO = 3\n"
-                + "and tipo_de_barco_por_estructura in (12, 13, 21, 22, 31, 32, 51, 52, 61,62, 63, 64, 71, 72, 73,74, 90)";
+                + "\n"
+                + "UNION \n"
+                + "select\n"
+                + "A.CWBC_COTIZACION, A.CWBC_LR, A.CWBC_SENAL_DISTINTIVA,A.CWBC_BUQUE_VIAJE,B.NOMBRE_DEL_BUQUE,B.BANDERA,A.CWBC_ETA,A.CWBC_TIPO_CAMBIO,                \n"
+                + "A.CWBC_TIPO_CAMBIO_FECHA, A.CWBC_USUARIO_SERVICIO,A.CWBC_NIT,C.CWTO_OPERACION,A.GRABADOR, A.GRABADOR_FECHA,A.ACTUALIZADOR,\n"
+                + "A.ACTUALIZADOR_FECHA,A.CWBC_ESTADO, A.CWBC_HORA \n"
+                + "from CW_BUQUE_COTIZA A, CW_TIPO_OPERACION C, cw_eopt_barcos B\n"
+                + "WHERE A.CWBC_LR = B.LR\n"
+                + "AND A.CWBC_SENAL_DISTINTIVA = B.SENAL_DISTINTIVA               \n"
+                + "AND CWBC_USUARIO_SERVICIO = " + entrada + "  \n"
+                + "and a.cwbc_tipo_operacion = C.CWTO_TIPO_OPERACION\n"
+                + "AND A.CWBC_ESTADO = 3)";
 
         try {
             Conexion c = new Conexion();
