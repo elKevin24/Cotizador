@@ -54,7 +54,11 @@ public class Detalle_P {
                         + "CWSP_REEMBARQUE_VACIO_GP,"
                         + "CWSP_DEPOSITO_MOMENT_GB,"
                         + "CWSP_DEPOSITO_MOMENT_GP,"                      
-                        + "GRABADOR, GRABADOR_FECHA, CWSP_REEMBARQUE_LLENO_RF_GP, CWSP_REEMBARQUE_LLENO_RF_GB) VALUES "
+                        + "GRABADOR, GRABADOR_FECHA, "
+                        + "CWSP_REEMBARQUE_LLENO_RF_GP, "
+                        + "CWSP_REEMBARQUE_LLENO_RF_GB, "
+                        + "CWSP_TON_IMPORT, "
+                        + "CWSP_TON_EXPORT) VALUES "
                         + "('" + En.getCWBC_COTIZACION() + "',"
                         + "'" + En.getCWSF_MUELLAJE_COF_IMPORT() + "','" + En.getCWSF_MUELLAJE_COF_EXPORT() + "',"
                         + "'" + En.getCWSF_DESCARGA_LLENOS_GB_VI() + "','" + En.getCWSF_DESCARGA_LLENOS_GB_VD() + "','" + En.getCWSF_DESCARGA_LLENOS_GP_VI() + "','" + En.getCWSF_DESCARGA_LLENOS_GP_VD() + "',"
@@ -68,7 +72,7 @@ public class Detalle_P {
                         + "'" + En.getCWSF_REEMBARQUE_LLENO_GB() + "','" + En.getCWSF_REEMBARQUE_LLENO_GP() + "','" + En.getCWSF_REEMBARQUE_VACIO_GB() + "','" + En.getCWSF_REEMBARQUE_VACIO_GP() + "',"
                         + "'" + En.getCWSF_DEPOSITO_MOMENT_GB() + "','" + En.getCWSF_DEPOSITO_MOMENT_GP()+ "', "
                         
-                        + "'" + En.getGRABADOR() + "',sysdate, '"+ En.getCWSF_REEMBARQUE_LLENO_RF_GP() + "' , '"+ En.getCWSF_REEMBARQUE_LLENO_RF_GB() + "')";
+                        + "'" + En.getGRABADOR() + "',sysdate, '"+ En.getCWSF_REEMBARQUE_LLENO_RF_GP() +"','"+ En.getCWSF_REEMBARQUE_LLENO_RF_GB()+"','"+ En.getTON_IMPORT()+"','"+ En.getTON_EXPORT()+"')";
 
                 st.execute(sql);
 
@@ -128,7 +132,9 @@ public class Detalle_P {
                 "    cwsp_deposito_moment_gb,\n" +
                 "    cwsp_deposito_moment_gp,\n" +
                 "    cwsp_reembarque_lleno_rf_gp,\n" +
-                "    cwsp_reembarque_lleno_rf_gb\n" +
+                "    cwsp_reembarque_lleno_rf_gb,\n" +
+                "    cwsp_ton_import,\n" +
+                "    cwsp_ton_export\n" +
                 "    FROM\n" +
                 "CW_BUQUE_COTIZA A\n" +
                 "\n" +
@@ -186,6 +192,8 @@ public class Detalle_P {
                 
                 user.setCWSF_DEPOSITO_MOMENT_GB(rs.getString("cwsp_DEPOSITO_MOMENT_GB"));
                 user.setCWSF_DEPOSITO_MOMENT_GP(rs.getString("cwsp_DEPOSITO_MOMENT_GP"));
+                user.setTON_IMPORT(rs.getString("cwsp_ton_import"));
+                user.setTON_EXPORT(rs.getString("cwsp_ton_export"));
                 
                 
                 
@@ -252,7 +260,9 @@ public class Detalle_P {
 "CWSP_DEPOSITO_MOMENT_GB = '"+ buque.getCWSF_DEPOSITO_MOMENT_GB() +"',\n" +
 "CWSP_DEPOSITO_MOMENT_GP = '"+ buque.getCWSF_DEPOSITO_MOMENT_GP() +"',\n" +
 "CWSP_REEMBARQUE_LLENO_RF_GP = '"+ buque.getCWSF_REEMBARQUE_LLENO_RF_GP() +"',\n" +
-"CWSP_REEMBARQUE_LLENO_RF_GB = '"+ buque.getCWSF_REEMBARQUE_LLENO_RF_GB() +"'"
+"CWSP_REEMBARQUE_LLENO_RF_GB = '"+ buque.getCWSF_REEMBARQUE_LLENO_RF_GB() +"',"
+              + "CWSP_TON_EXPORT = '"+ buque.getTON_EXPORT()+"',"
+              + "CWSP_TON_IMPORT = '"+ buque.getTON_IMPORT()+"'"
               + "where CWSP_COTIZACION = '"+buque.getCWBC_COTIZACION()+"'";
 
                 st.execute(sql);
@@ -261,7 +271,7 @@ public class Detalle_P {
             }
 
         } catch (SQLException e) {
-            actualizado = "mal"+e+ buque.getCWBC_ETA();
+            actualizado = "mal"+e+ buque.getTON_EXPORT();
         }
 
         return actualizado;

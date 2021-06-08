@@ -39,7 +39,8 @@ public class personaDAO implements Validar {
             }else{
                 return 0;
             }
-        }catch (SQLException e){     
+        }catch (SQLException e){  
+            System.err.println("error login"+e);
             return 0;
         }
     }

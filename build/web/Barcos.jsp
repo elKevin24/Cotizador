@@ -78,8 +78,8 @@
                             for (int i = 0; i < lista.size(); i++) {
 
                                 out.println("<tr>");
-                                out.println("<td>" + lista.get(i).getLR() + "</td>");
-                                out.println("<td>" + lista.get(i).getNOMBRE_DEL_BUQUE() + "</td>");
+                                out.println("<td class='text-center'>" + lista.get(i).getLR() + "</td>");
+                                out.println("<td >" + lista.get(i).getNOMBRE_DEL_BUQUE() + "</td>");
                                 out.println("<td>" + lista.get(i).getBANDERA() + "</td>");
                                 out.println("<td>" + lista.get(i).getTRB() + "</td>");
                                 out.println("<td>" + lista.get(i).getESLORA() + "</td>");

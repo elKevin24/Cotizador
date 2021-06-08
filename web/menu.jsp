@@ -11,7 +11,7 @@
 <html>
     <head>
         <link rel="icon" type="image/jpeg" href="https://hh.santotomasport.com.gt/global/santotomasport.com.gt/EMPORNAC_logo.png" />
-        <title>Cotizador Empornac</title>
+        
 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- Compiled and minified CSS -->
@@ -27,22 +27,26 @@
     <body>
         <nav>
             <div class="nav-wrapper light-blue darken-4">
-                <div class="light-blue darken-4"
+                <div class="light-blue darken-4">
 
 
-                     <a href="#!" class="brand-logo"></a>
+                     
 
 
 
 
                     <%
+                        
+                        
+                        
                         String usuario = String.valueOf(session.getAttribute("usuario"));
                         BeanUsuarios user = new BeanUsuarios();
                         user = Usuario.ObtenerUsuario(usuario);
+                        System.err.println("Usuario"+usuario);
 
-                        String prueba = usuario;
-                        if (prueba != null) {
-                            prueba = "Salir";
+                        
+                        if (usuario != null) {
+                            
                         } else {
                             %>
                             <script> 
@@ -56,19 +60,23 @@ window.location.replace('Login.jsp');
                     %>
                     <ul class="right hide-on-med-and-down"> 
 
-                        <li><a href="Login.jsp"><%= prueba%></a></li>
+                        <li><a href="Login.jsp">Salir</a></li>
                     </ul>
 
 
 
                     <ul id="slide-out" class="sidenav">
-                        <li><div class="user-view">
-                                <div class="background">
-                                    <img src="imagenes/442703.png" alt=""/>
+                        <li>
+                            
+                            <div class="user-view">
+                                
+                                <div class="background" >
+                                   
+                                    <img src="img/azul.jpg" />
 
                                 </div>
 
-
+                                <a href="#user"><img class="circle" src="img/EMPORNAC_logo.png" ></a>                                
                                 <a href="#name"><span class="white-text name"><%= user.getNOMBRE()%></span></a>
                                 <a href="#name"><span class="white-text name"><%= user.getUSUARIO_INOW()%></span></a>
                                 <a href="#email"><span class="white-text email"><%= user.getCORREO()%></span></a>
@@ -103,6 +111,16 @@ window.location.replace('Login.jsp');
                                     </ul>
                                 </div>
                             </li>
+                            
+                            <li>
+
+                               
+
+                                        <li><a href="Trazabilidad_Barcos.jsp">Trazabilidad</a></li>
+                                        <li><a href="TCP.jsp">Trazabilidad Contenedores</a></li>
+                                        
+
+                                  
                             <li><a href="Login.jsp">Salir</a></li>
 
 
@@ -114,7 +132,6 @@ window.location.replace('Login.jsp');
                 </div>
             </div>
         </nav>
-
 
 
     </body>
@@ -134,11 +151,7 @@ window.location.replace('Login.jsp');
             });
         });
 
-        function myFunction() {
-
-            alert(<%= prueba%>);
-        }
-
+        
 
 
     </script>

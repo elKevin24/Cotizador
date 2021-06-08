@@ -38,7 +38,7 @@
            if(res==true)
            {
             out.println("<script> alert('Registro  eliminado')</script>");
-              response.sendRedirect("Barcos.jsp");
+              response.sendRedirect("ConsultaCreados.jsp");
                
            }
            else

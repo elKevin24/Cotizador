@@ -18,21 +18,21 @@
 
             String res = null;
             String detalle = null;
-            boolean Eliminar ;
-            
+            boolean Eliminar;
+
             String MuellajeImport = request.getParameter("Muellaje");
             if (MuellajeImport != null) {
-            MuellajeImport = "S";
-        } else {
-            MuellajeImport = "N";
+                MuellajeImport = "S";
+            } else {
+                MuellajeImport = "N";
 
-        }
+            }
             String CWSF_COTIZACION = request.getParameter("CWSF_COTIZACION");
             String CWBC_HORA = request.getParameter("CWBC_HORA");
             String CWBC_ETA = request.getParameter("CWBC_ETA");
 
             CWBC_ETA = CWBC_ETA.replace('T', ' ');
-            CWBC_ETA = CWBC_ETA+":00";
+            CWBC_ETA = CWBC_ETA + ":00";
             String CWSF_DESCARGA_LLENOS_GP_VI = request.getParameter("CWSF_DESCARGA_LLENOS_GP_VI");
             String CWSF_DESCARGA_LLENOS_GB_VI = request.getParameter("CWSF_DESCARGA_LLENOS_GB_VI");
             String CWSF_DESCARGA_LLENOS_GP_VD = request.getParameter("CWSF_DESCARGA_LLENOS_GP_VD");
@@ -88,9 +88,9 @@
             user.setCWSF_DESCARGA_LLENOS_GB_VD(CWSF_DESCARGA_LLENOS_GB_VD);
             user.setCWSF_DESCARGA_VACIOS_GP_VI(CWSF_DESCARGA_VACIOS_GP_VI);
             user.setCWSF_DESCARGA_VACIOS_GB_VI(CWSF_DESCARGA_VACIOS_GB_VI);
-            user.setCWSF_DESCARGA_VACIOS_GP_VD(CWSF_DESCARGA_VACIOS_GP_VD);       
+            user.setCWSF_DESCARGA_VACIOS_GP_VD(CWSF_DESCARGA_VACIOS_GP_VD);
             user.setCWSF_DESCARGA_VACIOS_GB_VD(CWSF_DESCARGA_VACIOS_GB_VD);
-            
+
             user.setCWSF_CARGA_LLENOS_GP_VI(CWSF_CARGA_LLENOS_GP_VI);
             user.setCWSF_CARGA_LLENOS_GB_VI(CWSF_CARGA_LLENOS_GB_VI);
             user.setCWSF_CARGA_LLENOS_GP_VD(CWSF_CARGA_LLENOS_GP_VD);
@@ -99,7 +99,7 @@
             user.setCWSF_CARGA_VACIOS_GB_VI(CWSF_CARGA_VACIOS_GB_VI);
             user.setCWSF_CARGA_VACIOS_GP_VD(CWSF_CARGA_VACIOS_GP_VD);
             user.setCWSF_CARGA_VACIOS_GB_VD(CWSF_CARGA_VACIOS_GB_VD);
-            
+
             user.setCWSF_DESCARGA_VEHICULOS_GP(CWSF_DESCARGA_VEHICULOS_GP);
             user.setCWSF_DESCARGA_VEHICULOS_GB(CWSF_DESCARGA_VEHICULOS_GB);
             user.setCWSF_REESTIBAS_GP(CWSF_REESTIBAS_GP);
@@ -110,7 +110,7 @@
             user.setCWSF_DEPOSITO_TEMP_VACIO_GP(CWSF_DEPOSITO_TEMP_VACIO_GP);
             user.setCWSF_DEPOSITO_TEMP_LLENO_GB(CWSF_DEPOSITO_TEMP_LLENO_GB);
             user.setCWSF_DEPOSITO_TEMP_VACIO_GB(CWSF_DEPOSITO_TEMP_VACIO_GB);
-            
+
             user.setCWSF_REEMBARQUE_LLENO_GP(CWSF_REEMBARQUE_LLENO_GP);
             user.setCWSF_REEMBARQUE_LLENO_RF_GP(CWSF_REEMBARQUE_LLENO_RF_GP);
             user.setCWSF_REEMBARQUE_VACIO_GP(CWSF_REEMBARQUE_VACIO_GP);
@@ -119,7 +119,9 @@
             user.setCWSF_REEMBARQUE_VACIO_GB(CWSF_REEMBARQUE_VACIO_GB);
             user.setCWSF_DEPOSITO_MOMENT_GP(CWSF_DEPOSITO_MOMENT_GP);
             user.setCWSF_DEPOSITO_MOMENT_GB(CWSF_DEPOSITO_MOMENT_GB);
-            
+
+            user.setTON_EXPORT(request.getParameter("T_EXPORT"));
+            user.setTON_IMPORT(request.getParameter("T_IMPORT"));
 
             res = Detalle_P.ActualizarPortacontenedor(user);
             detalle = Detalle_P.ActualizarPortacontenedorDetalle(user);

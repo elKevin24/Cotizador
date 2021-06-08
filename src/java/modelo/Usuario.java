@@ -102,7 +102,7 @@ public class Usuario {
         return tipo;
     }
 
-    public static boolean agregarUsuario(BeanTipoBuque Tipo) {
+    public static boolean agregar (BeanTipoBuque Tipo) {
         boolean agregado = false;
         try {
             Conexion c = new Conexion();

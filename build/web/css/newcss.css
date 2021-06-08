@@ -28,4 +28,20 @@ table th {
   width: 120px;
 }.size2{
   width: 100px;
+}.total{
+    background-color:#01579b;
+    color: #ffffff;
+}.subtotal{
+    background-color:#4f83cc;
+    color: #ffffff;
+}.subtotal2{
+    background-color:#002f6c;
+    color: #ffffff;
+}.cuerpo{
+    background-color: #2196f3;
 }
+
+
+
+
+

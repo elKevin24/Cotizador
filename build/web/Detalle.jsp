@@ -87,7 +87,8 @@
                 <input type="image" name="botondeenvio" src="img/descarga.png" alt="Enviar formulario" width="100px" height="100px">
             </form>
 
-            <input type="image" onclick="exportTableToExcel('1', 'empornac')" src="img/kisspng-microsoft-excel.jpg" width="100px" height="100px">
+            <input type="image" onclick="exportTableToExcel('1', 'empornac')" src="img/xls.png" width="150px" height="100px">
+           
         </div>
 
         <div class="container">
@@ -96,7 +97,8 @@
                     <thead class="text-center">
                         <tr>
                             <th>
-                                <p><img src="https://hh.santotomasport.com.gt/global/santotomasport.com.gt/EMPORNAC_logo.png"></p>
+                               
+                                <p><img src="img/EMPORNAC_logo.png"></p>
                             </th>
                             <th colspan="7">
                                 <p>EMPRESA PORTUARIA NACIONAL "SANTO TOMAS DE CASTILLA"</p> 
@@ -131,10 +133,10 @@
                                 <%= enc.getCWBC_HORA()%>
                             </th>
                         </tr>
-                        <tr class="text-center">
+                        <tr class="text-center ">
 
 
-                            <th colspan="8">
+                            <th colspan="8" class="cuerpo">
                                 Datos de Buque  
 
                             </th>
@@ -158,7 +160,7 @@
 
                     <thead>
                         <tr class="text-center">
-                            <th colspan="8"> 
+                            <th colspan="8" class="cuerpo"> 
                                 Datos 
                             </th>
                         </tr>
@@ -193,13 +195,13 @@
                     </thead> 
                     <thead>
                         <tr>
-                            <th scope="col">CORRELATIVO</th>
+                            <th scope="col">NO.</th> 
+                            <th scope="col">CODIGO TARIFA</th> 
+                            <th scope="co1" colspan="2">DESCRIPCION</th>
                             <th scope="col">CANTIDAD</th>
                             <th scope="col">UNIDAD MEDIDA</th>
-                            <th scope="col">CODIGO TARIFA</th>  
-                            <th scope="col">DESCRIPCION</th>
                             <th scope="col">VALOR</th>
-                            <th scope="col">DESCUENTO</th>
+
                             <th scope="col">SUB TOTAL</th>
 
 
@@ -212,24 +214,34 @@
 
                             LinkedList<BeanDetalleCotizacion> lista = DetalleCotizacion.ObtenerDatos2(Cotizacion);
                             DecimalFormat formato = new DecimalFormat("¤#,###.00");
+int a = 0;
                             for (int i = 0; i < lista.size(); i++) {
-                                Double val1 = Double.valueOf(lista.get(i).getCWDC_SUB_TOTAL());
-                                String val3 = formato.format(val1);
-
-                                Double val4 = Double.valueOf(lista.get(i).getCWDC_VALOR());
-                                String val5 = formato.format(val4);
+                                
+                                
+                                a=a+1;
                                 out.println("<tr>");
+                                Double sub = Double.valueOf(lista.get(i).getCWDC_SUB_TOTAL());
+                                Double can = Double.valueOf(lista.get(i).getCWDC_CANTIDAD());
+                                Double total = sub / can;
 
-                                out.println("<td>" + lista.get(i).getCWDC_CORRELATIVO() + "</td>");
-                                out.println("<td>" + lista.get(i).getCWDC_CANTIDAD() + "</td>");
-                                out.println("<td><div class='size'>" + lista.get(i).getREFERENCIA_UNIDAD_MEDIDA() + "</div></td>");
+                                BigDecimal bd = new BigDecimal(total).setScale(2, RoundingMode.HALF_UP);
+                                double val2 = bd.doubleValue();
+
+                                String valor = formato.format(val2);
+
+                                Double subdouble = Double.valueOf(lista.get(i).getCWDC_SUB_TOTAL());
+                                BigDecimal bd1 = new BigDecimal(subdouble).setScale(2, RoundingMode.HALF_UP);
+                                double val3 = bd1.doubleValue();
+
+                                String subtotal = formato.format(val3);
+
+                                out.println("<td>" + a + "</td>");
                                 out.println("<td>" + lista.get(i).getWDC_TDS_CODIGO() + "</td>");
-                                out.println("<td>" + lista.get(i).getDESCRIPCION() + "</td>");
-                                out.println("<td class='text-right'> <div class='size'>" + val5 + "</div></td>");
-
-                                out.println("<td>" + lista.get(i).getDESCUENTO() + "</td>");
-                                out.println("<td class='text-right'><div class='size'>" + val3 + "</div></td>");
-
+                                out.println("<td colspan='2'>" + lista.get(i).getDESCRIPCION() + "</td>");
+                                out.println("<td class='text-right'>" + lista.get(i).getCWDC_CANTIDAD() + "</td>");
+                                out.println("<td><div class='size'>" + lista.get(i).getREFERENCIA_UNIDAD_MEDIDA() + "</div></td>");
+                                out.println("<td><div class='size text-right'>" + valor + "</div></td>");
+                                out.println("<td><div class='size text-right'>" + subtotal + "</div></td>");
                                 out.println("</tr>");
 
                             }
@@ -244,10 +256,83 @@
                             String valor = formato.format(val2);
 
                             out.println("<tr>");
-                            out.println("<td colspan='7'> Total: </td>");
-                            out.println("<td>" + valor + "</td>");
+                            out.println("<td colspan='7' class='subtotal' > Sub-Total: </td>");
+                            out.println("<td class='text-right subtotal'>" + valor + "</td>");
                             out.println("</tr>");
                         %>  
+                        <tr class="text-center">
+                            <th colspan="8"> 
+                                Valores sin Iva 
+                            </th>
+                        </tr>
+                        
+                        <%
+
+                            LinkedList<BeanDetalleCotizacion> lista2 = DetalleCotizacion.Noiva(Cotizacion);
+                            
+
+                            for (int i = 0; i < lista2.size(); i++) {
+                                
+                                out.println("<tr>");
+                                Double sub2 = Double.valueOf(lista2.get(i).getCWDC_SUB_TOTAL());
+                                Double can2 = Double.valueOf(lista2.get(i).getCWDC_CANTIDAD());
+                                Double total2 = sub2 / can2;
+                                
+                                
+                                BigDecimal bd2 = new BigDecimal(total2).setScale(2, RoundingMode.HALF_UP);
+                                double val22 = bd2.doubleValue();
+
+                                String valork = formato.format(val22);
+
+                                Double subdouble2 = Double.valueOf(lista2.get(i).getCWDC_SUB_TOTAL());
+                                BigDecimal bd12 = new BigDecimal(subdouble2).setScale(2, RoundingMode.HALF_UP);
+                                double val32 = bd12.doubleValue();
+
+                                String subtotal2 = formato.format(val32);
+
+                             a=a+1;
+
+                                out.println("<td>" + a + "</td>");
+                                out.println("<td>" + lista2.get(i).getWDC_TDS_CODIGO() + "</td>");
+                                out.println("<td colspan='2'>" + lista2.get(i).getDESCRIPCION() + "</td>");
+                                out.println("<td class='text-right'>" + lista2.get(i).getCWDC_CANTIDAD() + "</td>");
+                                out.println("<td><div class='size'>" + lista2.get(i).getREFERENCIA_UNIDAD_MEDIDA() + "</div></td>");
+                                out.println("<td><div class='size text-right'>" + valork + "</div></td>");
+                                out.println("<td><div class='size text-right'>" + subtotal2 + "</div></td>");
+                               
+                              
+                                 out.println("</tr>");
+
+                            }double sum2 = 0;
+                            for (int i = 0; i < lista2.size(); i++) {
+                                sum2 = sum2 + Double.valueOf(lista2.get(i).getCWDC_SUB_TOTAL());
+                            }
+
+                            BigDecimal bd9 = new BigDecimal(sum2).setScale(2, RoundingMode.HALF_UP);
+                            double val29 = bd9.doubleValue();
+
+                            String valor9 = formato.format(val29);
+                            
+                            double total = val29+val2;
+                            
+                            String total2 = formato.format(total);
+
+                            out.println("<tr>");
+                            out.println("<td colspan='7'  class='subtotal'> Sub-Total: </td>");
+                            out.println("<td class='text-right  subtotal'>" + valor9 + "</td>");
+                            out.println("</tr>");
+                            
+                            out.println("<tr>");
+                            out.println("<td colspan='7' class='subtotal2'> Total: </td>");
+                            out.println("<td class='text-right subtotal2'>" + total2 + "</td>");
+                            out.println("</tr>");
+                            
+                          
+                        %> 
+
+
+
+
                     </tbody>
                 </table>              
             </div>

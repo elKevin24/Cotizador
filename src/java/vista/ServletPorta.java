@@ -22,7 +22,6 @@ import modelo.Conexion;
 import modelo.Detalle_P;
 import modelo.Encabezado;
 
-
 /**
  *
  * @author nichodeveloper
@@ -117,22 +116,24 @@ public class ServletPorta extends HttpServlet {
 
         String CWSF_DEPOSITO_MOMENT_GB = request.getParameter("CWSF_DEPOSITO_MOMENT_GB");
         String CWSF_DEPOSITO_MOMENT_GP = request.getParameter("CWSF_DEPOSITO_MOMENT_GP");
+        String timport = request.getParameter("timport");
+        String texport = request.getParameter("texport");
 
         String GRABADOR = request.getParameter("GRABADOR");
 
-        BeanPorta busuario = new BeanPorta(CWBC_COTIZACION, 
-                Muellaje1, MuellajeExport, 
-                CWSF_DESCARGA_LLENOS_GB_VI, CWSF_DESCARGA_LLENOS_GB_VD, CWSF_DESCARGA_LLENOS_GP_VI, CWSF_DESCARGA_LLENOS_GP_VD, 
+        BeanPorta busuario = new BeanPorta(CWBC_COTIZACION,
+                Muellaje1, MuellajeExport,
+                CWSF_DESCARGA_LLENOS_GB_VI, CWSF_DESCARGA_LLENOS_GB_VD, CWSF_DESCARGA_LLENOS_GP_VI, CWSF_DESCARGA_LLENOS_GP_VD,
                 CWSF_DESCARGA_VACIOS_GB_VI, CWSF_DESCARGA_VACIOS_GB_VD, CWSF_DESCARGA_VACIOS_GP_VI, CWSF_DESCARGA_VACIOS_GP_VD,
-                CWSF_CARGA_LLENOS_GB_VI, CWSF_CARGA_LLENOS_GB_VD, CWSF_CARGA_LLENOS_GP_VI, CWSF_CARGA_LLENOS_GP_VD, 
-                CWSF_CARGA_VACIOS_GB_VI, CWSF_CARGA_VACIOS_GB_VD, CWSF_CARGA_VACIOS_GP_VI, CWSF_CARGA_VACIOS_GP_VD, 
-                CWSF_DESCARGA_VEHICULOS_GB, CWSF_DESCARGA_VEHICULOS_GP, 
-                CWSF_REESTIBAS_GB, CWSF_REESTIBAS_GP, 
+                CWSF_CARGA_LLENOS_GB_VI, CWSF_CARGA_LLENOS_GB_VD, CWSF_CARGA_LLENOS_GP_VI, CWSF_CARGA_LLENOS_GP_VD,
+                CWSF_CARGA_VACIOS_GB_VI, CWSF_CARGA_VACIOS_GB_VD, CWSF_CARGA_VACIOS_GP_VI, CWSF_CARGA_VACIOS_GP_VD,
+                CWSF_DESCARGA_VEHICULOS_GB, CWSF_DESCARGA_VEHICULOS_GP,
+                CWSF_REESTIBAS_GB, CWSF_REESTIBAS_GP,
                 CWSF_TAPA_ESCOTILLAS_GB, CWSF_TAPA_ESCOTILLAS_GP,
                 CWSF_DEPOSITO_TEMP_LLENO_GB, CWSF_DEPOSITO_TEMP_LLENO_GP, CWSF_DEPOSITO_TEMP_VACIO_GB, CWSF_DEPOSITO_TEMP_VACIO_GP,
                 CWSF_REEMBARQUE_LLENO_GB, CWSF_REEMBARQUE_LLENO_RF_GB, CWSF_REEMBARQUE_LLENO_GP, CWSF_REEMBARQUE_LLENO_RF_GP, CWSF_REEMBARQUE_VACIO_GB, CWSF_REEMBARQUE_VACIO_GP,
                 CWSF_DEPOSITO_MOMENT_GP, CWSF_DEPOSITO_MOMENT_GB,
-                GRABADOR, GRABADOR);
+                GRABADOR, GRABADOR, timport, texport);
 
         String sw = Detalle_P.agregarDetalle(busuario);
 
@@ -140,8 +141,7 @@ public class ServletPorta extends HttpServlet {
         out.println(CWBC_COTIZACION + Muellaje1 + MuellajeExport + CWSF_DESCARGA_LLENOS_GB_VI + CWSF_DESCARGA_LLENOS_GB_VD + CWSF_DESCARGA_LLENOS_GP_VI + CWSF_DESCARGA_LLENOS_GP_VD);
 
         if (sw.equalsIgnoreCase("bien")) {
-            
-            
+
             BeanEncabezado enc = new BeanEncabezado();
             enc = Encabezado.Cotizacion(CWBC_COTIZACION);
 
@@ -150,16 +150,20 @@ public class ServletPorta extends HttpServlet {
                 Connection con = c.getConexion();
                 Statement st;
                 st = con.createStatement();
-                ResultSet rs = st.executeQuery("SELECT COTIZADOR_WEB.F_CW_TARIFA_X_COTIZACION(" + CWBC_COTIZACION + ",'" + enc.getGRABADOR() + "', TO_DATE('" + enc.getCWBC_TIPO_CAMBIO_FECHA().substring(0, 10) + "','YYYY-MM-DD') , " + enc.getCWBC_HORA() + ", " + enc.getCWBC_CODIGO_USUARIO() + ") from dual");
-
+                
+                
+                String sql = "SELECT COTIZADOR_WEB.F_CW_TARIFA_X_COTIZACION(" + CWBC_COTIZACION + ",'" + enc.getGRABADOR() + "', TO_DATE('" + enc.getCWBC_TIPO_CAMBIO_FECHA().substring(0, 10) + "','YYYY-MM-DD') , " + enc.getCWBC_HORA() + ", " + enc.getCWBC_CODIGO_USUARIO() + ") from dual";
+                 System.err.println("sql detalle portacontenedro"+sql);
+                st.execute(sql);
             } catch (SQLException e) {
+                System.err.println("ERROR"+e);
 
             }
             response.sendRedirect("Detalle.jsp?Cotizacion=" + CWBC_COTIZACION + "");
 
         } else {
 
-            out.println("Si estas viendo este mensaje es por que algo salio mal, no se pudo completar tu solicitud."+sw);
+            out.println("Si estas viendo este mensaje es por que algo salio mal, no se pudo completar tu solicitud." + sw);
         }
 
     }

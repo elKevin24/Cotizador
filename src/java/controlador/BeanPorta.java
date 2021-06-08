@@ -348,6 +348,22 @@ public class BeanPorta {
     public void setCWBC_ETA(String CWBC_ETA) {
         this.CWBC_ETA = CWBC_ETA;
     }
+
+    public String getTON_IMPORT() {
+        return TON_IMPORT;
+    }
+
+    public void setTON_IMPORT(String TON_IMPORT) {
+        this.TON_IMPORT = TON_IMPORT;
+    }
+
+    public String getTON_EXPORT() {
+        return TON_EXPORT;
+    }
+
+    public void setTON_EXPORT(String TON_EXPORT) {
+        this.TON_EXPORT = TON_EXPORT;
+    }
     
     
     
@@ -366,7 +382,9 @@ public class BeanPorta {
             String CWSF_REEMBARQUE_VACIO_GB,
             String CWSF_REEMBARQUE_VACIO_GP,
             String CWSF_DEPOSITO_MOMENT_GP, String CWSF_DEPOSITO_MOMENT_GB,
-            String GRABADOR, String GRABADOR_FECHA
+            String GRABADOR, String GRABADOR_FECHA,
+            String TON_IMPORT,
+            String TON_EXPORT
              
     ) {
 
@@ -409,6 +427,8 @@ public class BeanPorta {
         this.GRABADOR_FECHA = GRABADOR_FECHA;
         this.CWSF_REEMBARQUE_LLENO_RF_GP = CWSF_REEMBARQUE_LLENO_RF_GP;
         this.CWSF_REEMBARQUE_LLENO_RF_GB = CWSF_REEMBARQUE_LLENO_RF_GB;
+        this.TON_IMPORT = TON_IMPORT;
+        this.TON_EXPORT = TON_EXPORT;
 
     }
 
@@ -455,6 +475,8 @@ public class BeanPorta {
     private String ACTUALIZADOR_FECHA;
     private String CWSF_REEMBARQUE_LLENO_RF_GP;
     private String CWSF_REEMBARQUE_LLENO_RF_GB;
+    private String TON_IMPORT;
+    private String TON_EXPORT;
 
     public BeanPorta() {
     }

@@ -52,7 +52,9 @@ public static LinkedList<BeanBarcos> consultarBarco(String entrada) throws SQLEx
          }                    
       }                        
      catch (SQLException e)
-      {                                                            
+      {    
+          
+          System.err.println("consultar barco"+e);
       }                     
                              
     return usuarios;

@@ -24,7 +24,7 @@
         String Cotizacion = request.getParameter("Cotizacion");
         BeanEncabezado enc = new BeanEncabezado();
         enc = Encabezado.Cotizacion(Cotizacion);
-        
+
         BeanPorta porta = new BeanPorta();
         porta = Detalle_P.Obtenerxedit(Cotizacion);
         String eta = porta.getCWBC_ETA();
@@ -45,14 +45,14 @@
 
     <div class="row">
         <div class="col s1 push-s1">
-            
-            <a  href="Barcos.jsp" class="btn-floating pulse" ><i class="material-icons">arrow_back</i></a>
+
+            <a  href="ConsultaCreados.jsp" class="btn-floating pulse" ><i class="material-icons">arrow_back</i></a>
         </div>
     </div>
     <div class="container">
-        
-        
-        <h5 class="text-center"> <%="Cotizacion: " + enc.getCWBC_COTIZACION()+ ", Nombre Buque:" + enc.getCWBC_BUQUE_VIAJE() + ", LR: " + enc.getCWBC_LR() + ",  ETA: " + enc.getCWBC_ETA() + ",  SEÑAL DISTINTIVA: " + enc.getCWBC_SENAL_DISTINTIVA()%></h5>
+
+
+        <h5 class="text-center"> <%="Cotizacion: " + enc.getCWBC_COTIZACION() + ", Nombre Buque:" + enc.getCWBC_BUQUE_VIAJE() + ", LR: " + enc.getCWBC_LR() + ",  ETA: " + enc.getCWBC_ETA() + ",  SEÑAL DISTINTIVA: " + enc.getCWBC_SENAL_DISTINTIVA()%></h5>
         <form action="ACTUALIZAR_BUQUE_PORTACONTENEDOR.jsp" method="post" id="miform" >
             <div class="col s12">
                 <table id="1" class="table table-bordered table-sm table-primary">
@@ -93,9 +93,22 @@
                     </div>
                     <label for="CWBC_ETA">FECHA Y HORA ETA </label>
                     <div class="input-field col s2">
+
                         <input placeholder="" type="datetime-local" id="CWBC_ETA" name="CWBC_ETA" class="validate" value="<%= eta%>">
+
+                    </div>
+                    <div class="input-field col s5">
+                        <input placeholder="" type="number" id="CWBC_HORA" name="T_EXPORT" class="validate" value="<%= porta.getTON_EXPORT()%>">
+                        <label for="T_EXPORT">TONELADAS EXPORT</label>
+                    </div>
+
+                    <div class="input-field col s5">
+                        <input placeholder="" type="number" id="CWBC_HORA" name="T_IMPORT" class="validate" value="<%= porta.getTON_IMPORT()%>">
+                        <label for="T_IMPORT">TONELADAS IMPORT</label>
                     </div>
                 </div>
+
+
             </div>
             <div class="divider"></div>
             <div class="section">
@@ -346,7 +359,7 @@
                         <script src="https://unpkg.com/jquery@3.3.1/dist/jquery.min.js"></script>
                         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
                         <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
-                       
+
                         <script type="text/javascript">
 
                             var muellaje = "<%= muellaje%>";
