@@ -19,7 +19,7 @@ public class TrazabilidadContenedores {
 "puerto.ubicacion_actual(tc.tcf_correlativo_tarjeta) ubicacion_contenedor\n" +
 "from PUERTO.descarga_tarjeta_cof dtc, PUERTO.tarjeta_cof tc\n" +
 "where dtc.dtcf_correlativo_tarjeta = tc.tcf_correlativo_tarjeta\n" +
-"and tc.tcf_viaje_sistema = "+entrada+"";
+"and tc.tcf_viaje_sistema = "+entrada+" ";
 
         try {
             Conexion c = new Conexion();
@@ -54,35 +54,18 @@ public class TrazabilidadContenedores {
 
     public static LinkedList<Trazabilidad_Contenedores> consultarContPuerto(String entrada) throws SQLException {
         LinkedList<Trazabilidad_Contenedores> usuarios = new LinkedList<>();
-        String sql = "SELECT CONTENEDOR,OPERACION,FECHA_INGRESO,PATIO,FILA,MODULO,NIVEL, TARJETA, viaje_sistema, BUQUE,VIAJE_BUQUE, NAVIERA, escaneo, bascula\n"
-                + "FROM (\n"
-                + "SELECT  CONTENEDOR,OPERACION,FECHA_INGRESO,PATIO,FILA,MODULO,NIVEL,TARJETA_KARDEX TARJETA, viaje_sistema,\n"
-                + "        (SELECT BARCO FROM PUERTO.EOPV_VIAJES WHERE VIAJE_EMPORNAC = VIAJE_SISTEMA and 'IMPORT' = OPERACION) BUQUE,\n"
-                + "        (SELECT VIAJE_NAVIERA FROM PUERTO.EOPV_VIAJES WHERE VIAJE_EMPORNAC = VIAJE_SISTEMA and 'IMPORT' = OPERACION) VIAJE_BUQUE,\n"
-                + "        (SELECT COD_NAV FROM PUERTO.EOPV_VIAJES WHERE VIAJE_EMPORNAC = VIAJE_SISTEMA) NAVIERA,\n"
-                + "        puerto.busca_escaneo(CONTENEDOR, viaje_sistema) escaneo,\n"
-                + "        puerto.busca_peso_salida(viaje_sistema) bascula\n"
-                + "               FROM (  SELECT   tar.tcf_correlativo_tarjeta tarjeta_kardex,\n"
-                + "                                tar.tcf_prefijo || tar.tcf_identificacion CONTENEDOR,\n"
-                + "                                --DECODE (tar.tcf_refrigerado_seco,'S', 'SECO','R', 'REFRIGERADO') TIPO,\n"
-                + "                                Decode(MAX (des.dtcf_fecha_operacion), nvl(MAX (rec.rtcf_fecha_operacion),MAX (des.dtcf_fecha_operacion)),NVL(puerto.F_MODALIDAD_CONTE(MAX (DES.DTCF_CORRELATIVO_DESCARGA), tar.tcf_prefijo || tar.tcf_identificacion),'IMPORT'),'EXPORT') OPERACION,\n"
-                + "                                TO_CHAR(  (Decode(MAX (des.dtcf_fecha_operacion), nvl(MAX (rec.rtcf_fecha_operacion),MAX (des.dtcf_fecha_operacion)),MAX (des.dtcf_fecha_operacion),MAX (rec.rtcf_fecha_operacion))),'YYYY/MM/DD hh24:mi') FECHA_INGRESO,\n"
-                + "                                MAX (rec.rtcf_fecha_operacion) fecha_recepcion, MAX (des.dtcf_fecha_operacion) fecha_descarga, MAX (DESP.DTCF_FECHA_OPERACION) fecha_despacho, MAX (DES.DTCF_CORRELATIVO_DESCARGA) VIAJE_DESCARGA,\n"
-                + "                                --DECODE (MAX (TARU.TCU_MODALIDAD),'V', 'VACIO','L', 'LLENO') MODALIDAD,\n"
-                + "                                TARU.TCU_PATIO PATIO, TARU.TCU_FILA FILA, TARU.TCU_MODULO MODULO, TARU.TCU_NIVEL NIVEL,\n"
-                + "                                --TAR.tcf_observaciones observaciones,\n"
-                + "                                tar.tcf_viaje_sistema viaje_sistema\n"
-                + "                        FROM PUERTO.tarjeta_cof tar, PUERTO.TARJETA_COF_UBICACION taru, PUERTO.descarga_tarjeta_cof des,PUERTO.recepcion_tarjeta_cof rec, PUERTO.DESPACHO_TARJETA_COF DESP\n"
-                + "                        WHERE TAR.TCF_CORRELATIVO_TARJETA =  TARU.TCF_CORRELATIVO_TARJETA\n"
-                + "                              AND tar.tcf_correlativo_tarjeta = des.dtcf_correlativo_tarjeta(+)\n"
-                + "                              AND tar.tcf_correlativo_tarjeta = rec.rtcf_correlativo_tarjeta(+)\n"
-                + "                              AND tar.tcf_correlativo_tarjeta = DESP.DTCF_CORRELATIVO_TARJETA(+)\n"
-                + "                              AND tcf_estado_tarjeta = 'A'\n"
-                + "                     GROUP BY tar.tcf_correlativo_tarjeta, tar.tcf_prefijo || tar.tcf_identificacion, TARU.TCU_PATIO,TARU.TCU_FILA,TARU.TCU_MODULO,TARU.TCU_NIVEL, tar.tcf_viaje_sistema\n"
-                + "                    )\n"
-                + "                    where nvl(fecha_recepcion,fecha_descarga)> nvl((fecha_despacho+1.5),sysdate-8000)\n"
-                + "                    ORDER BY  FECHA_INGRESO desc NULLS LAST\n"
-                + "                    )where NAVIERA = " + entrada + " FETCH NEXT 10 ROWS ONLY ";
+        String sql = "SELECT  tar.tcf_correlativo_tarjeta tarjeta_kardex, tar.tcf_prefijo || tar.tcf_identificacion CONTENEDOR,DECODE (tar.tcf_refrigerado_seco,'S', 'SECO','R', 'REFRIGERADO') TIPO,\n" +
+"DECODE (MAX (TARU.TCU_MODALIDAD),'V', 'VACIO','L', 'LLENO') MODALIDAD,\n" +
+"TARU.TCU_PATIO PATIO, TARU.TCU_FILA FILA, TARU.TCU_MODULO MODULO, TARU.TCU_NIVEL NIVEL, tar.tcf_viaje_sistema viaje_sistema,\n" +
+"(SELECT BARCO FROM PUERTO.EOPV_VIAJES WHERE VIAJE_EMPORNAC = tcf_viaje_sistema and tcf_viaje_sistema is not null) BUQUE,\n" +
+"(SELECT VIAJE_NAVIERA FROM PUERTO.EOPV_VIAJES WHERE VIAJE_EMPORNAC = tcf_viaje_sistema and tcf_viaje_sistema is not null) VIAJE_BUQUE,\n" +
+"puerto.busca_escaneo(tar.tcf_prefijo || tar.tcf_identificacion, tcf_viaje_sistema) escaneo,puerto.busca_peso_salida(tcf_viaje_sistema) bascula,\n" +
+"(SELECT USUARIO FROM puerto.EOPT_REGISTRO_CONTENEDORES WHERE PREFIJO||NUMERO_DE_IDENTIFICACION LIKE tar.tcf_prefijo || tar.tcf_identificacion ) OPERADOR\n" +
+"FROM PUERTO.tarjeta_cof tar, PUERTO.TARJETA_COF_UBICACION taru\n" +
+"WHERE TAR.TCF_CORRELATIVO_TARJETA =  TARU.TCF_CORRELATIVO_TARJETA\n" +
+"AND tar.tcf_estado_tarjeta = 'A'\n" +
+"and tar.tcf_adentro_afuera is null\n" +
+"GROUP BY tar.tcf_correlativo_tarjeta, tar.tcf_prefijo || tar.tcf_identificacion,tar.tcf_refrigerado_seco, TARU.TCU_PATIO,TARU.TCU_FILA,TARU.TCU_MODULO,TARU.TCU_NIVEL,tar.tcf_viaje_sistema";
 
         try {
             Conexion c = new Conexion();

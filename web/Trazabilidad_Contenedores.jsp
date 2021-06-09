@@ -16,7 +16,8 @@
 <html>
 
     <head>
-
+        <script src="js/retenciones.js" type="text/javascript"></script>
+        <script src="js/atc.js" type="text/javascript"></script>
         <!--Import Google Icon Font-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">      <!--Import materialize.css-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
@@ -25,7 +26,7 @@
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.22/datatables.min.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        <script src="js/retenciones.js" type="text/javascript"></script>
+
         <link href="css/newcss.css" rel="stylesheet" type="text/css"/>
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -41,7 +42,7 @@
         %>
 
         <jsp:include page="menu.jsp" flush="true"></jsp:include>
-       
+
             <title>Listado de Barcos</title>
 
 
@@ -68,12 +69,11 @@
                                     <th>NUMERO CONTENEDOR</th>
                                     <th>FECHA DESCARGA</th>
                                     <th>REVISION NO INTRUSIVA</th>
-                                    <th>PASO BASCULA</th>
-
-                                    <th>RETENCION SAT</th>
-
-                                    <th>SALIDA</th>
-                                    <th>UBICACION</th>
+                                    <th>PESAJE BASCULA</th>
+                                    <th>RETENCION</th>
+                                    <th>ATC</th>
+                                    <th>SALIDA DAT</th>
+                                    <th>UBICACION PATIO DAT</th>
 
 
 
@@ -81,7 +81,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <%                                System.err.println("Viaje Barco" + id);
+                            <%                                
+                                
+                                System.err.println("Viaje Barco" + id);
 
                                 LinkedList<Trazabilidad_Contenedores> lista = TrazabilidadContenedores.consultarCont(id);
 
@@ -89,30 +91,8 @@
 
                                     out.println("<tr>");
                                     out.println("<td>" + lista.get(i).getC1() + "</td>");
-                            %>
-                        <script>
 
-
-var resultset = null;
-                            var cont = "<%=lista.get(i).getC1()%>";
-                            resultset = reten(cont);
-
-                            console.log("hola");
-
-                            
-                               // var campo = document.getElementById('prueba');
-                               /// campo.style.backgroundColor = "blue";
-                            
-
-
-
-                            //console.log(cont);
-
-                        </script>
-
-                        <%
-
-                                out.println("<td id='prueba' >" + lista.get(i).getC2().substring(0, 10) + "</td>");
+                                out.println("<td id='prueba'>" + lista.get(i).getC2().substring(0, 10) + "</td>");
 
                                 if (lista.get(i).getC3() != null) {
                                     out.println("<td class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='" + lista.get(i).getC3() + "'></></td>");
@@ -130,11 +110,21 @@ var resultset = null;
                                 }
 
                                 if (lista.get(i).getC7() == null) {
-                                    out.println("<td id='"+lista.get(i).getC1()+"' class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='Sin Retenciones'></></td>");
+                                    out.println("<td id='" + lista.get(i).getC1() + "' class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='Sin Retenciones'></></td>");
 
                                 } else {
-                                    out.println("<td class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='Entidad que Retiene " + lista.get(i).getC7() + "'></></td>");
+                                    out.println("<td class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='Entidad que Retiene'></></td>");
                                 }
+                                
+                                if (lista.get(i).getC7() == null) {
+                                    
+                                    out.println("<td class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='No registrado'></></td>");
+                                
+                                   
+                                } else {
+                                     out.println("<td id='" + lista.get(i).getC1()+ "atc' class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='Registrado'></></td>");
+
+                                    }
 
                                 if (lista.get(i).getC5() != null) {
                                     out.println("<td class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='" + lista.get(i).getC5() + "'></></td>");
@@ -155,6 +145,38 @@ var resultset = null;
                                 // out.println("<td> <a class='btn-floating btn-small waves-effect waves-light green'></a></td>");
                                 out.println("</tr>");
                             }
+                                
+                            for (int i = 0; i < lista.size(); i++) {
+                                
+                                
+                            %>
+                            
+                            <script>
+
+
+    var resultado = null;
+    var atc = null;
+    var cont = "<%=lista.get(i).getC1()%>";
+    resultado = reten(cont);
+    atc  = consultatc(cont);
+
+    
+
+
+    // var campo = document.getElementById('prueba');
+    // campo.style.backgroundColor = "blue";
+    //console.log(cont);
+
+</script>
+                            
+                            <%
+                            
+                            
+                            
+                            
+                            }
+                                
+
                         %>  
                         </tbody>
 
@@ -164,11 +186,12 @@ var resultset = null;
                                 <th>NUMERO CONTENEDOR</th>
                                 <th>FECHA DESCARGA</th>
                                 <th>REVISION NO INTRUSIVA</th>
-                                <th>PASO BASCULA</th>
-                                <th>RETENCION SAT</th>
+                                <th>PESAJE BASCULA</th>
+                                <th>RETENCION </th>
+                                <th>ATC</th>
 
-                                <th>SALIDA</th>
-                                <th>UBICACION</th>
+                                <th>SALIDA DAT</th>
+                                <th>UBICACION PATIO DAT</th>
 
                             </tr>
                         </tfoot>
@@ -242,22 +265,12 @@ var resultset = null;
             <!--JavaScript at end of body for optimized loading-->
 
 
-            <script src="js/retenciones.js" type="text/javascript"></script>
+            
+
             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
             <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/jszip-2.5.0/dt-1.10.24/af-2.3.6/b-1.7.0/b-colvis-1.7.0/b-html5-1.7.0/b-print-1.7.0/cr-1.5.3/date-1.0.3/fc-3.3.2/fh-3.1.8/kt-2.6.1/r-2.2.7/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.1/sp-1.2.2/sl-1.3.3/datatables.min.js"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-
-            <script type="text/javascript">
-                $(document).ready(function () {
-                    $('.tooltipped').tooltip();
-                });
-
-            </script>
-
-
-
 
     </body>
 
