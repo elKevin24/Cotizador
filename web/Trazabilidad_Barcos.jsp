@@ -127,70 +127,7 @@
            });
 
         </script>
-        <script>
-        var settings = {
-            "url": "https://farm3.sat.gob.gt/retencion-liberacion-ws/rest/privado/retencionLiberacion/consultar",
-            "method": "POST",
-            "timeout": 0,
-            "headers": {
-                "Authorization": "Basic MzEzMzIyMjpFbXBvcm5hYzIwMTUr",
-                "Content-Type": "application/json",
-                "Cookie": "visid_incap_2112329=0xk+tVssSjegRxb6moVvoquKumAAAAAAQUIPAAAAAABebEr5ELkke+K1Kp+CTHG/"
-            },
-            "data": JSON.stringify({
-                "noContenedor": "HAMU1004983";
-            })
-        };
-
-        $.ajax(settings).done(function(response) {
-            console.log(response);
-
-
-
-            var x = response.getElementsByTagName("mensajeRespuesta");
-            var z = response.getElementsByTagName("retencionesLiberaciones");
-
-            var node;
-            var mensaje_c;
-            
-            var retencion;
-            var noRetencion;
-
-            //solo se recibe un parametro  aunque se recorra solo hay un valor 
-
-            for (var i = 0; i < z.length; i++) {
-                node = z[i].childNodes;
-
-            }
-
-
-
-
-            for (var i = 0; i < x.length; i++) {
-                mensaje_c = x[i].childNodes;
-
-            }
-            console.log(mensaje_c)
-
-            console.log(mensaje_c[0].childNodes[0].nodeValue);
-            console.log(mensaje_c[1].childNodes[0].nodeValue);
-            console.log(mensaje_c[2].childNodes[0].nodeValue);
-            console.log(mensaje_c[3].childNodes[0].nodeValue);
-
-
-            for (var i = 0; i < mensaje_c[4].childNodes.length; i++) {
-                retencion = mensaje_c[4].childNodes[i];
-                noRetencion = retencion.childNodes[i];
-
-            }
-
-
-            console.log(retencion.childNodes[0]);
-            console.log(noRetencion);
-            console.log(noRetencion.childNodes[0].nodeValue);
-
-        });
-    </script>
+       
         <!--JavaScript at end of body for optimized loading-->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>

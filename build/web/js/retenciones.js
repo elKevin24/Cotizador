@@ -7,10 +7,10 @@
 function reten(cont) {
 
 
-
+var valor = 'L';
     var settings = {
         "url": "https://farm3.sat.gob.gt/retencion-liberacion-ws/rest/privado/retencionLiberacion/consultar",
-        "async": false,
+        //"async": false,
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -27,54 +27,35 @@ function reten(cont) {
 
     $.ajax(settings).done(function (response) {
 
+       
 
-
-        var valor = 'L';
+        
         var response2 = null;
         
         
-        if (response.codigo == "0") {
-            
-            
-        
+        if (response.codigo == "0") { 
+                 
 
 
         for (var i = 0; i < response.retencionLiberacion.length; i++) {
 
             response2 = response.retencionLiberacion[i].estado;
             //console.log(response.retencionLiberacion[i].estado);
-            if (response2 == "R") {
+            if (response2 == 'R') {
 
                 valor = 'R';
+                document.getElementById(cont).innerHTML='<img src="img/bullet-red.png" class="tooltipped" data-position="bottom" data-tooltip="Sin Peso"></>';
 
 
                 break
 
             }
 
-
-
         }
         
         }
-
-
-        if (valor == 'R') {
-            //document.getElementById("cont").innerHTML='<img src="img/bullet-red.png"/>';
-            //var campo = document.getElementById(cont);
-            //campo.style.backgroundColor = "blue";
-            document.getElementById(cont).innerHTML='<img src="img/bullet-red.png" class="tooltipped" data-position="bottom" data-tooltip="Sin Peso"></>';
-            
-            
-          
-        }
-        
-//console.log(valor);
-
-        return valor;
-
-
     });
+    
 
-
+return valor;
 }

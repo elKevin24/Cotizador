@@ -72,8 +72,9 @@
                                     <th>PESAJE BASCULA</th>
                                     <th>RETENCION</th>
                                     <th>ATC</th>
-                                    <th>SALIDA DAT</th>
                                     <th>UBICACION PATIO DAT</th>
+                                    <th>SALIDA DAT</th>
+                                    
 
 
 
@@ -81,9 +82,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <%                                
-                                
-                                System.err.println("Viaje Barco" + id);
+                            <%                                System.err.println("Viaje Barco" + id);
 
                                 LinkedList<Trazabilidad_Contenedores> lista = TrazabilidadContenedores.consultarCont(id);
 
@@ -92,90 +91,88 @@
                                     out.println("<tr>");
                                     out.println("<td>" + lista.get(i).getC1() + "</td>");
 
-                                out.println("<td id='prueba'>" + lista.get(i).getC2().substring(0, 10) + "</td>");
+                                    out.println("<td id='prueba'>" + lista.get(i).getC2().substring(0, 10) + "</td>");
 
-                                if (lista.get(i).getC3() != null) {
-                                    out.println("<td class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='" + lista.get(i).getC3() + "'></></td>");
+                                    if (lista.get(i).getC3() != null) {
+                                        out.println("<td class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='" + lista.get(i).getC3() + "'></></td>");
 
-                                } else {
-                                    out.println("<td class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='Sin Escaneo'></></td>");
-                                }
+                                    } else {
+                                        out.println("<td class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='Sin Escaneo'></></td>");
+                                    }
 
-                                if (lista.get(i).getC4().equals("NO")) {
-                                    out.println("<td class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='Sin Peso'></></td>");
-                                } else {
+                                    if (lista.get(i).getC4().equals("NO")) {
+                                        out.println("<td class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='Sin Peso'></></td>");
+                                    } else {
 
-                                    out.println("<td class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='" + lista.get(i).getC4() + "'></a></td>");
-
-                                }
-
-                                if (lista.get(i).getC7() == null) {
-                                    out.println("<td id='" + lista.get(i).getC1() + "' class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='Sin Retenciones'></></td>");
-
-                                } else {
-                                    out.println("<td class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='Entidad que Retiene'></></td>");
-                                }
-                                
-                                if (lista.get(i).getC7() == null) {
-                                    
-                                    out.println("<td class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='No registrado'></></td>");
-                                
-                                   
-                                } else {
-                                     out.println("<td id='" + lista.get(i).getC1()+ "atc' class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='Registrado'></></td>");
+                                        out.println("<td class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='" + lista.get(i).getC4() + "'></a></td>");
 
                                     }
 
-                                if (lista.get(i).getC5() != null) {
-                                    out.println("<td class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='" + lista.get(i).getC5() + "'></></td>");
+                                    if (lista.get(i).getC7() == null) {
+                                        out.println("<td id='" + lista.get(i).getC1() + "' class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='Sin Retenciones'></></td>");
 
-                                } else {
-                                    out.println("<td class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='Sin Escaneo'></></td>");
+                                    } else {
+                                        out.println("<td class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='Entidad que Retiene'></></td>");
+                                    }
+
+                                    if (lista.get(i).getC7() == null) {
+
+                                        out.println("<td class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='No registrado'></></td>");
+
+                                    } else {
+                                        out.println("<td id='" + lista.get(i).getC1() + "atc' class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='Registrado'></></td>");
+
+                                    }
+                                    
+                                     if (lista.get(i).getC6() == null || (lista.get(i).getC6().equals("NO"))) {
+                                        out.println("<td class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='Sin Escaneo'></></td>");
+
+                                    } else {
+                                        out.println("<td class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='" + lista.get(i).getC6() + "'></></td>");
+
+                                    }
+
+                                    if (lista.get(i).getC5() != null) {
+                                        out.println("<td class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='" + lista.get(i).getC5() + "'></></td>");
+
+                                    } else {
+                                        out.println("<td class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='Sin Salida'></></td>");
+                                    }
+
+                                   
+
+                                    // out.println("<td> <a class='btn-floating btn-small waves-effect waves-light red'></a></td>");
+                                    // out.println("<td> <a class='btn-floating btn-small waves-effect waves-light green'></a></td>");
+                                    out.println("</tr>");
                                 }
 
-                                if (lista.get(i).getC6() == null || (lista.get(i).getC6().equals("NO"))) {
-                                    out.println("<td class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='Sin Escaneo'></></td>");
+                                for (int i = 0; i < lista.size(); i++) {
 
-                                } else {
-                                    out.println("<td class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='" + lista.get(i).getC6() + "'></></td>");
 
-                                }
-
-                                // out.println("<td> <a class='btn-floating btn-small waves-effect waves-light red'></a></td>");
-                                // out.println("<td> <a class='btn-floating btn-small waves-effect waves-light green'></a></td>");
-                                out.println("</tr>");
-                            }
-                                
-                            for (int i = 0; i < lista.size(); i++) {
-                                
-                                
                             %>
-                            
-                            <script>
+
+                        <script>
 
 
-    var resultado = null;
-    var atc = null;
-    var cont = "<%=lista.get(i).getC1()%>";
-    resultado = reten(cont);
-    atc  = consultatc(cont);
+                            var resultado = null;
+                            var atc = null;
+                            var cont = "<%=lista.get(i).getC1()%>";
 
-    
+                            resultado = reten(cont);
+                            console.log(resultado);
+                            atc = consultatc(cont);
 
 
-    // var campo = document.getElementById('prueba');
-    // campo.style.backgroundColor = "blue";
-    //console.log(cont);
+                            // var campo = document.getElementById('prueba');
+                            // campo.style.backgroundColor = "blue";
+                            //console.log(cont);
 
-</script>
-                            
-                            <%
-                            
-                            
-                            
-                            
+                        </script>
+
+                        <%
+
                             }
-                                
+
 
                         %>  
                         </tbody>
@@ -189,9 +186,9 @@
                                 <th>PESAJE BASCULA</th>
                                 <th>RETENCION </th>
                                 <th>ATC</th>
-
-                                <th>SALIDA DAT</th>
                                 <th>UBICACION PATIO DAT</th>
+                                <th>SALIDA DAT</th>
+                                
 
                             </tr>
                         </tfoot>
@@ -217,10 +214,6 @@
 
 
             <script type="text/javascript">
-
-
-
-
                 $(document).ready(function () {
 
                     // Setup - add a text input to each footer cell
@@ -265,7 +258,7 @@
             <!--JavaScript at end of body for optimized loading-->
 
 
-            
+
 
             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>

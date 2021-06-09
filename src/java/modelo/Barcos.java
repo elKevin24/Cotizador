@@ -24,7 +24,7 @@ public static LinkedList<BeanBarcos> consultarBarco(String entrada) throws SQLEx
 "and tipo_de_barco_por_estructura in (12, 13, 21, 22, 31, 32, 51, 52, 61,62, 63, 64, 71, 72, 73,74, 90)\n" +
 "UNION\n" +
 "SELECT B.LR, B.NOMBRE_DEL_BUQUE NOMBRE_DEL_BUQUE, B.SENAL_DISTINTIVA, B.TRB, B.ESLORA\n" +
-"FROM CW_EOPT_BARCOS B\n" +
+"FROM COTIZADOR_WEB.CW_EOPT_BARCOS B\n" +
 "WHERE USUARIO_DE_SERVICIO = "+entrada+" \n" +
 "and tipo_de_barco_por_estructura in (12, 13, 21, 22, 31, 32, 51, 52, 61,62, 63, 64, 71, 72, 73,74, 90))";
      

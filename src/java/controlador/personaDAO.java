@@ -34,11 +34,14 @@ public class personaDAO implements Validar {
                 per.setUsuario(rs.getString("Correo"));
                 per.setClave(rs.getString("Clave"));
             }
+            
+            ps.close();
             if(r==1){
                 return 1;
             }else{
                 return 0;
             }
+            
         }catch (SQLException e){  
             System.err.println("error login"+e);
             return 0;
