@@ -62,6 +62,9 @@
                             LinkedList<Trazabilidad_Barcos> lista = TrazabilidadBarcos.consultarBarco(codigo);
 
                             for (int i = 0; i < lista.size(); i++) {
+                                
+                                
+                                
 
                                 out.println("<tr>");
                                 out.println("<td class='text-center'>" + lista.get(i).getVIAJE_EMPORNAC() + "</td>");

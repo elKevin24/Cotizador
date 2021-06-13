@@ -1,5 +1,5 @@
-
 package modelo;
+
 import controlador.BeanBarcosNew;
 import controlador.BeanEncabezado;
 import java.sql.Connection;
@@ -7,11 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
-
-
-
-
-
+import modelo.Conexion;
 
 public class BarcosNew {
 
@@ -25,11 +21,10 @@ public class BarcosNew {
                 st = con.createStatement();
                 //campos de la tabla
                 String sql = "INSERT INTO COTIZADOR_WEB.CW_EOPT_BARCOS (LR, SENAL_DISTINTIVA, TIPO_DE_BARCO_POR_ESTRUCTURA, USUARIO_DE_SERVICIO, BANDERA) VALUES "
-                        + "('"+En.getLR()+"',2,'13','19165011 ','"+En.getBANDERA()+"')";
+                        + "('" + En.getLR() + "',2,'13','19165011 ','" + En.getBANDERA() + "')";
 
 //                INSERT INTO COTIZADOR_WEB.CW_EOPT_BARCOS (LR, SENAL_DISTINTICA, TIPO_DE_BARCO_POR_ESTRUCTURA, USUARIO_DE_SERVICIO, NOMBRE_DEL_BUQUE, BANDERA, TRB, TRN, TPM, CALADO, ESLORA, MANGA, BITA_USUARIO_INSERTA) VALUES "
 //                        + "('"+ En.getLR()+"','"+En.getSENAL_DISTINTIVA()+"','"+En.getTIPO_DE_BARCO_POR_ESTRUCTURA()+"',"+En.getUSUARIO_DE_SERVICIO()+" ,'"+En.getNOMBRE_DEL_BUQUE()+"' ,'"+En.getBANDERA()+"','"+En.getTRB()+"','"+En.getTRN()+"','"+En.getTPM()+"','"+En.getCALADO()+"','"+En.getESLORA()+"','"+En.getMANGA()+"','"+En.getBITA_USUARIO_INSERTA()+"')";
-                
                 System.out.println(sql);
                 st.execute(sql);
 
@@ -41,10 +36,8 @@ public class BarcosNew {
             agregado = false;
         }
         return agregado;
-    } 
-    
-    
-    
+    }
+
     public static LinkedList<BeanBarcosNew> Barcos() throws SQLException {
         LinkedList<BeanBarcosNew> datos = new LinkedList<>();
         String sql;
@@ -55,23 +48,23 @@ public class BarcosNew {
                 Statement st;
                 st = con.createStatement();
 
-                try (ResultSet rs = st.executeQuery("select A.LR,\n" +
-" A.SENAL_DISTINTIVA,\n" +
-"B.DESCRIPCION,\n" +
-" A.USUARIO_DE_SERVICIO,\n" +
-" A.NOMBRE_DEL_BUQUE,\n" +
-"C.NOMBRE,\n" +
-" A.TRB,\n" +
-" A.TRN,\n" +
-" A.TPM,\n" +
-" A.CALADO,\n" +
-" A.ESLORA,\n" +
-" A.MANGA,\n" +
-" A.BITA_USUARIO_INSERTA\n" +
-"from\n" +
-"CW_EOPT_BARCOS A, PUERTO.eopt_tipos_barc_estru B, PUERTO.EOPT_PAISES C\n" +
-"WHERE A.TIPO_DE_BARCO_POR_ESTRUCTURA = B.TIPO_DE_BARCO_POR_ESTRUCTURA\n" +
-"AND A.BANDERA = C.PAIS")) {
+                try (ResultSet rs = st.executeQuery("select A.LR,\n"
+                        + " A.SENAL_DISTINTIVA,\n"
+                        + "B.DESCRIPCION,\n"
+                        + " A.USUARIO_DE_SERVICIO,\n"
+                        + " A.NOMBRE_DEL_BUQUE,\n"
+                        + "C.NOMBRE,\n"
+                        + " A.TRB,\n"
+                        + " A.TRN,\n"
+                        + " A.TPM,\n"
+                        + " A.CALADO,\n"
+                        + " A.ESLORA,\n"
+                        + " A.MANGA,\n"
+                        + " A.BITA_USUARIO_INSERTA\n"
+                        + "from\n"
+                        + "CW_EOPT_BARCOS A, PUERTO.eopt_tipos_barc_estru B, PUERTO.EOPT_PAISES C\n"
+                        + "WHERE A.TIPO_DE_BARCO_POR_ESTRUCTURA = B.TIPO_DE_BARCO_POR_ESTRUCTURA\n"
+                        + "AND A.BANDERA = C.PAIS")) {
                     while (rs.next()) {
                         BeanBarcosNew user = new BeanBarcosNew();
                         user.setLR(rs.getString("LR"));

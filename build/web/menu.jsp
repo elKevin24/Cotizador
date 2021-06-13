@@ -11,12 +11,9 @@
 <html>
     <head>
         <link rel="icon" type="image/jpeg" href="https://hh.santotomasport.com.gt/global/santotomasport.com.gt/EMPORNAC_logo.png" />
-        
-
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- Compiled and minified CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-
         <!-- Compiled and minified JavaScript -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -28,33 +25,22 @@
         <nav>
             <div class="nav-wrapper light-blue darken-4">
                 <div class="light-blue darken-4">
-
-
-                     
-
-
-
-
                     <%
-                        
-                        
-                        
+
                         String usuario = String.valueOf(session.getAttribute("usuario"));
                         BeanUsuarios user = new BeanUsuarios();
                         user = Usuario.ObtenerUsuario(usuario);
-                        System.err.println("Usuario"+usuario);
+                        System.err.println("Usuario" + usuario);
 
-                        
-                        if (usuario != null) {
-                            
+                        if (usuario != null || usuario == "null") {
+
                         } else {
-                            %>
-                            <script> 
-
-window.location.replace('Login.jsp'); 
-
-</script>
-                            <%
+                    %>
+                    <script>
+                        window.location.replace('Login.jsp');
+                    </script>
+                    <%
+                        response.sendRedirect("Login.jsp");
                         }
 
                     %>
@@ -62,18 +48,11 @@ window.location.replace('Login.jsp');
 
                         <li><a href="Login.jsp">Salir</a></li>
                     </ul>
-
-
-
                     <ul id="slide-out" class="sidenav">
                         <li>
-                            
                             <div class="user-view">
-                                
                                 <div class="background" >
-                                   
-                                    <img src="img/azul.jpg" />
-
+                                    <img src="img/azul.jpg"/>
                                 </div>
 
                                 <a href="#user"><img class="circle" src="img/EMPORNAC_logo.png" ></a>                                
@@ -111,29 +90,16 @@ window.location.replace('Login.jsp');
                                     </ul>
                                 </div>
                             </li>
-                            
                             <li>
-
-                               
-
-                                        <li><a href="Trazabilidad_Barcos.jsp">Trazabilidad</a></li>
-                                        <li><a href="TCP.jsp">Trazabilidad Contenedores</a></li>
-                                        
-
-                                  
+                            <li><a href="Trazabilidad_Barcos.jsp">Trazabilidad Import</a></li>
+                            <li><a href="Trazabilidad_Barcos_Export.jsp">Trazabilidad Export</a></li>
                             <li><a href="Login.jsp">Salir</a></li>
-
-
                         </ul>
-
                     </ul>
-
                     <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
                 </div>
             </div>
         </nav>
-
-
     </body>
 
     <script language="javascript">
@@ -150,9 +116,5 @@ window.location.replace('Login.jsp');
                 hoverEnabled: false
             });
         });
-
-        
-
-
     </script>
 </html>

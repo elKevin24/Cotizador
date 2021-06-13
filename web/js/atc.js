@@ -42,28 +42,12 @@ function consultatc(cont) {
             if (response2 == "R") {
 
                 valor = 'R';
-
-
-
-
-
+                
+                document.getElementById(cont + "atc").innerHTML = '<img src="img/bullet-green.png" class="tooltipped" data-position="bottom" data-tooltip="Registrado"></>';
+   
             }
 
-
-
-
         }
-
-        if (valor == 'R') {
-            //document.getElementById("cont").innerHTML='<img src="img/bullet-red.png"/>';
-            //var campo = document.getElementById(cont);
-            //campo.style.backgroundColor = "blue";
-            document.getElementById(cont + "atc").innerHTML = '<img src="img/bullet-green.png" class="tooltipped" data-position="bottom" data-tooltip="Registrado"></>';
-
-
-
-        }
-
         return valor;
 
     });

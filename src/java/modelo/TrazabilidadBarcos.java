@@ -1,5 +1,6 @@
 package modelo;
 
+import controlador.BeanConsulta;
 import controlador.Trazabilidad_Barcos;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -12,10 +13,20 @@ public class TrazabilidadBarcos {
 
     public static LinkedList<Trazabilidad_Barcos> consultarBarco(String entrada) throws SQLException {
         LinkedList<Trazabilidad_Barcos> usuarios = new LinkedList<>();
-        String sql = "select viaje_empornac, barco, viaje_naviera,  fecha_situacion\n" +
-"from puerto.eopv_viajes\n" +
-"where cod_nav = "+entrada+"\n" +
-"and SITUACION = 9";
+        String sql = "select viaje_empornac, barco, viaje_naviera,  fecha_situacion\n"
+                + "from puerto.eopv_viajes A\n"
+                + "where viaje_empornac in\n"
+                + "(select distinct tc.tcf_viaje_sistema\n"
+                + "from PUERTO.tarjeta_cof tc, PUERTO.CCOP_DETALLE_CARDESC_CO DD\n"
+                + "where (DD.VIAJE_NO = TC.TCF_VIAJE_SISTEMA\n"
+                + "       AND DD.TIPO_DE_MOVIMIENTO = 1\n"
+                + "       AND DD.PREFIJO = TC.TCF_PREFIJO\n"
+                + "       AND DD.NUMERO_DE_IDENTIFICACION = TC.TCF_IDENTIFICACION\n"
+                + "       AND DD.OPERADOR = " + entrada + " ) \n"
+                + "AND TC.TCF_ESTADO_TARJETA = 'A'\n"
+                + "and TC.TCF_ADENTRO_AFUERA IS  NULL\n"
+                + "AND TC.TCF_DESPACHO IS NULL\n"
+                + "and nvl(tc.tcf_viaje_sistema,0) > 0)";
 
         try {
             Conexion c = new Conexion();
@@ -28,7 +39,7 @@ public class TrazabilidadBarcos {
                         Trazabilidad_Barcos user = new Trazabilidad_Barcos();
                         user.setVIAJE_EMPORNAC(rs.getString("viaje_empornac"));
                         user.setNOMBRE_DEL_BUQUE(rs.getString("barco"));
-                        user.setVIAJE_NAVIERA(rs.getString("viaje_naviera"));                        
+                        user.setVIAJE_NAVIERA(rs.getString("viaje_naviera"));
                         user.setFECHA(rs.getString("fecha_situacion"));
 
                         usuarios.add(user);
@@ -43,6 +54,134 @@ public class TrazabilidadBarcos {
         }
 
         return usuarios;
+    }
+
+    public static LinkedList<Trazabilidad_Barcos> consultarBarco_Export(String entrada) throws SQLException {
+        LinkedList<Trazabilidad_Barcos> usuarios = new LinkedList<>();
+        String sql = "select DISTINCT  RR.LR, RR.SENAL_DISTINTIVA, PUERTO.F_BUQUE(RR.LR,RR.SENAL_DISTINTIVA) BARCO, RR.VIAJE_BARCO, TO_CHAR( RR.FECHA_VIAJE_BARCO, 'DD/MM/YYYY' ) FECHA_VIAJE_BARCO\n"
+                + "from PUERTO.tarjeta_cof tc, PUERTO.EOPT_RECEPCION_DE_CONTENEDORES RR\n"
+                + "where ( RR.AUTORIZACION_RECEPCION = TC.TCF_RECEPCION\n"
+                + "       AND RR.PREFIJO = TC.TCF_PREFIJO\n"
+                + "       AND RR.NUMERO_DE_IDENTIFICACION = TC.TCF_IDENTIFICACION\n"
+                + "       AND RR.OPERADOR = " + entrada + " )\n"
+                + "AND TC.TCF_RECEPCION IS NOT NULL\n"
+                + "AND TC.TCF_ADENTRO_AFUERA IS NULL\n"
+                + "ORDER BY FECHA_VIAJE_BARCO DESC";
+
+        try {
+            Conexion c = new Conexion();
+            try (Connection con = c.getConexion()) {
+                Statement st;
+                st = con.createStatement();
+
+                try (ResultSet rs = st.executeQuery(sql)) {
+                    while (rs.next()) {
+                        Trazabilidad_Barcos user = new Trazabilidad_Barcos();
+                        user.setVIAJE_EMPORNAC(rs.getString("lr"));
+                        user.setSITUACION(rs.getString("senal_distintiva"));
+                        user.setNOMBRE_DEL_BUQUE(rs.getString("barco"));
+                        user.setVIAJE_NAVIERA(rs.getString("viaje_barco"));
+                        user.setFECHA(rs.getString("fecha_viaje_barco"));
+
+                        usuarios.add(user);
+                    }
+                }
+                st.close();
+            }
+        } catch (SQLException e) {
+
+            System.err.println("Export" + e);
+
+        }
+
+        return usuarios;
+    }
+
+    public static LinkedList<Trazabilidad_Barcos> consultarBarco_Export_One(String id, String viaje_barco, String fecha_viaje_barco, String Operador) throws SQLException {
+        LinkedList<Trazabilidad_Barcos> usuarios = new LinkedList<>();
+        String sql = "select DISTINCT  RR.LR, RR.SENAL_DISTINTIVA, PUERTO.F_BUQUE(RR.LR,RR.SENAL_DISTINTIVA) BARCO, RR.VIAJE_BARCO, TO_CHAR( RR.FECHA_VIAJE_BARCO, 'DD/MM/YYYY' ) FECHA_VIAJE_BARCO\n"
+                + "from PUERTO.tarjeta_cof tc, PUERTO.EOPT_RECEPCION_DE_CONTENEDORES RR\n"
+                + "where ( RR.AUTORIZACION_RECEPCION = TC.TCF_RECEPCION\n"
+                + "       AND RR.PREFIJO = TC.TCF_PREFIJO\n"
+                + "       AND RR.NUMERO_DE_IDENTIFICACION = TC.TCF_IDENTIFICACION\n"
+                + "       AND RR.OPERADOR = "+Operador+" )\n"
+                + "AND TC.TCF_RECEPCION IS NOT NULL\n"
+                + "AND TC.TCF_ADENTRO_AFUERA IS NULL\n"
+                + "AND RR.LR || rr.senal_distintiva = '"+id+"'\n"
+                + "AND RR.viaje_barco = '"+viaje_barco+"'\n"
+                + "and  rr.fecha_viaje_barco = '"+fecha_viaje_barco+"'\n"
+                + "ORDER BY FECHA_VIAJE_BARCO DESC";
+        
+        //System.err.println(""+sql);
+
+        try {
+            Conexion c = new Conexion();
+            try (Connection con = c.getConexion()) {
+                Statement st;
+                st = con.createStatement();
+
+                try (ResultSet rs = st.executeQuery(sql)) {
+                    while (rs.next()) {
+                        Trazabilidad_Barcos user = new Trazabilidad_Barcos();
+                        user.setVIAJE_EMPORNAC(rs.getString("lr"));
+                        user.setSITUACION(rs.getString("senal_distintiva"));
+                        user.setNOMBRE_DEL_BUQUE(rs.getString("barco"));
+                        user.setVIAJE_NAVIERA(rs.getString("viaje_barco"));
+                        user.setFECHA(rs.getString("fecha_viaje_barco"));
+
+                        usuarios.add(user);
+                    }
+                }
+                st.close();
+            }
+        } catch (SQLException e) {
+
+            System.err.println("Export" + e);
+
+        }
+
+        return usuarios;
+    }
+    
+    public static Trazabilidad_Barcos ConsultaBarcoExport(String id, String viaje_barco, String fecha_viaje_barco, String Operador) {
+        Trazabilidad_Barcos user = new Trazabilidad_Barcos();
+
+        try {
+            Conexion c = new Conexion();
+            try (Connection con = c.getConexion()) {
+                Statement st;
+                st = con.createStatement();
+                try (ResultSet rs = st.executeQuery("select DISTINCT  RR.LR, RR.SENAL_DISTINTIVA, PUERTO.F_BUQUE(RR.LR,RR.SENAL_DISTINTIVA) BARCO, RR.VIAJE_BARCO, TO_CHAR( RR.FECHA_VIAJE_BARCO, 'DD/MM/YYYY' ) FECHA_VIAJE_BARCO\n"
+                + "from PUERTO.tarjeta_cof tc, PUERTO.EOPT_RECEPCION_DE_CONTENEDORES RR\n"
+                + "where ( RR.AUTORIZACION_RECEPCION = TC.TCF_RECEPCION\n"
+                + "       AND RR.PREFIJO = TC.TCF_PREFIJO\n"
+                + "       AND RR.NUMERO_DE_IDENTIFICACION = TC.TCF_IDENTIFICACION\n"
+                + "       AND RR.OPERADOR = "+Operador+" )\n"
+                + "AND TC.TCF_RECEPCION IS NOT NULL\n"
+                + "AND TC.TCF_ADENTRO_AFUERA IS NULL\n"
+                + "AND RR.LR || rr.senal_distintiva = '"+id+"'\n"
+                + "AND RR.viaje_barco = '"+viaje_barco+"'\n"
+                + "and  rr.fecha_viaje_barco = '"+fecha_viaje_barco+"'\n"
+                + "ORDER BY FECHA_VIAJE_BARCO DESC")) {
+                    while (rs.next()) {
+
+                        user.setVIAJE_EMPORNAC(rs.getString("lr"));
+                        user.setSITUACION(rs.getString("senal_distintiva"));
+                        user.setNOMBRE_DEL_BUQUE(rs.getString("barco"));
+                        user.setVIAJE_NAVIERA(rs.getString("viaje_barco"));
+                        user.setFECHA(rs.getString("fecha_viaje_barco"));
+                        System.err.println(""+rs.getString("lr"));
+
+                    }
+                }
+                st.close();
+            }
+        } catch (SQLException e) {
+            
+            System.err.println(""+e);
+        }
+        return user;
+
     }
 
 //    public static LinkedList<BeanBarcos> consultarBarco() throws SQLException {
