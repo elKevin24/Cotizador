@@ -38,7 +38,7 @@ public class DetalleCotizacion {
             try (Connection con = c.getConexion()) {
                 Statement st;
                 st = con.createStatement();
-                try (ResultSet rs = st.executeQuery("select CWDC_CORRELATIVO, cwdc_cantidad, cwdc_tds_codigo, cwdc_valor, cwdc_sub_total from cw_detalle_cotizacion WHERE = " + Cotizacion + "")) {
+                try (ResultSet rs = st.executeQuery("select CWDC_CORRELATIVO, cwdc_cantidad, cwdc_tds_codigo, cwdc_valor, cwdc_sub_total from COTIZADOR_WEB.cw_detalle_cotizacion WHERE = " + Cotizacion + "")) {
                     while (rs.next()) {
                         user.setCWDC_CORRELATIVO(rs.getString("CWDC_CORRELATIVO"));
                         user.setCWDC_CANTIDAD(rs.getString("cwdc_cantidad"));

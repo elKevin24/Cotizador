@@ -27,24 +27,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
         <jsp:include page="menu.jsp" flush="true"></jsp:include>
-            <title>Listado de Barcos</title>
+            <title>Trazabilidad Empornac</title>
                  
         </head>
         <body>
-            <div class="row">
-                <div class="col s1 push-s1">
-                    <a  href="menu.jsp" class="btn-floating pulse" ><i class="material-icons">arrow_back</i></a>
-                </div>
-            </div>
+            
 
             <div class="container">
                 <div class="col s12">
+                    <h3 class="center"> Listado de Buques Descarga </h3>
                     <table id="example" border="1"   class="display table table-hover table-bordered table-striped" >
                         <thead>
+                            
                             <tr>
-                                <th>VIAJE EMPORNAC</th>
+<!--                                <th>VIAJE EMPORNAC</th>-->
                                 <th>NOMBRE BUQUE</th>
-                                <th>VIAJE NAVIERA</th>
+                                <th>VIAJE</th>
                                 <th>FECHA</th>
                                 <th>VER</th>
                             </tr>
@@ -67,7 +65,7 @@
                                 
 
                                 out.println("<tr>");
-                                out.println("<td class='text-center'>" + lista.get(i).getVIAJE_EMPORNAC() + "</td>");
+                                //out.println("<td class='text-center'>" + lista.get(i).getVIAJE_EMPORNAC() + "</td>");
                                 out.println("<td class='text-center'>" + lista.get(i).getNOMBRE_DEL_BUQUE() + "</td>");
                                 out.println("<td class='text-center'>" + lista.get(i).getVIAJE_NAVIERA() + "</td>");
                                                           
@@ -80,9 +78,9 @@
                     <tfoot>
                         <tr>
 
-                            <th>VIAJE_EMPORNAC</th>
+<!--                            <th>VIAJE_EMPORNAC</th>-->
                             <th>NOMBRE BUQUE</th>
-                            <th>VIAJE NAVIERA</th>                          
+                            <th>VIAJE</th>                          
                             <th>FECHA</th>
                             <th>VER</th>
                         </tr>
@@ -116,7 +114,7 @@
                                 }
                             });
                         });
-                    }, "order": [[0, "desc"]], className: 'dt-body-center',
+                    }, "order": [[2, "desc"]], className: 'dt-body-center',
                     dom: 'Bfrtip',
                     buttons: [
                         {

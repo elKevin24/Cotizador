@@ -10,6 +10,8 @@ and open the template in the editor.
 
 table th {
   text-align: center;
+}table td {
+  text-align: center;
 }#bot{
      width: 100px;  height: 100px;
 }.trans{
@@ -39,6 +41,19 @@ table th {
     color: #ffffff;
 }.cuerpo{
     background-color: #2196f3;
+}
+
+.azul{
+    background-color: #06255b;
+}
+.celeste{
+    background-color: #2a85f2;
+}
+.white{
+    background-color: #EBF2FC;
+}
+.white_text{
+    color: #EBF2FC;
 }
 
 

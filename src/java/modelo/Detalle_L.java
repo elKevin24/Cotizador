@@ -57,7 +57,7 @@ public class Detalle_L {
                         + "    cwsl_desc_aceite_grasa_quimi,\n"
                         + "    cwsl_desc_combustibles_deriv,\n"
                         + "    cwsl_desc_gas_propano\n"
-                        + "    from cw_buque_cotiza, cw_srv_graneles_liquidos\n"
+                        + "    from COTIZADOR_WEB.cw_buque_cotiza, COTIZADOR_WEB.cw_srv_graneles_liquidos\n"
                         + "    where cwbc_cotizacion = cwsl_cotizacion\n"
                         + "    and cwsl_cotizacion = " + id + "")) {
                     while (rs.next()) {
@@ -153,7 +153,7 @@ public class Detalle_L {
                 Statement st;
                 st = con.createStatement();
                 //UNA COMA ME HIZO DESVELARME HASTA LAS DOS DE LA MAÑANA
-                String sql = "DELETE FROM cw_detalle_cotizacion\n"
+                String sql = "DELETE FROM COTIZADOR_WEB.cw_detalle_cotizacion\n"
                         + "WHERE\n"
                         + "    cwbc_cotizacion =" + id + "";
                 //"update tbl_seccion set grado ='"+usuario.getGrado()+"', seccion='"+usuario.getSeccion()+"', Id_nivel='"+usuario.getId_nivel()+"' where Id_seccion="+usuario.getId_seccion()+"";

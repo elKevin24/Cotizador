@@ -50,7 +50,7 @@ public class Detalle_S {
                         + "CWSS_CARGA_GRANEL_SOLIDO ,\n"
                         + "CWSS_CARG_GRANEL_SOLIDO_PONTON ,\n"
                         + "GRABADOR FROM \n"
-                        + "CW_SRV_GRANELES_SOLIDOS\n"
+                        + "COTIZADOR_WEB.CW_SRV_GRANELES_SOLIDOS\n"
                         + "WHERE CWSS_COTIZACION = " + Cotizacion + "")) {
                     while (rs.next()) {
                         user.setCWSL_COTIZACION(rs.getString("CWSS_COTIZACION"));
@@ -85,8 +85,8 @@ public class Detalle_S {
                         + "    cwss_carga_granel_solido,\n"
                         + "    cwss_carg_granel_solido_ponton\n"
                         + "FROM\n"
-                        + "    cw_buque_cotiza,\n"
-                        + "    cw_srv_graneles_solidos\n"
+                        + "    COTIZADOR_WEB.cw_buque_cotiza,\n"
+                        + "    COTIZADOR_WEB.cw_srv_graneles_solidos\n"
                         + "WHERE\n"
                         + "    cwbc_cotizacion = cwss_cotizacion\n"
                         + "    AND cwss_cotizacion = " + id + "")) {
@@ -179,7 +179,7 @@ public class Detalle_S {
                 Statement st;
                 st = con.createStatement();
                 //UNA COMA ME HIZO DESVELARME HASTA LAS DOS DE LA MAÑANA
-                String sql = "DELETE FROM cw_detalle_cotizacion\n"
+                String sql = "DELETE FROM COTIZADOR_WEB.cw_detalle_cotizacion\n"
                         + "WHERE\n"
                         + "    cwbc_cotizacion =" + id + "";
                 //"update tbl_seccion set grado ='"+usuario.getGrado()+"', seccion='"+usuario.getSeccion()+"', Id_nivel='"+usuario.getId_nivel()+"' where Id_seccion="+usuario.getId_seccion()+"";

@@ -10,136 +10,26 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="icon" type="image/jpeg" href="https://hh.santotomasport.com.gt/global/santotomasport.com.gt/EMPORNAC_logo.png" />
-        <title>Cotizador Empornac</title>
-
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <!-- Compiled and minified CSS -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-
-        <!-- Compiled and minified JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-        <!--Import Google Icon Font-->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        
+        <jsp:include page="menu.jsp" flush="true"></jsp:include>
+        
     </head>
 
     <body>
        
-            <div class="nav-wrapper light-blue darken-4">
-                <div class="light-blue darken-4"
-
-
-                     
-
-
-
-
-                    <%
-                        String usuario = String.valueOf(session.getAttribute("usuario"));
-                        BeanUsuarios user = new BeanUsuarios();
-                        user = Usuario.ObtenerUsuario(usuario);
-
-                        String prueba = usuario;
-                        if (prueba != null) {
-                            prueba = "Salir";
-                        } else {
-                            %>
-                            <script> 
-
-window.location.replace('Login.jsp'); 
-
-</script>
-                            <%
-                        }
-
-                    %>
-                    <ul class="right hide-on-med-and-down"> 
-
-                        
-                    </ul>
-
-
-
-                    <ul id="slide-out" class="sidenav">
-                        <li><div class="user-view">
-                                <div class="background">
-                                    <img src="imagenes/442703.png" alt=""/>
-
-                                </div>
-
-
-                                <a href="#name"><span class="white-text name"><%= user.getNOMBRE()%></span></a>
-                                <a href="#name"><span class="white-text name"><%= user.getUSUARIO_INOW()%></span></a>
-                                <a href="#email"><span class="white-text email"><%= user.getCORREO()%></span></a>
-                            </div>
-                        </li>
-
-                        <li><a class="subheader">Menu Cotizaciones</a></li>
-                        <ul class="collapsible collapsible-accordion">
-                            <li>
-
-                                <a class="collapsible-header">Nueva Cotizacion<i class="material-icons">account_boxarrow_drop_down</i></a>
-                                <div class="collapsible-body">
-                                    <ul>
-                                        <li><a href="Barcos.jsp">Crear Nueva Cotizacion</a></li>
-                                        <li><a href="BarcosNuevo.jsp">Crear Barco</a></li>
-
-
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-
-                                <a class="collapsible-header">Consultas<i class="material-icons">account_boxarrow_drop_down</i></a>
-                                <div class="collapsible-body">
-                                    <ul>
-
-                                        <li><a href="ConsultaCreados.jsp">Creados</a></li>
-                                        <li><a href="ConsultaPendiente.jsp">Pendientes</a></li>
-                                        <li><a href="ConsultaAprobado.jsp">Aprobados</a></li>
-                                        <li><a href="ConsultaEliminados.jsp">Eliminados</a></li>
-
-                                    </ul>
-                                </div>
-                            </li>
-                            <li><a href="Login.jsp">Salir</a></li>
-
-
-                        </ul>
-
-                    </ul>
-
-                    <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
-                </div>
-            </div>
+             <style>
+body {
+  background-image: url('img/menu.JPG');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+</style>
         
 
 
 
     </body>
 
-    <script language="javascript">
-
-        document.addEventListener('DOMContentLoaded', function () {
-            var elems = document.querySelectorAll('.sidenav');
-            var instances = M.Sidenav.init(elems, {
-                direction: 'left',
-                hoverEnabled: false
-            });
-            var collapsibleElem = document.querySelector('.collapsible');
-            var collapsibleInstance = M.Collapsible.init(collapsibleElem, {
-                direction: 'left',
-                hoverEnabled: false
-            });
-        });
-
-        function myFunction() {
-
-            alert(<%= prueba%>);
-        }
-
-
-
-    </script>
+    
 </html>

@@ -12,7 +12,7 @@ public class Conexion {
 
             //jdbc:sqlserver://localhost:1433;databaseName=db_proyecto [sa on dbo]
             //con = DriverManager.getConnection("jdbc:oracle:thin:@172.20.10.5:1521:EMPORA", "COTIZADOR_WEB", "COTIZA#1");
-            con = DriverManager.getConnection("jdbc:oracle:thin:@172.20.10.50:1521:DESAEMP", "UA_KCORDON", "12345678");
+            con = DriverManager.getConnection("jdbc:oracle:thin:@172.20.10.5:1521:EMPORA", "SERVICIOS_WEB", "SERVI#1WEB");
 
             //jdbc:oracle:thin:@172.20.10.50:1521:DESAEMP [UA_KCORDON on FINANCIERO]
         } catch (SQLException e) {

@@ -115,7 +115,7 @@ public static BeanBarcos ObtenerBarcos(String id)
 "WHERE LR = "+id+"\n" +
 "UNION\n" +
 "SELECT B.LR, B.NOMBRE_DEL_BUQUE NOMBRE_DEL_BUQUE, B.SENAL_DISTINTIVA, B.TRB, B.ESLORA\n" +
-"FROM CW_EOPT_BARCOS B\n" +
+"FROM COTIZADOR_WEB.CW_EOPT_BARCOS B\n" +
 "WHERE LR = "+id+")")) {
             while (rs.next())
             {

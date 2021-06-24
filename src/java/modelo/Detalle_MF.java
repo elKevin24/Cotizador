@@ -146,7 +146,7 @@ public class Detalle_MF {
                         + "CWSF_DESCARGA_FRUTA_PALE_GB_VI,"
                         + "CWSF_DESCARGA_FRUTA_PALE_GP_VD,"
                         + "CWSF_DESCARGA_FRUTA_PALE_GP_VI"
-                        + "    FROM CW_BUQUE_COTIZA A  RIGHT OUTER JOIN  cw_srv_multipropositos_frigo B"
+                        + "    FROM COTIZADOR_WEB.CW_BUQUE_COTIZA A  RIGHT OUTER JOIN  COTIZADOR_WEB.cw_srv_multipropositos_frigo B"
                         + "   ON A.CWBC_COTIZACION = B.CWsf_COTIZACION"
                         + "   WHERE CWBC_COTIZACION = " + id + "")) {
                     while (rs.next()) {
@@ -369,7 +369,7 @@ public class Detalle_MF {
                 Statement st;
                 st = con.createStatement();
                 //UNA COMA ME HIZO DESVELARME HASTA LAS DOS DE LA MAÑANA
-                String sql = "DELETE FROM cw_detalle_cotizacion\n"
+                String sql = "DELETE FROM COTIZADOR_WEB.cw_detalle_cotizacion\n"
                         + "WHERE\n"
                         + "    cwbc_cotizacion =" + id + "";
                 //"update tbl_seccion set grado ='"+usuario.getGrado()+"', seccion='"+usuario.getSeccion()+"', Id_nivel='"+usuario.getId_nivel()+"' where Id_seccion="+usuario.getId_seccion()+"";

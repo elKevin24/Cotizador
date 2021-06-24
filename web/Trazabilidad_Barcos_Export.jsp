@@ -34,14 +34,15 @@
 
             <div class="container">
                 <div class="col s12">
+                    <h3 class="center"> Listado de Buques Carga </h3>
                     <table id="example" border="1"   class="display table table-hover table-bordered table-striped" >
                         <thead>
                             <tr>
-                                <th>LR</th>
-                                <th>SEÑAL DISTINTIVA</th>
-                                <th>BUQUE</th>
-                                <th>VIAJE BARCO</th>
-                                <th>FECHA VIAJE</th>
+<!--                                <th>LR</th>
+                                <th>SEÑAL DISTINTIVA</th>-->
+                                <th>NOMBRE BUQUE</th>
+                                <th>VIAJE</th>
+                                <th>FECHA</th>
                                 <th>VER</th>
                             </tr>
                         </thead>
@@ -64,25 +65,25 @@
                                 
 
                                 out.println("<tr>");
-                                out.println("<td class='text-center'>" + lista.get(i).getVIAJE_EMPORNAC() + "</td>");
-                                out.println("<td class='text-center'>" + lista.get(i).getSITUACION() + "</td>");
+                                //out.println("<td class='text-center'>" + lista.get(i).getVIAJE_EMPORNAC() + "</td>");
+                               // out.println("<td class='text-center'>" + lista.get(i).getSITUACION() + "</td>");
                                 out.println("<td class='text-center'>" + lista.get(i).getNOMBRE_DEL_BUQUE() + "</td>");
                                 out.println("<td class='text-center'>" + lista.get(i).getVIAJE_NAVIERA() + "</td>");                                                          
-                                out.println("<td class='text-center'>" + lista.get(i).getFECHA() + "</td>");
+                                out.println("<td class='text-center'>" + lista.get(i).getFECHA().substring(0, 10) + "</td>");
                                 
                                
-                                out.println("<td class='text-center'>" + "<a class='waves-effect waves-light btn-small' onclick='return myFunction()' href=Trazabilidad_Contenedores_Export.jsp?id="+lista.get(i).getVIAJE_EMPORNAC()+ lista.get(i).getSITUACION()+"&id2="+ lista.get(i).getVIAJE_NAVIERA()+"&f="+ lista.get(i).getFECHA()+">" + "VER" + "</a>" + "</td>");
+                                out.println("<td class='text-center'>" + "<a class='waves-effect waves-light btn-small' onclick='return myFunction()' href=Trazabilidad_Contenedores_Export.jsp?id="+lista.get(i).getUSUARIO()+">" + "VER" + "</a>" + "</td>");
                                 out.println("</tr>");
                             }
                         %>  
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>LR</th>
-                            <th>SEÑAL DISTINTIVA</th>
-                            <th>BUQUE</th>
-                            <th>VIAJE BARCO</th>
-                            <th>FECHA VIAJE</th>
+<!--                            <th>LR</th>
+                            <th>SEÑAL DISTINTIVA</th>-->
+                            <th>NOMBRE BUQUE</th>
+                            <th>VIAJE</th>
+                            <th>FECHA</th>
                             <th>VER</th>
                         </tr>
                     </tfoot>
@@ -115,7 +116,8 @@
                                 }
                             });
                         });
-                    }, "order": [[0, "desc"]], className: 'dt-body-center',
+                    },"order": [[ 0, "asc" ]], 
+                    className: 'dt-body-center',
                     dom: 'Bfrtip',
                     buttons: [
                         {

@@ -143,7 +143,7 @@
                                             + "and BUQ.SENAL_DISTINTIVA = '" + ship.getBANDERA() + "'\n"
                                             + "UNION\n"
                                             + "select B.cwto_tipo_operacion cwto_tipo_operacion, B.cwto_operacion cwto_operacion\n"
-                                            + "from CW_EOPT_BARCOS A,\n"
+                                            + "from COTIZADOR_WEB.CW_EOPT_BARCOS A,\n"
                                             + "cotizador_web.cw_tipo_operacion B,\n"
                                             + "cotizador_web.cw_tipo_operacion_x_estru C\n"
                                             + "where  (B.cwto_tipo_operacion = C.cwto_tipo_operacion)\n"

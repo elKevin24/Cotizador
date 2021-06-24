@@ -17,7 +17,7 @@
 
     <head>
         <script src="js/retenciones.js" type="text/javascript"></script>
-        <script src="js/atc.js" type="text/javascript"></script>
+        <script src="js/atc_carga.js" type="text/javascript"></script>
         <!--Import Google Icon Font-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">      <!--Import materialize.css-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
@@ -33,8 +33,10 @@
 
         <%
             String id = request.getParameter("id");
-            String id2 = request.getParameter("id2");
-            String fecha = request.getParameter("f");
+            
+           
+
+            System.err.println("id" + id );
         %>
         <jsp:include page="menu.jsp" flush="true"></jsp:include>
             <title>Listado de Barcos</title>
@@ -50,14 +52,15 @@
                     <div class="col s1">
                     </div>
                     <div class="col s10">
+                        <h3 class="center"> Listado de Contenedores Carga</h3>
                         <table id="example" border="1"   class="display table table-hover table-bordered table-striped" >
                             <thead>
                                 <tr>
 
                                     <th>NUMERO CONTENEDOR</th>
-                                    <th>FECHA DESCARGA</th>
-                                    <th>REVISION NO INTRUSIVA</th>
+                                    <th>FECHA ENTRADA DAT</th>                                    
                                     <th>PESAJE BASCULA</th>
+                                    <th>REVISION NO INTRUSIVA</th>
                                     <th>RETENCION</th>
                                     <th>ATC</th>
                                     <th>UBICACION PATIO DAT</th>
@@ -66,28 +69,29 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <%                                System.err.println("Viaje Barco" + id);
-
+                            <%
                                 String usuario = String.valueOf(session.getAttribute("usuario"));
                                 BeanUsuarios user = new BeanUsuarios();
                                 user = Usuario.ObtenerUsuario(usuario);
                                 String codigo = user.getUSUARIO_DE_SERVICIO();
 
-                                Trazabilidad_Barcos enc = new Trazabilidad_Barcos();
-                                enc = TrazabilidadBarcos.ConsultaBarcoExport(id, id2, fecha, codigo);
+                                
 
-                               
-
-                                LinkedList<Trazabilidad_Contenedores> lista = TrazabilidadContenedores.consultarContExport(enc.getVIAJE_EMPORNAC(), enc.getSITUACION(), enc.getVIAJE_NAVIERA(), enc.getFECHA() , codigo);
-
+                                LinkedList<Trazabilidad_Contenedores> lista = TrazabilidadContenedores.consultarContExport(id, codigo);
+                                
                                 for (int i = 0; i < lista.size(); i++) {
+                                    
+                                
 
                             %>
                         <script>
+                            
                             var cont = ("<%= lista.get(i).getC1()%>");
                             miArray.push(cont);
-
+                            //ENVIO DE DATOS A WEB SERVICE SAT
                             reten("<%= lista.get(i).getC1()%>");
+                            consultatc("<%= lista.get(i).getC1()%>");
+                            
 
 
                         </script>
@@ -100,19 +104,21 @@
                                 //2
                                 out.println("<td id='prueba'>" + lista.get(i).getC2().substring(0, 10) + "</td>");
                                 //3
-                                if (lista.get(i).getC3() != null) {
-                                    out.println("<td class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='" + lista.get(i).getC3() + "'></></td>");
 
-                                } else {
-                                    out.println("<td class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='Sin Escaneo'></></td>");
-                                }
                                 //4
                                 if (lista.get(i).getC4().substring(0, 1).equals("R")) {
                                     out.println("<td class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='Sin Peso'></></td>");
                                 } else if (lista.get(i).getC4().substring(0, 1).equals("V")) {
                                     out.println("<td class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='" + lista.get(i).getC4().substring(1) + "'></a></td>");
                                 } else {
-                                    out.println("<td class='text-center'> <img src='img/bullet-yellow.png' class=' tooltipped ' data-position='bottom' data-tooltip='Solo Primer Peso: " + lista.get(i).getC4().substring(1, 12) + "'></a></td>");
+                                    out.println("<td class='text-center'> <img src='img/bullet-yellow.png' class=' tooltipped ' data-position='bottom' data-tooltip='Solo Primer Peso: " + lista.get(i).getC4() + "'></a></td>");
+                                }
+
+                                if (lista.get(i).getC3() != null) {
+                                    out.println("<td class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='" + lista.get(i).getC3() + "'></></td>");
+
+                                } else {
+                                    out.println("<td class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='Sin Escaneo'></></td>");
                                 }
                                 //5
                                 if (lista.get(i).getC7() == null) {
@@ -122,7 +128,7 @@
                                 }
                                 //6
                                 if (lista.get(i).getC7() == null) {
-                                    out.println("<td class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='No registrado'></></td>");
+                                    out.println("<td id='" + lista.get(i).getC1() + "atc' class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='No registrado'></></td>");
                                 } else {
                                     out.println("<td id='" + lista.get(i).getC1() + "atc' class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='Registrado'></></td>");
                                 }
@@ -153,8 +159,8 @@
                             <tr>
                                 <th>NUMERO CONTENEDOR</th>
                                 <th>FECHA DESCARGA</th>
-                                <th>REVISION NO INTRUSIVA</th>
                                 <th>PESAJE BASCULA</th>
+                                <th>REVISION NO INTRUSIVA</th>
                                 <th>RETENCION </th>
                                 <th>ATC</th>
                                 <th>UBICACION PATIO DAT</th>
@@ -166,8 +172,12 @@
             </div>
 
 
+
+
+
             <script type="text/javascript">
                 $(document).ready(function () {
+
                     $('.tooltipped').tooltip();
                 });
 
@@ -175,7 +185,10 @@
 
             <script type="text/javascript">
                 $(document).ready(function () {
+
+
                     $('#example').dataTable({
+
                         "drawCallback": function (settings) {
                             // for (var i = 0; i < miArray.length; i++) {
 
@@ -183,11 +196,12 @@
                             //   console.log(miArray1);
 
                             cambiarcolor();
+                            cambiarcoloratc();
                             $('.tooltipped').tooltip();
 
                             //consultatc(miArray[i]);
-                        }
-                        //}
+                        }, "order": [[3, "desc"]]
+                                //}
                     });
                 });
 

@@ -24,7 +24,7 @@ public class Controlador extends HttpServlet {
             String usuario=request.getParameter("usuario");
             String clave=request.getParameter("clave");
             HttpSession session = request.getSession(true);
-            //session.setMaxInactiveInterval(30);
+            session.setMaxInactiveInterval(30*60);
             
             p.setUsuario(usuario);
             p.setClave(clave);
@@ -36,7 +36,7 @@ public class Controlador extends HttpServlet {
                 
                 request.getSession().setAttribute("usuario", usuario);
                 request.getSession().setAttribute("clave", clave);
-                request.getRequestDispatcher("Barcos.jsp").forward(request, response);
+                request.getRequestDispatcher("menu_1.jsp").forward(request, response);
                 
             }else{
                 request.getRequestDispatcher("Login.jsp").forward(request, response);

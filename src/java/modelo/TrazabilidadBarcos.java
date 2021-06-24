@@ -58,15 +58,16 @@ public class TrazabilidadBarcos {
 
     public static LinkedList<Trazabilidad_Barcos> consultarBarco_Export(String entrada) throws SQLException {
         LinkedList<Trazabilidad_Barcos> usuarios = new LinkedList<>();
-        String sql = "select DISTINCT  RR.LR, RR.SENAL_DISTINTIVA, PUERTO.F_BUQUE(RR.LR,RR.SENAL_DISTINTIVA) BARCO, RR.VIAJE_BARCO, TO_CHAR( RR.FECHA_VIAJE_BARCO, 'DD/MM/YYYY' ) FECHA_VIAJE_BARCO\n"
-                + "from PUERTO.tarjeta_cof tc, PUERTO.EOPT_RECEPCION_DE_CONTENEDORES RR\n"
-                + "where ( RR.AUTORIZACION_RECEPCION = TC.TCF_RECEPCION\n"
-                + "       AND RR.PREFIJO = TC.TCF_PREFIJO\n"
-                + "       AND RR.NUMERO_DE_IDENTIFICACION = TC.TCF_IDENTIFICACION\n"
-                + "       AND RR.OPERADOR = " + entrada + " )\n"
-                + "AND TC.TCF_RECEPCION IS NOT NULL\n"
-                + "AND TC.TCF_ADENTRO_AFUERA IS NULL\n"
-                + "ORDER BY FECHA_VIAJE_BARCO DESC";
+        String sql = "select RR.LR||RR.SENAL_DISTINTIVA||RR.VIAJE_BARCO codigo, RR.LR, RR.SENAL_DISTINTIVA, PUERTO.F_BUQUE(RR.LR,RR.SENAL_DISTINTIVA) BARCO, RR.VIAJE_BARCO, MAX(RR.FECHA_VIAJE_BARCO) FECHA_VIAJE_BARCO\n" +
+"from PUERTO.tarjeta_cof tc, PUERTO.EOPT_RECEPCION_DE_CONTENEDORES RR\n" +
+"where ( RR.AUTORIZACION_RECEPCION = TC.TCF_RECEPCION\n" +
+"AND RR.PREFIJO = TC.TCF_PREFIJO\n" +
+"AND RR.NUMERO_DE_IDENTIFICACION = TC.TCF_IDENTIFICACION\n" +
+"AND nvl(RR.OPERADOR, RR.USUARIO_DE_SERVICIO) = "+entrada+")\n" +
+"AND TC.TCF_RECEPCION IS NOT NULL\n" +
+"AND TC.TCF_ADENTRO_AFUERA IS NULL\n" +
+"GROUP BY RR.LR, RR.SENAL_DISTINTIVA, PUERTO.F_BUQUE(RR.LR,RR.SENAL_DISTINTIVA), RR.VIAJE_BARCO\n" +
+"ORDER BY FECHA_VIAJE_BARCO DESC";
 
         try {
             Conexion c = new Conexion();
@@ -77,6 +78,7 @@ public class TrazabilidadBarcos {
                 try (ResultSet rs = st.executeQuery(sql)) {
                     while (rs.next()) {
                         Trazabilidad_Barcos user = new Trazabilidad_Barcos();
+                        user.setUSUARIO(rs.getString("CODIGO"));
                         user.setVIAJE_EMPORNAC(rs.getString("lr"));
                         user.setSITUACION(rs.getString("senal_distintiva"));
                         user.setNOMBRE_DEL_BUQUE(rs.getString("barco"));
@@ -90,7 +92,7 @@ public class TrazabilidadBarcos {
             }
         } catch (SQLException e) {
 
-            System.err.println("Export" + e);
+            System.err.println("Export " + e);
 
         }
 
@@ -146,12 +148,8 @@ public class TrazabilidadBarcos {
     public static Trazabilidad_Barcos ConsultaBarcoExport(String id, String viaje_barco, String fecha_viaje_barco, String Operador) {
         Trazabilidad_Barcos user = new Trazabilidad_Barcos();
 
-        try {
-            Conexion c = new Conexion();
-            try (Connection con = c.getConexion()) {
-                Statement st;
-                st = con.createStatement();
-                try (ResultSet rs = st.executeQuery("select DISTINCT  RR.LR, RR.SENAL_DISTINTIVA, PUERTO.F_BUQUE(RR.LR,RR.SENAL_DISTINTIVA) BARCO, RR.VIAJE_BARCO, TO_CHAR( RR.FECHA_VIAJE_BARCO, 'DD/MM/YYYY' ) FECHA_VIAJE_BARCO\n"
+        
+        String sql = "select DISTINCT  RR.LR, RR.SENAL_DISTINTIVA, PUERTO.F_BUQUE(RR.LR,RR.SENAL_DISTINTIVA) BARCO, RR.VIAJE_BARCO, TO_CHAR( RR.FECHA_VIAJE_BARCO, 'DD/MM/YYYY' ) FECHA_VIAJE_BARCO\n"
                 + "from PUERTO.tarjeta_cof tc, PUERTO.EOPT_RECEPCION_DE_CONTENEDORES RR\n"
                 + "where ( RR.AUTORIZACION_RECEPCION = TC.TCF_RECEPCION\n"
                 + "       AND RR.PREFIJO = TC.TCF_PREFIJO\n"
@@ -162,8 +160,18 @@ public class TrazabilidadBarcos {
                 + "AND RR.LR || rr.senal_distintiva = '"+id+"'\n"
                 + "AND RR.viaje_barco = '"+viaje_barco+"'\n"
                 + "and  rr.fecha_viaje_barco = '"+fecha_viaje_barco+"'\n"
-                + "ORDER BY FECHA_VIAJE_BARCO DESC")) {
+                + "ORDER BY FECHA_VIAJE_BARCO DESC";
+        
+        System.err.println(""+sql);
+        try {
+            Conexion c = new Conexion();
+            try (Connection con = c.getConexion()) {
+                Statement st;
+                st = con.createStatement();
+                try (ResultSet rs = st.executeQuery(sql)) {
                     while (rs.next()) {
+                        
+                        
 
                         user.setVIAJE_EMPORNAC(rs.getString("lr"));
                         user.setSITUACION(rs.getString("senal_distintiva"));

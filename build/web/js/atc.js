@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+var atc = new Array();
 
-function consultatc(cont) {
-
-
+function consultatcdesc(cont) {
 
     var settings = {
         "url": "https://farm3.sat.gob.gt/atc-ws/rest/privado/atc/consultarAtcPorContenedor",
+        "async": true,
         "method": "POST",
         "timeout": 0,
         "headers": {
@@ -18,38 +18,64 @@ function consultatc(cont) {
             "Accept": "application/json;charset=utf-8"
 
         },
-        "data": JSON.stringify({"noContenedor": cont
+        "data": JSON.stringify({
+            "noContenedor": cont
         })
     };
 
     $.ajax(settings).done(function (response) {
 
-
-
-        var valor = null;
         var response2 = null;
+       
         //console.log(response.operacion.atc[0].estado)
-        //console.log(response.codigo)
-
-        if (response.codigo == "1") {
-
-
-
+       
+        if (response.codigo == '1') {
+            
+            
+            
             response2 = response.operacion.atc[0].estado;
-            //console.log(response.retencionLiberacion[i].estado);
-
+            //console.log(response.operacion.atc[0].estado);
+             
+            //atc.push(cont);
+            
             //console.log("result atc: " + response2);
-            if (response2 == "R") {
-
-                valor = 'R';
+            if (response2 == 'R') {
+                atc.push(cont);
                 
-                document.getElementById(cont + "atc").innerHTML = '<img src="img/bullet-green.png" class="tooltipped" data-position="bottom" data-tooltip="Registrado"></>';
+               
+                
+               // document.getElementById(cont + "atc").innerHTML = '<img src="img/bullet-green.png" class="tooltipped" data-position="bottom" data-tooltip="Registrado"></>';
    
             }
 
         }
-        return valor;
+        
 
     });
-
+    
+    
+return atc;
 }
+
+
+function cambiarcoloratc_descarga() {
+
+    console.log(atc);
+
+    for (var i = 0; i < atc.length; i++) {
+
+        try {
+            //console.log(atc[i]);
+            document.getElementById(atc[i]+"atc").innerHTML = '<img src="img/bullet-green.png" class="tooltipped" data-position="bottom" data-tooltip="Registrado">';
+            // declaraciones para try
+
+        } catch (e) {
+            
+             // pasar el objeto exception al controlador de errores (es decir, su propia función)
+        }
+
+
+
+    }
+}
+    

@@ -8,9 +8,9 @@
         <servlet-name>Controlador</servlet-name>
         <url-pattern>/Controlador</url-pattern>
     </servlet-mapping>
-    <session-config>
+   <session-config>
         <session-timeout>
-           60
+           30
         </session-timeout>
     </session-config>
     <welcome-file-list>

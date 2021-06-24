@@ -47,9 +47,15 @@
         <body>
             <div class="row">
                 <div class="col s12">
+                    <div class="row">
+                <div class="col s1 push-s1">
+                    <a  href="Trazabilidad_Barcos.jsp" class="btn-floating pulse" ><i class="material-icons">arrow_back</i></a>
+                </div>
+            </div>
                     <div class="col s1">
                     </div>
                     <div class="col s10">
+                        <h3 class="center"> Listado de Contenedores Descarga</h3>
                         <table id="example" border="1"   class="display table table-hover table-bordered table-striped" >
                             <thead>
                                 <tr>
@@ -62,11 +68,14 @@
                                     <th>ATC</th>
                                     <th>UBICACION PATIO DAT</th>
                                     <th>SALIDA DAT</th>
+                                    <th>DETALLE</th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                            <%                                System.err.println("Viaje Barco" + id);
+                            <%                                
+                                
+                                System.err.println("Viaje Barco" + id);
                             
                              String usuario = String.valueOf(session.getAttribute("usuario"));
                             BeanUsuarios user = new BeanUsuarios();
@@ -83,6 +92,7 @@
                             miArray.push(cont);
 
                             reten("<%= lista.get(i).getC1()%>");
+                            consultatcdesc("<%= lista.get(i).getC1()%>");
 
 
                         </script>
@@ -93,7 +103,7 @@
                                 //1
                                 out.println("<td>" + lista.get(i).getC1() + "</td>");
                                 //2
-                                out.println("<td id='prueba'>" + lista.get(i).getC2().substring(0, 10) + "</td>");
+                                out.println("<td id='prueba'>" + lista.get(i).getC2() + "</td>");
                                 //3
                                 if (lista.get(i).getC3() != null) {
                                     out.println("<td class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='" + lista.get(i).getC3() + "'></></td>");
@@ -116,11 +126,9 @@
                                     out.println("<td class='text-center'> </td>");
                                 }
                                 //6
-                                if (lista.get(i).getC7() == null) {
-                                    out.println("<td class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='No registrado'></></td>");
-                                } else {
-                                    out.println("<td id='" + lista.get(i).getC1() + "atc' class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='Registrado'></></td>");
-                                }
+                                
+                                    out.println("<td id='" + lista.get(i).getC1() + "atc' class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='No Registrado'></></td>");
+                                
                                 //7
                                 if (lista.get(i).getC6() == null || (lista.get(i).getC6().equals("NO"))) {
                                     out.println("<td class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='Sin Ubicacion'></></td>");
@@ -137,6 +145,8 @@
 
                                 // out.println("<td> <a class='btn-floating btn-small waves-effect waves-light red'></a></td>");
                                 // out.println("<td> <a class='btn-floating btn-small waves-effect waves-light green'></a></td>");
+                                out.println("<td class='text-center'>" + "<a class='waves-effect waves-light btn-small' onclick='return myFunction()' href=Trazabilidad_Contenedor.jsp?id=" + lista.get(i).getC1() + ">" + "Detalle" + "</a>" + "</td>");
+                                
                                 out.println("</tr>");
                             }
 
@@ -154,6 +164,7 @@
                                 <th>ATC</th>
                                 <th>UBICACION PATIO DAT</th>
                                 <th>SALIDA DAT</th>
+                                <th>DETALLE</th>
                             </tr>
                         </tfoot>
                     </table>
@@ -169,6 +180,9 @@
             </script>
 
             <script type="text/javascript">
+                
+               
+      
                 $(document).ready(function () {
                     $('#example').dataTable({
                         "drawCallback": function (settings) {
@@ -178,16 +192,18 @@
                             //   console.log(miArray1);
 
                             cambiarcolor();
+                            cambiarcoloratc_descarga();
                             $('.tooltipped').tooltip();
 
                             //consultatc(miArray[i]);
-                        }
+                        }, "order": [[0, "asc"]]
                         //}
                     });
                 });
 
                 //}
                 //);
+                
 
 
 
@@ -195,6 +211,7 @@
             </script>
 
             <!--JavaScript at end of body for optimized loading-->
+            
             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
             <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/jszip-2.5.0/dt-1.10.24/af-2.3.6/b-1.7.0/b-colvis-1.7.0/b-html5-1.7.0/b-print-1.7.0/cr-1.5.3/date-1.0.3/fc-3.3.2/fh-3.1.8/kt-2.6.1/r-2.2.7/rg-1.1.2/rr-1.2.7/sc-2.0.3/sb-1.0.1/sp-1.2.2/sl-1.3.3/datatables.min.js"></script>

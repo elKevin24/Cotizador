@@ -21,6 +21,8 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
 
+
+
     <body>
         <nav>
             <div class="nav-wrapper light-blue darken-4">
@@ -30,20 +32,21 @@
                         String usuario = String.valueOf(session.getAttribute("usuario"));
                         BeanUsuarios user = new BeanUsuarios();
                         user = Usuario.ObtenerUsuario(usuario);
-                        System.err.println("Usuario" + usuario);
+                        System.err.println("Usuario " + usuario);
+                        System.err.println("Usuario2 " + user.getNOMBRE());
+                        
 
-                        if (usuario != null || usuario == "null") {
-
-                        } else {
-                    %>
-                    <script>
-                        window.location.replace('Login.jsp');
-                    </script>
-                    <%
-                        response.sendRedirect("Login.jsp");
+                        if(usuario == "null"){
+                            System.out.println("entro al if");
+                            %>
+                            
+                             <META HTTP-EQUIV="REFRESH" CONTENT="0;URL=Login.jsp"> 
+                            
+                            <%
                         }
-
                     %>
+                    
+                   
                     <ul class="right hide-on-med-and-down"> 
 
                         <li><a href="Login.jsp">Salir</a></li>
@@ -62,37 +65,51 @@
                             </div>
                         </li>
 
-                        <li><a class="subheader">Menu Cotizaciones</a></li>
+                        <li><a class="subheader">Menu Servicios</a></li>
                         <ul class="collapsible collapsible-accordion">
                             <li>
-
-                                <a class="collapsible-header">Nueva Cotizacion<i class="material-icons">account_boxarrow_drop_down</i></a>
+                                <a class="collapsible-header">Cotizador<i class="material-icons">account_boxarrow_drop_down</i></a>
                                 <div class="collapsible-body">
-                                    <ul>
-                                        <li><a href="Barcos.jsp">Crear Nueva Cotizacion</a></li>
+                                    <ul>  
+                                        
+                                        
+                                        <li><a href="Barcos.jsp">Crear Nueva Cotizacion</a></li>                                       
                                         <li><a href="BarcosNuevo.jsp">Crear Barco</a></li>
-
-
-                                    </ul>
-                                </div>
-                            </li>
-                            <li>
-
-                                <a class="collapsible-header">Consultas<i class="material-icons">account_boxarrow_drop_down</i></a>
-                                <div class="collapsible-body">
-                                    <ul>
-
+                                        <li><a class="subheader">Consultas</a></li>
+                                        
                                         <li><a href="ConsultaCreados.jsp">Creados</a></li>
                                         <li><a href="ConsultaPendiente.jsp">Pendientes</a></li>
                                         <li><a href="ConsultaAprobado.jsp">Aprobados</a></li>
                                         <li><a href="ConsultaEliminados.jsp">Eliminados</a></li>
+                                        
+                                    </ul>
+                                    
+                                    
+                                </div>
+                            </li>
+                            
+                            <li>
+                                <a class="collapsible-header">Trazabilidad Contenedores<i class="material-icons">directions_boatarrow_drop_down</i></a>
+                                <div class="collapsible-body">
+                                    <ul>
+                                        <a href="carta/carta_porte_1.jsp"></a>
+                                        <li><a href="Trazabilidad_Barcos.jsp">Trazabilidad Descarga</a></li>
+                                        <li><a href="Trazabilidad_Barcos_Export.jsp">Trazabilidad Carga</a></li>
 
                                     </ul>
                                 </div>
                             </li>
                             <li>
-                            <li><a href="Trazabilidad_Barcos.jsp">Trazabilidad Import</a></li>
-                            <li><a href="Trazabilidad_Barcos_Export.jsp">Trazabilidad Export</a></li>
+                                <a class="collapsible-header">Carta Porte<i class="material-icons">content_pastearrow_drop_down</i></a>
+                                <div class="collapsible-body">
+                                    <ul>                                       
+                                        
+                                        <li><a href="carta_porte_1.jsp">Crear Carta Porte</a></li>
+                                        
+                                    </ul>
+                                </div>
+                            </li>
+
                             <li><a href="Login.jsp">Salir</a></li>
                         </ul>
                     </ul>
@@ -106,6 +123,7 @@
 
         document.addEventListener('DOMContentLoaded', function () {
             var elems = document.querySelectorAll('.sidenav');
+
             var instances = M.Sidenav.init(elems, {
                 direction: 'left',
                 hoverEnabled: false

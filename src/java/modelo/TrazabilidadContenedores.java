@@ -1,5 +1,6 @@
 package modelo;
 
+import controlador.BeanTipoBuque;
 import controlador.Trazabilidad_Contenedores;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -24,7 +25,7 @@ public class TrazabilidadContenedores {
                 + "       AND DD.NUMERO_DE_IDENTIFICACION = TC.TCF_IDENTIFICACION\n"
                 + "       AND DD.OPERADOR = " + usuario + " )\n"
                 + "AND tc.tcf_viaje_sistema = " + entrada + "\n"
-                + "AND TC.TCF_RECEPCION IS NULL";
+                + "AND TC.TCF_RECEPCION IS NULL order by tc.tcf_prefijo||tc.tcf_identificacion";
 
         try {
             Conexion c = new Conexion();
@@ -56,11 +57,11 @@ public class TrazabilidadContenedores {
         return usuarios;
     }
 
-    public static LinkedList<Trazabilidad_Contenedores> consultarContExport(String uno, String dos, String tres, String cuatro, String usuario) throws SQLException {
+    public static LinkedList<Trazabilidad_Contenedores> consultarContExport(String codigo, String entrada) throws SQLException {
         LinkedList<Trazabilidad_Contenedores> usuarios = new LinkedList<>();
 
         //System.err.println("hola");
-        String sql = "select \n"
+        String sql = "select RR.LR||RR.SENAL_DISTINTIVA||RR.VIAJE_BARCO codigo,\n"
                 + "tc.tcf_prefijo||tc.tcf_identificacion as cont, tc.tcf_recepcion_fecha fecha_recepcion,\n"
                 + "puerto.f_busca_escaneo_rx(tc.tcf_prefijo||tc.tcf_identificacion,TRUNC(TC.TCF_RECEPCION_FECHA)-.5,'E') escaneo,\n"
                 + "puerto.F_BUSCA_PESO_BASCULA(tc.tcf_correlativo_tarjeta, TC.TCF_RECEPCION, NULL ) bascula,\n"
@@ -70,13 +71,10 @@ public class TrazabilidadContenedores {
                 + "where ( RR.AUTORIZACION_RECEPCION = TC.TCF_RECEPCION\n"
                 + "       AND RR.PREFIJO = TC.TCF_PREFIJO\n"
                 + "       AND RR.NUMERO_DE_IDENTIFICACION = TC.TCF_IDENTIFICACION\n"
-                + "       AND RR.OPERADOR = '" + usuario + "' )\n"
+                + "       AND RR.OPERADOR = " + entrada + " )\n"
                 + "AND TC.TCF_RECEPCION IS NOT NULL\n"
                 + "AND TC.TCF_ADENTRO_AFUERA IS NULL\n"
-                + "AND RR.FECHA_VIAJE_BARCO = '" + cuatro + "'\n"
-                + "AND RR.LR = '" + uno + "'\n"
-                + "AND RR.SENAL_DISTINTIVA = '" + dos + "'\n"
-                + "AND RR.VIAJE_BARCO = '" + tres + "'\n"
+                + "and RR.LR||RR.SENAL_DISTINTIVA||RR.VIAJE_BARCO = '" + codigo + "'\n"
                 + "ORDER BY tc.tcf_recepcion_fecha DESC";
 
         try {
@@ -84,7 +82,7 @@ public class TrazabilidadContenedores {
             try (Connection con = c.getConexion()) {
                 Statement st;
                 st = con.createStatement();
-                System.err.println(""+sql);
+                //System.err.println(""+sql);
 
                 try (ResultSet rs = st.executeQuery(sql)) {
                     while (rs.next()) {
@@ -164,67 +162,40 @@ public class TrazabilidadContenedores {
         return usuarios;
     }
 
-//    public static LinkedList<BeanBarcos> consultarBarco() throws SQLException {
-//        LinkedList<BeanBarcos> usuarios = new LinkedList<>();
-//
-//        try {
-//            Conexion c = new Conexion();
-//            try (Connection con = c.getConexion()) {
-//                Statement st;
-//                st = con.createStatement();
-//
-//                try (ResultSet rs = st.executeQuery("select LR, NOMBRE_DEL_BUQUE, senal_distintiva, TRB, ESLORA from PUERTO.eopt_barcos where tipo_de_barco_por_estructura in (12, 13, 21, 22, 31, 32, 51, 52, 61,62, 63, 64, 71, 72, 73,74, 90)")) {
-//                    while (rs.next()) {
-//                        BeanBarcos user = new BeanBarcos();
-//                        user.setLR(rs.getString("LR"));
-//                        user.setNOMBRE_DEL_BUQUE(rs.getString("NOMBRE_DEL_BUQUE"));
-//                        user.setBANDERA(rs.getString("senal_distintiva"));
-//                        user.setTRB(rs.getString("TRB"));
-//                        user.setESLORA(rs.getString("ESLORA"));
-//
-//                        usuarios.add(user);
-//                    }
-//                }
-//                st.close();
-//            }
-//        } catch (SQLException e) {
-//        }
-//
-//        return usuarios;
-//    }
-//
-//    public static BeanBarcos ObtenerBarcos(String id) {
-//        BeanBarcos user = new BeanBarcos();
-//
-//        try {
-//            Conexion c = new Conexion();
-//            try (Connection con = c.getConexion()) {
-//                Statement st;
-//                st = con.createStatement();
-//                try (ResultSet rs = st.executeQuery("SELECT DISTINCT LR, NOMBRE_DEL_BUQUE, SENAL_DISTINTIVA, TRB, ESLORA\n"
-//                        + "FROM(\n"
-//                        + "SELECT A.LR, A.NOMBRE_DEL_BUQUE NOMBRE_DEL_BUQUE, A.SENAL_DISTINTIVA, A.TRB, A.ESLORA\n"
-//                        + "FROM PUERTO.EOPT_BARCOS A\n"
-//                        + "WHERE LR = " + id + "\n"
-//                        + "UNION\n"
-//                        + "SELECT B.LR, B.NOMBRE_DEL_BUQUE NOMBRE_DEL_BUQUE, B.SENAL_DISTINTIVA, B.TRB, B.ESLORA\n"
-//                        + "FROM CW_EOPT_BARCOS B\n"
-//                        + "WHERE LR = " + id + ")")) {
-//                    while (rs.next()) {
-//
-//                        user.setLR(rs.getString("LR"));
-//                        user.setNOMBRE_DEL_BUQUE(rs.getString("NOMBRE_DEL_BUQUE"));
-//                        user.setBANDERA(rs.getString("senal_distintiva"));
-//                        user.setTRB(rs.getString("TRB"));
-//                        user.setESLORA(rs.getString("ESLORA"));
-//
-//                    }
-//                }
-//                st.close();
-//            }
-//        } catch (SQLException e) {
-//        }
-//        return user;
-//
-//    }
+    public static Trazabilidad_Contenedores ManifiestoImport(String contenedor) {
+        Trazabilidad_Contenedores user = new Trazabilidad_Contenedores();
+
+        try {
+            Conexion c = new Conexion();
+            try (Connection con = c.getConexion()) {
+                Statement st;
+                st = con.createStatement();
+                try (ResultSet rs = st.executeQuery("SELECT RECIBIDO, MANIFIESTO, BUQUE, VIAJE, ETA\n"
+                        + "FROM(  \n"
+                        + "SELECT TO_CHAR(M.FECHA_DECODIFICACION,'DD/MM/YYYY HH24:MI') RECIBIDO, M.N_UNICO_MANIF MANIFIESTO, M.NOM_BUQUE BUQUE, M.NUM_VIAJE VIAJE, TO_CHAR(M.FECHA_ETA,'DD/MM/YYYY HH24:MI') ETA\n"
+                        + "FROM EDI.MANIFIESTO M, EDI.EQUIPO_MANIFESTADO A\n"
+                        + "WHERE M.N_UNICO_MANIF = A.N_UNICO_MANIF\n"
+                        + "AND M.MODALIDAD = DECODE('I','I','179','E','178')\n"
+                        + "AND A.NUM_CONTENEDOR = 'BEAU5089024'\n"
+                        + "ORDER BY A.FECHA_DECODIFICACION DESC)\n"
+                        + "WHERE ROWNUM = 1")) {
+                    while (rs.next()) {
+
+                        user.setC1(rs.getString("RECIBIDO"));
+                        user.setC2(rs.getString("MANIFIESTO"));
+                        user.setC3(rs.getString("BUQUE"));
+                        user.setC4(rs.getString("VIAJE"));
+                        user.setC5(rs.getString("ETA"));
+
+                    }
+                }
+                st.close();
+            }
+        } catch (SQLException e) {
+            System.err.println("ManifiestoImport: "+e);
+        }
+        return user;
+
+    }
+
 }

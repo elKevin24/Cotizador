@@ -136,9 +136,9 @@ public class Detalle_P {
                 "    cwsp_ton_import,\n" +
                 "    cwsp_ton_export\n" +
                 "    FROM\n" +
-                "CW_BUQUE_COTIZA A\n" +
+                "COTIZADOR_WEB.CW_BUQUE_COTIZA A\n" +
                 "\n" +
-                "RIGHT OUTER JOIN  cw_srv_portacontenedores B\n" +
+                "RIGHT OUTER JOIN  COTIZADOR_WEB.cw_srv_portacontenedores B\n" +
                 "   ON A.CWBC_COTIZACION = B.CWSP_COTIZACION\n" +
                 "   WHERE CWBC_COTIZACION = "+id+"")) {
             while (rs.next())
