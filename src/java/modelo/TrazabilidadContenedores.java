@@ -176,7 +176,7 @@ public class TrazabilidadContenedores {
                         + "FROM EDI.MANIFIESTO M, EDI.EQUIPO_MANIFESTADO A\n"
                         + "WHERE M.N_UNICO_MANIF = A.N_UNICO_MANIF\n"
                         + "AND M.MODALIDAD = DECODE('I','I','179','E','178')\n"
-                        + "AND A.NUM_CONTENEDOR = 'BEAU5089024'\n"
+                        + "AND A.NUM_CONTENEDOR = '"+contenedor+"'\n"
                         + "ORDER BY A.FECHA_DECODIFICACION DESC)\n"
                         + "WHERE ROWNUM = 1")) {
                     while (rs.next()) {
@@ -188,12 +188,65 @@ public class TrazabilidadContenedores {
                         user.setC5(rs.getString("ETA"));
 
                     }
+                    
                 }
                 st.close();
             }
         } catch (SQLException e) {
             System.err.println("ManifiestoImport: "+e);
         }
+        
+        return user;
+
+    }
+    
+    public static Trazabilidad_Contenedores ManifiestoExport(String contenedor) {
+        Trazabilidad_Contenedores user = new Trazabilidad_Contenedores();
+        System.err.println(""+contenedor);
+        try {
+            Conexion c = new Conexion();
+            try (Connection con = c.getConexion()) {
+                Statement st;
+                st = con.createStatement();
+                try (ResultSet rs = st.executeQuery("SELECT RECIBIDO, MANIFIESTO, BUQUE, VIAJE, ETA\n"
+                        + "FROM(  \n"
+                        + "SELECT TO_CHAR(M.FECHA_DECODIFICACION,'DD/MM/YYYY HH24:MI') RECIBIDO, M.N_UNICO_MANIF MANIFIESTO, M.NOM_BUQUE BUQUE, M.NUM_VIAJE VIAJE, TO_CHAR(M.FECHA_ETA,'DD/MM/YYYY HH24:MI') ETA\n"
+                        + "FROM EDI.MANIFIESTO M, EDI.EQUIPO_MANIFESTADO A\n"
+                        + "WHERE M.N_UNICO_MANIF = A.N_UNICO_MANIF\n"
+                        + "AND M.MODALIDAD = DECODE('E','I','179','E','178')\n"
+                        + "AND A.NUM_CONTENEDOR = '"+contenedor+"'\n"
+                        + "ORDER BY A.FECHA_DECODIFICACION DESC)\n"
+                        + "WHERE ROWNUM = 1")) {
+                    while (rs.next()) {
+
+                        user.setC1(rs.getString("RECIBIDO"));
+                        user.setC2(rs.getString("MANIFIESTO"));
+                        user.setC3(rs.getString("BUQUE"));
+                        user.setC4(rs.getString("VIAJE"));
+                        user.setC5(rs.getString("ETA"));
+                        
+                        
+                        
+                       
+
+                    }
+                    if(user.getC1()== null){
+                        user.setC1(" ");
+                        user.setC2(" ");
+                        user.setC3(" ");
+                        user.setC4(" ");
+                        user.setC5(" ");
+                        
+                    }
+                }
+                st.close();
+            }
+        } catch (SQLException e) {
+            System.err.println("ManifiestoExport: "+e);
+            
+        }
+        
+        
         return user;
 
     }

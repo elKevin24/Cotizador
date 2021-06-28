@@ -106,7 +106,7 @@
                                 out.println("<td id='prueba'>" + lista.get(i).getC2() + "</td>");
                                 //3
                                 if (lista.get(i).getC3() != null) {
-                                    out.println("<td class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='" + lista.get(i).getC3() + "'></></td>");
+                                    out.println("<td class='text-center'> <label style='display: none;'>1</label> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='" + lista.get(i).getC3() + "'></></td>");
 
                                 } else {
                                     out.println("<td class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='Sin Escaneo'></></td>");
@@ -115,16 +115,14 @@
                                 if (lista.get(i).getC4().substring(0,1).equals("R")) {
                                     out.println("<td class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='Sin Peso'></></td>");
                                 } else if(lista.get(i).getC4().substring(0,1).equals("V")) {
-                                    out.println("<td class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='" + lista.get(i).getC4().substring(1) + "'></a></td>");
+                                    out.println("<td class='text-center'> <label style='display: none;'>1</label><img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='" + lista.get(i).getC4().substring(1) + "'></a></td>");
                                 } else {
-                                    out.println("<td class='text-center'> <img src='img/bullet-yellow.png' class=' tooltipped ' data-position='bottom' data-tooltip='Solo Primer Peso: " + lista.get(i).getC4().substring(1,12) + "'></a></td>");
+                                    out.println("<td class='text-center'> <label style='display: none;'>2</label><img src='img/bullet-yellow.png' class=' tooltipped ' data-position='bottom' data-tooltip='Solo Primer Peso: " + lista.get(i).getC4().substring(1,12) + "'></a></td>");
                                 }
                                 //5
-                                if (lista.get(i).getC7() == null) {
-                                    out.println("<td id='" + lista.get(i).getC1() + "' class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='Sin Retenciones'></td>");
-                                } else {
-                                    out.println("<td class='text-center'> </td>");
-                                }
+                                
+                                    out.println("<td id='" + lista.get(i).getC1() + "' class='text-center'><label style='display: none;'>1</label><img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='Sin Retenciones'></td>");
+                                
                                 //6
                                 
                                     out.println("<td id='" + lista.get(i).getC1() + "atc' class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='No Registrado'></></td>");
@@ -133,11 +131,11 @@
                                 if (lista.get(i).getC6() == null || (lista.get(i).getC6().equals("NO"))) {
                                     out.println("<td class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='Sin Ubicacion'></></td>");
                                 } else {
-                                    out.println("<td class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='" + lista.get(i).getC6() + "'></></td>");
+                                    out.println("<td class='text-center'> <label style='display: none;'>1</label><img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='" + lista.get(i).getC6() + "'></></td>");
                                 }
                                 //8
                                 if (lista.get(i).getC5() != null) {
-                                    out.println("<td class='text-center'> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='" + lista.get(i).getC5() + "'></></td>");
+                                    out.println("<td class='text-center'><label style='display: none;'>1</label> <img src='img/bullet-green.png' class=' tooltipped ' data-position='bottom' data-tooltip='" + lista.get(i).getC5() + "'></></td>");
 
                                 } else {
                                     out.println("<td class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='Sin Salida'></></td>");
@@ -147,8 +145,7 @@
                                 // out.println("<td> <a class='btn-floating btn-small waves-effect waves-light green'></a></td>");
                                 out.println("<td class='text-center'>" + "<a class='waves-effect waves-light btn-small' onclick='return myFunction()' href=Trazabilidad_Contenedor.jsp?id=" + lista.get(i).getC1() + ">" + "Detalle" + "</a>" + "</td>");
                                 
-                                out.println("</tr>");
-                            }
+                                out.println("</tr>");                            }
 
 
                         %>  

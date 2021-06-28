@@ -58,7 +58,7 @@
                 <tr class="celeste">
                     <th>Mensaje</th>
                     <th>Contenedor</th>
-                    
+
                     <th>MAGA</th>
                     <th>DIPA</th>
                     <th>SEPA</th>
@@ -67,7 +67,7 @@
                 <tr>
                     <td id="mensaje"></td>
                     <td id="contenedor"></td>
-                    
+
                     <td id="MAGA"><img src="img/new/Bullet-grey.png"></td>
                     <td id="DIPA"><img src="img/new/Bullet-grey.png"></td>
                     <td id="SEPA"><img src="img/new/Bullet-grey.png"></td>
@@ -124,6 +124,11 @@
                     "Authorization": "Basic MzEzMzIyMjpFbXBvcm5hYzIwMTUr",
                     "Content-Type": "application/json",
                     "Accept": "application/json;charset=utf-8",
+                    "Access-Control-Allow-Origin": "*",
+                    "Access-Control-Allow-Methods": "GET, HEAD, POST, PUT",
+                    "Access-Control-Allow-Headers": "Authorization, Content-Type, Accept",
+                    "Cookie": "incap_ses_980_2112329=AJ+XIM+Ps1K29+lUJ6mZDeIK1mAAAAAAbIaIW/iobrhTm2gp4nws4Q==; visid_incap_2112329=0xk+tVssSjegRxb6moVvoquKumAAAAAAQUIPAAAAAABebEr5ELkke+K1Kp+CTHG/"
+
 
                 },
                 "data": JSON.stringify({
@@ -208,6 +213,7 @@
 
             $.ajax(settings).done(function (response) {
                 console.log(response);
+                document.getElementById("mensajeatc").innerHTML = response.mensaje;
 
 
                 if (response.codigo == 1) {

@@ -5,7 +5,7 @@
  */
 
 
-function reten(cont) {
+function reten2(cont) {
 
     var settings = {
 		"url": "https://farm3.sat.gob.gt/confirmacion-salida/rest/privado/ingresoSalidaAduana/consultarIngresoSalidaContenedorVacio",

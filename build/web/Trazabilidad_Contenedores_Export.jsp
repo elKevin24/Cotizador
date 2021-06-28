@@ -65,6 +65,7 @@
                                     <th>ATC</th>
                                     <th>UBICACION PATIO DAT</th>
                                     <th>SALIDA DAT</th>
+                                    <th>VER</th>
 
                                 </tr>
                             </thead>
@@ -145,6 +146,9 @@
                                 } else {
                                     out.println("<td class='text-center'> <img src='img/bullet-red.png' class=' tooltipped ' data-position='bottom' data-tooltip='Sin Salida'></></td>");
                                 }
+                                
+                                out.println("<td class='text-center'>" + "<a class='waves-effect waves-light btn-small' onclick='return myFunction()' href=Trazabilidad_Contenedor_Export.jsp?id=" + lista.get(i).getC1() + ">" + "Detalle" + "</a>" + "</td>");
+                                
 
                                 // out.println("<td> <a class='btn-floating btn-small waves-effect waves-light red'></a></td>");
                                 // out.println("<td> <a class='btn-floating btn-small waves-effect waves-light green'></a></td>");
@@ -165,6 +169,7 @@
                                 <th>ATC</th>
                                 <th>UBICACION PATIO DAT</th>
                                 <th>SALIDA DAT</th>
+                                <th>VER</th>
                             </tr>
                         </tfoot>
                     </table>
@@ -200,7 +205,7 @@
                             $('.tooltipped').tooltip();
 
                             //consultatc(miArray[i]);
-                        }, "order": [[3, "desc"]]
+                        }, "order": [[2, "desc"]]
                                 //}
                     });
                 });
